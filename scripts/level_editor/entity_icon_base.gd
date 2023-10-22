@@ -6,6 +6,7 @@ var gem_scene = preload("res://scenes/entities/gem.tscn")
 var black_gem_scene = preload("res://scenes/entities/black_gem.tscn")
 var tile_blocker_scene = preload("res://scenes/entities/tile_blocker.tscn")
 var goal_scene = preload("res://scenes/entities/goal.tscn")
+var ice_slick_scene = preload("res://scenes/entities/ice_slick.tscn")
 
 @export var entity_text:String
 @export var entity_color:Color = Color(1,1,1)
@@ -32,6 +33,8 @@ func is_gem():
 	return entity_text.to_lower() == "g" or entity_text.to_lower() == "gem"
 func is_goal():
 	return entity_text.to_lower() == "goal"
+func is_ice_slick():
+	return entity_text.to_lower() == "ice" or entity_text.to_lower() == "ice slick"
 func is_red():
 	return entity_color.r >= 0.8 and entity_color.g < 0.2 and entity_color.b < 0.2
 func is_green():
@@ -49,6 +52,8 @@ func get_entity():
 			entity = black_gem_scene.instantiate() as BlackGem
 	elif is_goal():
 		entity = goal_scene.instantiate() as Goal
+	elif is_ice_slick():
+		entity = ice_slick_scene.instantiate() as IceSlick
 	elif entity_text == "#":
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	

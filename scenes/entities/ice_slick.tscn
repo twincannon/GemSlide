@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnn55xriy5i82"]
+
+[ext_resource type="Script" path="res://scripts/entities/ice_slick.gd" id="1_w6np1"]
+[ext_resource type="Texture2D" uid="uid://b7u6hrkep7mrp" path="res://assets/art/ice_slick.png" id="2_haqpw"]
+
+[node name="IceSlick" type="Node2D"]
+script = ExtResource("1_w6np1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_haqpw")

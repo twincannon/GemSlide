@@ -4,6 +4,8 @@ class_name Game
 var tile_scene = preload("res://scenes/tile.tscn")
 # instead of tile blockers, maybe just don't spawn tiles?
 
+@onready var move_queue_timer = $MoveQueueTimer as Timer
+
 var tiles = []
 var entities:Array[Entity] = []
 
@@ -14,8 +16,6 @@ var grid_size:Vector2i
 var pressedPos : Vector2
 var releasedPos : Vector2
 var threshold := 5000
-
-var existing_queue_timer : SceneTreeTimer
 
 #var game_paused = false
 
@@ -47,8 +47,9 @@ func _ready():
 			if tilenode is Sprite2D and tilenode.texture:
 				texsize = tilenode.texture.get_size() * tilenode.transform.get_scale()
 				tile_size = texsize
-				tile_instance.position.x = (texsize.x * x) - ((texsize.x * grid_size.x) / 2) + (texsize.x/2)
-				tile_instance.position.y = (texsize.y * y) - ((texsize.y * grid_size.y) / 2) + (texsize.y/2)
+				tile_instance.position = get_position_at_grid_pos(Vector2i(x,y))
+				#tile_instance.position.x = (texsize.x * x) - ((texsize.x * grid_size.x) / 2) + (texsize.x/2)
+				#tile_instance.position.y = (texsize.y * y) - ((texsize.y * grid_size.y) / 2) + (texsize.y/2)
 				tiles.append(tile_instance)
 				
 				if currentNum < entities_to_load.size():
@@ -85,6 +86,9 @@ func _process(_delta):
 		var goal = e as Goal
 		if goal and !goal.is_goal_filled():
 			all_goals_filled = false
+		if e.is_forcibly_moving:
+			move_queue_timer.stop()
+			return
 	if all_goals_filled: return # Don't allow further input after all goals have been filled (but are awaiting animation for game pause)
 	
 	var dir:Vector2i = Vector2i.ZERO
@@ -107,11 +111,12 @@ func _process(_delta):
 				if e.is_ready_for_queued_move():
 					# HACK: 0.01 added to ensure entity on_tween_done() is called... can I solve this with callbacks somehow?
 					queue_duration = max(queue_duration, e.get_remaining_movement_time() + 0.01)
-		if !queued_move and !existing_queue_timer:
+		if !queued_move and move_queue_timer.is_stopped():
 			move_entities(dir)
-		elif !existing_queue_timer and queue_duration > 0.0 and Input.is_action_just_released("click"): # Only queue for swipe gestures for now
-			existing_queue_timer = get_tree().create_timer(queue_duration)
-			existing_queue_timer.timeout.connect(move_entities.bind(dir))
+		elif move_queue_timer.is_stopped() and queue_duration > 0.0 and Input.is_action_just_released("click"): # Only queue for swipe gestures for now
+			move_queue_timer.timeout.disconnect(move_entities.bind(dir))
+			move_queue_timer.timeout.connect(move_entities.bind(dir))
+			move_queue_timer.start(queue_duration)
 	
 	if Input.is_action_just_released("click"):
 		input_dir = 0
@@ -146,7 +151,7 @@ func _input(event):
 		
 
 func move_entities(dir:Vector2i):
-	existing_queue_timer = null
+	move_queue_timer.stop()
 	
 	var did_any_entity_move = false
 	
@@ -171,7 +176,7 @@ func increment_moves():
 func on_gem_goal_anim_finished():
 	for e in entities:
 		var gem = e as Gem
-		if gem and !gem.is_gem_goal_anim_done():
+		if gem and gem.gem_in_goal and !gem.is_gem_goal_anim_done():
 			return
 			
 	check_goal()
@@ -190,6 +195,9 @@ func get_entities_blocking_at_pos(pos, blocked_entity):
 			temp_ents.append(i)
 	return temp_ents
 
+func get_position_at_grid_pos(grid_pos:Vector2i) -> Vector2:
+	return Vector2((tile_size.x * grid_pos.x) - ((tile_size.x * grid_size.x) / 2) + (tile_size.x/2), \
+				   (tile_size.y * grid_pos.y) - ((tile_size.y * grid_size.y) / 2) + (tile_size.y/2))
 
 func is_in_grid_bounds(pos:Vector2i) -> bool:
 	return pos.x >= 0 and pos.x < grid_size.x and pos.y >= 0 and pos.y < grid_size.y
@@ -211,7 +219,6 @@ func calculate_gesture():
 	return 0
 	
 func check_goal():
-	#todo: write gem in goal logic here
 	var all_goals_filled = true
 	for e in entities:
 		var goal = e as Goal
@@ -249,6 +256,7 @@ func get_next_level():
 		return Globals.world_data.level_data[cur_idx + 1]
 
 func _on_continue_button_pressed():
+	set_game_paused(false)
 	var next_level = get_next_level()
 	if next_level:
 		Globals.current_level_scene = next_level
@@ -256,4 +264,5 @@ func _on_continue_button_pressed():
 
 
 func _on_retry_button_pressed():
+	set_game_paused(false)
 	get_tree().change_scene_to_file("res://scenes/game.tscn")

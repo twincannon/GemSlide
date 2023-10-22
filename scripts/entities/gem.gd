@@ -19,15 +19,22 @@ func _process(_delta):
 	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
 func _on_movement(_dir):
+	if movement_tween:
+		movement_tween.kill()
 	movement_tween = create_tween().set_parallel(true)
 	#movement_tween.set_ease(Tween.EASE_OUT)
 	#movement_tween.set_trans(Tween.TRANS_ELASTIC)
-	movement_tween.tween_property(self, "position", target_position, movement_tween_duration)
+	var offset = (Vector2(_dir.x, _dir.y) * distance_to_move)
+	var tween_dur = movement_tween_duration if !is_forcibly_moving else 0.05
+	movement_tween.tween_property(self, "position", offset, tween_dur).as_relative()
 	var rot_dir = 1.5 if (_dir == Vector2i.RIGHT or _dir == Vector2i.DOWN) else -1.5
-	movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, movement_tween_duration).as_relative()
-	movement_tween.tween_callback(_on_tween_done)
+	movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
+	movement_tween.chain().tween_callback(_on_movement_tween_done.bind(_dir))
+	#movement_tween.finished.connect(_on_movement_tween_done.bind(_dir))
+	#get_tree().create_timer(movement_tween_duration).timeout.connect(_on_movement_tween_done.bind(_dir))
 
-func _on_tween_done():
+func _on_movement_tween_done(dir):
+	super(dir)
 	for i in Globals.get_game_node().get_entities_at_pos(grid_pos):
 		if i is Goal:
 			if $ColorComponent.color == i.get_node("ColorComponent").color:

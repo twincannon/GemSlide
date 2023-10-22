@@ -23,6 +23,7 @@ layout_mode = 2
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
+entity_text = "ice"
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2

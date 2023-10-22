@@ -8,12 +8,12 @@ var movement_tween_duration := 0.25
 var movement_tween_queue_time := 0.2
 
 var grid_pos:Vector2i # Position on game grid
-@onready var target_position:Vector2 = position # Position in 2D space on screen
 @onready var distance_to_move := Globals.get_entity_movement_distance() # I want this to be const
 
 var entity_sprite:Sprite2D # Sprite for moving, rotating intended to be at 0,0 with 0 rotation by default
 
 var moves := false # If this entity moves when input is pressed
+var is_forcibly_moving := false
 
 signal on_movement_done
 
@@ -34,29 +34,37 @@ func can_move_in_dir(dir:Vector2i) -> bool:
 		for i in neighbors:
 			if i.can_move_in_dir(dir) == false:
 				can_all_neighbors_move = false
+			if is_forcibly_moving and !i.is_forcibly_moving: # We're forcibly moving but our neighbor isn't and won't move out of the way for us
+				can_all_neighbors_move = false
 		return can_all_neighbors_move
 	return false
 
 
 func on_try_move(dir): # Returns whether or not the move was successful
 	if can_move_in_dir(dir):
+		#print(str(self) + " -> " + str(dir.x)+","+str(dir.y))
+		var game_node = Globals.get_game_node()
+		for e in game_node.get_entities_at_pos(grid_pos):
+			e._on_entity_exited(self)
 		grid_pos += dir
+		for e in game_node.get_entities_at_pos(grid_pos):
+			e._on_entity_entered(self)
 		if movement_tween:
 			movement_tween.kill()
 			movement_tween = null
-		target_position = position + (Vector2(dir.x, dir.y) * distance_to_move)
 		_on_movement(dir)
 		if !movement_tween: # If our movement call didn't start a tween, just teleport
-			position = target_position
+			_on_movement_tween_done(dir)
 		return true
 	elif moves:
 		_on_movement_blocked(dir)
 	return false
 
 func _on_movement(_dir):
-	# Do move tween here
+	# Do move tween here, make sure to call _on_movement_tween_done via tween callback!
 	
 	#does this make sense? I kind of hate inheritance for this
+	#I could store the tween as a var and use it to circumvent the above gotcha too
 	#var tween_comp = get_node("TweenComponent")
 	pass
 
@@ -64,16 +72,28 @@ func _on_movement_blocked(_dir):
 	# Do blocked movement tween here
 	pass
 	
+func _on_entity_exited(_other_entity):
+	pass
+	
+func _on_entity_entered(_other_entity):
+	pass
+	
 func _does_block(_other_entity):
 	return true
 
-func _on_tween_done():
-	pass
+func _on_movement_tween_done(dir):
+	position = Globals.get_game_node().get_position_at_grid_pos(grid_pos)
+	if is_forcibly_moving:
+		if !on_try_move(dir):
+			is_forcibly_moving = false
+			
 
 func is_tween_running():
 	return movement_tween is Tween and movement_tween.is_running()
 
 func is_ready_for_queued_move():
+	if is_forcibly_moving:
+		return false
 	if !movement_tween:
 		return true
 	elif is_tween_running() == false:
