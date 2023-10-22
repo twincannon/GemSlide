@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nbcdfn0ni0j"]
+
+[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_egsv4"]
+[ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_vd3t0"]
+
+[node name="level01-01" type="GridContainer"]
+columns = 4
+script = ExtResource("1_egsv4")
+tutorial = "[center][b]Gems[/b] [img width=32 height=32 color=#0000FF]res://assets/art/gem.png[/img] are blocked by miscolored un-filled [b]goals[/b] [img width=32 height=32 color=#FF0000]res://assets/art/goal.png[/img], but not filled ones.[/center]"
+
+[node name="EntityButton" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton2" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+
+[node name="EntityButton3" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+
+[node name="EntityButton4" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+
+[node name="EntityButton6" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+entity_text = "g"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton5" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton8" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+
+[node name="EntityButton9" parent="." instance=ExtResource("2_vd3t0")]
+layout_mode = 2
+entity_text = "goal"
+entity_color = Color(0, 0, 1, 1)

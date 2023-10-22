@@ -6,61 +6,40 @@
 [node name="level01-01" type="GridContainer"]
 columns = 4
 script = ExtResource("1_irwso")
-tutorial = "test"
+tutorial = "[center]Welcome to [i]GemSlide![/i]
+
+You can swipe, use arrow keys or WASD to move gems [img width=32 height=32 color=#FF0000]res://assets/art/gem.png[/img] around the board.[/center]"
 
 [node name="EntityButton" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
-entity_text = "g"
-entity_color = Color(0, 0, 1, 1)
+entity_text = ""
 
 [node name="EntityButton3" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
-entity_text = "g"
-entity_color = Color(0, 1, 0, 1)
+entity_text = ""
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
-entity_text = "g"
-entity_color = Color(1, 0, 0, 1)
+entity_text = ""
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
+entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
-entity_text = "#"
+entity_text = ""
 
 [node name="EntityButton7" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
+entity_text = ""
 
 [node name="EntityButton8" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
-
-[node name="EntityButton9" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
-
-[node name="EntityButton10" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2
-
-[node name="EntityButton11" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2
-
-[node name="EntityButton12" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2
-
-[node name="EntityButton13" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2
-
-[node name="EntityButton14" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2
-
-[node name="EntityButton15" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2
-
-[node name="EntityButton16" parent="." instance=ExtResource("2_kce62")]
-layout_mode = 2

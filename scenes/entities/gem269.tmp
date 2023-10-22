@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxu48am552pd1"]
+
+[ext_resource type="Script" path="res://scripts/entities/gem.gd" id="1_jy8aq"]
+[ext_resource type="Texture2D" uid="uid://fsx7r7kqe5fl" path="res://assets/art/gem.png" id="2_yrm1y"]
+[ext_resource type="PackedScene" uid="uid://cn73bwxkrv5v8" path="res://scenes/components/color_component.tscn" id="3_87hb2"]
+
+[node name="Gem" type="Node2D"]
+script = ExtResource("1_jy8aq")
+
+[node name="BlockedAnchor" type="Node2D" parent="."]
+scale = Vector2(0.9, 0.9)
+
+[node name="GemSpriteRotAnchor" type="Node2D" parent="BlockedAnchor"]
+unique_name_in_owner = true
+
+[node name="GemSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
+unique_name_in_owner = true
+z_index = 100
+texture = ExtResource("2_yrm1y")
+
+[node name="ColorblindHelper" type="Sprite2D" parent="."]
+
+[node name="ColorComponent" parent="." node_paths=PackedStringArray("node_to_colorize") instance=ExtResource("3_87hb2")]
+node_to_colorize = NodePath("../BlockedAnchor/GemSpriteRotAnchor/GemSprite")
+
+[node name="Control" type="Control" parent="."]
+z_index = 999
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelGridPos" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.575
+anchor_top = -1.575
+anchor_right = 1.6
+anchor_bottom = -0.425
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "0,0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

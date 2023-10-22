@@ -4,8 +4,8 @@ class_name Entity
 var movement_tween : Tween
 var blocked_tween : Tween
 
-var movement_tween_duration := 0.5
-var movement_tween_queue_time := 0.35
+var movement_tween_duration := 0.25
+var movement_tween_queue_time := 0.2
 
 var grid_pos:Vector2i # Position on game grid
 @onready var target_position:Vector2 = position # Position in 2D space on screen
@@ -14,8 +14,8 @@ var grid_pos:Vector2i # Position on game grid
 var entity_sprite:Sprite2D # Sprite for moving, rotating intended to be at 0,0 with 0 rotation by default
 
 var moves := false # If this entity moves when input is pressed
-var blocks := true
 
+signal on_movement_done
 
 func set_grid_pos(new_pos:Vector2i):
 	grid_pos = new_pos
@@ -38,39 +38,40 @@ func can_move_in_dir(dir:Vector2i) -> bool:
 	return false
 
 
-func on_try_move(dir):
+func on_try_move(dir): # Returns whether or not the move was successful
 	if can_move_in_dir(dir):
 		grid_pos += dir
 		if movement_tween:
 			movement_tween.kill()
 			movement_tween = null
 		target_position = position + (Vector2(dir.x, dir.y) * distance_to_move)
-		on_movement()
+		_on_movement(dir)
 		if !movement_tween: # If our movement call didn't start a tween, just teleport
 			position = target_position
+		return true
 	elif moves:
-		on_movement_blocked(dir)
+		_on_movement_blocked(dir)
+	return false
 
-func on_movement():
+func _on_movement(_dir):
 	# Do move tween here
 	
 	#does this make sense? I kind of hate inheritance for this
 	#var tween_comp = get_node("TweenComponent")
 	pass
 
-func on_movement_blocked(_dir):
+func _on_movement_blocked(_dir):
 	# Do blocked movement tween here
 	pass
+	
+func _does_block(_other_entity):
+	return true
 
-func does_block(_other_entity):
-	return blocks
-
-func on_tween_done():
+func _on_tween_done():
 	pass
 
 func is_tween_running():
 	return movement_tween is Tween and movement_tween.is_running()
-
 
 func is_ready_for_queued_move():
 	if !movement_tween:
@@ -81,10 +82,8 @@ func is_ready_for_queued_move():
 		return true
 	return false
 
-
 func get_remaining_movement_time():
 	return movement_tween_duration - movement_tween.get_total_elapsed_time() if movement_tween is Tween else 0.0
-
 
 func reset_sprite_position():
 	if entity_sprite:

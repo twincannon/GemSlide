@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://o47svojgycl4"]
+
+[ext_resource type="Script" path="res://scripts/entities/black_gem.gd" id="1_sn6ji"]
+[ext_resource type="Texture2D" uid="uid://fsx7r7kqe5fl" path="res://assets/art/gem.png" id="2_1l12x"]
+
+[node name="Gem" type="Node2D"]
+script = ExtResource("1_sn6ji")
+
+[node name="BlockedAnchor" type="Node2D" parent="."]
+scale = Vector2(0.9, 0.9)
+
+[node name="GemSpriteRotAnchor" type="Node2D" parent="BlockedAnchor"]
+unique_name_in_owner = true
+
+[node name="GemSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
+unique_name_in_owner = true
+modulate = Color(0.188235, 0.188235, 0.188235, 1)
+z_index = 100
+texture = ExtResource("2_1l12x")
+
+[node name="ColorblindHelper" type="Sprite2D" parent="."]

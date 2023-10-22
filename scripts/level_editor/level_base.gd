@@ -1,7 +1,6 @@
 extends GridContainer
 class_name LevelBase
 
-@export var goal_sum = 0
 @export_multiline var tutorial:String
 
 func get_grid_size():

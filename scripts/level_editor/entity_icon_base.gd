@@ -3,6 +3,7 @@ extends MarginContainer
 class_name EntityIconBase
 
 var gem_scene = preload("res://scenes/entities/gem.tscn")
+var black_gem_scene = preload("res://scenes/entities/black_gem.tscn")
 var tile_blocker_scene = preload("res://scenes/entities/tile_blocker.tscn")
 var goal_scene = preload("res://scenes/entities/goal.tscn")
 
@@ -42,7 +43,10 @@ func get_entity():
 	var entity = null
 	
 	if is_gem():
-		entity = gem_scene.instantiate() as Gem
+		if is_red() or is_green() or is_blue():
+			entity = gem_scene.instantiate() as Gem
+		else:
+			entity = black_gem_scene.instantiate() as BlackGem
 	elif is_goal():
 		entity = goal_scene.instantiate() as Goal
 	elif entity_text == "#":

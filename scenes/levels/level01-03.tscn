@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxsj0qlfck0m5"]
+
+[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_5khrk"]
+[ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_ig7hc"]
+
+[node name="level01-01" type="GridContainer"]
+columns = 3
+script = ExtResource("1_5khrk")
+
+[node name="EntityButton" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+entity_text = "g"
+entity_color = Color(0, 1, 0, 1)
+
+[node name="EntityButton2" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+
+[node name="EntityButton3" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+
+[node name="EntityButton4" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+
+[node name="EntityButton5" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+
+[node name="EntityButton6" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+entity_text = "g"
+entity_color = Color(0, 0, 0, 1)
+
+[node name="EntityButton7" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+
+[node name="EntityButton8" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+
+[node name="EntityButton9" parent="." instance=ExtResource("2_ig7hc")]
+layout_mode = 2
+entity_text = "goal"
+entity_color = Color(0, 1, 0, 1)
