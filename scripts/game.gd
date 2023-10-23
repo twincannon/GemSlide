@@ -38,6 +38,8 @@ func _ready():
 		%TutorialLabel.text = Globals.current_level.tutorial
 		set_game_paused(true)
 	
+	%LevelNumLabel.text = "Level " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
+	
 	grid_size = Globals.current_level.get_grid_size()
 	var entities_to_load = Globals.current_level.get_entities()
 	var currentNum = 0
@@ -238,7 +240,7 @@ func check_goal():
 	if all_goals_filled:
 		on_game_over(true)
 
-func on_goal_filled(goal):
+func on_goal_filled(_goal):
 	$GoalAudioPlayer.stream = goal_sound
 	$GoalAudioPlayer.play()
 
@@ -270,7 +272,7 @@ func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func get_next_level():
-	var cur_idx = Globals.current_world_data.level_data.find(Globals.current_level_scene)
+	var cur_idx = Globals.get_current_level_index()
 	if cur_idx != -1 and Globals.current_world_data.level_data.size() > cur_idx + 1:
 		return Globals.current_world_data.level_data[cur_idx + 1]
 
@@ -278,7 +280,7 @@ func _on_continue_button_pressed():
 	set_game_paused(false)
 	var next_level = get_next_level()
 	if next_level:
-		Globals.current_level_scene = next_level
+		Globals.change_level(next_level)
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 

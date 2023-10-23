@@ -4,6 +4,7 @@ class_name BlackGem
 func _ready():
 	entity_sprite = %GemSprite
 	moves = true
+	%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
 
 func _does_block(_other_entity):
 	return true

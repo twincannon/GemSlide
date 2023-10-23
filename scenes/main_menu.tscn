@@ -12,25 +12,97 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tknb6")
 
-[node name="LevelContainer" type="GridContainer" parent="."]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.307963
+anchor_right = 1.0
+anchor_bottom = 0.80445
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="WorldLabel" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-anchor_left = 0.214583
-anchor_top = 0.492974
-anchor_right = 0.791667
-anchor_bottom = 0.802108
+layout_mode = 2
+text = "World
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 64)
+layout_mode = 2
+
+[node name="WorldButtonLeft" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control3"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+tooltip_text = "Previous World"
+theme_override_font_sizes/font_size = 48
+text = "<"
+
+[node name="Control2" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="LevelContainer" type="GridContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 columns = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 64)
+layout_mode = 2
+
+[node name="WorldButtonRight" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+tooltip_text = "Next World"
+theme_override_font_sizes/font_size = 48
+text = ">"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 112.0
+offset_top = 59.0
+offset_bottom = 214.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "GemSlide"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -64,3 +136,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus_name = "Master"
+
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control3/WorldButtonLeft" to="." method="_on_world_button_left_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4/WorldButtonRight" to="." method="_on_world_button_right_pressed"]

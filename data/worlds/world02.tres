@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=5 format=3 uid="uid://6c800jutlkog"]
+
+[ext_resource type="PackedScene" uid="uid://cdmay8k6nx2o6" path="res://scenes/levels/level02-01.tscn" id="1_dbks1"]
+[ext_resource type="PackedScene" uid="uid://cs8hs65wkldnj" path="res://scenes/levels/level02-02.tscn" id="2_pwrp8"]
+[ext_resource type="PackedScene" uid="uid://cjwdtuiajjg78" path="res://scenes/levels/level02-03.tscn" id="3_q8n7u"]
+[ext_resource type="Script" path="res://scripts/level_editor/world_data.gd" id="5_qp1wm"]
+
+[resource]
+script = ExtResource("5_qp1wm")
+level_data = Array[PackedScene]([ExtResource("1_dbks1"), ExtResource("2_pwrp8"), ExtResource("3_q8n7u")])
