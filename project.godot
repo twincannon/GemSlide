@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://scripts/globals.gd"
+SaveGame="*res://scripts/save_game.gd"
+
+[debug]
+
+gdscript/warnings/integer_division=0
 
 [display]
 

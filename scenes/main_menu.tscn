@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7jq05fdyacro"]
+[gd_scene load_steps=2 format=3 uid="uid://b7jq05fdyacro"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_tknb6"]
-[ext_resource type="Resource" uid="uid://2tkl00twcud0" path="res://data/worlds/world01.tres" id="2_7x140"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tknb6")
-world_datas = Array[Resource("res://scripts/level_editor/world_data.gd")]([ExtResource("2_7x140")])
 
 [node name="LevelContainer" type="GridContainer" parent="."]
 unique_name_in_owner = true

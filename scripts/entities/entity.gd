@@ -7,7 +7,7 @@ var blocked_tween : Tween
 var movement_tween_duration := 0.25
 var movement_tween_queue_time := 0.2
 
-var grid_pos:Vector2i # Position on game grid
+var grid_pos:Vector2i : set = set_grid_pos # Position on game grid
 @onready var distance_to_move := Globals.get_entity_movement_distance() # I want this to be const
 
 var entity_sprite:Sprite2D # Sprite for moving, rotating intended to be at 0,0 with 0 rotation by default
@@ -19,7 +19,6 @@ signal on_movement_done
 
 func set_grid_pos(new_pos:Vector2i):
 	grid_pos = new_pos
-
 
 func can_move_in_dir(dir:Vector2i) -> bool:
 	var game_node = Globals.get_game_node()

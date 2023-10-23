@@ -1,17 +1,16 @@
 extends Control
 
-@export var world_datas:Array[WorldData] = []
 var current_world
 
 @onready var level_button_scene = preload("res://scenes/level_editor/level_button.tscn")
 
 func _ready():
-	if Globals.world_data:
-		current_world = Globals.world_data #if we're coming from a level, use that world
-	elif world_datas.size() > 0:
-		current_world = world_datas[0]
-		Globals.world_data = world_datas[0]
-	var current_world_idx = world_datas.find(current_world)
+	if Globals.current_world_data:
+		current_world = Globals.current_world_data #if we're coming from a level, use that world
+	elif Globals.world_datas.size() > 0:
+		current_world = Globals.world_datas[0]
+		Globals.current_world_data = Globals.world_datas[0]
+	var current_world_idx = Globals.world_datas.find(current_world)
 	
 	# Clear anything in our level container
 	for i in %LevelContainer.get_children():
@@ -24,8 +23,12 @@ func _ready():
 	var buttons = %LevelContainer.get_children()
 	for i in range(buttons.size()):
 		if buttons[i] is LevelButton:
-			if Globals.world_data.level_data.size() > i:
-				buttons[i].level_to_load = Globals.world_data.level_data[i]
-				buttons[i].text = str(current_world_idx+1) + "-" + str(i+1)
+			if Globals.current_world_data.level_data.size() > i:
+				buttons[i].level_to_load = Globals.current_world_data.level_data[i]
+				buttons[i].set_button_text(str(current_world_idx+1) + "-" + str(i+1))
+				var level_path = Globals.current_world_data.level_data[i].resource_path
+				buttons[i].set_button_score(SaveGame.get_level_score(level_path))
+				if SaveGame.is_level_unlocked(level_path) == false:
+					buttons[i].disabled = true
 			else:
 				buttons[i].visible = false

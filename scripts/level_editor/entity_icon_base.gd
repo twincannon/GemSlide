@@ -23,7 +23,10 @@ func _process(_delta): # Hate having to do this in process, but ready doesn't ca
 	
 func update_ui():
 	%EntityLabel.text = entity_text
-	panel_style.bg_color = entity_color
+	if is_ice_slick():
+		panel_style.bg_color = Color.AQUA
+	else:
+		panel_style.bg_color = entity_color
 	if is_gem():
 		panel_style.set_corner_radius_all(50)
 	else:

@@ -114,7 +114,8 @@ func _process(_delta):
 		if !queued_move and move_queue_timer.is_stopped():
 			move_entities(dir)
 		elif move_queue_timer.is_stopped() and queue_duration > 0.0 and Input.is_action_just_released("click"): # Only queue for swipe gestures for now
-			move_queue_timer.timeout.disconnect(move_entities.bind(dir))
+			if move_queue_timer.timeout.is_connected(move_entities):
+				move_queue_timer.timeout.disconnect(move_entities)
 			move_queue_timer.timeout.connect(move_entities.bind(dir))
 			move_queue_timer.start(queue_duration)
 	
@@ -128,6 +129,9 @@ func _input(event):
 	if event.is_action("click") and Input.is_action_just_released("click"):
 		releasedPos = event.position
 		input_dir = calculate_gesture()
+		for e in entities:
+			if e.is_forcibly_moving:
+				input_dir = 0 # Hacky
 	
 	if event.is_action_pressed("up"):
 		input_dir |= input_dir_mask.UP
@@ -238,6 +242,13 @@ func on_game_over(won):
 		%WinLabel.visible = true
 		if get_next_level():
 			%ContinueButton.visible = true
+		var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)
+		if current_score > 0 and moves < current_score or current_score == 0:
+			SaveGame.set_level_score(Globals.current_level_scene.resource_path, moves)
+		var next_level = get_next_level()
+		if next_level:
+			SaveGame.set_level_unlocked(next_level.resource_path)
+		SaveGame.save_game()
 	else:
 		%LoseLabel.visible = true
 		%RetryButton.visible = true
@@ -251,9 +262,9 @@ func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func get_next_level():
-	var cur_idx = Globals.world_data.level_data.find(Globals.current_level_scene)
-	if cur_idx != -1 and Globals.world_data.level_data.size() > cur_idx + 1:
-		return Globals.world_data.level_data[cur_idx + 1]
+	var cur_idx = Globals.current_world_data.level_data.find(Globals.current_level_scene)
+	if cur_idx != -1 and Globals.current_world_data.level_data.size() > cur_idx + 1:
+		return Globals.current_world_data.level_data[cur_idx + 1]
 
 func _on_continue_button_pressed():
 	set_game_paused(false)

@@ -91,6 +91,8 @@ entity_text = "ice"
 
 [node name="EntityButton23" parent="." instance=ExtResource("2_tptn8")]
 layout_mode = 2
+entity_text = "g"
+entity_color = Color(0.0117647, 0.0117647, 0.0117647, 1)
 
 [node name="EntityButton24" parent="." instance=ExtResource("2_tptn8")]
 layout_mode = 2

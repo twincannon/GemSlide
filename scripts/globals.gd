@@ -1,6 +1,7 @@
 extends Node
 
-var world_data : WorldData
+@export var world_datas:Array[WorldData] = [load("res://data/worlds/world01.tres")]
+var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 
 var current_level_scene:PackedScene
 var current_level:LevelBase
