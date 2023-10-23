@@ -4,6 +4,9 @@ class_name Game
 var tile_scene = preload("res://scenes/tile.tscn")
 # instead of tile blockers, maybe just don't spawn tiles?
 
+var move_sound = preload("res://assets/audio/move.wav")
+var goal_sound = preload("res://assets/audio/goal.wav")
+
 @onready var move_queue_timer = $MoveQueueTimer as Timer
 
 var tiles = []
@@ -170,6 +173,8 @@ func move_entities(dir:Vector2i):
 				did_any_entity_move = true
 	
 	if did_any_entity_move:
+		$MoveAudioPlayer.stream = move_sound
+		$MoveAudioPlayer.play()
 		increment_moves()
 
 
@@ -233,6 +238,9 @@ func check_goal():
 	if all_goals_filled:
 		on_game_over(true)
 
+func on_goal_filled(goal):
+	$GoalAudioPlayer.stream = goal_sound
+	$GoalAudioPlayer.play()
 
 func on_game_over(won):
 	set_game_paused(true)

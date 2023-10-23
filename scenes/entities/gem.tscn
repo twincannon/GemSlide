@@ -24,6 +24,7 @@ texture = ExtResource("2_yrm1y")
 node_to_colorize = NodePath("../BlockedAnchor/GemSpriteRotAnchor/GemSprite")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 z_index = 999
 layout_mode = 3
 anchors_preset = 0

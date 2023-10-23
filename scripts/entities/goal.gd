@@ -10,6 +10,7 @@ func _ready():
 
 func on_goal_filled(_filling_gem):
 	filled = true
+	Globals.get_game_node().on_goal_filled(self)
 	await get_tree().create_timer(_filling_gem.goal_tween_duration).timeout
 	entity_sprite.texture = filled_tex
 

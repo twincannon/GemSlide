@@ -22,26 +22,17 @@ func get_level_score(level_name):
 	return level_dict[level_name]["score"]
 
 func save_game():
-	if OS.has_feature("web"):
-		return
-	
 	save_data(SAVE_DIR + SAVE_FILE_NAME)
 	pass
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var is_first_level = true
 	for level in Globals.current_world_data.level_data:
 		update_level_in_dict(level.resource_path, is_first_level, 0)
 		is_first_level = false
-	
-	if OS.has_feature("web"):
-		return
-	
+
 	verify_save_directory(SAVE_DIR)
 	load_data(SAVE_DIR + SAVE_FILE_NAME)
-	print(level_dict) #so the json reorders stuff, not sure if this will be a problem
-	pass # Replace with function body.
 
 
 func verify_save_directory(path:String):

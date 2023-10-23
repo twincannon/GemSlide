@@ -28,6 +28,7 @@ func _ready():
 				buttons[i].set_button_text(str(current_world_idx+1) + "-" + str(i+1))
 				var level_path = Globals.current_world_data.level_data[i].resource_path
 				buttons[i].set_button_score(SaveGame.get_level_score(level_path))
+				#if OS.has_feature("web") == false:
 				if SaveGame.is_level_unlocked(level_path) == false:
 					buttons[i].disabled = true
 			else:

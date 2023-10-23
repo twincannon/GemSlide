@@ -69,6 +69,9 @@ func is_gem_goal_anim_done():
 	return false
 	
 func _on_movement_blocked(_dir):
+	if blocked_tween and blocked_tween.is_running():
+		return
+	
 	reset_blocked_anchor_position()
 	# Check for neighbor and play a failed to move animation
 	var any_blocking_ents = Globals.get_game_node().get_entities_blocking_at_pos(grid_pos + _dir, self).size() > 0

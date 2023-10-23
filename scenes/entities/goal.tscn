@@ -14,3 +14,5 @@ texture = ExtResource("2_0hsrs")
 [node name="ColorComponent" type="Node2D" parent="." node_paths=PackedStringArray("node_to_colorize")]
 script = ExtResource("3_qbm86")
 node_to_colorize = NodePath("../GoalSprite")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
