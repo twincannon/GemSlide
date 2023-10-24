@@ -2,6 +2,8 @@ extends GridContainer
 class_name LevelBase
 
 @export_multiline var tutorial:String
+@export var par_moves:int
+@export var dev_best:int
 
 func get_grid_size():
 	if columns > 0:

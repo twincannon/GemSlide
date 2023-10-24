@@ -41,22 +41,16 @@ func _on_movement(_dir):
 	#movement_tween.finished.connect(_on_movement_tween_done.bind(_dir))
 	#get_tree().create_timer(movement_tween_duration).timeout.connect(_on_movement_tween_done.bind(_dir))
 
-func _on_movement_tween_done(dir):
-	super(dir)
-	for i in Globals.get_game_node().get_entities_at_pos(grid_pos):
-		if i is Goal:
-			if $ColorComponent.color == i.get_node("ColorComponent").color:
-				on_goal_entered(i)
-
-func on_goal_entered(goal):
+func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
-	entity_sprite.z_index -= 2
 	goal_tween = create_tween().set_parallel(true)
-	goal_tween.tween_property(entity_sprite, "scale", Vector2(0.75, 0.75), goal_tween_duration)
-	goal_tween.tween_property(entity_sprite, "modulate", entity_sprite.modulate * 0.5, goal_tween_duration)
+	goal_tween.tween_property(entity_sprite, "scale", entity_sprite.scale * 0.66, goal_tween_duration)
+	goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
+	goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
+	goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
+	goal_tween.tween_property(entity_sprite, "z_index", -10, goal_tween_duration).as_relative()
 	goal_tween.chain().tween_callback(goal_animation_finished)
-	goal.on_goal_filled(self)
 
 func goal_animation_finished():
 	goal_tween.stop() # Ensure our Tween doesn't report as running this frame

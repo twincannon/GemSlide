@@ -18,6 +18,7 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 script = ExtResource("1_d7uun")
+entity_type = null
 entity_text = "n/a"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

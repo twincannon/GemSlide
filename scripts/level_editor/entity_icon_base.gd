@@ -8,8 +8,24 @@ var tile_blocker_scene = preload("res://scenes/entities/tile_blocker.tscn")
 var goal_scene = preload("res://scenes/entities/goal.tscn")
 var ice_slick_scene = preload("res://scenes/entities/ice_slick.tscn")
 
-@export var entity_text:String
-@export var entity_color:Color = Color(1,1,1)
+enum EntityType {
+	None = 0,
+	GemRed,
+	GemGreen,
+	GemBlue,
+	GoalRed,
+	GoalGreen,
+	GoalBlue,
+	GemBlack,
+	TileBlocker,
+	IceSlick
+}
+
+@export var entity_type:EntityType : set = set_entity_type
+@export var entity_text:String : set = set_entity_text
+@export var entity_color:Color = Color(1,1,1) : set = set_entity_color
+
+@onready var entity_label = %EntityLabel
 
 var panel_style = StyleBoxFlat.new()
 
@@ -17,16 +33,54 @@ func _ready():
 	$PanelContainer.add_theme_stylebox_override("panel", panel_style)
 	update_ui()
 	pass
-
-func _process(_delta): # Hate having to do this in process, but ready doesn't call when needed and init is too soon
-	update_ui()
 	
+func set_entity_text(new_entity_text):
+	entity_text = new_entity_text
+	update_ui()
+
+func set_entity_color(new_entity_color):
+	entity_color = new_entity_color
+	update_ui()
+
+func set_entity_type(new_entity_type):
+	entity_type = new_entity_type
+	match new_entity_type:
+		EntityType.GemRed:
+			entity_text = "g"
+			entity_color = Color.RED
+		EntityType.GemGreen:
+			entity_text = "g"
+			entity_color = Color.GREEN
+		EntityType.GemBlue:
+			entity_text = "g"
+			entity_color = Color.BLUE
+		EntityType.GoalRed:
+			entity_text = "goal"
+			entity_color = Color.RED
+		EntityType.GoalGreen:
+			entity_text = "goal"
+			entity_color = Color.GREEN
+		EntityType.GoalBlue:
+			entity_text = "goal"
+			entity_color = Color.BLUE
+		EntityType.GemBlack:
+			entity_text = "g"
+			entity_color = Color.DIM_GRAY
+		EntityType.TileBlocker:
+			entity_text = "#"
+			entity_color = Color.BLACK
+		EntityType.IceSlick:
+			entity_text = "ice"
+			entity_color = Color.AQUA
+		_:
+			entity_text = ""
+			entity_color = Color.WHITE
+	update_ui()
+		
 func update_ui():
-	%EntityLabel.text = entity_text
-	if is_ice_slick():
-		panel_style.bg_color = Color.AQUA
-	else:
-		panel_style.bg_color = entity_color
+	if entity_label:
+		entity_label.text = entity_text
+	panel_style.bg_color = entity_color
 	if is_gem():
 		panel_style.set_corner_radius_all(50)
 	else:

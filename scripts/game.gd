@@ -6,7 +6,8 @@ var tile_scene = preload("res://scenes/tile.tscn")
 
 var move_sound = preload("res://assets/audio/move.wav")
 var goal_sound = preload("res://assets/audio/goal.wav")
-
+var won_sound = preload("res://assets/audio/clap.wav")
+var move_sounds = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt2.wav"), preload("res://assets/audio/putt3.wav")]
 @onready var move_queue_timer = $MoveQueueTimer as Timer
 
 var tiles = []
@@ -20,12 +21,13 @@ var pressedPos : Vector2
 var releasedPos : Vector2
 var threshold := 5000
 
+var moves := 0
+var moves_array:Array[Vector2i] = []
+
 #var game_paused = false
 
 var input_dir:int = 0
 enum input_dir_mask { UP = 1, DOWN = 2, LEFT = 4, RIGHT = 8 }
-
-var moves := 0
 
 func _ready():
 	get_tree().get_root().size_changed.connect(on_viewport_changed.bind())
@@ -175,9 +177,10 @@ func move_entities(dir:Vector2i):
 				did_any_entity_move = true
 	
 	if did_any_entity_move:
-		$MoveAudioPlayer.stream = move_sound
-		$MoveAudioPlayer.play()
+		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
+		$Audio/MoveAudioPlayer.play()
 		increment_moves()
+		moves_array.append(dir)
 
 
 func increment_moves():
@@ -241,10 +244,13 @@ func check_goal():
 		on_game_over(true)
 
 func on_goal_filled(_goal):
-	$GoalAudioPlayer.stream = goal_sound
-	$GoalAudioPlayer.play()
+	$Audio/GoalAudioPlayer.stream = goal_sound
+	$Audio/GoalAudioPlayer.play()
 
 func on_game_over(won):
+	if won:
+		$Audio/WonAudioPlayer.stream = won_sound
+		$Audio/WonAudioPlayer.play()
 	set_game_paused(true)
 	%ResultContainer.visible = true
 	%TutorialContainer.visible = false
@@ -255,6 +261,7 @@ func on_game_over(won):
 		var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)
 		if current_score > 0 and moves < current_score or current_score == 0:
 			SaveGame.set_level_score(Globals.current_level_scene.resource_path, moves)
+			SaveGame.set_level_moves(Globals.current_level_scene.resource_path, moves_array)
 		var next_level = get_next_level()
 		if next_level:
 			SaveGame.set_level_unlocked(next_level.resource_path)
@@ -287,3 +294,11 @@ func _on_continue_button_pressed():
 func _on_retry_button_pressed():
 	set_game_paused(false)
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+func _on_hud_retry_button_pressed():
+	set_game_paused(false)
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+func _on_hud_main_menu_button_pressed():
+	set_game_paused(false)
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

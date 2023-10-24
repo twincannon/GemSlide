@@ -9,8 +9,6 @@ var current_level_scene:PackedScene
 var current_level:LevelBase
 var current_level_num := 0
 
-enum Entity {None = 0, Gem, TileBlocker}
-
 func get_current_world_index():
 	return world_datas.find(current_world_data)
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxu48am552pd1"]
 
 [ext_resource type="Script" path="res://scripts/entities/gem.gd" id="1_jy8aq"]
-[ext_resource type="Texture2D" uid="uid://fsx7r7kqe5fl" path="res://assets/art/gem.png" id="2_yrm1y"]
+[ext_resource type="Texture2D" uid="uid://vif5nwbt81su" path="res://assets/art/golfball.png" id="2_7klkk"]
 [ext_resource type="PackedScene" uid="uid://cn73bwxkrv5v8" path="res://scenes/components/color_component.tscn" id="3_87hb2"]
 
 [node name="Gem" type="Node2D"]
@@ -16,7 +16,7 @@ unique_name_in_owner = true
 [node name="GemSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
 unique_name_in_owner = true
 z_index = 100
-texture = ExtResource("2_yrm1y")
+texture = ExtResource("2_7klkk")
 
 [node name="ColorblindHelper" type="Sprite2D" parent="."]
 
