@@ -6,6 +6,8 @@
 [node name="level01-01" type="GridContainer"]
 columns = 7
 script = ExtResource("1_p3nx6")
+par_moves = 15
+dev_best = 10
 
 [node name="EntityButton" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
@@ -24,8 +26,9 @@ entity_text = ""
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
@@ -49,28 +52,33 @@ entity_text = ""
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton12" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
@@ -84,28 +92,33 @@ entity_text = ""
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton17" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
@@ -114,38 +127,45 @@ entity_text = ""
 
 [node name="EntityButton22" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton23" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton24" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton25" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton26" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton27" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton28" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton29" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
@@ -154,28 +174,33 @@ entity_text = ""
 
 [node name="EntityButton30" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton31" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton32" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton33" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton34" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton35" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
@@ -189,28 +214,33 @@ entity_text = ""
 
 [node name="EntityButton37" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton38" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton39" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton40" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton41" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton42" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
@@ -234,8 +264,9 @@ entity_text = ""
 
 [node name="EntityButton46" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton47" parent="." instance=ExtResource("2_hfbd7")]
 layout_mode = 2

@@ -29,7 +29,6 @@ func get_level_score(level_name):
 
 func save_game():
 	save_data(SAVE_DIR + SAVE_FILE_NAME)
-	#print(str(level_dict).replace("}", "}\n"))
 
 func _ready():
 	for world in Globals.world_datas:
@@ -40,6 +39,7 @@ func _ready():
 	
 	verify_save_directory(SAVE_DIR)
 	load_data(SAVE_DIR + SAVE_FILE_NAME)
+	#print(str(level_dict).replace("}", "}\n"))
 
 
 func verify_save_directory(path:String):

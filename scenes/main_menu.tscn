@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7jq05fdyacro"]
+[gd_scene load_steps=7 format=3 uid="uid://b7jq05fdyacro"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_tknb6"]
 [ext_resource type="PackedScene" uid="uid://dcltvo7cmcsjk" path="res://scenes/ui/volume_slider.tscn" id="2_40fn1"]
+[ext_resource type="Texture2D" uid="uid://l1x0uqwukw4h" path="res://assets/art/ui/logo_puttputt.png" id="3_x5qo3"]
+[ext_resource type="Texture2D" uid="uid://c16avejemao7f" path="res://assets/art/ui/logo_slide.png" id="4_irs0j"]
+[ext_resource type="Shader" path="res://shaders/logo_slide.gdshader" id="5_7vq0m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4250b"]
+shader = ExtResource("5_7vq0m")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/angle = 0.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -93,6 +102,7 @@ theme_override_font_sizes/font_size = 48
 text = ">"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -136,6 +146,71 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus_name = "Master"
+
+[node name="LogoPuttputt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(240.875, 127.25)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_x5qo3")
+
+[node name="LogoSlide" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(240.875, 127.25)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_irs0j")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 0.307963
+metadata/_edit_use_anchors_ = true
+
+[node name="LogoShadowContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 39.0
+offset_top = 30.0
+offset_right = -24.0
+offset_bottom = 216.0
+grow_horizontal = 2
+
+[node name="PuttPuttShadow" type="TextureRect" parent="Control/LogoShadowContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_x5qo3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlideShadow" type="TextureRect" parent="Control/LogoShadowContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("4_irs0j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LogoContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 34.0
+offset_top = 27.0
+offset_right = -29.0
+offset_bottom = 213.0
+grow_horizontal = 2
+
+[node name="PuttPutt" type="TextureRect" parent="Control/LogoContainer"]
+layout_mode = 2
+texture = ExtResource("3_x5qo3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slide" type="TextureRect" parent="Control/LogoContainer"]
+material = SubResource("ShaderMaterial_4250b")
+layout_mode = 2
+texture = ExtResource("4_irs0j")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control3/WorldButtonLeft" to="." method="_on_world_button_left_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4/WorldButtonRight" to="." method="_on_world_button_right_pressed"]

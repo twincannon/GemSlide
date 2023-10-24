@@ -2,7 +2,6 @@ extends Entity
 class_name Goal
 
 var filled = false
-var filled_tex = preload("res://assets/art/goal_filled.png")
 
 func _ready():
 	moves = false
