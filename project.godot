@@ -31,6 +31,7 @@ gdscript/warnings/integer_division=0
 window/size/viewport_width=480
 window/size/viewport_height=854
 window/handheld/orientation=1
+mouse_cursor/custom_image="res://assets/art/ui/golfball_cursor.png"
 
 [input]
 

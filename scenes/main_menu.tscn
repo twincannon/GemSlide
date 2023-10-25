@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7jq05fdyacro"]
+[gd_scene load_steps=9 format=3 uid="uid://b7jq05fdyacro"]
 
+[ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="1_2uy37"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_tknb6"]
 [ext_resource type="PackedScene" uid="uid://dcltvo7cmcsjk" path="res://scenes/ui/volume_slider.tscn" id="2_40fn1"]
 [ext_resource type="Texture2D" uid="uid://l1x0uqwukw4h" path="res://assets/art/ui/logo_puttputt.png" id="3_x5qo3"]
 [ext_resource type="Texture2D" uid="uid://c16avejemao7f" path="res://assets/art/ui/logo_slide.png" id="4_irs0j"]
 [ext_resource type="Shader" path="res://shaders/logo_slide.gdshader" id="5_7vq0m"]
+[ext_resource type="Texture2D" uid="uid://p86rljek5lax" path="res://assets/art/background.png" id="6_0dvpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4250b"]
 shader = ExtResource("5_7vq0m")
@@ -19,7 +21,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_2uy37")
 script = ExtResource("1_tknb6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -830.0
+offset_top = -118.0
+offset_right = 756.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_0dvpg")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -74,6 +90,8 @@ layout_mode = 2
 [node name="LevelContainer" type="GridContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
 columns = 3
 metadata/_edit_use_anchors_ = true
 
@@ -146,18 +164,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus_name = "Master"
-
-[node name="LogoPuttputt" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(240.875, 127.25)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_x5qo3")
-
-[node name="LogoSlide" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(240.875, 127.25)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("4_irs0j")
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0

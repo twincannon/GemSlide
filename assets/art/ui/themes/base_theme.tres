@@ -1,0 +1,52 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://jq1fudyx08mp"]
+
+[ext_resource type="FontFile" uid="uid://cx3cecwmtn5d" path="res://assets/art/ui/fonts/RobotoSlab.ttf" id="1_0cgmw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4hc1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70n8i"]
+bg_color = Color(0, 0.501961, 0.694118, 1)
+border_width_right = 1
+border_width_bottom = 3
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1v8r"]
+bg_color = Color(0, 0.65098, 0.894118, 1)
+border_width_right = 1
+border_width_bottom = 6
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_da3ed"]
+bg_color = Color(0, 0.278431, 0.396078, 1)
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocnau"]
+bg_color = Color(0, 0.290196, 0.411765, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.52549)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[resource]
+Button/fonts/font = ExtResource("1_0cgmw")
+Button/styles/focus = SubResource("StyleBoxFlat_k4hc1")
+Button/styles/hover = SubResource("StyleBoxFlat_70n8i")
+Button/styles/normal = SubResource("StyleBoxFlat_q1v8r")
+Button/styles/pressed = SubResource("StyleBoxFlat_da3ed")
+Label/fonts/font = ExtResource("1_0cgmw")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ocnau")

@@ -6,7 +6,7 @@
 [node name="level01-01" type="GridContainer"]
 columns = 4
 script = ExtResource("1_irwso")
-tutorial = "[center]Welcome to [i]GemSlide![/i]
+tutorial = "[center][wave amp=50.0 freq=5.0]Welcome to [i]Putt! Putt! [rainbow]Slide[/rainbow]![/i][/wave]
 
 You can swipe, use arrow keys or WASD to move balls [img width=32 height=32 color=#FF0000]res://assets/art/golfball.png[/img] around the board.[/center]"
 par_moves = 4
