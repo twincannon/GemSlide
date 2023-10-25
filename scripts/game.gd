@@ -75,11 +75,13 @@ func _ready():
 
 func on_viewport_changed():
 	$GridAnchor.position = %GridPos.position
-	var padding = Vector2(100,100)
-	var viewport_size = get_viewport().size
-	var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
-	$GridAnchor.scale = Vector2(min(scaled.x, scaled.y),min(scaled.x, scaled.y))
-	$Background.position.x = viewport_size.x/2
+	#var padding = Vector2(100,100)
+	#var viewport_size = get_viewport().size
+	#var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
+	#$GridAnchor.scale = Vector2(min(scaled.x, scaled.y),min(scaled.x, scaled.y))
+	var new_scale = 3.0 / float(max(grid_size.x, grid_size.y))
+	$GridAnchor.scale = Vector2(new_scale, new_scale) #Hacky... but the above solution no longer works with stretch mode, for some reason?
+	#$Background.position.x = viewport_size.x/2
 	
 	#%TutorialContainer.add_theme_constant_override("margin_right", 20 if viewport_size.x < 1000 else 300)
 	#%TutorialContainer.add_theme_constant_override("margin_left", 20 if viewport_size.x < 1000 else 300)

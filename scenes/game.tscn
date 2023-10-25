@@ -74,11 +74,13 @@ fit_content = true
 autowrap_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="TutOkButton" type="Button" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
@@ -136,12 +138,14 @@ vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="ResultButtonsContainer" type="HBoxContainer" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
 [node name="MainMenuButton" type="Button" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
@@ -252,6 +256,7 @@ attenuation = 1e-05
 attenuation = 1e-05
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 z_index = -999
 position = Vector2(250, 400)
 texture = ExtResource("2_o47of")

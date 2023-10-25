@@ -6,12 +6,11 @@
 [node name="level01-01" type="GridContainer"]
 columns = 8
 script = ExtResource("1_u44ww")
-par_moves = 40
+par_moves = 27
 dev_best = 19
 
 [node name="EntityButton" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_dljjk")]
@@ -52,12 +51,10 @@ entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton8" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_dljjk")]
@@ -98,7 +95,6 @@ entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
 
 [node name="EntityButton17" parent="." instance=ExtResource("2_dljjk")]
@@ -199,7 +195,6 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton33" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
 
 [node name="EntityButton34" parent="." instance=ExtResource("2_dljjk")]
@@ -240,12 +235,10 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton40" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
 
 [node name="EntityButton41" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
 
 [node name="EntityButton42" parent="." instance=ExtResource("2_dljjk")]
@@ -286,5 +279,4 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton48" parent="." instance=ExtResource("2_dljjk")]
 layout_mode = 2
-entity_type = 0
 entity_text = ""
