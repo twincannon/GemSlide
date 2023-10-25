@@ -11,6 +11,7 @@ script = ExtResource("1_m1u8a")
 [node name="Canvas" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="Canvas"]
+unique_name_in_owner = true
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -121,7 +122,7 @@ theme_override_constants/margin_bottom = 20
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "All goals filled!"
+text = "All holes filled!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

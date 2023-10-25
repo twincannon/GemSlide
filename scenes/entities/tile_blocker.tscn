@@ -1,12 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdrrwk8khi0eh"]
+[gd_scene load_steps=5 format=3 uid="uid://cdrrwk8khi0eh"]
 
 [ext_resource type="Script" path="res://scripts/entities/tileblocker.gd" id="1_e82wy"]
 [ext_resource type="Texture2D" uid="uid://do6843m6w42sw" path="res://assets/art/tree.png" id="2_dbvhy"]
+[ext_resource type="Shader" path="res://shaders/tree_sway.gdshader" id="2_ed5w0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1p3v"]
+resource_local_to_scene = true
+shader = ExtResource("2_ed5w0")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.2
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
 
 [node name="Tile" type="Node2D"]
 script = ExtResource("1_e82wy")
 
 [node name="TileSprite" type="Sprite2D" parent="."]
 z_index = 100
+material = SubResource("ShaderMaterial_n1p3v")
 position = Vector2(0, -64)
 texture = ExtResource("2_dbvhy")

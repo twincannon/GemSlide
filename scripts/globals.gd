@@ -3,6 +3,8 @@ extends Node
 @export var world_datas:Array[WorldData] = [load("res://data/worlds/world01.tres"), \
 											load("res://data/worlds/world02.tres")]
 
+enum ResultType { Par, Birdie, Eagle, SuperEagle }
+
 var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 
 var current_level_scene:PackedScene

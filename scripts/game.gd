@@ -2,7 +2,7 @@ extends Node2D
 class_name Game
 
 var tile_scene = preload("res://scenes/tile.tscn")
-# instead of tile blockers, maybe just don't spawn tiles?
+var par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.tscn")
 
 var move_sound = preload("res://assets/audio/move.wav")
 var goal_sound = preload("res://assets/audio/goal.wav")
@@ -242,8 +242,24 @@ func check_goal():
 				all_goals_filled = false
 	
 	if all_goals_filled:
-		on_game_over(true)
+		do_par_moves_anim()
 
+func do_par_moves_anim():
+	if moves <= Globals.current_level.par_moves:
+		var par_moves_indicator = par_moves_indicator_scene.instantiate()
+		if moves == Globals.current_level.par_moves:
+			par_moves_indicator.result = Globals.ResultType.Par
+		elif moves <= Globals.current_level.par_moves - 5:
+			par_moves_indicator.result = Globals.ResultType.SuperEagle
+		elif moves <= Globals.current_level.par_moves - 3:
+			par_moves_indicator.result = Globals.ResultType.Eagle
+		elif moves <= Globals.current_level.par_moves - 1:
+			par_moves_indicator.result = Globals.ResultType.Birdie
+		%HUD.add_child(par_moves_indicator)
+		par_moves_indicator.on_indicator_done.connect(on_game_over.bind(true))
+	else:
+		on_game_over(true)
+	
 func on_goal_filled(_goal):
 	$Audio/GoalAudioPlayer.stream = goal_sound
 	$Audio/GoalAudioPlayer.play()

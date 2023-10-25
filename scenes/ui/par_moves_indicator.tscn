@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcgcwbbigip3h"]
+
+[ext_resource type="Texture2D" uid="uid://226fcya1ti8j" path="res://assets/art/results/result_supereagle.png" id="1_6jmkq"]
+[ext_resource type="Texture2D" uid="uid://qqusywehyw6e" path="res://assets/art/results/result_par.png" id="1_dvigo"]
+[ext_resource type="Script" path="res://scripts/par_moves_indicator.gd" id="1_swkpm"]
+[ext_resource type="Texture2D" uid="uid://bpuxmhjnxr2r6" path="res://assets/art/results/result_birdie.png" id="2_jbej5"]
+[ext_resource type="Texture2D" uid="uid://c75pv5yrmm7ab" path="res://assets/art/results/result_eagle.png" id="3_c17p8"]
+[ext_resource type="Shader" path="res://shaders/logo_slide.gdshader" id="4_t7k7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjngh"]
+shader = ExtResource("4_t7k7m")
+shader_parameter/strength = 0.5
+shader_parameter/speed = 0.5
+shader_parameter/angle = 0.0
+
+[node name="ParMoves" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_swkpm")
+
+[node name="Results" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.428
+anchor_right = 1.0
+anchor_bottom = 0.572
+offset_left = 500.0
+offset_top = 0.487976
+offset_right = 500.0
+offset_bottom = 0.511963
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Par" type="TextureRect" parent="Results"]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_dvigo")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Birdie" type="TextureRect" parent="Results"]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_jbej5")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Eagle" type="TextureRect" parent="Results"]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_c17p8")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SuperEagle" type="TextureRect" parent="Results"]
+visible = false
+material = SubResource("ShaderMaterial_wjngh")
+layout_mode = 2
+texture = ExtResource("1_6jmkq")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

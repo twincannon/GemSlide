@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level_editor/entity_icon_base.gd" id="1_d7uun"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84prm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cx573"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -18,12 +18,11 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 script = ExtResource("1_d7uun")
-entity_type = null
 entity_text = "n/a"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_84prm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cx573")
 
 [node name="EntityLabel" type="Label" parent="PanelContainer"]
 unique_name_in_owner = true

@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7jq05fdyacro"]
+[gd_scene load_steps=11 format=3 uid="uid://b7jq05fdyacro"]
 
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="1_2uy37"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_tknb6"]
 [ext_resource type="PackedScene" uid="uid://dcltvo7cmcsjk" path="res://scenes/ui/volume_slider.tscn" id="2_40fn1"]
 [ext_resource type="Texture2D" uid="uid://l1x0uqwukw4h" path="res://assets/art/ui/logo_puttputt.png" id="3_x5qo3"]
+[ext_resource type="Theme" uid="uid://dgjwngm4c4mk4" path="res://assets/art/ui/themes/mainmenu_side_button_theme.tres" id="4_2sb1q"]
 [ext_resource type="Texture2D" uid="uid://c16avejemao7f" path="res://assets/art/ui/logo_slide.png" id="4_irs0j"]
 [ext_resource type="Shader" path="res://shaders/logo_slide.gdshader" id="5_7vq0m"]
+[ext_resource type="Texture2D" uid="uid://botpl3umn6jr3" path="res://assets/art/ui/mainmenu_arrow.png" id="5_wv3xt"]
 [ext_resource type="Texture2D" uid="uid://p86rljek5lax" path="res://assets/art/background.png" id="6_0dvpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4250b"]
@@ -55,6 +57,7 @@ layout_mode = 2
 [node name="WorldLabel" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "World
 "
 horizontal_alignment = 1
@@ -62,6 +65,7 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_2sb1q")
 
 [node name="Control3" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(48, 64)
@@ -81,7 +85,21 @@ grow_vertical = 2
 size_flags_vertical = 4
 tooltip_text = "Previous World"
 theme_override_font_sizes/font_size = 48
-text = "<"
+
+[node name="TextureRect2" type="TextureRect" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control3/WorldButtonLeft"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.229165
+anchor_top = 0.166661
+anchor_right = 0.749999
+anchor_bottom = 0.779994
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wv3xt")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Control2" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
@@ -90,6 +108,7 @@ layout_mode = 2
 [node name="LevelContainer" type="GridContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("1_2uy37")
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
@@ -117,7 +136,20 @@ grow_vertical = 2
 size_flags_vertical = 4
 tooltip_text = "Next World"
 theme_override_font_sizes/font_size = 48
-text = ">"
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4/WorldButtonRight"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.270833
+anchor_top = 0.186667
+anchor_right = 0.791667
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wv3xt")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false
