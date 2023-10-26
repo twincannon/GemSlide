@@ -21,6 +21,7 @@ func _process(_delta):
 
 func _on_movement(_dir):
 	if movement_tween:
+		movement_tween.stop()
 		movement_tween.kill()
 	movement_tween = create_tween().set_parallel(true)
 	#movement_tween.set_ease(Tween.EASE_OUT)
@@ -38,19 +39,26 @@ func _on_movement(_dir):
 	var rot_dir = 1.5 if (_dir == Vector2i.RIGHT or _dir == Vector2i.DOWN) else -1.5
 	movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
 	movement_tween.chain().tween_callback(_on_movement_tween_done.bind(_dir))
+	
 	#movement_tween.finished.connect(_on_movement_tween_done.bind(_dir))
 	#get_tree().create_timer(movement_tween_duration).timeout.connect(_on_movement_tween_done.bind(_dir))
 
+func _on_movement_tween_done(dir):
+	if gem_in_goal:
+		goal_tween = create_tween().set_parallel(true)
+		goal_tween.set_trans(Tween.TRANS_ELASTIC)
+		goal_tween.set_ease(Tween.EASE_OUT)
+		goal_tween.tween_property(entity_sprite, "scale", entity_sprite.scale * 0.66, goal_tween_duration)
+		goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
+		goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
+		goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
+		goal_tween.tween_property(entity_sprite, "z_index", -10, goal_tween_duration).as_relative()
+		goal_tween.chain().tween_callback(goal_animation_finished)
+	super(dir)
+	
 func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
-	goal_tween = create_tween().set_parallel(true)
-	goal_tween.tween_property(entity_sprite, "scale", entity_sprite.scale * 0.66, goal_tween_duration)
-	goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
-	goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
-	goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
-	goal_tween.tween_property(entity_sprite, "z_index", -10, goal_tween_duration).as_relative()
-	goal_tween.chain().tween_callback(goal_animation_finished)
 
 func goal_animation_finished():
 	goal_tween.stop() # Ensure our Tween doesn't report as running this frame

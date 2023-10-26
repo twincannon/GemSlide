@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjotdf84upxhu"]
+[gd_scene load_steps=8 format=3 uid="uid://cjotdf84upxhu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_m1u8a"]
-[ext_resource type="Texture2D" uid="uid://p86rljek5lax" path="res://assets/art/background.png" id="2_o47of"]
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="2_vs7lu"]
+[ext_resource type="Theme" uid="uid://dgjwngm4c4mk4" path="res://assets/art/ui/themes/mainmenu_side_button_theme.tres" id="3_sic4l"]
+[ext_resource type="Texture2D" uid="uid://botpl3umn6jr3" path="res://assets/art/ui/mainmenu_arrow.png" id="4_x5udq"]
+[ext_resource type="Texture2D" uid="uid://c78bofvhsihpr" path="res://assets/art/bush.png" id="5_176mw"]
+
+[sub_resource type="Gradient" id="Gradient_1pbea"]
+offsets = PackedFloat32Array(0.270408, 0.5, 0.714286)
+colors = PackedColorArray(0, 0.556863, 0.235294, 1, 0.491964, 0.901313, 0.603243, 1, 0.870829, 1, 0.850477, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tq156"]
+gradient = SubResource("Gradient_1pbea")
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -195,24 +204,74 @@ layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD"]
+[node name="BottomButtonsContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.874707
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -74.0
+offset_bottom = 109.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+ratio = 3.0
+
+[node name="BottomButtonsMarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer"]
+layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
-metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/HUD/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/MarginContainer2/HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Control" type="Control" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ExpandHUDButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme = ExtResource("3_sic4l")
+
+[node name="ExpandHUDButtonTex" type="TextureRect" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2/ExpandHUDButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = 7.0
+offset_right = 42.5
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("4_x5udq")
+
+[node name="Control2" type="Control" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="BottomButtons" type="HBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
@@ -220,23 +279,45 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HUDRetryButton" type="Button" parent="Canvas/HUD/MarginContainer2/HBoxContainer/MarginContainer2"]
+[node name="HUDMainMenuButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main Menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HUDRetryButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Retry"
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/MarginContainer2/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
-[node name="HUDMainMenuButton" type="Button" parent="Canvas/HUD/MarginContainer2/HBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Main Menu"
+[node name="BottomLeftPos" type="Control" parent="Canvas/HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="BottomRightPos" type="Control" parent="Canvas/HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="GridAnchor" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -255,15 +336,33 @@ attenuation = 1e-05
 [node name="WonAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 attenuation = 1e-05
 
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
+[node name="BackgroundImageRoot" type="Node2D" parent="."]
+unique_name_in_owner = true
 z_index = -999
-position = Vector2(250, 400)
-texture = ExtResource("2_o47of")
+position = Vector2(240, 854)
+
+[node name="Background" type="Sprite2D" parent="BackgroundImageRoot"]
+position = Vector2(10.5948, -395.405)
+rotation = -1.5708
+scale = Vector2(5.93312, 4059.19)
+texture = SubResource("GradientTexture1D_tq156")
+
+[node name="BushRight" type="Sprite2D" parent="."]
+position = Vector2(442, 845)
+rotation = -0.376991
+scale = Vector2(0.711827, 0.641037)
+texture = ExtResource("5_176mw")
+
+[node name="BushLeft" type="Sprite2D" parent="."]
+position = Vector2(20, 851)
+rotation = 0.553269
+scale = Vector2(0.711827, 0.641037)
+texture = ExtResource("5_176mw")
 
 [connection signal="pressed" from="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer2/TutOkButton" to="." method="_on_tut_ok_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="Canvas/HUD/MarginContainer2/HBoxContainer/MarginContainer2/HUDRetryButton" to="." method="_on_hud_retry_button_pressed"]
-[connection signal="pressed" from="Canvas/HUD/MarginContainer2/HBoxContainer/MarginContainer/HUDMainMenuButton" to="." method="_on_hud_main_menu_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2/ExpandHUDButton" to="." method="_on_expand_hud_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2/HUDMainMenuButton" to="." method="_on_hud_main_menu_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer/HUDRetryButton" to="." method="_on_hud_retry_button_pressed"]

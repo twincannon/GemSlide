@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5krmarw00qd5"]
+[gd_scene load_steps=6 format=3 uid="uid://c5krmarw00qd5"]
 
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_axki8"]
 [ext_resource type="Texture2D" uid="uid://drlrkfavsjxqm" path="res://assets/art/tile.png" id="1_wrhh8"]
+[ext_resource type="Texture2D" uid="uid://seb63ovhu10r" path="res://assets/art/grass.png" id="2_dmta3"]
+[ext_resource type="Shader" path="res://shaders/tree_sway.gdshader" id="2_ic0sy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjafd"]
+resource_local_to_scene = true
+shader = ExtResource("2_ic0sy")
+shader_parameter/speed = 3.0
+shader_parameter/minStrength = 0.02
+shader_parameter/maxStrength = 0.05
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
 
 [node name="Tile" type="Node2D"]
+script = ExtResource("1_axki8")
 
 [node name="TileSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_wrhh8")
+
+[node name="Grass" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jjafd")
+position = Vector2(1, -22)
+texture = ExtResource("2_dmta3")

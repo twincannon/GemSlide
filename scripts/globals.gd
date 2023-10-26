@@ -11,6 +11,16 @@ var current_level_scene:PackedScene
 var current_level:LevelBase
 var current_level_num := 0
 
+var did_retry := false
+
+func _ready():
+	DisplayServer.window_set_min_size(Vector2i(400,400))
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _input(_event):
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
+
 func get_current_world_index():
 	return world_datas.find(current_world_data)
 
@@ -19,9 +29,6 @@ func get_current_level_index():
 
 func change_level(level_to_load):
 	current_level_scene = level_to_load
-
-func _ready():
-	DisplayServer.window_set_min_size(Vector2i(400,400))
 
 func get_game_node() -> Game:
 	return get_node("/root/Game")

@@ -24,6 +24,9 @@ var threshold := 5000
 var moves := 0
 var moves_array:Array[Vector2i] = []
 
+var bottom_buttons_visible := false
+var bottom_buttons_tween:Tween
+
 #var game_paused = false
 
 var input_dir:int = 0
@@ -35,10 +38,12 @@ func _ready():
 	# can i queue_free this after im done with it?
 	Globals.current_level = Globals.current_level_scene.instantiate() as LevelBase
 	
-	if Globals.current_level.tutorial.is_empty() == false:
-		%TutorialContainer.visible = true
-		%TutorialLabel.text = Globals.current_level.tutorial
-		set_game_paused(true)
+	if !Globals.did_retry:
+		if Globals.current_level.tutorial.is_empty() == false:
+			%TutorialContainer.visible = true
+			%TutorialLabel.text = Globals.current_level.tutorial
+			set_game_paused(true)
+	Globals.did_retry = false
 	
 	%LevelNumLabel.text = "Level " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
 	
@@ -62,6 +67,7 @@ func _ready():
 				if currentNum < entities_to_load.size():
 					var entity = entities_to_load[currentNum]
 					if entity:
+						tile_instance.on_entity_spawned_on_tile()
 						$GridAnchor.add_child(entity)
 						entity.position = tile_instance.position
 						#entity.scale = tilenode.transform.get_scale() # do we want this?
@@ -76,12 +82,18 @@ func _ready():
 func on_viewport_changed():
 	$GridAnchor.position = %GridPos.position
 	#var padding = Vector2(100,100)
-	#var viewport_size = get_viewport().size
+	var viewport_size = get_viewport().size
 	#var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
 	#$GridAnchor.scale = Vector2(min(scaled.x, scaled.y),min(scaled.x, scaled.y))
 	var new_scale = 3.0 / float(max(grid_size.x, grid_size.y))
 	$GridAnchor.scale = Vector2(new_scale, new_scale) #Hacky... but the above solution no longer works with stretch mode, for some reason?
-	#$Background.position.x = viewport_size.x/2
+	%BackgroundImageRoot.position.x = viewport_size.x/2
+	#%BackgroundImageRoot.position.x = viewport_size.x
+	#%BackgroundImageRoot.position.y = viewport_size.y
+	#$Bush.position.x = viewport_size.x
+	var bushoffset = 75
+	$BushRight.position = %BottomRightPos.position + Vector2(-bushoffset,-bushoffset)
+	$BushLeft.position = %BottomLeftPos.position + Vector2(bushoffset,-bushoffset)
 	
 	#%TutorialContainer.add_theme_constant_override("margin_right", 20 if viewport_size.x < 1000 else 300)
 	#%TutorialContainer.add_theme_constant_override("margin_left", 20 if viewport_size.x < 1000 else 300)
@@ -244,7 +256,18 @@ func check_goal():
 				all_goals_filled = false
 	
 	if all_goals_filled:
+		save_game()
 		do_par_moves_anim()
+		
+func save_game():
+	var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)
+	if current_score > 0 and moves < current_score or current_score == 0:
+		SaveGame.set_level_score(Globals.current_level_scene.resource_path, moves)
+		SaveGame.set_level_moves(Globals.current_level_scene.resource_path, moves_array)
+	var next_level = get_next_level()
+	if next_level:
+		SaveGame.set_level_unlocked(next_level.resource_path)
+	SaveGame.save_game()
 
 func do_par_moves_anim():
 	if moves <= Globals.current_level.par_moves:
@@ -277,14 +300,6 @@ func on_game_over(won):
 		%WinLabel.visible = true
 		if get_next_level():
 			%ContinueButton.visible = true
-		var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)
-		if current_score > 0 and moves < current_score or current_score == 0:
-			SaveGame.set_level_score(Globals.current_level_scene.resource_path, moves)
-			SaveGame.set_level_moves(Globals.current_level_scene.resource_path, moves_array)
-		var next_level = get_next_level()
-		if next_level:
-			SaveGame.set_level_unlocked(next_level.resource_path)
-		SaveGame.save_game()
 	else:
 		%LoseLabel.visible = true
 		%RetryButton.visible = true
@@ -312,12 +327,28 @@ func _on_continue_button_pressed():
 
 func _on_retry_button_pressed():
 	set_game_paused(false)
+	Globals.did_retry = true
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_hud_retry_button_pressed():
 	set_game_paused(false)
+	Globals.did_retry = true
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_hud_main_menu_button_pressed():
 	set_game_paused(false)
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_expand_hud_button_pressed():
+	if bottom_buttons_tween and bottom_buttons_tween.is_running():
+		return
+	bottom_buttons_visible = !bottom_buttons_visible
+	%ExpandHUDButton/ExpandHUDButtonTex.flip_h = bottom_buttons_visible
+	bottom_buttons_tween = create_tween()
+	bottom_buttons_tween.set_trans(Tween.TRANS_CUBIC)
+	bottom_buttons_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	if bottom_buttons_visible:
+		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", -100, 0.5).as_relative()
+	else:
+		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", 100, 0.5).as_relative()
