@@ -3,6 +3,7 @@ class_name Gem
 
 
 var gem_in_goal := false
+var gem_goal_anim_done := false
 signal on_goal_animation_finished
 
 var goal_tween:Tween
@@ -45,6 +46,7 @@ func _on_movement(_dir):
 
 func _on_movement_tween_done(dir):
 	if gem_in_goal:
+		#if !goal_tween or goal_tween.is_running() == false: # I've encountered a bug where the goal fills twice
 		goal_tween = create_tween().set_parallel(true)
 		goal_tween.set_trans(Tween.TRANS_ELASTIC)
 		goal_tween.set_ease(Tween.EASE_OUT)
@@ -62,13 +64,15 @@ func on_goal_entered(_goal):
 
 func goal_animation_finished():
 	goal_tween.stop() # Ensure our Tween doesn't report as running this frame
+	gem_goal_anim_done = true
 	on_goal_animation_finished.emit()
 
 func is_gem_goal_anim_done():
-	if gem_in_goal:
-		if !goal_tween or goal_tween.is_valid() == false or goal_tween.is_running() == false:
-			return true
-	return false
+	return gem_goal_anim_done
+	#if gem_in_goal:
+	#	if !goal_tween or goal_tween.is_valid() == false or goal_tween.is_running() == false:
+	#		return true
+	#return false
 	
 func _on_movement_blocked(_dir):
 	if blocked_tween and blocked_tween.is_running():

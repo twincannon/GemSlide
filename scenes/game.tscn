@@ -195,12 +195,16 @@ layout_mode = 2
 [node name="LevelNumLabel" type="Label" parent="Canvas/HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Level 0-0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MovesLabel" type="Label" parent="Canvas/HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 

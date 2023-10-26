@@ -207,6 +207,13 @@ func on_gem_goal_anim_finished():
 		var gem = e as Gem
 		if gem and gem.gem_in_goal and !gem.is_gem_goal_anim_done():
 			return
+	
+	#var all_goals_filled = true
+	#for e in entities:
+	#	var goal = e as Goal
+	#	if goal and !goal.is_goal_filled():
+	#		all_goals_filled = false
+	#if !all_goals_filled: return
 			
 	check_goal()
 
@@ -256,6 +263,7 @@ func check_goal():
 				all_goals_filled = false
 	
 	if all_goals_filled:
+		print("all goals filled @ " + Time.get_time_string_from_system())
 		save_game()
 		do_par_moves_anim()
 		
