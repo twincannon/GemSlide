@@ -9,6 +9,7 @@ var goal_sound = preload("res://assets/audio/goal.wav")
 var won_sound = preload("res://assets/audio/clap.wav")
 var move_sounds = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt2.wav"), preload("res://assets/audio/putt3.wav")]
 @onready var move_queue_timer = $MoveQueueTimer as Timer
+@onready var move_cooldown_timer = $MoveCooldownTimer as Timer
 
 var tiles = []
 var entities:Array[Entity] = []
@@ -103,6 +104,7 @@ func set_game_paused(paused):
 	get_tree().paused = paused
 
 func _process(_delta):
+	if !move_cooldown_timer.is_stopped(): return	
 	var all_goals_filled = true
 	for e in entities:
 		var goal = e as Goal
@@ -135,6 +137,7 @@ func _process(_delta):
 					queue_duration = max(queue_duration, e.get_remaining_movement_time() + 0.01)
 		if !queued_move and move_queue_timer.is_stopped():
 			move_entities(dir)
+			move_cooldown_timer.start()
 		elif move_queue_timer.is_stopped() and queue_duration > 0.0 and Input.is_action_just_released("click"): # Only queue for swipe gestures for now
 			if move_queue_timer.timeout.is_connected(move_entities):
 				move_queue_timer.timeout.disconnect(move_entities)
@@ -181,15 +184,19 @@ func move_entities(dir:Vector2i):
 	
 	var did_any_entity_move = false
 	
+	for i in entities:
+		i._entity_pre_move(dir)
+	
 	# Iterate forwards or backwards depending on our direction, probably a better way to do this? The reason for this is to prevent wrong-order iteration on our entities
-	if dir == Vector2i.UP or dir == Vector2i.LEFT:
-		for i in entities:
-			if i.on_try_move(dir):
-				did_any_entity_move = true
-	elif dir == Vector2i.DOWN or dir == Vector2i.RIGHT:
-		for i in range(entities.size() - 1, -1, -1):
-			if entities[i].on_try_move(dir):
-				did_any_entity_move = true
+	# Wait does this even make sense? The order of entities doesn't correlate to their position on the grid
+	#if dir == Vector2i.UP or dir == Vector2i.LEFT:
+	for i in entities:
+		if i.on_try_move(dir) or i._should_increment_moves(dir):
+			did_any_entity_move = true
+	#elif dir == Vector2i.DOWN or dir == Vector2i.RIGHT:
+	#	for i in range(entities.size() - 1, -1, -1):
+	#		if entities[i].on_try_move(dir) or entities[i]._should_increment_moves(dir):
+	#			did_any_entity_move = true
 	
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]

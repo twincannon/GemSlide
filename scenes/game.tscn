@@ -328,6 +328,10 @@ y_sort_enabled = true
 
 [node name="MoveQueueTimer" type="Timer" parent="."]
 
+[node name="MoveCooldownTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [node name="Audio" type="Node2D" parent="."]
 process_mode = 3
 

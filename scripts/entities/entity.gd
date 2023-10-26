@@ -14,16 +14,22 @@ var entity_sprite:Sprite2D # Sprite for moving, rotating intended to be at 0,0 w
 
 var moves := false # If this entity moves when input is pressed
 var is_forcibly_moving := false
+var stuck := false
 
 signal on_movement_done
+signal on_entity_pre_move(entity:Entity, dir:Vector2i)
 
 func set_grid_pos(new_pos:Vector2i):
 	grid_pos = new_pos
 
-func can_move_in_dir(dir:Vector2i) -> bool:
-	var game_node = Globals.get_game_node()
+func _entity_pre_move(dir:Vector2i):
+	on_entity_pre_move.emit(self, dir)
+
+func can_move_in_dir(dir:Vector2i, ignore_stuck = false) -> bool:
+	var game_node := Globals.get_game_node() as Game
 	if !game_node: return false # Sanity check: entities should only exist with a valid game scene
 	if !moves: return false
+	if stuck and !ignore_stuck: return false
 	var neighbors = game_node.get_entities_blocking_at_pos(grid_pos + dir, self)
 	var in_bounds = game_node.is_in_grid_bounds(grid_pos + dir)
 	if !in_bounds: return false
@@ -31,7 +37,7 @@ func can_move_in_dir(dir:Vector2i) -> bool:
 	elif neighbors.size() >= 1:
 		var can_all_neighbors_move = true
 		for i in neighbors:
-			if i.can_move_in_dir(dir) == false:
+			if i.can_move_in_dir(dir, ignore_stuck) == false:
 				can_all_neighbors_move = false
 			if is_forcibly_moving and !i.is_forcibly_moving: # We're forcibly moving but our neighbor isn't and won't move out of the way for us
 				can_all_neighbors_move = false
@@ -40,6 +46,7 @@ func can_move_in_dir(dir:Vector2i) -> bool:
 
 
 func on_try_move(dir): # Returns whether or not the move was successful
+	var tried_to_move := false
 	if can_move_in_dir(dir):
 		#print(str(self) + " -> " + str(dir.x)+","+str(dir.y))
 		var game_node = Globals.get_game_node()
@@ -54,10 +61,13 @@ func on_try_move(dir): # Returns whether or not the move was successful
 		_on_movement(dir)
 		if !movement_tween: # If our movement call didn't start a tween, just teleport
 			_on_movement_tween_done(dir)
-		return true
+		tried_to_move = true
 	elif moves:
 		_on_movement_blocked(dir)
-	return false
+	return tried_to_move
+
+func _should_increment_moves(dir):
+	return stuck and moves and can_move_in_dir(dir, true)# Should take into account "can ever un-stuck" somehow. Basically this is hardcoded for sandtraps atm
 
 func _on_movement(_dir):
 	# Do move tween here, make sure to call _on_movement_tween_done via tween callback!

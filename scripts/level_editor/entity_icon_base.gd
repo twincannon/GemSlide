@@ -7,6 +7,7 @@ var black_gem_scene = preload("res://scenes/entities/black_gem.tscn")
 var tile_blocker_scene = preload("res://scenes/entities/tile_blocker.tscn")
 var goal_scene = preload("res://scenes/entities/goal.tscn")
 var ice_slick_scene = preload("res://scenes/entities/ice_slick.tscn")
+var sand_trap_scene = preload("res://scenes/entities/sand_trap.tscn")
 
 enum EntityType {
 	None = 0,
@@ -18,7 +19,9 @@ enum EntityType {
 	GoalBlue,
 	GemBlack,
 	TileBlocker,
-	IceSlick
+	IceSlick,
+	SandTrap,
+	WaterHazard
 }
 
 @export var entity_type:EntityType : set = set_entity_type
@@ -72,6 +75,12 @@ func set_entity_type(new_entity_type):
 		EntityType.IceSlick:
 			entity_text = "ice"
 			entity_color = Color.AQUA
+		EntityType.SandTrap:
+			entity_text = "sand"
+			entity_color = Color.BURLYWOOD
+		EntityType.WaterHazard:
+			entity_text = "water"
+			entity_color = Color.NAVY_BLUE
 		_:
 			entity_text = ""
 			entity_color = Color.WHITE
@@ -92,6 +101,10 @@ func is_goal():
 	return entity_text.to_lower() == "goal"
 func is_ice_slick():
 	return entity_text.to_lower() == "ice" or entity_text.to_lower() == "ice slick"
+func is_sand_trap():
+	return entity_text.to_lower() == "sand"
+func is_water_hazard():
+	return entity_text.to_lower() == "water"
 func is_red():
 	return entity_color.r >= 0.8 and entity_color.g < 0.2 and entity_color.b < 0.2
 func is_green():
@@ -111,12 +124,14 @@ func get_entity():
 		entity = goal_scene.instantiate() as Goal
 	elif is_ice_slick():
 		entity = ice_slick_scene.instantiate() as IceSlick
+	elif is_sand_trap():
+		entity = sand_trap_scene.instantiate() as SandTrap
 	elif entity_text == "#":
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	
 	if entity:
 		if entity.has_node("ColorComponent"):
-			var color_comp = entity.get_node("ColorComponent")
+			var color_comp := entity.get_node("ColorComponent") as ColorComponent
 			if color_comp:
 				if is_red():
 					color_comp.set_color(Color.RED)
