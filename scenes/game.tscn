@@ -141,7 +141,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Game over. :("
+text = "Oh no! Not enough balls left. Retry?"
 horizontal_alignment = 1
 vertical_alignment = 1
 

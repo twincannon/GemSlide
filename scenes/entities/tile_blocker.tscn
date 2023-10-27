@@ -20,7 +20,7 @@ shader_parameter/offset = 0.0
 script = ExtResource("1_e82wy")
 
 [node name="TileSprite" type="Sprite2D" parent="."]
-z_index = 100
+z_index = 200
 material = SubResource("ShaderMaterial_n1p3v")
 position = Vector2(0, -64)
 texture = ExtResource("2_dbvhy")

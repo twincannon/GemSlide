@@ -245,6 +245,8 @@ func get_position_at_grid_pos(grid_pos:Vector2i) -> Vector2:
 func is_in_grid_bounds(pos:Vector2i) -> bool:
 	return pos.x >= 0 and pos.x < grid_size.x and pos.y >= 0 and pos.y < grid_size.y
 
+func remove_entity(entity_to_remove):
+	entities.erase(entity_to_remove)
 
 func calculate_gesture():
 	var d := releasedPos - pressedPos
@@ -262,17 +264,39 @@ func calculate_gesture():
 	return 0
 	
 func check_goal():
+	var goal_dict = { "Red":0, "Green":0, "Blue":0 }
+	var gem_dict = { "Red":0, "Green":0, "Blue":0  }
 	var all_goals_filled = true
 	for e in entities:
 		var goal = e as Goal
 		if goal:
 			if goal.is_goal_filled() == false:
 				all_goals_filled = false
+			match goal.get_node("ColorComponent").color:
+				Color.RED:
+					goal_dict["Red"] += 1
+				Color.GREEN:
+					goal_dict["Green"] += 1
+				Color.BLUE:
+					goal_dict["Blue"] += 1
+		var gem = e as Gem
+		if gem:
+			match gem.get_node("ColorComponent").color:
+				Color.RED:
+					gem_dict["Red"] += 1
+				Color.GREEN:
+					gem_dict["Green"] += 1
+				Color.BLUE:
+					gem_dict["Blue"] += 1
 	
+	var can_win = gem_dict["Red"] >= goal_dict["Red"] and gem_dict["Green"] >= goal_dict["Green"] and gem_dict["Blue"] >= goal_dict["Blue"]
+
 	if all_goals_filled:
 		print("all goals filled @ " + Time.get_time_string_from_system())
 		save_game()
 		do_par_moves_anim()
+	elif !can_win:
+		on_game_over(false)
 		
 func save_game():
 	var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)

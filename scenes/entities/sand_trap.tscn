@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvttbugtrtjsy"]
+[gd_scene load_steps=5 format=3 uid="uid://dvttbugtrtjsy"]
 
 [ext_resource type="Script" path="res://scripts/entities/sand_trap.gd" id="1_bffke"]
 [ext_resource type="Texture2D" uid="uid://crv4unp7ilrlc" path="res://assets/art/sandtrap.png" id="1_cctnf"]
 [ext_resource type="Texture2D" uid="uid://d3y72v6ikejb4" path="res://assets/art/sandtrap_fill.png" id="3_d8t5s"]
+[ext_resource type="AudioStream" uid="uid://blfma2qi6fhun" path="res://assets/audio/sand.wav" id="4_hby4u"]
 
 [node name="SandTrap" type="Node2D"]
 script = ExtResource("1_bffke")
@@ -12,5 +13,10 @@ texture = ExtResource("1_cctnf")
 
 [node name="Fill" type="Sprite2D" parent="."]
 visible = false
-z_index = 1000
+z_index = 200
 texture = ExtResource("3_d8t5s")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hby4u")
+volume_db = -6.0
+attenuation = 0.00124468

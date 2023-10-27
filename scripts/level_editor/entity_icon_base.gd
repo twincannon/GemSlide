@@ -8,6 +8,7 @@ var tile_blocker_scene = preload("res://scenes/entities/tile_blocker.tscn")
 var goal_scene = preload("res://scenes/entities/goal.tscn")
 var ice_slick_scene = preload("res://scenes/entities/ice_slick.tscn")
 var sand_trap_scene = preload("res://scenes/entities/sand_trap.tscn")
+var water_hazard_scene = preload("res://scenes/entities/water_hazard.tscn")
 
 enum EntityType {
 	None = 0,
@@ -126,6 +127,8 @@ func get_entity():
 		entity = ice_slick_scene.instantiate() as IceSlick
 	elif is_sand_trap():
 		entity = sand_trap_scene.instantiate() as SandTrap
+	elif is_water_hazard():
+		entity = water_hazard_scene.instantiate() as WaterHazard
 	elif entity_text == "#":
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	

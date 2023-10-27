@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlw1gv8rtdqtp"]
+
+[ext_resource type="Script" path="res://scripts/entities/water_hazard.gd" id="1_wvenq"]
+[ext_resource type="Texture2D" uid="uid://x51q40k0fhav" path="res://assets/art/waterhazard.png" id="2_5qoy1"]
+[ext_resource type="Texture2D" uid="uid://d3y72v6ikejb4" path="res://assets/art/sandtrap_fill.png" id="3_b0b15"]
+[ext_resource type="AudioStream" uid="uid://t5dn54tjfcg2" path="res://assets/audio/splash.wav" id="4_sv84q"]
+
+[node name="WaterHazard" type="Node2D"]
+script = ExtResource("1_wvenq")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_5qoy1")
+
+[node name="Fill" type="Sprite2D" parent="."]
+visible = false
+z_index = 200
+texture = ExtResource("3_b0b15")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_sv84q")
+volume_db = -6.0
+attenuation = 0.00124468
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

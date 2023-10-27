@@ -13,7 +13,7 @@ func _on_entity_entered(_other_entity):
 	_other_entity.stuck = true
 	_other_entity.on_entity_pre_move.connect(pre_move)
 	moves_to_escape = 2
-	print("entered")
+	$Audio.play()
 	$Fill.visible = true
 	
 func pre_move(entity:Entity, dir:Vector2i):
@@ -22,7 +22,5 @@ func pre_move(entity:Entity, dir:Vector2i):
 		if moves_to_escape <= 1:
 			$Fill.visible = false
 		if moves_to_escape <= 0:
-
 			entity.stuck = false
 			entity.on_entity_pre_move.disconnect(pre_move)
-	print(moves_to_escape)		
