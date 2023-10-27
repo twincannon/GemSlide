@@ -11,6 +11,9 @@ var move_sounds = [preload("res://assets/audio/putt1.wav"), preload("res://asset
 @onready var move_queue_timer = $MoveQueueTimer as Timer
 @onready var move_cooldown_timer = $MoveCooldownTimer as Timer
 
+enum GameState { PLAYING, END }
+var game_state = GameState.PLAYING
+
 var tiles = []
 var entities:Array[Entity] = []
 
@@ -264,6 +267,9 @@ func calculate_gesture():
 	return 0
 	
 func check_goal():
+	if game_state == GameState.END:
+		return # Prevent stuff like water hazards triggering a second check_goal() call after winning
+	
 	var goal_dict = { "Red":0, "Green":0, "Blue":0 }
 	var gem_dict = { "Red":0, "Green":0, "Blue":0  }
 	var all_goals_filled = true
@@ -292,6 +298,7 @@ func check_goal():
 	var can_win = gem_dict["Red"] >= goal_dict["Red"] and gem_dict["Green"] >= goal_dict["Green"] and gem_dict["Blue"] >= goal_dict["Blue"]
 
 	if all_goals_filled:
+		game_state = GameState.END
 		print("all goals filled @ " + Time.get_time_string_from_system())
 		save_game()
 		do_par_moves_anim()
@@ -329,6 +336,7 @@ func on_goal_filled(_goal):
 	$Audio/GoalAudioPlayer.play()
 
 func on_game_over(won):
+	game_state = GameState.END
 	if won:
 		$Audio/WonAudioPlayer.stream = won_sound
 		$Audio/WonAudioPlayer.play()
