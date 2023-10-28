@@ -2,6 +2,7 @@ extends Entity
 class_name SandTrap
 
 var moves_to_escape := 0
+var sand_vfx_scene = preload("res://scenes/vfx/vfx_sand.tscn")
 
 func _ready():
 	moves = false
@@ -15,6 +16,8 @@ func _on_entity_entered(_other_entity):
 	moves_to_escape = 2
 	$Audio.play()
 	$Fill.visible = true
+	var vfx = sand_vfx_scene.instantiate()
+	add_child(vfx)
 	
 func pre_move(entity:Entity, dir:Vector2i):
 	if entity.can_move_in_dir(dir, true):

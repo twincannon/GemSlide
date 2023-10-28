@@ -16,6 +16,7 @@ var game_state = GameState.PLAYING
 
 var tiles = []
 var entities:Array[Entity] = []
+var entities_to_remove:Array[Entity] = [] # Store entities to remove at end of current move operation so we don't mess with order of entities during iteration
 
 var tile_size:Vector2
 var grid_size:Vector2i
@@ -107,6 +108,11 @@ func set_game_paused(paused):
 	get_tree().paused = paused
 
 func _process(_delta):
+	# Process our entities queued for removal - do this here instead of during movement so we don't cause bugs with iteration
+	for e in entities_to_remove:
+		entities.erase(e)
+	entities_to_remove.clear()
+	
 	if !move_cooldown_timer.is_stopped(): return	
 	var all_goals_filled = true
 	for e in entities:
@@ -248,8 +254,8 @@ func get_position_at_grid_pos(grid_pos:Vector2i) -> Vector2:
 func is_in_grid_bounds(pos:Vector2i) -> bool:
 	return pos.x >= 0 and pos.x < grid_size.x and pos.y >= 0 and pos.y < grid_size.y
 
-func remove_entity(entity_to_remove):
-	entities.erase(entity_to_remove)
+func queue_entity_for_removal(entity_to_remove):
+	entities_to_remove.append(entity_to_remove)
 
 func calculate_gesture():
 	var d := releasedPos - pressedPos

@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfi8kwmjccu8m"]
+
+[ext_resource type="Texture2D" uid="uid://ohogn8jmi1v3" path="res://assets/art/vfx/particle_circle_blur.png" id="1_rf5fr"]
+
+[sub_resource type="Gradient" id="Gradient_l76mb"]
+offsets = PackedFloat32Array(0.384615, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8qi4x"]
+gradient = SubResource("Gradient_l76mb")
+
+[sub_resource type="Curve" id="Curve_sv8jm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q2d3r"]
+curve = SubResource("Curve_sv8jm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u76kq"]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 36.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 300, 0)
+initial_velocity_min = 173.92
+initial_velocity_max = 286.96
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_q2d3r")
+color = Color(0.890196, 0.843137, 0.580392, 1)
+color_ramp = SubResource("GradientTexture1D_8qi4x")
+
+[sub_resource type="Animation" id="Animation_uop4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nv74p"]
+resource_name = "default"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2pyl"]
+_data = {
+"RESET": SubResource("Animation_uop4b"),
+"default": SubResource("Animation_nv74p")
+}
+
+[node name="VFXSand" type="GPUParticles2D"]
+z_index = 500
+position = Vector2(0, 36)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_u76kq")
+texture = ExtResource("1_rf5fr")
+explosiveness = 0.9
+fixed_fps = 120
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_a2pyl")
+}

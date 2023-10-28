@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://casi57kcua18o"]
+
+[ext_resource type="Material" uid="uid://dfs4254dgjt14" path="res://assets/art/vfx/vfx_water_ppm.tres" id="1_33lp2"]
+[ext_resource type="Texture2D" uid="uid://ohogn8jmi1v3" path="res://assets/art/vfx/particle_circle_blur.png" id="1_s7lep"]
+
+[sub_resource type="Animation" id="Animation_uop4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nv74p"]
+resource_name = "default"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2pyl"]
+_data = {
+"RESET": SubResource("Animation_uop4b"),
+"default": SubResource("Animation_nv74p")
+}
+
+[node name="VFXWater" type="GPUParticles2D"]
+z_index = 500
+position = Vector2(0, 36)
+amount = 50
+process_material = ExtResource("1_33lp2")
+texture = ExtResource("1_s7lep")
+explosiveness = 0.9
+fixed_fps = 120
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_a2pyl")
+}
