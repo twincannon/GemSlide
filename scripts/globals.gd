@@ -4,7 +4,7 @@ extends Node
 											load("res://data/worlds/world02.tres"), \
 											load("res://data/worlds/world03.tres")]
 
-enum ResultType { Par, Birdie, Eagle, SuperEagle }
+enum ResultType { Par, Birdie, Eagle, SuperEagle, BeatDev }
 
 var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 

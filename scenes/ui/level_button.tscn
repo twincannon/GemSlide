@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://7evwadthqhas"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_button.gd" id="1_rov1v"]
+[ext_resource type="Script" path="res://scripts/level_editor/level_button.gd" id="1_tfmlg"]
 
 [node name="LevelButton" type="Button"]
 custom_minimum_size = Vector2(96, 96)
@@ -9,7 +9,7 @@ offset_right = 480.0
 offset_bottom = 667.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rov1v")
+script = ExtResource("1_tfmlg")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -30,8 +30,21 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 20
 text = "0-0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Par" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 15
+text = "Par: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -40,7 +53,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 15
-text = "Best: 22"
+text = "Best: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -8,8 +8,8 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 8
 script = ExtResource("1_ja5tq")
-par_moves = 29
-dev_best = 24
+par_moves = 26
+dev_best = 21
 
 [node name="EntityButton" parent="." instance=ExtResource("2_e0q7w")]
 layout_mode = 2

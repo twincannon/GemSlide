@@ -43,6 +43,8 @@ func _ready():
 	# can i queue_free this after im done with it?
 	Globals.current_level = Globals.current_level_scene.instantiate() as LevelBase
 	
+	%ParLabel.text = "Par: " + str(Globals.current_level.par_moves)
+	
 	if !Globals.did_retry:
 		if Globals.current_level.tutorial.is_empty() == false:
 			%TutorialContainer.visible = true
@@ -326,6 +328,8 @@ func do_par_moves_anim():
 		var par_moves_indicator = par_moves_indicator_scene.instantiate()
 		if moves == Globals.current_level.par_moves:
 			par_moves_indicator.result = Globals.ResultType.Par
+		elif moves < Globals.current_level.dev_best:
+			par_moves_indicator.result = Globals.ResultType.BeatDev
 		elif moves <= Globals.current_level.par_moves - 5:
 			par_moves_indicator.result = Globals.ResultType.SuperEagle
 		elif moves <= Globals.current_level.par_moves - 3:

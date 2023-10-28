@@ -22,6 +22,9 @@ func _ready():
 		Globals.ResultType.SuperEagle:
 			%Results/SuperEagle.visible = true
 			$AudioStreamPlayer.stream = result_sound_supereagle
+		Globals.ResultType.BeatDev:
+			%Results/BeatDev.visible = true
+			$AudioStreamPlayer.stream = result_sound_supereagle
 	
 	$AudioStreamPlayer.play()
 	

@@ -18,3 +18,6 @@ func set_button_text(new_text):
 
 func set_button_score(score):
 	%Moves.text = "Best: " + str(score) if score > 0 else ""
+	
+func set_par_score(par):
+	%Par.text = "Par: " + str(par) if par > 0 else ""

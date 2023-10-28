@@ -1,6 +1,6 @@
 extends Control
 
-@onready var level_button_scene = preload("res://scenes/level_editor/level_button.tscn")
+@onready var level_button_scene = preload("res://scenes/ui/level_button.tscn")
 
 func _ready():
 	update_world()
@@ -30,6 +30,11 @@ func populate_button_grid():
 				buttons[i].set_button_text(str(Globals.get_current_world_index()+1) + "-" + str(i+1))
 				var level_path = Globals.current_world_data.level_data[i].resource_path
 				buttons[i].set_button_score(SaveGame.get_level_score(level_path))
+				# This is real gross - instantiating the whole scene for a single var. Bleh
+				# Make a level data resource or something?
+				var level_temp = Globals.current_world_data.level_data[i].instantiate()
+				buttons[i].set_par_score(level_temp.par_moves)
+				level_temp.queue_free()
 				#if OS.has_feature("web") == false:
 				if SaveGame.is_level_unlocked(level_path) == false:
 					buttons[i].disabled = true
