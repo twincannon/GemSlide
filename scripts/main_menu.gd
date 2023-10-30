@@ -6,7 +6,7 @@ func _ready():
 	update_world()
 
 func update_world():
-	%WorldLabel.text = "World " + str(Globals.get_current_world_index() + 1)
+	%WorldLabel.text = "Course " + str(Globals.get_current_world_index() + 1)
 	var world_idx = Globals.get_current_world_index()
 	%WorldButtonLeft.visible = world_idx > 0
 	%WorldButtonRight.visible = world_idx < Globals.world_datas.size() - 1
@@ -27,11 +27,11 @@ func populate_button_grid():
 		if buttons[i] is LevelButton:
 			if Globals.current_world_data.level_data.size() > i:
 				buttons[i].level_to_load = Globals.current_world_data.level_data[i]
-				buttons[i].set_button_text(str(Globals.get_current_world_index()+1) + "-" + str(i+1))
+				buttons[i].set_button_text("Hole " + str(i+1))#str(Globals.get_current_world_index()+1) + "-" + str(i+1))
 				var level_path = Globals.current_world_data.level_data[i].resource_path
 				buttons[i].set_button_score(SaveGame.get_level_score(level_path))
 				# This is real gross - instantiating the whole scene for a single var. Bleh
-				# Make a level data resource or something?
+				# Make a level data resource or something? Actually this isn't as bad as it seems since it's only the level scene and not the game scene. But still
 				var level_temp = Globals.current_world_data.level_data[i].instantiate()
 				buttons[i].set_par_score(level_temp.par_moves)
 				level_temp.queue_free()

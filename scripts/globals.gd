@@ -10,12 +10,11 @@ var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 
 var current_level_scene:PackedScene
 var current_level:LevelBase
-var current_level_num := 0
 
 var did_retry := false
 
 func _ready():
-	DisplayServer.window_set_min_size(Vector2i(400,400))
+	#DisplayServer.window_set_min_size(Vector2i(400,400))
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(_event):

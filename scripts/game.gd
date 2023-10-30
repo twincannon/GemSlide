@@ -1,8 +1,8 @@
 extends Node2D
 class_name Game
 
-var tile_scene = preload("res://scenes/tile.tscn")
-var par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.tscn")
+const tile_scene = preload("res://scenes/tile.tscn")
+const par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.tscn")
 
 var move_sound = preload("res://assets/audio/move.wav")
 var goal_sound = preload("res://assets/audio/goal.wav")
@@ -52,7 +52,7 @@ func _ready():
 			set_game_paused(true)
 	Globals.did_retry = false
 	
-	%LevelNumLabel.text = "Level " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
+	%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
 	
 	grid_size = Globals.current_level.get_grid_size()
 	var entities_to_load = Globals.current_level.get_entities()
@@ -307,7 +307,7 @@ func check_goal():
 
 	if all_goals_filled:
 		game_state = GameState.END
-		print("all goals filled @ " + Time.get_time_string_from_system())
+		#print("all goals filled @ " + Time.get_time_string_from_system())
 		save_game()
 		do_par_moves_anim()
 	elif !can_win:

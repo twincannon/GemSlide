@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=3 uid="uid://ukua6vjplp5u"]
+
+[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_w5i3y"]
+[ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_4r12v"]
+
+[node name="level01-01" type="GridContainer"]
+columns = 5
+script = ExtResource("1_w5i3y")
+par_moves = 28
+dev_best = 25
+
+[node name="EntityButton" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 6
+entity_text = "goal"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton2" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton3" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton4" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton5" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton6" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton7" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton8" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton9" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 3
+entity_text = "g"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton10" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton11" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton12" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton13" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton14" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 3
+entity_text = "g"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton15" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton16" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 6
+entity_text = "goal"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton17" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton18" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton19" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton20" parent="." instance=ExtResource("2_4r12v")]
+layout_mode = 2
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)

@@ -41,7 +41,46 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
+[node name="TopContainer" type="MarginContainer" parent="Canvas/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 42.0
+offset_bottom = 183.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/TopContainer"]
+layout_mode = 2
+
+[node name="LevelNumLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Level 0-0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Par: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MovesLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialARContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.101874
@@ -50,7 +89,7 @@ anchor_bottom = 0.310304
 ratio = 2.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TutorialContainer" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer"]
+[node name="TutorialContainer" type="MarginContainer" parent="Canvas/HUD/TutorialARContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -61,20 +100,20 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/TutorialARContainer/TutorialContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/TutorialARContainer/TutorialContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/TutorialARContainer/TutorialContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="TutorialLabel" type="RichTextLabel" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="TutorialLabel" type="RichTextLabel" parent="Canvas/HUD/TutorialARContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
@@ -82,7 +121,7 @@ text = "[center]Tutorial text [b]goes here[/b][/center]"
 fit_content = true
 autowrap_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/TutorialARContainer/TutorialContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
@@ -91,11 +130,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="TutOkButton" type="Button" parent="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer2"]
+[node name="TutOkButton" type="Button" parent="Canvas/HUD/TutorialARContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 text = "Okay!"
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Canvas/HUD"]
+[node name="ResultARContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -107,7 +146,7 @@ grow_horizontal = 2
 grow_vertical = 2
 ratio = 3.0
 
-[node name="ResultContainer" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer2"]
+[node name="ResultContainer" type="MarginContainer" parent="Canvas/HUD/ResultARContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -116,20 +155,20 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/ResultARContainer/ResultContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="WinLabel" type="Label" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="WinLabel" type="Label" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -137,7 +176,7 @@ text = "All holes filled!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LoseLabel" type="Label" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="LoseLabel" type="Label" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -145,7 +184,7 @@ text = "Oh no! Not enough balls left. Retry?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
@@ -153,68 +192,29 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="ResultButtonsContainer" type="HBoxContainer" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2"]
+[node name="ResultButtonsContainer" type="HBoxContainer" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="MainMenuButton" type="Button" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
+[node name="MainMenuButton" type="Button" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Main Menu"
 
-[node name="RetryButton" type="Button" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
+[node name="RetryButton" type="Button" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Retry"
 
-[node name="ContinueButton" type="Button" parent="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
+[node name="ContinueButton" type="Button" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Continue"
-
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 42.0
-offset_bottom = 131.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/MarginContainer"]
-layout_mode = 2
-
-[node name="LevelNumLabel" type="Label" parent="Canvas/HUD/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Level 0-0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ParLabel" type="Label" parent="Canvas/HUD/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Par: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MovesLabel" type="Label" parent="Canvas/HUD/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="BottomButtonsContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
 unique_name_in_owner = true
@@ -375,10 +375,10 @@ rotation = 0.553269
 scale = Vector2(0.711827, 0.641037)
 texture = ExtResource("5_176mw")
 
-[connection signal="pressed" from="Canvas/HUD/AspectRatioContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer2/TutOkButton" to="." method="_on_tut_ok_button_pressed"]
-[connection signal="pressed" from="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="Canvas/HUD/AspectRatioContainer2/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/TutorialARContainer/TutorialContainer/PanelContainer/VBoxContainer/MarginContainer2/TutOkButton" to="." method="_on_tut_ok_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2/ExpandHUDButton" to="." method="_on_expand_hud_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2/HUDMainMenuButton" to="." method="_on_hud_main_menu_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer/HUDRetryButton" to="." method="_on_hud_retry_button_pressed"]

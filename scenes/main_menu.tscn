@@ -58,8 +58,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "World
-"
+text = "Course"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -102,10 +101,15 @@ flip_h = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Control2" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 
-[node name="LevelContainer" type="GridContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(325, 325)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelContainer" type="GridContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_2uy37")
@@ -115,7 +119,7 @@ columns = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 
 [node name="Control4" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer"]
@@ -150,22 +154,6 @@ texture = ExtResource("5_wv3xt")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 59.0
-offset_bottom = 214.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "GemSlide"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
