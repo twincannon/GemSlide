@@ -43,6 +43,8 @@ func _ready():
 	# can i queue_free this after im done with it?
 	Globals.current_level = Globals.current_level_scene.instantiate() as LevelBase
 	
+	print(SaveGame.level_dict[Globals.current_level_scene.resource_path])
+	
 	%ParLabel.text = "Par: " + str(Globals.current_level.par_moves)
 	
 	if !Globals.did_retry:

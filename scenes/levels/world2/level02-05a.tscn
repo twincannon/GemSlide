@@ -1,0 +1,278 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjboclsxgax07"]
+
+[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_u8n4d"]
+[ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_wu7p6"]
+
+[node name="level01-01" type="GridContainer"]
+columns = 7
+script = ExtResource("1_u8n4d")
+par_moves = 20
+dev_best = 15
+
+[node name="EntityButton8" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 5
+entity_text = "goal"
+entity_color = Color(0, 1, 0, 1)
+
+[node name="EntityButton9" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton10" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton11" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton12" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton13" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton14" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 6
+entity_text = "goal"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton15" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton16" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton17" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton18" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton19" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton20" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton21" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton22" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton23" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton24" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 2
+entity_text = "g"
+entity_color = Color(0, 1, 0, 1)
+
+[node name="EntityButton25" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton26" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 3
+entity_text = "g"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton27" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton28" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton29" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton30" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton31" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton32" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton33" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton34" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton35" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton36" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton37" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton38" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 3
+entity_text = "g"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton39" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton40" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 2
+entity_text = "g"
+entity_color = Color(0, 1, 0, 1)
+
+[node name="EntityButton41" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton42" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton43" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton44" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton45" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton46" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton47" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton48" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton49" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton50" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 6
+entity_text = "goal"
+entity_color = Color(0, 0, 1, 1)
+
+[node name="EntityButton51" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton52" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton53" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton54" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton55" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 9
+entity_text = "ice"
+entity_color = Color(0, 1, 1, 1)
+
+[node name="EntityButton56" parent="." instance=ExtResource("2_wu7p6")]
+layout_mode = 2
+entity_type = 5
+entity_text = "goal"
+entity_color = Color(0, 1, 0, 1)
