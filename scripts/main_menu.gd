@@ -42,6 +42,7 @@ func populate_button_grid():
 				buttons[i].visible = false
 
 func _on_world_button_left_pressed():
+	%LevelScrollContainer.scroll_vertical = 0
 	var prev_idx = Globals.get_current_world_index() - 1
 	if prev_idx >= 0:
 		Globals.current_world_data = Globals.world_datas[prev_idx]
@@ -49,6 +50,7 @@ func _on_world_button_left_pressed():
 
 
 func _on_world_button_right_pressed():
+	%LevelScrollContainer.scroll_vertical = 0
 	var next_idx = Globals.get_current_world_index() + 1
 	if next_idx < Globals.world_datas.size():
 		Globals.current_world_data = Globals.world_datas[next_idx]

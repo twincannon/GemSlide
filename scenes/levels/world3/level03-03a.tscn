@@ -1,0 +1,183 @@
+[gd_scene load_steps=3 format=3 uid="uid://bec857nh3klm6"]
+
+[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_fevgs"]
+[ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_gkoyk"]
+
+[node name="level01-01" type="GridContainer"]
+offset_right = 428.0
+offset_bottom = 428.0
+columns = 7
+script = ExtResource("1_fevgs")
+par_moves = 18
+dev_best = 15
+metadata/_edit_lock_ = true
+
+[node name="EntityButton" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton2" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton3" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton4" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton5" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton6" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton7" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 8
+entity_text = "#"
+entity_color = Color(0, 0, 0, 1)
+
+[node name="EntityButton8" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton9" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton10" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton11" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 10
+entity_text = "sand"
+entity_color = Color(0.870588, 0.721569, 0.529412, 1)
+
+[node name="EntityButton12" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 11
+entity_text = "water"
+entity_color = Color(0, 0, 0.501961, 1)
+
+[node name="EntityButton13" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton14" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton29" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton30" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton31" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton32" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 10
+entity_text = "sand"
+entity_color = Color(0.870588, 0.721569, 0.529412, 1)
+
+[node name="EntityButton33" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton34" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton35" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton36" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
+
+[node name="EntityButton37" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton38" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton39" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 10
+entity_text = "sand"
+entity_color = Color(0.870588, 0.721569, 0.529412, 1)
+
+[node name="EntityButton40" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 11
+entity_text = "water"
+entity_color = Color(0, 0, 0.501961, 1)
+
+[node name="EntityButton41" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton42" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton43" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton44" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton45" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
+
+[node name="EntityButton46" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton47" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton48" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_text = ""
+
+[node name="EntityButton49" parent="." instance=ExtResource("2_gkoyk")]
+layout_mode = 2
+entity_type = 8
+entity_text = "#"
+entity_color = Color(0, 0, 0, 1)

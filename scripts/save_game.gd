@@ -41,7 +41,12 @@ func _ready():
 	load_data(SAVE_DIR + SAVE_FILE_NAME)
 	#print(str(level_dict).replace("}", "}\n"))
 
-
+func _input(_event):
+	if Input.is_action_just_pressed("unlocklevels"):
+		if OS.is_debug_build():
+			for level in level_dict:
+				set_level_unlocked(level)
+		
 func verify_save_directory(path:String):
 	DirAccess.make_dir_absolute(path)
 	

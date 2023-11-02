@@ -11,6 +11,7 @@ script = ExtResource("1_pl7fq")
 tutorial = "[center]Balls sink in [b]water[/b] [img]res://assets/art/ui/waterhazard_icon.png[/img], be careful![/center]"
 par_moves = 11
 dev_best = 11
+metadata/_edit_lock_ = true
 
 [node name="EntityButton" parent="." instance=ExtResource("2_myi0i")]
 layout_mode = 2

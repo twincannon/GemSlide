@@ -9,7 +9,7 @@ offset_bottom = 428.0
 columns = 7
 script = ExtResource("1_1bnov")
 par_moves = 20
-dev_best = 17
+dev_best = 14
 
 [node name="EntityButton" parent="." instance=ExtResource("2_dtke0")]
 layout_mode = 2
