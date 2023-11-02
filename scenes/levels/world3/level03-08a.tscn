@@ -8,6 +8,8 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 8
 script = ExtResource("1_0tjxd")
+par_moves = 30
+dev_best = 25
 metadata/_edit_lock_ = true
 
 [node name="EntityButton" parent="." instance=ExtResource("2_mgamo")]
@@ -16,23 +18,33 @@ entity_text = ""
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton3" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton7" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -44,23 +56,33 @@ entity_text = ""
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton12" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -68,7 +90,9 @@ entity_text = ""
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 10
+entity_text = "sand"
+entity_color = Color(0.870588, 0.721569, 0.529412, 1)
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -76,19 +100,27 @@ entity_text = ""
 
 [node name="EntityButton17" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -108,15 +140,21 @@ entity_text = ""
 
 [node name="EntityButton25" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton26" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton27" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton28" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -136,15 +174,21 @@ entity_text = ""
 
 [node name="EntityButton32" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton33" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 1
+entity_text = "g"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton34" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton35" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -156,7 +200,9 @@ entity_text = ""
 
 [node name="EntityButton37" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 11
+entity_text = "water"
+entity_color = Color(0, 0, 0.501961, 1)
 
 [node name="EntityButton38" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -164,7 +210,9 @@ entity_text = ""
 
 [node name="EntityButton39" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton40" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -172,7 +220,9 @@ entity_text = ""
 
 [node name="EntityButton41" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 7
+entity_text = "g"
+entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton42" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -192,7 +242,9 @@ entity_text = ""
 
 [node name="EntityButton46" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton47" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -200,7 +252,9 @@ entity_text = ""
 
 [node name="EntityButton48" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton49" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -208,7 +262,9 @@ entity_text = ""
 
 [node name="EntityButton50" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 10
+entity_text = "sand"
+entity_color = Color(0.870588, 0.721569, 0.529412, 1)
 
 [node name="EntityButton51" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -220,7 +276,9 @@ entity_text = ""
 
 [node name="EntityButton53" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton54" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -228,7 +286,9 @@ entity_text = ""
 
 [node name="EntityButton55" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton56" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -248,7 +308,9 @@ entity_text = ""
 
 [node name="EntityButton60" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton61" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
@@ -256,7 +318,9 @@ entity_text = ""
 
 [node name="EntityButton62" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2
-entity_text = ""
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton63" parent="." instance=ExtResource("2_mgamo")]
 layout_mode = 2

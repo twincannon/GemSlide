@@ -9,7 +9,7 @@ offset_bottom = 428.0
 columns = 7
 script = ExtResource("1_fscwf")
 par_moves = 27
-dev_best = 23
+dev_best = 22
 metadata/_edit_lock_ = true
 
 [node name="EntityButton" parent="." instance=ExtResource("2_40sik")]
