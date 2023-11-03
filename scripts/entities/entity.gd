@@ -86,16 +86,27 @@ func _on_entity_exited(_other_entity):
 	
 func _on_entity_entered(_other_entity):
 	pass
+
+func _on_entity_finished_entering(_other_entity):
+	pass
 	
 func _does_block(_other_entity):
 	return true
 
 func _on_movement_tween_done(dir):
-	position = Globals.get_game_node().get_position_at_grid_pos(grid_pos)
+	teleport_to(grid_pos)
+	for e in Globals.get_game_node().get_entities_at_pos(grid_pos):
+		e._on_entity_finished_entering(self)
 	if is_forcibly_moving:
 		if !on_try_move(dir):
 			is_forcibly_moving = false
-			
+
+func teleport_to(pos:Vector2i):
+	if movement_tween and movement_tween.is_valid():
+		movement_tween.stop()
+		movement_tween = null
+	grid_pos = pos
+	position = Globals.get_game_node().get_position_at_grid_pos(pos)
 
 func is_tween_running():
 	return movement_tween is Tween and movement_tween.is_running()

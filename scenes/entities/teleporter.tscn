@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3vqhbxfu52nx"]
+
+[ext_resource type="Texture2D" uid="uid://bpw2yoddklsj7" path="res://assets/art/teleporter.png" id="1_85kjp"]
+[ext_resource type="Script" path="res://scripts/entities/teleporter.gd" id="1_ot2ij"]
+[ext_resource type="AudioStream" uid="uid://b7eoe6fqejlpe" path="res://assets/audio/teleport.wav" id="3_4f74m"]
+
+[node name="Teleporter" type="Node2D"]
+script = ExtResource("1_ot2ij")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_85kjp")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4f74m")
+attenuation = 0.00552425

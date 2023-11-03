@@ -9,6 +9,7 @@ var goal_scene = preload("res://scenes/entities/goal.tscn")
 var ice_slick_scene = preload("res://scenes/entities/ice_slick.tscn")
 var sand_trap_scene = preload("res://scenes/entities/sand_trap.tscn")
 var water_hazard_scene = preload("res://scenes/entities/water_hazard.tscn")
+var teleporter_scene = preload("res://scenes/entities/teleporter.tscn")
 
 enum EntityType {
 	None = 0,
@@ -22,7 +23,8 @@ enum EntityType {
 	TileBlocker,
 	IceSlick,
 	SandTrap,
-	WaterHazard
+	WaterHazard,
+	Teleporter
 }
 
 @export var entity_type:EntityType : set = set_entity_type
@@ -82,6 +84,9 @@ func set_entity_type(new_entity_type):
 		EntityType.WaterHazard:
 			entity_text = "water"
 			entity_color = Color.NAVY_BLUE
+		EntityType.Teleporter:
+			entity_text = "tele"
+			entity_color = Color.BLUE_VIOLET
 		_:
 			entity_text = ""
 			entity_color = Color.WHITE
@@ -106,6 +111,8 @@ func is_sand_trap():
 	return entity_text.to_lower() == "sand"
 func is_water_hazard():
 	return entity_text.to_lower() == "water"
+func is_teleporter():
+	return entity_text.to_lower() == "tele"
 func is_red():
 	return entity_color.r >= 0.8 and entity_color.g < 0.2 and entity_color.b < 0.2
 func is_green():
@@ -129,6 +136,8 @@ func get_entity():
 		entity = sand_trap_scene.instantiate() as SandTrap
 	elif is_water_hazard():
 		entity = water_hazard_scene.instantiate() as WaterHazard
+	elif is_teleporter():
+		entity = teleporter_scene.instantiate() as Teleporter
 	elif entity_text == "#":
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	

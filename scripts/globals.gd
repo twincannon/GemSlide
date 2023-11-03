@@ -2,7 +2,8 @@ extends Node
 
 @export var world_datas:Array[WorldData] = [load("res://data/worlds/world01.tres"), \
 											load("res://data/worlds/world02.tres"), \
-											load("res://data/worlds/world03.tres")]
+											load("res://data/worlds/world03.tres"), \
+											load("res://data/worlds/world04.tres")]
 
 enum ResultType { Par, Birdie, Eagle, SuperEagle, BeatDev }
 
