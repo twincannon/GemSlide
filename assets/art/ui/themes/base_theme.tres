@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://jq1fudyx08mp"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://jq1fudyx08mp"]
 
 [ext_resource type="FontFile" uid="uid://cx3cecwmtn5d" path="res://assets/art/ui/fonts/RobotoSlab.ttf" id="1_0cgmw"]
 
@@ -42,6 +42,46 @@ shadow_color = Color(0, 0, 0, 0.52549)
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5oud"]
+bg_color = Color(0, 0.65098, 0.894118, 1)
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhf3o"]
+bg_color = Color(0, 0.501961, 0.694118, 1)
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ewqo"]
+bg_color = Color(0, 0.278431, 0.396078, 1)
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnjk2"]
+content_margin_left = 7.0
+content_margin_right = 7.0
+bg_color = Color(0.721569, 0.721569, 0.721569, 1)
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [resource]
 Button/fonts/font = ExtResource("1_0cgmw")
 Button/styles/focus = SubResource("StyleBoxFlat_k4hc1")
@@ -50,3 +90,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_q1v8r")
 Button/styles/pressed = SubResource("StyleBoxFlat_da3ed")
 Label/fonts/font = ExtResource("1_0cgmw")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ocnau")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_r5oud")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_bhf3o")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_5ewqo")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_fnjk2")
