@@ -6,8 +6,8 @@
 [node name="level01-01" type="GridContainer"]
 columns = 6
 script = ExtResource("1_qtuvl")
-par_moves = 20
-dev_best = 15
+par_moves = 19
+dev_best = 14
 
 [node name="EntityButton" parent="." instance=ExtResource("2_ky4qj")]
 layout_mode = 2
