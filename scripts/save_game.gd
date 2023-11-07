@@ -2,7 +2,6 @@ extends Node
 
 var level_dict = { }
 
-const SAVE_DIR = "user://saves/"
 const SAVE_FILE_NAME = "save.json"
 const SECURITY_KEY = "982afe2934e"
 
@@ -28,7 +27,7 @@ func get_level_score(level_name):
 	return level_dict[level_name]["score"] if level_dict.has(level_name) else 0
 
 func save_game():
-	save_data(SAVE_DIR + SAVE_FILE_NAME)
+	save_data(Globals.SAVE_DIR + SAVE_FILE_NAME)
 
 func _ready():
 	for world in Globals.world_datas:
@@ -37,8 +36,8 @@ func _ready():
 			update_level_in_dict(level.resource_path, is_first_level, 0)
 			is_first_level = false
 	
-	verify_save_directory(SAVE_DIR)
-	load_data(SAVE_DIR + SAVE_FILE_NAME)
+	verify_save_directory(Globals.SAVE_DIR)
+	load_data(Globals.SAVE_DIR + SAVE_FILE_NAME)
 	#print(str(level_dict).replace("}", "}\n"))
 
 func _input(_event):
@@ -46,6 +45,9 @@ func _input(_event):
 		if OS.is_debug_build():
 			for level in level_dict:
 				set_level_unlocked(level)
+	if Input.is_action_just_pressed("leveleditor"):
+		if OS.is_debug_build():
+			get_tree().change_scene_to_file("res://scenes/level_editor/level_editor.tscn")
 		
 func verify_save_directory(path:String):
 	DirAccess.make_dir_absolute(path)
@@ -80,3 +82,27 @@ func load_data(path:String):
 			level_dict[level_name] = data[level_name]
 	else:
 		printerr("Cannot open file at %s" % [path])
+
+func get_custom_level_files():
+	var valid_files = []
+	var files = DirAccess.get_files_at(Globals.SAVE_DIR)
+	for file in files:
+		if file.begins_with("level_"):
+			valid_files.append(file)
+	return valid_files
+
+func get_custom_level_data(path:String):
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		printerr(FileAccess.get_open_error())
+		return
+	
+	var content = file.get_as_text()
+	file.close()
+	
+	var data = JSON.parse_string(content)
+	if data == null:
+		printerr("Cannot parse %s as a json string (%s)" % [path, content])
+		return
+	
+	return data

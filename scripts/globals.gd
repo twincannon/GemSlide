@@ -1,5 +1,7 @@
 extends Node
 
+const SAVE_DIR = "user://saves/"
+
 @export var world_datas:Array[WorldData] = [load("res://data/worlds/world01.tres"), \
 											load("res://data/worlds/world02.tres"), \
 											load("res://data/worlds/world03.tres"), \
@@ -7,10 +9,28 @@ extends Node
 
 enum ResultType { Par, Birdie, Eagle, SuperEagle, BeatDev }
 
+enum EntityType {
+	None = 0,
+	GemRed,
+	GemGreen,
+	GemBlue,
+	GoalRed,
+	GoalGreen,
+	GoalBlue,
+	GemBlack,
+	TileBlocker,
+	IceSlick,
+	SandTrap,
+	WaterHazard,
+	Teleporter
+}
+
 var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 
 var current_level_scene:PackedScene
 var current_level:LevelBase
+
+var custom_level_data := { } : set = set_custom_level_data
 
 var did_retry := false
 
@@ -30,6 +50,9 @@ func get_current_level_index():
 
 func change_level(level_to_load):
 	current_level_scene = level_to_load
+
+func set_custom_level_data(new_data):
+	custom_level_data = new_data
 
 func get_game_node() -> Game:
 	return get_node("/root/Game")

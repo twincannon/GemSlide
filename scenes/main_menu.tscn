@@ -156,6 +156,21 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelEditorButton" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Editor"
+
+[node name="CustomLevelsButton" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Custom Levels"
+
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -241,3 +256,5 @@ stretch_mode = 5
 
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control3/WorldButtonLeft" to="." method="_on_world_button_left_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4/WorldButtonRight" to="." method="_on_world_button_right_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/LevelEditorButton" to="." method="_on_level_editor_button_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/CustomLevelsButton" to="." method="_on_custom_levels_button_pressed"]

@@ -3,6 +3,8 @@ class_name Game
 
 const tile_scene = preload("res://scenes/tile.tscn")
 const par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.tscn")
+const entity_icon_scene = preload("res://scenes/level_editor/entity_icon.tscn")
+const blank_level_scene = preload("res://scenes/levels/blank_level.tscn")
 
 var move_sound = preload("res://assets/audio/move.wav")
 var goal_sound = preload("res://assets/audio/goal.wav")
@@ -40,24 +42,35 @@ enum input_dir_mask { UP = 1, DOWN = 2, LEFT = 4, RIGHT = 8 }
 func _ready():
 	get_tree().get_root().size_changed.connect(on_viewport_changed.bind())
 	
+	var entities_to_load = []
+	
 	# can i queue_free this after im done with it?
-	Globals.current_level = Globals.current_level_scene.instantiate() as LevelBase
+	if Globals.current_level_scene:
+		Globals.current_level = Globals.current_level_scene.instantiate() as LevelBase
+		print(SaveGame.level_dict[Globals.current_level_scene.resource_path])
 	
-	print(SaveGame.level_dict[Globals.current_level_scene.resource_path])
+		%ParLabel.text = "Par: " + str(Globals.current_level.par_moves)
+		
+		if !Globals.did_retry:
+			if Globals.current_level.tutorial.is_empty() == false:
+				%TutorialContainer.visible = true
+				%TutorialLabel.text = Globals.current_level.tutorial
+				set_game_paused(true)
+		Globals.did_retry = false
 	
-	%ParLabel.text = "Par: " + str(Globals.current_level.par_moves)
+		%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
+		
+		grid_size = Globals.current_level.get_grid_size()
+		entities_to_load = Globals.current_level.get_entities()
+	elif !Globals.custom_level_data.is_empty():
+		grid_size = str_to_var(Globals.custom_level_data["GridSize"])
+		for e in Globals.custom_level_data["Entities"]:
+			var new_icon = entity_icon_scene.instantiate()
+			new_icon.set_entity_type(e as Globals.EntityType)
+			entities_to_load.append(new_icon.get_entity())
+	else:
+		printerr("Entered game scene with no valid level scene or custom level data")
 	
-	if !Globals.did_retry:
-		if Globals.current_level.tutorial.is_empty() == false:
-			%TutorialContainer.visible = true
-			%TutorialLabel.text = Globals.current_level.tutorial
-			set_game_paused(true)
-	Globals.did_retry = false
-	
-	%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
-	
-	grid_size = Globals.current_level.get_grid_size()
-	var entities_to_load = Globals.current_level.get_entities()
 	var currentNum = 0
 	for y in range(grid_size.y):
 		for x in range(grid_size.x):
@@ -316,30 +329,34 @@ func check_goal():
 		on_game_over(false)
 		
 func save_game():
-	var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)
-	if current_score > 0 and moves < current_score or current_score == 0:
-		SaveGame.set_level_score(Globals.current_level_scene.resource_path, moves)
-		SaveGame.set_level_moves(Globals.current_level_scene.resource_path, moves_array)
-	var next_level = get_next_level()
-	if next_level:
-		SaveGame.set_level_unlocked(next_level.resource_path)
-	SaveGame.save_game()
+	if Globals.current_level_scene:
+		var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)
+		if current_score > 0 and moves < current_score or current_score == 0:
+			SaveGame.set_level_score(Globals.current_level_scene.resource_path, moves)
+			SaveGame.set_level_moves(Globals.current_level_scene.resource_path, moves_array)
+		var next_level = get_next_level()
+		if next_level:
+			SaveGame.set_level_unlocked(next_level.resource_path)
+		SaveGame.save_game()
 
 func do_par_moves_anim():
-	if moves <= Globals.current_level.par_moves:
-		var par_moves_indicator = par_moves_indicator_scene.instantiate()
-		if moves == Globals.current_level.par_moves:
-			par_moves_indicator.result = Globals.ResultType.Par
-		elif moves < Globals.current_level.dev_best:
-			par_moves_indicator.result = Globals.ResultType.BeatDev
-		elif moves <= Globals.current_level.par_moves - 5:
-			par_moves_indicator.result = Globals.ResultType.SuperEagle
-		elif moves <= Globals.current_level.par_moves - 3:
-			par_moves_indicator.result = Globals.ResultType.Eagle
-		elif moves <= Globals.current_level.par_moves - 1:
-			par_moves_indicator.result = Globals.ResultType.Birdie
-		%HUD.add_child(par_moves_indicator)
-		par_moves_indicator.on_indicator_done.connect(on_game_over.bind(true))
+	if Globals.current_level:
+		if moves <= Globals.current_level.par_moves:
+			var par_moves_indicator = par_moves_indicator_scene.instantiate()
+			if moves == Globals.current_level.par_moves:
+				par_moves_indicator.result = Globals.ResultType.Par
+			elif moves < Globals.current_level.dev_best:
+				par_moves_indicator.result = Globals.ResultType.BeatDev
+			elif moves <= Globals.current_level.par_moves - 5:
+				par_moves_indicator.result = Globals.ResultType.SuperEagle
+			elif moves <= Globals.current_level.par_moves - 3:
+				par_moves_indicator.result = Globals.ResultType.Eagle
+			elif moves <= Globals.current_level.par_moves - 1:
+				par_moves_indicator.result = Globals.ResultType.Birdie
+			%HUD.add_child(par_moves_indicator)
+			par_moves_indicator.on_indicator_done.connect(on_game_over.bind(true))
+		else:
+			on_game_over(true)
 	else:
 		on_game_over(true)
 	

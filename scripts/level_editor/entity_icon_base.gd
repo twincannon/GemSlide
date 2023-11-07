@@ -11,27 +11,12 @@ var sand_trap_scene = preload("res://scenes/entities/sand_trap.tscn")
 var water_hazard_scene = preload("res://scenes/entities/water_hazard.tscn")
 var teleporter_scene = preload("res://scenes/entities/teleporter.tscn")
 
-enum EntityType {
-	None = 0,
-	GemRed,
-	GemGreen,
-	GemBlue,
-	GoalRed,
-	GoalGreen,
-	GoalBlue,
-	GemBlack,
-	TileBlocker,
-	IceSlick,
-	SandTrap,
-	WaterHazard,
-	Teleporter
-}
-
-@export var entity_type:EntityType : set = set_entity_type
+@export var entity_type:Globals.EntityType : set = set_entity_type
 @export var entity_text:String : set = set_entity_text
 @export var entity_color:Color = Color(1,1,1) : set = set_entity_color
 
 @onready var entity_label = %EntityLabel
+@onready var button = $PanelContainer/Button
 
 var panel_style = StyleBoxFlat.new()
 
@@ -51,40 +36,40 @@ func set_entity_color(new_entity_color):
 func set_entity_type(new_entity_type):
 	entity_type = new_entity_type
 	match new_entity_type:
-		EntityType.GemRed:
+		Globals.EntityType.GemRed:
 			entity_text = "g"
 			entity_color = Color.RED
-		EntityType.GemGreen:
+		Globals.EntityType.GemGreen:
 			entity_text = "g"
 			entity_color = Color.GREEN
-		EntityType.GemBlue:
+		Globals.EntityType.GemBlue:
 			entity_text = "g"
 			entity_color = Color.BLUE
-		EntityType.GoalRed:
+		Globals.EntityType.GoalRed:
 			entity_text = "goal"
 			entity_color = Color.RED
-		EntityType.GoalGreen:
+		Globals.EntityType.GoalGreen:
 			entity_text = "goal"
 			entity_color = Color.GREEN
-		EntityType.GoalBlue:
+		Globals.EntityType.GoalBlue:
 			entity_text = "goal"
 			entity_color = Color.BLUE
-		EntityType.GemBlack:
+		Globals.EntityType.GemBlack:
 			entity_text = "g"
 			entity_color = Color.DIM_GRAY
-		EntityType.TileBlocker:
+		Globals.EntityType.TileBlocker:
 			entity_text = "#"
 			entity_color = Color.BLACK
-		EntityType.IceSlick:
+		Globals.EntityType.IceSlick:
 			entity_text = "ice"
 			entity_color = Color.AQUA
-		EntityType.SandTrap:
+		Globals.EntityType.SandTrap:
 			entity_text = "sand"
 			entity_color = Color.BURLYWOOD
-		EntityType.WaterHazard:
+		Globals.EntityType.WaterHazard:
 			entity_text = "water"
 			entity_color = Color.NAVY_BLUE
-		EntityType.Teleporter:
+		Globals.EntityType.Teleporter:
 			entity_text = "tele"
 			entity_color = Color.BLUE_VIOLET
 		_:

@@ -14,23 +14,18 @@ metadata/_edit_lock_ = true
 
 [node name="EntityButton" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton3" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -52,23 +47,18 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton17" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -90,11 +80,9 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton24" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton25" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton26" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -104,7 +92,6 @@ entity_color = Color(0.541176, 0.168627, 0.886275, 1)
 
 [node name="EntityButton27" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton28" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -114,27 +101,21 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton29" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton30" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton31" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton32" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton33" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton34" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton35" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -144,7 +125,6 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton36" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton37" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -154,11 +134,9 @@ entity_color = Color(0.541176, 0.168627, 0.886275, 1)
 
 [node name="EntityButton38" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton39" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton40" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -180,15 +158,12 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton43" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton44" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton45" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton46" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
@@ -222,15 +197,12 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton51" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton52" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton53" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton54" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2

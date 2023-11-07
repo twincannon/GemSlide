@@ -3,6 +3,7 @@ extends Control
 @onready var level_button_scene = preload("res://scenes/ui/level_button.tscn")
 
 func _ready():
+	Globals.current_level_scene = null
 	update_world()
 
 func update_world():
@@ -55,3 +56,25 @@ func _on_world_button_right_pressed():
 	if next_idx < Globals.world_datas.size():
 		Globals.current_world_data = Globals.world_datas[next_idx]
 		update_world()
+
+
+func _on_level_editor_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/level_editor/level_editor.tscn")
+
+
+func _on_custom_levels_button_pressed():
+	%WorldLabel.text = "Custom Levels"
+	for i in %LevelContainer.get_children():
+		%LevelContainer.remove_child(i)
+		i.queue_free()
+	#get each file that starts with "level_" in our Globals.SAVE_DIR
+	for file in SaveGame.get_custom_level_files():
+		var new_button = level_button_scene.instantiate()
+		%LevelContainer.add_child(new_button)
+		new_button.set_button_text(file.lstrip("level_").rstrip(".json"))
+		#new_button.custom_level # = file.json contents
+		var data = SaveGame.get_custom_level_data(Globals.SAVE_DIR + file)
+		#new_button.pressed.connect
+		new_button.custom_level_data = data
+	
+	pass # Replace with function body.
