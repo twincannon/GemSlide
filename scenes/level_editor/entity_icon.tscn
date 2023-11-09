@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level_editor/entity_icon_base.gd" id="1_d7uun"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwsmw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abgha"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -21,7 +21,7 @@ script = ExtResource("1_d7uun")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lwsmw")
+theme_override_styles/panel = SubResource("StyleBoxFlat_abgha")
 
 [node name="Button" type="Button" parent="PanelContainer"]
 layout_mode = 2

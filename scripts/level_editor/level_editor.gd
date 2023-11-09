@@ -1,20 +1,20 @@
-@tool
 extends Control
 
 @onready var icon_scene = preload("res://scenes/level_editor/entity_icon.tscn")
 
 @onready var grid_container = $GridContainer
-@onready var colstext = $Cols
-@onready var rowstext = $Rows
-@onready var option_button = $OptionButton
-@onready var level_name = $LevelName
+@onready var colstext = %Cols
+@onready var rowstext = %Rows
+@onready var option_button = %OptionButton
+@onready var level_name = %LevelName
+@onready var par_moves_text:LineEdit = %ParMoves
 
+var old_cols = -1
 
 func _ready():
+	option_button.clear()
 	for key in Globals.EntityType.keys():
 		option_button.add_item(key)
-
-
 
 func _on_cols_text_changed(_new_text):
 	generate_new_grid()
@@ -25,26 +25,46 @@ func _on_rows_text_changed(_new_text):
 func generate_new_grid():
 	var cols = int(colstext.text)
 	var rows = int(rowstext.text)
+	
+	# Try to preserve entities
+	var entities = []
+	var children = grid_container.get_children()
+	if old_cols >= 0:
+		for i in range(children.size()):
+			if children[i] is EntityIconBase:
+				entities.append({ "GridLoc": Vector2i(i % old_cols, i / old_cols), "Entity": children[i].entity_type })
+	#y = i / cols
+	#x = i % cols
+	
+	# Generate the new grid
 	if colstext.text.is_valid_int() and rowstext.text.is_valid_int() and cols > 0 and rows > 0:
-		var children = grid_container.get_children()
-		for i in range(children.size() - 1, -1, -1):
-			grid_container.remove_child(children[i])
+		var old_children = grid_container.get_children()
+		for i in range(old_children.size() - 1, -1, -1):
+			grid_container.remove_child(old_children[i])
 			children[i].queue_free()
 		grid_container.columns = cols
 		for c in cols:
 			for r in rows:
 				var new_icon = icon_scene.instantiate()
 				grid_container.add_child(new_icon)
-		
+	
+	# Restore entities
+	children = grid_container.get_children()
+	for i in range(entities.size()):
+		var target_idx = entities[i]["GridLoc"].x + (entities[i]["GridLoc"].y * cols)
+		if children.size() > target_idx:
+			children[target_idx].set_entity_type(entities[i]["Entity"])
+	
+	old_cols = int(colstext.text)
+
 
 func _on_option_button_item_selected(index):
 	for child in grid_container.get_children():
 		if child is EntityIconBase:
 			if child.button and child.button.button_pressed:
-				child.set_entity_type(index)
+				child.set_entity_type(index as Globals.EntityType)
 				child.button.set_pressed(false)
 	option_button.select(0)
-	save_level()
 
 func get_grid_size() -> Vector2i:
 	if grid_container.columns > 0:
@@ -55,12 +75,11 @@ func save_level():
 	if level_name.text.is_empty():
 		# Show an error about level name must not be empty here
 		return
-	var dict = { "GridSize": var_to_str(get_grid_size()), "LevelName": "", "Entities": [] }
+	var dict = { "GridSize": var_to_str(get_grid_size()), "LevelName": level_name.text, "Entities": [], "ParMoves": int(par_moves_text.text) }
 	var children = grid_container.get_children()
 	for i in children.size():
 		if children[i] is EntityIconBase:
 			dict["Entities"].append(children[i].entity_type)
-	dict["LevelName"] = level_name.text
 	print(dict)
 	
 	var file = FileAccess.open(Globals.SAVE_DIR + "level_" + dict["LevelName"] + ".json", FileAccess.WRITE)
@@ -71,7 +90,6 @@ func save_level():
 	var json_string = JSON.stringify(dict, "\t")
 	file.store_string(json_string)
 	file.close()
-
 
 func _on_level_name_text_changed(new_text):
 	# Use regex to only allow A-z and numeric, dash and underscore
@@ -85,6 +103,44 @@ func _on_level_name_text_changed(new_text):
 	level_name.set_text(word)
 	level_name.caret_column = old_caret_pos
 
-
 func _on_save_button_pressed():
 	save_level()
+
+
+func _on_load_button_pressed():
+	$LoadFileDialog.show()
+	pass # Replace with function body.
+
+
+func _on_load_file_dialog_file_selected(path):
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		if file == null:
+			printerr(FileAccess.get_open_error())
+			return
+		
+		var content = file.get_as_text()
+		file.close()
+		
+		var data = JSON.parse_string(content)
+		if data == null:
+			printerr("Cannot parse %s as a json string (%s)" % [path, content])
+			return
+		
+		if !Globals.is_valid_custom_level(data):
+			printerr("Loadad an invalid level")
+			return
+			
+		colstext.text = str(str_to_var(data["GridSize"]).x)
+		rowstext.text = str(str_to_var(data["GridSize"]).y)
+		generate_new_grid()
+		level_name.text = data["LevelName"]
+		par_moves_text.text = str(data["ParMoves"])
+		var children = grid_container.get_children()
+		for i in range(data["Entities"].size()):
+			if children.size() > i and children[i] is EntityIconBase:
+				children[i].set_entity_type(data["Entities"][i] as Globals.EntityType)
+				children[i].button.set_pressed(false)
+		
+	else:
+		printerr("Cannot open file at %s" % [path])

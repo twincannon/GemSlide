@@ -62,3 +62,11 @@ func get_entity_movement_distance() -> Vector2:
 	if game_node:
 		return game_node.tile_size
 	return Vector2(0,0)
+
+func is_valid_custom_level(data):
+	return data \
+		and data.has("GridSize") \
+		and data.has("ParMoves") \
+		and data.has("Entities") \
+		and data.has("LevelName")
+	

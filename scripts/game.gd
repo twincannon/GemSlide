@@ -48,28 +48,32 @@ func _ready():
 	if Globals.current_level_scene:
 		Globals.current_level = Globals.current_level_scene.instantiate() as LevelBase
 		print(SaveGame.level_dict[Globals.current_level_scene.resource_path])
-	
-		%ParLabel.text = "Par: " + str(Globals.current_level.par_moves)
-		
-		if !Globals.did_retry:
-			if Globals.current_level.tutorial.is_empty() == false:
-				%TutorialContainer.visible = true
-				%TutorialLabel.text = Globals.current_level.tutorial
-				set_game_paused(true)
-		Globals.did_retry = false
-	
-		%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
-		
 		grid_size = Globals.current_level.get_grid_size()
 		entities_to_load = Globals.current_level.get_entities()
-	elif !Globals.custom_level_data.is_empty():
+		%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
+	elif !Globals.custom_level_data.is_empty() and Globals.is_valid_custom_level(Globals.custom_level_data):
+		# Instantiate a blank stand-in level to hold our custom vars
+		Globals.current_level = blank_level_scene.instantiate() as LevelBase
+		Globals.current_level.par_moves = Globals.custom_level_data["ParMoves"]
 		grid_size = str_to_var(Globals.custom_level_data["GridSize"])
 		for e in Globals.custom_level_data["Entities"]:
 			var new_icon = entity_icon_scene.instantiate()
 			new_icon.set_entity_type(e as Globals.EntityType)
 			entities_to_load.append(new_icon.get_entity())
+		%LevelNumLabel.text = Globals.custom_level_data["LevelName"]
 	else:
 		printerr("Entered game scene with no valid level scene or custom level data")
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		return
+		
+	%ParLabel.text = "Par: " + str(Globals.current_level.par_moves)
+	
+	if !Globals.did_retry:
+		if Globals.current_level.tutorial.is_empty() == false:
+			%TutorialContainer.visible = true
+			%TutorialLabel.text = Globals.current_level.tutorial
+			set_game_paused(true)
+	Globals.did_retry = false
 	
 	var currentNum = 0
 	for y in range(grid_size.y):
