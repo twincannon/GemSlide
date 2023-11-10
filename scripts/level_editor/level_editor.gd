@@ -18,14 +18,14 @@ func _ready():
 		option_button.add_item(key)
 
 func _on_cols_text_changed(_new_text):
-	if int(_new_text) > 20:
-		colstext.text = str(20)
+	if int(_new_text) > GRID_MAX_SIZE:
+		colstext.text = str(GRID_MAX_SIZE)
 	generate_new_grid()
 	update_grid_scale()
 
 func _on_rows_text_changed(_new_text):
-	if int(_new_text) > 20:
-		rowstext.text = str(20)
+	if int(_new_text) > GRID_MAX_SIZE:
+		rowstext.text = str(GRID_MAX_SIZE)
 	generate_new_grid()
 	update_grid_scale()
 	
@@ -33,6 +33,15 @@ func update_grid_scale():
 	var cols = float(colstext.text)
 	var rows = float(rowstext.text)
 	if cols > 0 and rows > 0:
+		if cols == rows:
+			$AspectRatioContainer.scale = Vector2(1, 1)
+		elif cols > rows:
+			$AspectRatioContainer.scale.y = rows / cols
+			$AspectRatioContainer.scale.x = 1.0
+		else:
+			$AspectRatioContainer.scale.y = 1.0
+			$AspectRatioContainer.scale.x = cols / rows
+			
 #		if cols == rows:
 #			$AspectRatioContainer.size = Vector2(460, 460)
 #		elif cols > rows:
@@ -42,16 +51,7 @@ func update_grid_scale():
 #			$AspectRatioContainer.size.y = 460
 #			$AspectRatioContainer.size.x = (cols / rows) * 460
 #		print($AspectRatioContainer.size)
-		if cols == rows:
-			$AspectRatioContainer.scale = Vector2(1, 1)
-		elif cols > rows:
-			$AspectRatioContainer.scale.y = rows / cols
-			$AspectRatioContainer.scale.x = 1.0
-		else:
-			$AspectRatioContainer.scale.y = 1.0
-			$AspectRatioContainer.scale.x = cols / rows
-		print($AspectRatioContainer.scale)
-		
+
 func generate_new_grid():
 	var cols = min(int(colstext.text), GRID_MAX_SIZE)
 	var rows = min(int(rowstext.text), GRID_MAX_SIZE)

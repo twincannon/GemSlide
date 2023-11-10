@@ -11,12 +11,22 @@ var sand_trap_scene = preload("res://scenes/entities/sand_trap.tscn")
 var water_hazard_scene = preload("res://scenes/entities/water_hazard.tscn")
 var teleporter_scene = preload("res://scenes/entities/teleporter.tscn")
 
+var icon_ball = preload("res://assets/art/golfball.png")
+var icon_goal = preload("res://assets/art/goal.png")
+var icon_ice = preload("res://assets/art/ice_slick.png")
+var icon_sand = preload("res://assets/art/sandtrap.png")
+var icon_tele = preload("res://assets/art/teleporter.png")
+var icon_tree = preload("res://assets/art/tree.png")
+var icon_water = preload("res://assets/art/waterhazard.png")
+
 @export var entity_type:Globals.EntityType : set = set_entity_type
 @export var entity_text:String : set = set_entity_text
 @export var entity_color:Color = Color(1,1,1) : set = set_entity_color
 
 @onready var entity_label = %EntityLabel
 @onready var button = $PanelContainer/Button
+@export_category("Defaults")
+@export var entity_icon:TextureRect
 
 var panel_style = StyleBoxFlat.new()
 
@@ -35,59 +45,76 @@ func set_entity_color(new_entity_color):
 
 func set_entity_type(new_entity_type):
 	entity_type = new_entity_type
+	if !entity_icon:
+		return
+	entity_color = Color.WHITE
 	match new_entity_type:
-		Globals.EntityType.GemRed:
-			entity_text = "g"
-			entity_color = Color.RED
-		Globals.EntityType.GemGreen:
-			entity_text = "g"
+		Globals.EntityType.BallRed:
+			entity_text = "b"
+			entity_color = Color.RED # Keeping these RGB as I rely on the values below
+			entity_icon.texture = icon_ball
+		Globals.EntityType.BallGreen:
+			entity_text = "b"
 			entity_color = Color.GREEN
-		Globals.EntityType.GemBlue:
-			entity_text = "g"
+			entity_icon.texture = icon_ball
+		Globals.EntityType.BallBlue:
+			entity_text = "b"
 			entity_color = Color.BLUE
+			entity_icon.texture = icon_ball
 		Globals.EntityType.GoalRed:
 			entity_text = "goal"
 			entity_color = Color.RED
+			entity_icon.texture = icon_goal
 		Globals.EntityType.GoalGreen:
 			entity_text = "goal"
 			entity_color = Color.GREEN
+			entity_icon.texture = icon_goal
 		Globals.EntityType.GoalBlue:
 			entity_text = "goal"
 			entity_color = Color.BLUE
-		Globals.EntityType.GemBlack:
-			entity_text = "g"
+			entity_icon.texture = icon_goal
+		Globals.EntityType.BallBlack:
+			entity_text = "b"
 			entity_color = Color.DIM_GRAY
+			entity_icon.texture = icon_ball
 		Globals.EntityType.TileBlocker:
 			entity_text = "#"
-			entity_color = Color.BLACK
+			#entity_color = Color.BLACK
+			entity_icon.texture = icon_tree
 		Globals.EntityType.IceSlick:
 			entity_text = "ice"
-			entity_color = Color.AQUA
+			#entity_color = Color.AQUA
+			entity_icon.texture = icon_ice
 		Globals.EntityType.SandTrap:
 			entity_text = "sand"
-			entity_color = Color.BURLYWOOD
+			#entity_color = Color.BURLYWOOD
+			entity_icon.texture = icon_sand
 		Globals.EntityType.WaterHazard:
 			entity_text = "water"
-			entity_color = Color.NAVY_BLUE
+			#entity_color = Color.NAVY_BLUE
+			entity_icon.texture = icon_water
 		Globals.EntityType.Teleporter:
 			entity_text = "tele"
-			entity_color = Color.BLUE_VIOLET
+			#entity_color = Color.BLUE_VIOLET
+			entity_icon.texture = icon_tele
 		_:
 			entity_text = ""
 			entity_color = Color.WHITE
+			entity_icon.texture = null
+	entity_icon.modulate = entity_color
 	update_ui()
 		
 func update_ui():
 	if entity_label:
 		entity_label.text = entity_text
-	panel_style.bg_color = entity_color
-	if is_gem():
-		panel_style.set_corner_radius_all(500)
-	else:
-		panel_style.set_corner_radius_all(3)
+	#panel_style.bg_color = entity_color
+#	if is_gem():
+#		panel_style.set_corner_radius_all(500)
+#	else:
+#		panel_style.set_corner_radius_all(3)
 
 func is_gem():
-	return entity_text.to_lower() == "g" or entity_text.to_lower() == "gem"
+	return entity_text.to_lower() == "g" or entity_text.to_lower() == "gem" or entity_text.to_lower() == "b"
 func is_goal():
 	return entity_text.to_lower() == "goal"
 func is_ice_slick():
@@ -131,10 +158,10 @@ func get_entity():
 			var color_comp := entity.get_node("ColorComponent") as ColorComponent
 			if color_comp:
 				if is_red():
-					color_comp.set_color(Color.RED)
+					color_comp.set_color(Globals.COLOR_RED)
 				elif is_green():
-					color_comp.set_color(Color.GREEN)
+					color_comp.set_color(Globals.COLOR_GREEN)
 				elif is_blue():
-					color_comp.set_color(Color.BLUE)
+					color_comp.set_color(Globals.COLOR_BLUE)
 	
 	return entity

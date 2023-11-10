@@ -11,19 +11,27 @@ enum ResultType { Par, Birdie, Eagle, SuperEagle, BeatDev }
 
 enum EntityType {
 	None = 0,
-	GemRed,
-	GemGreen,
-	GemBlue,
+	BallRed,
+	BallGreen,
+	BallBlue,
 	GoalRed,
 	GoalGreen,
 	GoalBlue,
-	GemBlack,
+	BallBlack,
 	TileBlocker,
 	IceSlick,
 	SandTrap,
 	WaterHazard,
 	Teleporter
 }
+
+#var COLOR_RED := Color.ORANGE
+#var COLOR_GREEN := Color.CYAN
+#var COLOR_BLUE := Color.DARK_VIOLET
+# TODO: Make color picker for these colors in options
+var COLOR_RED := Color.RED
+var COLOR_GREEN := Color.GREEN
+var COLOR_BLUE := Color.BLUE
 
 var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 

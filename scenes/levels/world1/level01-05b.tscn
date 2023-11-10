@@ -4,14 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_aowv8"]
 
 [node name="level01-01" type="GridContainer"]
+offset_right = 355.0
+offset_bottom = 352.0
 columns = 4
 script = ExtResource("1_dh3on")
 par_moves = 14
-dev_best = 12
+dev_best = 11
 
 [node name="EntityButton" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
@@ -22,7 +23,7 @@ entity_color = Color(0, 0, 0, 1)
 [node name="EntityButton3" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
 entity_type = 7
-entity_text = "g"
+entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_aowv8")]
@@ -33,35 +34,30 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton7" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
 entity_type = 7
-entity_text = "g"
+entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton8" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
 entity_type = 7
-entity_text = "g"
+entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton12" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
@@ -77,12 +73,9 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_aowv8")]
 layout_mode = 2
-entity_text = ""

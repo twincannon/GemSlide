@@ -306,20 +306,20 @@ func check_goal():
 			if goal.is_goal_filled() == false:
 				all_goals_filled = false
 			match goal.get_node("ColorComponent").color:
-				Color.RED:
+				Globals.COLOR_RED:
 					goal_dict["Red"] += 1
-				Color.GREEN:
+				Globals.COLOR_GREEN:
 					goal_dict["Green"] += 1
-				Color.BLUE:
+				Globals.COLOR_BLUE:
 					goal_dict["Blue"] += 1
 		var gem = e as Gem
 		if gem:
 			match gem.get_node("ColorComponent").color:
-				Color.RED:
+				Globals.COLOR_RED:
 					gem_dict["Red"] += 1
-				Color.GREEN:
+				Globals.COLOR_GREEN:
 					gem_dict["Green"] += 1
-				Color.BLUE:
+				Globals.COLOR_BLUE:
 					gem_dict["Blue"] += 1
 	
 	var can_win = gem_dict["Red"] >= goal_dict["Red"] and gem_dict["Green"] >= goal_dict["Green"] and gem_dict["Blue"] >= goal_dict["Blue"]
