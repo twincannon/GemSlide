@@ -82,9 +82,9 @@ func update_ui():
 		entity_label.text = entity_text
 	panel_style.bg_color = entity_color
 	if is_gem():
-		panel_style.set_corner_radius_all(50)
+		panel_style.set_corner_radius_all(500)
 	else:
-		panel_style.set_corner_radius_all(5)
+		panel_style.set_corner_radius_all(3)
 
 func is_gem():
 	return entity_text.to_lower() == "g" or entity_text.to_lower() == "gem"

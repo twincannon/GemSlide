@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_yti43"]
 
 [node name="level01-01" type="GridContainer"]
-offset_right = 428.0
-offset_bottom = 428.0
+offset_right = 444.0
+offset_bottom = 364.0
 columns = 8
 script = ExtResource("1_l0ten")
 metadata/_edit_lock_ = true

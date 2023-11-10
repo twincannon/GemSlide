@@ -2,14 +2,15 @@ extends Control
 
 @onready var icon_scene = preload("res://scenes/level_editor/entity_icon.tscn")
 
-@onready var grid_container = $GridContainer
+@onready var grid_container = %GridContainer
 @onready var colstext = %Cols
 @onready var rowstext = %Rows
 @onready var option_button = %OptionButton
 @onready var level_name = %LevelName
 @onready var par_moves_text:LineEdit = %ParMoves
 
-var old_cols = -1
+var old_cols := -1
+const GRID_MAX_SIZE := 20
 
 func _ready():
 	option_button.clear()
@@ -17,19 +18,51 @@ func _ready():
 		option_button.add_item(key)
 
 func _on_cols_text_changed(_new_text):
+	if int(_new_text) > 20:
+		colstext.text = str(20)
 	generate_new_grid()
+	update_grid_scale()
 
 func _on_rows_text_changed(_new_text):
+	if int(_new_text) > 20:
+		rowstext.text = str(20)
 	generate_new_grid()
+	update_grid_scale()
 	
+func update_grid_scale():
+	var cols = float(colstext.text)
+	var rows = float(rowstext.text)
+	if cols > 0 and rows > 0:
+#		if cols == rows:
+#			$AspectRatioContainer.size = Vector2(460, 460)
+#		elif cols > rows:
+#			$AspectRatioContainer.size.y = (rows / cols) * 460
+#			$AspectRatioContainer.size.x = 460
+#		else:
+#			$AspectRatioContainer.size.y = 460
+#			$AspectRatioContainer.size.x = (cols / rows) * 460
+#		print($AspectRatioContainer.size)
+		if cols == rows:
+			$AspectRatioContainer.scale = Vector2(1, 1)
+		elif cols > rows:
+			$AspectRatioContainer.scale.y = rows / cols
+			$AspectRatioContainer.scale.x = 1.0
+		else:
+			$AspectRatioContainer.scale.y = 1.0
+			$AspectRatioContainer.scale.x = cols / rows
+		print($AspectRatioContainer.scale)
+		
 func generate_new_grid():
-	var cols = int(colstext.text)
-	var rows = int(rowstext.text)
+	var cols = min(int(colstext.text), GRID_MAX_SIZE)
+	var rows = min(int(rowstext.text), GRID_MAX_SIZE)
+	
+	if cols <= 0 or rows <= 0:
+		return
 	
 	# Try to preserve entities
 	var entities = []
 	var children = grid_container.get_children()
-	if old_cols >= 0:
+	if old_cols > 0:
 		for i in range(children.size()):
 			if children[i] is EntityIconBase:
 				entities.append({ "GridLoc": Vector2i(i % old_cols, i / old_cols), "Entity": children[i].entity_type })
