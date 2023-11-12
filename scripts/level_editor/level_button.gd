@@ -14,7 +14,10 @@ func _on_pressed():
 
 func set_button_text(new_text:String):
 	%LevelNum.text = new_text
-	#var split_text = new_text.split("-")
+	const MIN_SIZE = 10
+	var font_size = max(remap(ThemeDB.fallback_font.get_string_size(%LevelNum.text).x, 50, 100, 20, MIN_SIZE), MIN_SIZE)
+	%LevelNum.add_theme_font_size_override("font_size", font_size)
+#	#var split_text = new_text.split("-")
 	#if split_text.size() > 0:
 	#	level_num = int(new_text.split("-")[1])
 

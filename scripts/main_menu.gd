@@ -72,9 +72,19 @@ func _on_custom_levels_button_pressed():
 		var new_button = level_button_scene.instantiate()
 		%LevelContainer.add_child(new_button)
 		new_button.set_button_text(file.lstrip("level_").rstrip(".json"))
-		#new_button.custom_level # = file.json contents
 		var data = SaveGame.get_custom_level_data(Globals.SAVE_DIR + file)
-		#new_button.pressed.connect
-		new_button.custom_level_data = data
-	
-	pass # Replace with function body.
+		if Globals.is_valid_custom_level(data):
+			new_button.custom_level_data = data
+			new_button.set_button_score(0)
+			new_button.set_par_score(data["ParMoves"])
+		else:
+			new_button.visible = false
+			new_button.queue_free()
+	%ReturnToCourseButton.visible = true
+	%CustomLevelsButton.visible = false
+
+
+func _on_return_to_course_button_pressed():
+	%ReturnToCourseButton.visible = false
+	%CustomLevelsButton.visible = true
+	update_world()

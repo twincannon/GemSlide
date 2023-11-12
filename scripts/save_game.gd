@@ -45,9 +45,6 @@ func _input(_event):
 		if OS.is_debug_build():
 			for level in level_dict:
 				set_level_unlocked(level)
-	if Input.is_action_just_pressed("leveleditor"):
-		if OS.is_debug_build():
-			get_tree().change_scene_to_file("res://scenes/level_editor/level_editor.tscn")
 		
 func verify_save_directory(path:String):
 	DirAccess.make_dir_absolute(path)

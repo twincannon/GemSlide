@@ -53,6 +53,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="WorldLabel" type="Label" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -159,6 +160,11 @@ metadata/_edit_use_anchors_ = true
 [node name="HBoxContainer2" type="HBoxContainer" parent="AspectRatioContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Control" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
+
 [node name="LevelEditorButton" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -170,6 +176,19 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Custom Levels"
+
+[node name="ReturnToCourseButton" type="Button" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Return
+"
+
+[node name="Control2" type="Control" parent="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.33
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -258,3 +277,4 @@ stretch_mode = 5
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4/WorldButtonRight" to="." method="_on_world_button_right_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/LevelEditorButton" to="." method="_on_level_editor_button_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/CustomLevelsButton" to="." method="_on_custom_levels_button_pressed"]
+[connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/ReturnToCourseButton" to="." method="_on_return_to_course_button_pressed"]

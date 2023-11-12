@@ -4,13 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_2deif"]
 
 [node name="level01-01" type="GridContainer"]
-offset_right = 428.0
-offset_bottom = 428.0
+offset_right = 464.0
+offset_bottom = 358.0
 columns = 8
 script = ExtResource("1_4lkyp")
 par_moves = 20
 dev_best = 15
-metadata/_edit_lock_ = true
 
 [node name="EntityButton" parent="." instance=ExtResource("2_2deif")]
 layout_mode = 2

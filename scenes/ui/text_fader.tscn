@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://ks7gvqbngqfo"]
+
+[ext_resource type="Script" path="res://scripts/ui/text_fader.gd" id="1_0ynij"]
+
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("panel_container", "label")]
+anchors_preset = -1
+anchor_top = 0.486534
+anchor_right = 1.0
+anchor_bottom = 0.513466
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_0ynij")
+panel_container = NodePath("PanelContainer")
+label = NodePath("PanelContainer/Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

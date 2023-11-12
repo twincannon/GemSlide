@@ -121,6 +121,90 @@ access = 1
 root_subfolder = "user://saves"
 filters = PackedStringArray("level_*.json")
 
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -49.0
+offset_right = -9.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_7nfqa")
+text = "Main Menu
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -50.0
+offset_right = 223.0
+offset_bottom = -10.0
+grow_vertical = 0
+
+[node name="CopyButton" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_7nfqa")
+text = "Copy Level"
+
+[node name="PasteButton" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_7nfqa")
+text = "Paste Level"
+
+[node name="LevelStringContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 328.0
+offset_right = 467.0
+offset_bottom = 537.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="LevelStringContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelStringContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Level string
+to copy:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LevelStringTextEdit" type="TextEdit" parent="LevelStringContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+wrap_mode = 1
+
+[node name="CloseLevelStringButton" type="Button" parent="LevelStringContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_7nfqa")
+text = "  X  "
+
+[node name="FaderContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4274
+anchor_right = 1.0
+anchor_bottom = 0.574941
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/LevelNameContainer/LevelName" to="." method="_on_level_name_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/GridSizeContainer/Cols" to="." method="_on_cols_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/GridSizeContainer/Rows" to="." method="_on_rows_text_changed"]
@@ -128,3 +212,7 @@ filters = PackedStringArray("level_*.json")
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="file_selected" from="LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/CopyButton" to="." method="_on_copy_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/PasteButton" to="." method="_on_paste_button_pressed"]
+[connection signal="pressed" from="LevelStringContainer/HBoxContainer3/CloseLevelStringButton" to="." method="_on_close_level_string_button_pressed"]
