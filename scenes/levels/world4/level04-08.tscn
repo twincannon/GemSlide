@@ -4,13 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_xpdit"]
 
 [node name="level01-01" type="GridContainer"]
-offset_right = 428.0
-offset_bottom = 428.0
+offset_right = 438.0
+offset_bottom = 355.0
 columns = 6
 script = ExtResource("1_40owv")
 par_moves = 18
 dev_best = 13
-metadata/_edit_lock_ = true
 
 [node name="EntityButton" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
@@ -32,15 +31,12 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton7" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
@@ -110,15 +106,12 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
@@ -146,11 +139,9 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton25" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton26" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton27" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
@@ -160,7 +151,6 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton28" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton29" parent="." instance=ExtResource("2_xpdit")]
 layout_mode = 2

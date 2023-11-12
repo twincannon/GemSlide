@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WorldData" load_steps=14 format=3 uid="uid://iloomhfw4yb1"]
+[gd_resource type="Resource" script_class="WorldData" load_steps=15 format=3 uid="uid://iloomhfw4yb1"]
 
 [ext_resource type="PackedScene" uid="uid://b156bpw6ts5s0" path="res://scenes/levels/world4/level04-01.tscn" id="1_p1j1b"]
 [ext_resource type="PackedScene" uid="uid://cnpfgec5ijvic" path="res://scenes/levels/world4/level04-02.tscn" id="2_qjctd"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://41csv8l2ruve" path="res://scenes/levels/world4/level04-04a.tscn" id="8_x3w6l"]
 [ext_resource type="PackedScene" uid="uid://ch7yadt0ec4ey" path="res://scenes/levels/world4/level04-06.tscn" id="9_rr0y3"]
 [ext_resource type="PackedScene" uid="uid://c277e04ah3fdl" path="res://scenes/levels/world4/level04-07.tscn" id="10_3vmns"]
+[ext_resource type="PackedScene" uid="uid://btsqlb8hcrijr" path="res://scenes/levels/world4/level04-07a.tscn" id="12_xhpjb"]
 
 [resource]
 script = ExtResource("2_xe6an")
-level_data = Array[PackedScene]([ExtResource("1_p1j1b"), ExtResource("2_qjctd"), ExtResource("3_24vsf"), ExtResource("4_scbng"), ExtResource("5_aale5"), ExtResource("3_e382k"), ExtResource("4_jrvxp"), ExtResource("8_x3w6l"), ExtResource("5_oqvvk"), ExtResource("9_rr0y3"), ExtResource("10_3vmns"), ExtResource("5_lqbxw")])
+level_data = Array[PackedScene]([ExtResource("1_p1j1b"), ExtResource("2_qjctd"), ExtResource("3_24vsf"), ExtResource("4_scbng"), ExtResource("5_aale5"), ExtResource("3_e382k"), ExtResource("4_jrvxp"), ExtResource("8_x3w6l"), ExtResource("5_oqvvk"), ExtResource("9_rr0y3"), ExtResource("10_3vmns"), ExtResource("12_xhpjb"), ExtResource("5_lqbxw")])

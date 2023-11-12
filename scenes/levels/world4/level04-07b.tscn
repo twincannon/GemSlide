@@ -1,0 +1,259 @@
+[gd_scene load_steps=3 format=3 uid="uid://d35kqbp8wxiiw"]
+
+[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_n71vx"]
+[ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_kdmet"]
+
+[node name="level01-01" type="GridContainer"]
+offset_right = 443.0
+offset_bottom = 448.0
+columns = 8
+script = ExtResource("1_n71vx")
+
+[node name="EntityButton" parent="." instance=ExtResource("2_kdmet")]
+layout_mode = 2
+
+[node name="EntityButton2" parent="." instance=ExtResource("2_kdmet")]
+layout_mode = 2
+
+[node name="EntityButton3" parent="." instance=ExtResource("2_kdmet")]
+layout_mode = 2
+
+[node name="EntityButton4" parent="." instance=ExtResource("2_kdmet")]
+layout_mode = 2
+
+[node name="EntityButton5" parent="." instance=ExtResource("2_kdmet")]
+layout_mode = 2
+
+[node name="EntityButton6" parent="." instance=ExtResource("2_kdmet")]
+layout_mode = 2
+
+[node name="EntityButton7" parent="." instance=ExtResource("2_kdmet")]
+layout_mode = 2
+
+[node name="EntityButton8" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton9" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton/PanelContainer/EntityIcon")
+
+[node name="EntityButton10" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton2/PanelContainer/EntityIcon")
+
+[node name="EntityButton11" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton3/PanelContainer/EntityIcon")
+
+[node name="EntityButton12" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton4/PanelContainer/EntityIcon")
+
+[node name="EntityButton13" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton5/PanelContainer/EntityIcon")
+
+[node name="EntityButton14" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton6/PanelContainer/EntityIcon")
+
+[node name="EntityButton15" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton16" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton17" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton/PanelContainer/EntityIcon")
+
+[node name="EntityButton18" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton2/PanelContainer/EntityIcon")
+
+[node name="EntityButton19" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton3/PanelContainer/EntityIcon")
+
+[node name="EntityButton20" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton4/PanelContainer/EntityIcon")
+
+[node name="EntityButton21" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton5/PanelContainer/EntityIcon")
+
+[node name="EntityButton22" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton6/PanelContainer/EntityIcon")
+
+[node name="EntityButton23" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton24" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton25" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton/PanelContainer/EntityIcon")
+
+[node name="EntityButton26" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton2/PanelContainer/EntityIcon")
+
+[node name="EntityButton27" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton3/PanelContainer/EntityIcon")
+
+[node name="EntityButton28" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton4/PanelContainer/EntityIcon")
+
+[node name="EntityButton29" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton5/PanelContainer/EntityIcon")
+
+[node name="EntityButton30" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton6/PanelContainer/EntityIcon")
+
+[node name="EntityButton31" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton32" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton33" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton/PanelContainer/EntityIcon")
+
+[node name="EntityButton34" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton2/PanelContainer/EntityIcon")
+
+[node name="EntityButton35" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton3/PanelContainer/EntityIcon")
+
+[node name="EntityButton36" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton4/PanelContainer/EntityIcon")
+
+[node name="EntityButton37" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton5/PanelContainer/EntityIcon")
+
+[node name="EntityButton38" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton6/PanelContainer/EntityIcon")
+
+[node name="EntityButton39" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton40" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton41" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton/PanelContainer/EntityIcon")
+
+[node name="EntityButton42" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton2/PanelContainer/EntityIcon")
+
+[node name="EntityButton43" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton3/PanelContainer/EntityIcon")
+
+[node name="EntityButton44" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton4/PanelContainer/EntityIcon")
+
+[node name="EntityButton45" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton5/PanelContainer/EntityIcon")
+
+[node name="EntityButton46" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton6/PanelContainer/EntityIcon")
+
+[node name="EntityButton47" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton48" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton49" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton/PanelContainer/EntityIcon")
+
+[node name="EntityButton50" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton2/PanelContainer/EntityIcon")
+
+[node name="EntityButton51" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton3/PanelContainer/EntityIcon")
+
+[node name="EntityButton52" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton4/PanelContainer/EntityIcon")
+
+[node name="EntityButton53" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton5/PanelContainer/EntityIcon")
+
+[node name="EntityButton54" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton6/PanelContainer/EntityIcon")
+
+[node name="EntityButton55" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton56" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton57" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton/PanelContainer/EntityIcon")
+
+[node name="EntityButton58" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton2/PanelContainer/EntityIcon")
+
+[node name="EntityButton59" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton3/PanelContainer/EntityIcon")
+
+[node name="EntityButton60" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton4/PanelContainer/EntityIcon")
+
+[node name="EntityButton61" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton5/PanelContainer/EntityIcon")
+
+[node name="EntityButton62" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton6/PanelContainer/EntityIcon")
+
+[node name="EntityButton63" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
+
+[node name="EntityButton64" parent="." node_paths=PackedStringArray("entity_icon") instance=ExtResource("2_kdmet")]
+layout_mode = 2
+entity_icon = NodePath("../EntityButton7/PanelContainer/EntityIcon")
