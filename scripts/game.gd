@@ -56,9 +56,10 @@ func _ready():
 		Globals.current_level = blank_level_scene.instantiate() as LevelBase
 		Globals.current_level.par_moves = Globals.custom_level_data["ParMoves"]
 		grid_size = str_to_var(Globals.custom_level_data["GridSize"])
-		for e in Globals.custom_level_data["Entities"]:
+		for i in range(Globals.custom_level_data["Entities"].size()):
 			var new_icon = entity_icon_scene.instantiate()
-			new_icon.set_entity_type(e as Globals.EntityType)
+			new_icon.set_entity_type(Globals.custom_level_data["Entities"][i] as Globals.EntityType)
+			new_icon.set_entity_id(Globals.custom_level_data["EntityIDs"][i])
 			entities_to_load.append(new_icon.get_entity())
 		%LevelNumLabel.text = Globals.custom_level_data["LevelName"]
 	else:

@@ -22,11 +22,13 @@ var icon_water = preload("res://assets/art/waterhazard.png")
 @export var entity_type:Globals.EntityType : set = set_entity_type
 @export var entity_text:String : set = set_entity_text
 @export var entity_color:Color = Color(1,1,1) : set = set_entity_color
+@export var entity_id:int = 0 : set = set_entity_id
 
 @onready var entity_label = %EntityLabel
 @onready var button = $PanelContainer/Button
 @export_category("Defaults")
 @export var entity_icon:TextureRect
+@export var id_label:Label
 
 var panel_style = StyleBoxFlat.new()
 
@@ -43,7 +45,12 @@ func set_entity_color(new_entity_color):
 	entity_color = new_entity_color
 	update_ui()
 
+func set_entity_id(new_entity_id):
+	entity_id = new_entity_id
+	update_ui()
+
 func set_entity_type(new_entity_type):
+	entity_id = 0
 	entity_type = new_entity_type
 	if !entity_icon:
 		return
@@ -107,6 +114,11 @@ func set_entity_type(new_entity_type):
 func update_ui():
 	if entity_label:
 		entity_label.text = entity_text
+	
+	if id_label:
+		id_label.text = ""
+		if entity_text.is_empty() == false:
+			id_label.text = "id: " + str(entity_id)
 	#panel_style.bg_color = entity_color
 #	if is_gem():
 #		panel_style.set_corner_radius_all(500)
@@ -154,6 +166,8 @@ func get_entity():
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	
 	if entity:
+		entity.entity_id = int(id_label.text.lstrip("id: "))
+		
 		if entity.has_node("ColorComponent"):
 			var color_comp := entity.get_node("ColorComponent") as ColorComponent
 			if color_comp:

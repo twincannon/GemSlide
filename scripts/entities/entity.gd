@@ -11,6 +11,7 @@ var grid_pos:Vector2i : set = set_grid_pos # Position on game grid
 @onready var distance_to_move := Globals.get_entity_movement_distance() # I want this to be const
 
 var entity_sprite:Sprite2D # Sprite for moving, rotating intended to be at 0,0 with 0 rotation by default
+var entity_id := 0
 
 var moves := false # If this entity moves when input is pressed
 var is_forcibly_moving := false

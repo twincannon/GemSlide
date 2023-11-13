@@ -67,7 +67,7 @@ func generate_new_grid(reset := false):
 	if old_cols > 0:
 		for i in range(children.size()):
 			if children[i] is EntityIconBase:
-				entities.append({ "GridLoc": Vector2i(i % old_cols, i / old_cols), "Entity": children[i].entity_type })
+				entities.append({ "GridLoc": Vector2i(i % old_cols, i / old_cols), "Entity": children[i].entity_type, "ID": children[i].entity_id })
 	#y = i / cols
 	#x = i % cols
 	
@@ -89,6 +89,7 @@ func generate_new_grid(reset := false):
 		var target_idx = entities[i]["GridLoc"].x + (entities[i]["GridLoc"].y * cols)
 		if children.size() > target_idx:
 			children[target_idx].set_entity_type(entities[i]["Entity"])
+			children[target_idx].entity_id = entities[i]["ID"]
 	
 	old_cols = int(colstext.text)
 	update_grid_scale()
@@ -108,16 +109,17 @@ func get_grid_size() -> Vector2i:
 	return Vector2i.ZERO
 
 func get_level_dict() -> Dictionary:
-	var dict = { "GridSize": var_to_str(get_grid_size()), "LevelName": level_name.text, "Entities": [], "ParMoves": int(par_moves_text.text) }
+	var dict = { "GridSize": var_to_str(get_grid_size()), "LevelName": level_name.text, "Entities": [], "ParMoves": int(par_moves_text.text), "EntityIDs": [] }
 	var children = grid_container.get_children()
 	for i in children.size():
 		if children[i] is EntityIconBase:
 			dict["Entities"].append(children[i].entity_type)
+			dict["EntityIDs"].append(children[i].entity_id)
 	return dict
 
 func save_level():
 	if level_name.text.is_empty():
-		# Show an error about level name must not be empty here
+		add_fader("Level requires a name to be saved")
 		return
 	var dict = get_level_dict()
 	print(dict)
@@ -193,6 +195,7 @@ func load_data(data:Dictionary, reset_entities := true):
 	for i in range(data["Entities"].size()):
 		if children.size() > i and children[i] is EntityIconBase:
 			children[i].set_entity_type(data["Entities"][i] as Globals.EntityType)
+			children[i].entity_id = data["EntityIDs"][i]
 			children[i].button.set_pressed(false)
 
 func _on_main_menu_button_pressed():
@@ -220,3 +223,9 @@ func _on_paste_button_pressed():
 
 func _on_close_level_string_button_pressed():
 	%LevelStringContainer.visible = false
+
+
+func _on_entity_id_text_changed(new_text):
+	for child in grid_container.get_children():
+		if child is EntityIconBase and child.button and child.button.button_pressed:
+			child.entity_id = int(new_text)

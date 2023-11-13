@@ -15,11 +15,12 @@ theme = ExtResource("1_m7d0e")
 script = ExtResource("1_8nuv5")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 0
-anchor_left = 0.01875
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0208333
 anchor_top = 0.133489
-anchor_right = 0.98125
-anchor_bottom = 0.662763
+anchor_right = 0.983333
+anchor_bottom = 0.852459
 offset_right = -2.0
 offset_bottom = 8.0
 metadata/_edit_use_anchors_ = true
@@ -80,6 +81,7 @@ text = "Par Moves:"
 [node name="ParMoves" type="LineEdit" parent="HBoxContainer/VBoxContainer2/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -93,6 +95,35 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 allow_reselect = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+tooltip_text = "Entity ID is currently only used by 
+teleporters. Teleporters act in the 
+following order: 1) Teleport to a 
+teleporter with an identical id. 2) 
+Teleport to a teleporter with an id 
+equal to teleporter id plus one. 3) 
+Fallback to the lowest id teleporter in 
+the sequence."
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "Entity ID:"
+
+[node name="EntityID" type="LineEdit" parent="HBoxContainer/VBoxContainer2/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Entity ID is currently only used by 
+teleporters. Teleporters act in the 
+following order: 1) Teleport to a 
+teleporter with an identical id. 2) 
+Teleport to a teleporter with an id 
+equal to teleporter id plus one. 3) 
+Fallback to the lowest id teleporter in 
+the sequence."
+alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -209,6 +240,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/GridSizeContainer/Cols" to="." method="_on_cols_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/GridSizeContainer/Rows" to="." method="_on_rows_text_changed"]
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer2/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer2/HBoxContainer3/EntityID" to="." method="_on_entity_id_text_changed"]
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="file_selected" from="LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]
