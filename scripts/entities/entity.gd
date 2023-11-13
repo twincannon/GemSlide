@@ -20,6 +20,10 @@ var stuck := false
 signal on_movement_done
 signal on_entity_pre_move(entity:Entity, dir:Vector2i)
 
+func _initialize_entity():
+	# Called after all entiites have been added and had their ready() called
+	pass
+
 func set_grid_pos(new_pos:Vector2i):
 	grid_pos = new_pos
 

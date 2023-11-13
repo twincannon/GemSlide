@@ -103,6 +103,8 @@ func _ready():
 						if entity is Gem:
 							entity.on_goal_animation_finished.connect(on_gem_goal_anim_finished)
 			currentNum += 1
+	for e in entities:
+		e._initialize_entity()
 	on_viewport_changed()
 
 
