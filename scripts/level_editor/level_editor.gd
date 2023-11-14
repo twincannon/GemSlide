@@ -229,3 +229,5 @@ func _on_entity_id_text_changed(new_text):
 	for child in grid_container.get_children():
 		if child is EntityIconBase and child.button and child.button.button_pressed:
 			child.entity_id = int(new_text)
+			child.button.set_pressed(false)
+	

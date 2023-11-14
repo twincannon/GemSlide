@@ -76,5 +76,6 @@ func is_valid_custom_level(data):
 		and data.has("GridSize") \
 		and data.has("ParMoves") \
 		and data.has("Entities") \
+		and data.has("EntityIDs") \
 		and data.has("LevelName")
 	

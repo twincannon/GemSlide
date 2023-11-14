@@ -4,203 +4,231 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_ufksv"]
 
 [node name="level01-01" type="GridContainer"]
+offset_right = 302.0
+offset_bottom = 286.0
 columns = 6
 script = ExtResource("1_7jnc6")
 par_moves = 18
-dev_best = 13
+dev_best = 12
 
 [node name="EntityButton8" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 entity_color = Color(0, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 1
 entity_text = "g"
 entity_color = Color(1, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 1
 entity_text = "g"
 entity_color = Color(1, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton12" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton17" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 3
 entity_text = "g"
 entity_color = Color(0, 0, 1, 1)
+entity_id = 0
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton22" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 entity_color = Color(0, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton23" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 entity_color = Color(0, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton24" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton25" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
+entity_id = 0
 
 [node name="EntityButton26" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 3
 entity_text = "g"
 entity_color = Color(0, 0, 1, 1)
+entity_id = 0
 
 [node name="EntityButton27" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton28" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 entity_color = Color(0, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton29" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 entity_color = Color(0, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton30" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton31" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
+entity_id = 0
 
 [node name="EntityButton32" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton33" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton34" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton35" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton36" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 9
 entity_text = "ice"
 entity_color = Color(0, 1, 1, 1)
+entity_id = 0
 
 [node name="EntityButton37" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton38" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton39" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
 
 [node name="EntityButton40" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton41" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton42" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 entity_color = Color(0, 0, 0, 1)
+entity_id = 0
 
 [node name="EntityButton43" parent="." instance=ExtResource("2_ufksv")]
 layout_mode = 2
-entity_text = ""
+entity_id = 0
