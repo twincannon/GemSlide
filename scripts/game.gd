@@ -250,7 +250,6 @@ func check_for_last_movement(entity:Entity):
 		on_all_movement_finished()
 
 func on_all_movement_finished():
-	print("Test")
 	for i in entities:
 		i._entity_post_move()
 

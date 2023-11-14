@@ -27,8 +27,10 @@ var icon_water = preload("res://assets/art/waterhazard.png")
 @onready var entity_label = %EntityLabel
 @onready var button = $PanelContainer/Button
 @export_category("Defaults")
-@export var entity_icon:TextureRect
+@export var entity_icon:TextureRect # bug - when duplicating these, the nodes don't change (and remain tied to the previous parent)...
 @export var id_label:Label
+#@onready var entity_icon = %EntityIcon
+#@onready var id_label = %IDLabel
 
 var panel_style = StyleBoxFlat.new()
 
@@ -165,7 +167,7 @@ func get_entity():
 	elif entity_text == "#":
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	
-	if entity:
+	if entity and id_label:
 		entity.entity_id = int(id_label.text.lstrip("id: "))
 		
 		if entity.has_node("ColorComponent"):
