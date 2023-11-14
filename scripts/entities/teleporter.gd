@@ -33,6 +33,7 @@ func find_next_teleporter():
 				lowest_tele = e
 	return lowest_tele
 
+#_on_entity_entered works here so we just need to do the queued teleport after this
 func _on_entity_finished_entering(_other_entity):
 	var other_teleporter = find_next_teleporter()
 	
@@ -40,9 +41,9 @@ func _on_entity_finished_entering(_other_entity):
 		printerr("Failed to find destination teleporter")
 		return
 	
-	for e in Globals.get_game_node().get_entities_at_pos(other_teleporter.grid_pos):
-		if !(e is Teleporter):
-			e.teleport_to(grid_pos)
+#	for e in Globals.get_game_node().get_entities_at_pos(other_teleporter.grid_pos):
+#		if !(e is Teleporter):
+#			e.teleport_to(grid_pos)
 	
 	var vfx = teleport_vfx_scene.instantiate()
 	add_child(vfx)
@@ -51,4 +52,7 @@ func _on_entity_finished_entering(_other_entity):
 
 	$Audio.play()
 	
-	_other_entity.teleport_to(other_teleporter.grid_pos)
+	# We do a fake teleport here as well as the real one (which is queued) in _entity_post_move so that we can visibly instantly teleport when delayed by ice movement etc.
+	_other_entity.fake_teleport_to(other_teleporter.grid_pos)
+	
+	_other_entity.queue_teleport_to(other_teleporter.grid_pos)

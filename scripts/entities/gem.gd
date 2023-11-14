@@ -21,6 +21,7 @@ func _process(_delta):
 	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
 func _on_movement(_dir):
+	super(_dir)
 	if movement_tween:
 		movement_tween.stop()
 		movement_tween.kill()

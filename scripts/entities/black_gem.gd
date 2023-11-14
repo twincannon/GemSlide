@@ -10,8 +10,10 @@ func _does_block(_other_entity):
 	return true
 
 func _on_movement(_dir):
+	super(_dir)
 	#This is copypasted from Gem... gross
 	if movement_tween:
+		movement_tween.stop()
 		movement_tween.kill()
 	movement_tween = create_tween().set_parallel(true)
 	var offset = (Vector2(_dir.x, _dir.y) * distance_to_move)

@@ -137,7 +137,7 @@ func _process(_delta):
 		entities.erase(e)
 	entities_to_remove.clear()
 	
-	if !move_cooldown_timer.is_stopped(): return	
+	if !move_cooldown_timer.is_stopped(): return
 	var all_goals_filled = true
 	for e in entities:
 		var goal = e as Goal
@@ -230,13 +230,29 @@ func move_entities(dir:Vector2i):
 	#	for i in range(entities.size() - 1, -1, -1):
 	#		if entities[i].on_try_move(dir) or entities[i]._should_increment_moves(dir):
 	#			did_any_entity_move = true
-	
+		
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
 		$Audio/MoveAudioPlayer.play()
 		increment_moves()
 		moves_array.append(dir)
+		for e in entities:
+			if e.moving:
+				e.on_movement_done.connect(check_for_last_movement)
 
+func check_for_last_movement(entity:Entity):
+	entity.on_movement_done.disconnect(check_for_last_movement)
+	var any_entity_moving = false
+	for e in entities:
+		if e.moving:
+			any_entity_moving = true
+	if !any_entity_moving:
+		on_all_movement_finished()
+
+func on_all_movement_finished():
+	print("Test")
+	for i in entities:
+		i._entity_post_move()
 
 func increment_moves():
 	moves += 1
