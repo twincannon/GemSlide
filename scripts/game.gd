@@ -110,16 +110,20 @@ func _ready():
 
 func on_viewport_changed():
 	$GridAnchor.position = %GridPos.position
-	#var padding = Vector2(100,100)
 	var viewport_size = get_viewport().size
-	#var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
-	#$GridAnchor.scale = Vector2(min(scaled.x, scaled.y),min(scaled.x, scaled.y))
-	var new_scale = 3.0 / float(max(grid_size.x, grid_size.y))
+	
+	# Old method that used to not work but now does?! Except with very large resolutions...
+#	var padding = Vector2(300,600)
+#	var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
+#	var minimum = min(scaled.x, scaled.y)
+#	$GridAnchor.scale = Vector2(minimum, minimum)
+	# New hacky method:
+	var new_scale = 3.5 / float(max(grid_size.x, grid_size.y))
 	$GridAnchor.scale = Vector2(new_scale, new_scale) #Hacky... but the above solution no longer works with stretch mode, for some reason?
+	
 	%BackgroundImageRoot.position.x = viewport_size.x/2
 	#%BackgroundImageRoot.position.x = viewport_size.x
 	#%BackgroundImageRoot.position.y = viewport_size.y
-	#$Bush.position.x = viewport_size.x
 	var bushoffset = 75
 	$BushRight.position = %BottomRightPos.position + Vector2(-bushoffset,-bushoffset)
 	$BushLeft.position = %BottomLeftPos.position + Vector2(bushoffset,-bushoffset)
@@ -177,7 +181,7 @@ func _process(_delta):
 			move_queue_timer.timeout.connect(move_entities.bind(dir))
 			move_queue_timer.start(queue_duration)
 	
-	if Input.is_action_just_released("click"):
+	if !Input.is_action_pressed("up") and !Input.is_action_pressed("down") and !Input.is_action_pressed("left") and !Input.is_action_pressed("right"):
 		input_dir = 0
 
 

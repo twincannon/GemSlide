@@ -335,6 +335,7 @@ grow_vertical = 0
 y_sort_enabled = true
 
 [node name="MoveQueueTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="MoveCooldownTimer" type="Timer" parent="."]
 wait_time = 0.25
