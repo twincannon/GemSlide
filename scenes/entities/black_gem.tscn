@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://o47svojgycl4"]
 
 [ext_resource type="Script" path="res://scripts/entities/black_gem.gd" id="1_sn6ji"]
-[ext_resource type="Texture2D" uid="uid://vif5nwbt81su" path="res://assets/art/golfball.png" id="2_6hc0u"]
+[ext_resource type="Texture2D" uid="uid://calgy7y7s8ahy" path="res://assets/art/rock.png" id="2_ruqie"]
 
 [node name="Gem" type="Node2D"]
 script = ExtResource("1_sn6ji")
@@ -14,8 +14,7 @@ unique_name_in_owner = true
 
 [node name="GemSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
 unique_name_in_owner = true
-modulate = Color(0.188235, 0.188235, 0.188235, 1)
 z_index = 100
-texture = ExtResource("2_6hc0u")
+texture = ExtResource("2_ruqie")
 
 [node name="ColorblindHelper" type="Sprite2D" parent="."]
