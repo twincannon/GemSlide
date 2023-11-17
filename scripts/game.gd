@@ -6,10 +6,9 @@ const par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.t
 const entity_icon_scene = preload("res://scenes/level_editor/entity_icon.tscn")
 const blank_level_scene = preload("res://scenes/levels/blank_level.tscn")
 
-var move_sound = preload("res://assets/audio/move.wav")
 var goal_sound = preload("res://assets/audio/goal.wav")
 var won_sound = preload("res://assets/audio/clap.wav")
-var move_sounds = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt2.wav"), preload("res://assets/audio/putt3.wav")]
+var move_sounds = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
 @onready var move_queue_timer = $MoveQueueTimer as Timer
 @onready var move_cooldown_timer = $MoveCooldownTimer as Timer
 
@@ -237,6 +236,7 @@ func move_entities(dir:Vector2i):
 		
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
+		$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
 		$Audio/MoveAudioPlayer.play()
 		increment_moves()
 		moves_array.append(dir)

@@ -88,3 +88,48 @@ func _on_return_to_course_button_pressed():
 	%ReturnToCourseButton.visible = false
 	%CustomLevelsButton.visible = true
 	update_world()
+
+
+func _on_option_ball_r_pressed():
+	%OptionBallG.set_pressed(false)
+	%OptionBallB.set_pressed(false)
+
+
+func _on_option_ball_g_pressed():
+	%OptionBallR.set_pressed(false)
+	%OptionBallB.set_pressed(false)
+
+
+func _on_option_ball_b_pressed():
+	%OptionBallR.set_pressed(false)
+	%OptionBallG.set_pressed(false)
+
+
+func _on_color_picker_color_changed(color):
+	var button_to_change = null
+	if %OptionBallR.is_pressed():
+		button_to_change = %OptionBallR
+		Globals.COLOR_RED = color
+		SaveGame.set_config_ball_color("R", color)
+	elif %OptionBallG.is_pressed():
+		button_to_change = %OptionBallG
+		Globals.COLOR_GREEN = color
+		SaveGame.set_config_ball_color("G", color)
+	elif %OptionBallB.is_pressed():
+		button_to_change = %OptionBallB
+		Globals.COLOR_BLUE = color
+		SaveGame.set_config_ball_color("B", color)
+	
+	if button_to_change:
+		button_to_change.modulate = color
+
+
+func _on_options_close_button_pressed():
+	%OptionsContainer.visible = false
+
+
+func _on_options_button_pressed():
+	%OptionsContainer.visible = true
+	%OptionBallR.modulate = Globals.COLOR_RED
+	%OptionBallG.modulate = Globals.COLOR_GREEN
+	%OptionBallB.modulate = Globals.COLOR_BLUE

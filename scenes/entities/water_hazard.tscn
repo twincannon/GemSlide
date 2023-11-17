@@ -20,6 +20,7 @@ texture = ExtResource("3_b0b15")
 stream = ExtResource("4_sv84q")
 volume_db = -6.0
 attenuation = 0.00124468
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

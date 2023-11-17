@@ -11,3 +11,4 @@ func _ready():
 
 func _on_value_changed(new_value:float) -> void:
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(new_value))
+	SaveGame.set_config_volume(bus_name, new_value)

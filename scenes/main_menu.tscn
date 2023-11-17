@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7jq05fdyacro"]
+[gd_scene load_steps=13 format=3 uid="uid://b7jq05fdyacro"]
 
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="1_2uy37"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_tknb6"]
@@ -9,6 +9,8 @@
 [ext_resource type="Shader" path="res://shaders/logo_slide.gdshader" id="5_7vq0m"]
 [ext_resource type="Texture2D" uid="uid://botpl3umn6jr3" path="res://assets/art/ui/mainmenu_arrow.png" id="5_wv3xt"]
 [ext_resource type="Texture2D" uid="uid://p86rljek5lax" path="res://assets/art/background.png" id="6_0dvpg"]
+[ext_resource type="Texture2D" uid="uid://vif5nwbt81su" path="res://assets/art/golfball.png" id="10_lpjgg"]
+[ext_resource type="Theme" uid="uid://dulh4gkc0fjck" path="res://assets/art/ui/themes/option_menu_ball_button_theme.tres" id="10_np484"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4250b"]
 shader = ExtResource("5_7vq0m")
@@ -191,6 +193,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.33
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.816159
@@ -273,8 +276,166 @@ texture = ExtResource("4_irs0j")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="OptionsButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -70.0
+offset_right = -15.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Options"
+
+[node name="OptionsContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -259.0
+offset_right = 175.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="OptionsCloseButton" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "  X  "
+
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slider" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_40fn1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bus_name = "Master"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Sound"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slider" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_40fn1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bus_name = "SFX"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slider" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_40fn1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bus_name = "Music"
+
+[node name="Label2" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ball Colors
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionBallR" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_np484")
+toggle_mode = true
+icon = ExtResource("10_lpjgg")
+
+[node name="OptionBallG" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_np484")
+toggle_mode = true
+icon = ExtResource("10_lpjgg")
+
+[node name="OptionBallB" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("10_np484")
+toggle_mode = true
+icon = ExtResource("10_lpjgg")
+
+[node name="ColorPicker" type="ColorPicker" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+edit_alpha = false
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+hex_visible = false
+presets_visible = false
+
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control3/WorldButtonLeft" to="." method="_on_world_button_left_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4/WorldButtonRight" to="." method="_on_world_button_right_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/LevelEditorButton" to="." method="_on_level_editor_button_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/CustomLevelsButton" to="." method="_on_custom_levels_button_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/ReturnToCourseButton" to="." method="_on_return_to_course_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsCloseButton" to="." method="_on_options_close_button_pressed"]
+[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5/OptionBallR" to="." method="_on_option_ball_r_pressed"]
+[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5/OptionBallG" to="." method="_on_option_ball_g_pressed"]
+[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5/OptionBallB" to="." method="_on_option_ball_b_pressed"]
+[connection signal="color_changed" from="OptionsContainer/MarginContainer/VBoxContainer/ColorPicker" to="." method="_on_color_picker_color_changed"]

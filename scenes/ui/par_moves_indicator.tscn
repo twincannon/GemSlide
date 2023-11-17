@@ -81,3 +81,4 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

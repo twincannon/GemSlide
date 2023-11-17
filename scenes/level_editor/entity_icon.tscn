@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/level_editor/entity_icon_base.gd" id="1_d7uun"]
 [ext_resource type="Theme" uid="uid://cd8lu1oo7v8qh" path="res://assets/art/ui/themes/level_editor_theme.tres" id="2_iky42"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xesgn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hotru"]
 
 [node name="EntityButton" type="MarginContainer" node_paths=PackedStringArray("entity_icon", "id_label")]
 custom_minimum_size = Vector2(10, 10)
@@ -16,13 +16,12 @@ theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 script = ExtResource("1_d7uun")
-entity_id = null
 entity_icon = NodePath("PanelContainer/EntityIcon")
 id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xesgn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hotru")
 
 [node name="EntityIcon" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -57,6 +56,4 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
-text = "
-"
 horizontal_alignment = 1

@@ -1,8 +1,13 @@
 extends Node
 
 var level_dict = { }
+var config_dict = {
+	"Volume": {"Master": 1.0, "SFX": 1.0, "Music": 1.0},
+	"BallColor": {"R":var_to_str(Color.RED), "G":var_to_str(Color.GREEN), "B":var_to_str(Color.BLUE)}
+}
 
 const SAVE_FILE_NAME = "save.json"
+const CONFIG_FILE_NAME = "config.json"
 const SECURITY_KEY = "982afe2934e"
 
 func update_level_in_dict(level_name, unlocked, score):
@@ -38,6 +43,7 @@ func _ready():
 	
 	verify_save_directory(Globals.SAVE_DIR)
 	load_data(Globals.SAVE_DIR + SAVE_FILE_NAME)
+	load_config()
 	#print(str(level_dict).replace("}", "}\n"))
 
 func _input(_event):
@@ -103,3 +109,52 @@ func get_custom_level_data(path:String):
 		return
 	
 	return data
+
+func set_config_volume(bus:String, value:float):
+	if config_dict["Volume"].has(bus):
+		config_dict["Volume"][bus] = value
+	save_config()
+
+func set_config_ball_color(ballcolor:String, color:Color):
+	if config_dict["BallColor"].has(ballcolor):
+		config_dict["BallColor"][ballcolor] = var_to_str(color)
+	save_config()
+		
+func save_config():
+	var file = FileAccess.open(Globals.SAVE_DIR + CONFIG_FILE_NAME, FileAccess.WRITE)
+	if file == null:
+		printerr(FileAccess.get_open_error())
+		return
+	
+	var json_string = JSON.stringify(config_dict, "\t")
+	file.store_string(json_string)
+	file.close()
+	
+func load_config():
+	var path = Globals.SAVE_DIR + CONFIG_FILE_NAME
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		if file == null:
+			printerr(FileAccess.get_open_error())
+			return
+		
+		var content = file.get_as_text()
+		file.close()
+		
+		var data = JSON.parse_string(content)
+		if data == null:
+			printerr("Cannot parse %s as a json string (%s)" % [path, content])
+			return
+		
+		config_dict = data
+		
+		Globals.COLOR_RED = str_to_var(data["BallColor"]["R"])
+		Globals.COLOR_GREEN = str_to_var(data["BallColor"]["G"])
+		Globals.COLOR_BLUE = str_to_var(data["BallColor"]["B"])
+		
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(data["Volume"]["Master"]))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(data["Volume"]["SFX"]))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(data["Volume"]["Music"]))
+		
+	else:
+		printerr("Cannot open file at %s" % [path])

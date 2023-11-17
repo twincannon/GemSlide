@@ -346,12 +346,15 @@ process_mode = 3
 
 [node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 attenuation = 1.19716e-05
+bus = &"SFX"
 
 [node name="GoalAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 attenuation = 1e-05
+bus = &"SFX"
 
 [node name="WonAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 attenuation = 1e-05
+bus = &"SFX"
 
 [node name="BackgroundImageRoot" type="Node2D" parent="."]
 unique_name_in_owner = true

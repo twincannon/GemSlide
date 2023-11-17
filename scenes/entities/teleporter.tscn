@@ -14,6 +14,7 @@ texture = ExtResource("1_85kjp")
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4f74m")
 attenuation = 0.00552425
+bus = &"SFX"
 
 [node name="Arrow" type="Sprite2D" parent="."]
 modulate = Color(0.25098, 1, 1, 1)
