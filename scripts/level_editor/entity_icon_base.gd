@@ -18,6 +18,7 @@ var icon_sand = preload("res://assets/art/sandtrap.png")
 var icon_tele = preload("res://assets/art/teleporter.png")
 var icon_tree = preload("res://assets/art/tree.png")
 var icon_water = preload("res://assets/art/waterhazard.png")
+var icon_rock = preload("res://assets/art/rock.png")
 
 @export var entity_type:Globals.EntityType : set = set_entity_type
 @export var entity_text:String : set = set_entity_text
@@ -84,8 +85,8 @@ func set_entity_type(new_entity_type):
 			entity_icon.texture = icon_goal
 		Globals.EntityType.BallBlack:
 			entity_text = "b"
-			entity_color = Color.DIM_GRAY
-			entity_icon.texture = icon_ball
+			entity_color = Color.WHITE
+			entity_icon.texture = icon_rock
 		Globals.EntityType.TileBlocker:
 			entity_text = "#"
 			#entity_color = Color.BLACK
