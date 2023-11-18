@@ -52,7 +52,7 @@ func _on_entity_finished_entering(_other_entity):
 
 	$Audio.play()
 	
-	# We do a fake teleport here as well as the real one (which is queued) in _entity_post_move so that we can visibly instantly teleport when delayed by ice movement etc.
+	# We do a fake teleport here as well as the real one (which is queued) in _entity_post_all_movement so that we can visibly instantly teleport when delayed by ice movement etc.
 	_other_entity.fake_teleport_to(other_teleporter.grid_pos)
 	
 	_other_entity.queue_teleport_to(other_teleporter.grid_pos)

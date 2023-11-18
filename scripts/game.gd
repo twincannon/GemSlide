@@ -252,7 +252,7 @@ func check_for_last_movement(entity:Entity):
 
 func on_all_movement_finished():
 	for i in entities:
-		i._entity_post_move()
+		i._entity_post_all_movement()
 
 func increment_moves():
 	moves += 1

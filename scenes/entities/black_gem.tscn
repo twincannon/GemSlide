@@ -18,3 +18,25 @@ z_index = 100
 texture = ExtResource("2_ruqie")
 
 [node name="ColorblindHelper" type="Sprite2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+visible = false
+z_index = 999
+layout_mode = 3
+anchors_preset = 0
+offset_top = -32.0
+offset_right = 40.0
+offset_bottom = 8.0
+
+[node name="LabelGridPos" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.575
+anchor_top = -1.575
+anchor_right = 1.6
+anchor_bottom = -0.425
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "0,0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

@@ -34,7 +34,7 @@ func set_grid_pos(new_pos:Vector2i):
 func _entity_pre_move(dir:Vector2i):
 	on_entity_pre_move.emit(self, dir)
 
-func _entity_post_move():
+func _entity_post_all_movement():
 	if queued_teleport_pos != Vector2i(-1,-1):
 		for e in Globals.get_game_node().get_entities_at_pos(queued_teleport_pos):
 			if !(e is Teleporter):
@@ -125,9 +125,11 @@ func _on_movement_tween_done(dir):
 	for e in Globals.get_game_node().get_entities_at_pos(grid_pos):
 		e._on_entity_finished_entering(self)
 	if is_forcibly_moving:
-		if !on_try_move(dir):
+		if on_try_move(dir):
+			moving = true
+		else:
 			is_forcibly_moving = false
-	if !is_forcibly_moving:
+	if !moving:
 		on_movement_done.emit(self)
 			
 func queue_teleport_to(pos:Vector2i):

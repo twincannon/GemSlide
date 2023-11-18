@@ -17,14 +17,15 @@ func _ready():
 	%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
 	add_to_group("gems")
 
-func _process(_delta):
-	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
+#func _process(_delta):
+#	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
 func _on_movement(_dir):
 	super(_dir)
 	if movement_tween:
 		movement_tween.stop()
 		movement_tween.kill()
+	
 	movement_tween = create_tween().set_parallel(true)
 	#movement_tween.set_ease(Tween.EASE_OUT)
 	#movement_tween.set_trans(Tween.TRANS_ELASTIC)
