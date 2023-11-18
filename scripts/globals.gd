@@ -35,8 +35,8 @@ var COLOR_BLUE := Color.BLUE
 
 var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 
-var current_level_scene:PackedScene
-var current_level:LevelBase
+var current_level:LevelBase # Dep
+var current_level_data = null
 
 var custom_level_data := { } : set = set_custom_level_data
 
@@ -54,10 +54,10 @@ func get_current_world_index():
 	return world_datas.find(current_world_data)
 
 func get_current_level_index():
-	return world_datas[get_current_world_index()].level_data.find(current_level_scene)
+	return world_datas[get_current_world_index()].level_data_json.find(current_level_data)
 
 func change_level(level_to_load):
-	current_level_scene = level_to_load
+	current_level_data = level_to_load
 
 func set_custom_level_data(new_data):
 	custom_level_data = new_data

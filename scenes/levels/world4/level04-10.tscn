@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://log20hof51e5"]
+[gd_scene load_steps=3 format=3 uid="uid://log20hof51e5"]
 
 [ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_4m2bc"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_vg231"]
-[ext_resource type="Script" path="res://scripts/level_editor/entity_icon_base.gd" id="3_nwvmt"]
 
 [node name="level01-01" type="GridContainer"]
 offset_right = 446.0
@@ -13,1138 +12,328 @@ par_moves = 28
 dev_best = 22
 num_buttons = 81
 
-[node name="EntityButton" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="EntityButton" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515891" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515891" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515892" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515892" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515893" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515893" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515894" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515894" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 1
 entity_text = "b"
 entity_color = Color(1, 0, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515895" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515895" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515896" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515896" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515897" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515897" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515898" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515898" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515899" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515899" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515900" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515900" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515901" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515901" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515902" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515902" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515903" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515903" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 12
 entity_text = "tele"
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515904" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515904" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515905" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515905" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515906" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515906" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515907" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515907" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515908" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515908" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515909" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515909" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515910" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515910" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515911" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515911" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515912" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515912" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 7
 entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515913" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515913" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515914" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515914" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515915" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515915" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515916" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515916" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515917" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515917" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 2
 entity_text = "b"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515918" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515918" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515919" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515919" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515920" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515920" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515921" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515921" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 5
 entity_text = "goal"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515922" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515922" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515923" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515923" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515924" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515924" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515925" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515925" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 2
 entity_text = "b"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515926" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515926" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515927" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515927" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 12
 entity_text = "tele"
 entity_id = 4
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515928" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515928" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 7
 entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515929" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515929" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 5
 entity_text = "goal"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515930" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515930" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515931" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515931" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 5
 entity_text = "goal"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515932" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515932" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 7
 entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515933" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515933" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 12
 entity_text = "tele"
 entity_id = 1
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515934" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515934" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515935" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515935" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515936" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515936" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515937" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515937" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515938" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515938" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515939" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515939" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 5
 entity_text = "goal"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515940" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515940" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515941" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515941" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515942" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515942" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515943" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515943" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515944" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515944" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515945" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515945" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515946" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515946" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515947" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515947" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 7
 entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515948" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515948" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515949" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515949" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 7
 entity_text = "b"
 entity_color = Color(0.411765, 0.411765, 0.411765, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515950" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515950" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515951" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515951" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515952" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515952" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515953" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515953" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515954" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515954" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515955" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515955" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 12
 entity_text = "tele"
 entity_id = 3
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515956" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515956" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515957" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515957" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515958" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515958" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515959" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515959" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 12
 entity_text = "tele"
 entity_id = 2
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515960" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515960" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515961" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515961" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515962" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515962" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515963" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515963" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 2
 entity_text = "b"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515964" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515964" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515965" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515965" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515966" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515966" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515967" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515967" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515968" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515968" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515969" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515969" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
 entity_type = 2
 entity_text = "b"
 entity_color = Color(0, 1, 0, 1)
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
-[node name="@MarginContainer@515970" type="MarginContainer" parent="." node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_vg231")]
-custom_minimum_size = Vector2(10, 10)
+[node name="@MarginContainer@515970" parent="." instance=ExtResource("2_vg231")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-script = ExtResource("3_nwvmt")
-entity_icon = NodePath("PanelContainer/EntityIcon")
-id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")

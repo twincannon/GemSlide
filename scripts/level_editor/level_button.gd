@@ -1,7 +1,7 @@
 extends Button
 class_name LevelButton
 
-@export var level_to_load:PackedScene
+@export var level_to_load:JSON
 var custom_level_data := { }
 
 func _on_pressed():

@@ -14,7 +14,6 @@ metadata/_edit_lock_ = true
 
 [node name="EntityButton" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
@@ -36,7 +35,6 @@ entity_color = Color(0, 0, 0.501961, 1)
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
@@ -64,7 +62,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
@@ -92,7 +89,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
@@ -114,7 +110,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
@@ -124,15 +119,12 @@ entity_color = Color(0, 0, 0.501961, 1)
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton22" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton23" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton24" parent="." instance=ExtResource("2_vw8lb")]
 layout_mode = 2

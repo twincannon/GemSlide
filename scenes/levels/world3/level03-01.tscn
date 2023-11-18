@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_50qxs"]
 
 [node name="level01-01" type="GridContainer"]
-offset_right = 428.0
-offset_bottom = 428.0
+offset_right = 429.0
+offset_bottom = 275.0
 columns = 5
 script = ExtResource("1_blw4y")
 tutorial = "[center][b]Sand traps[/b] [img height=20]res://assets/art/sandtrap.png[/img] cause your ball to get stuck, requiring an extra move to free itself from the trap.[/center]"
@@ -14,19 +14,15 @@ dev_best = 6
 
 [node name="EntityButton" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton3" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
@@ -54,7 +50,6 @@ entity_color = Color(0.870588, 0.721569, 0.529412, 1)
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
@@ -64,19 +59,15 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton12" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_50qxs")]
 layout_mode = 2

@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_camdc"]
 
 [node name="level01-01" type="GridContainer"]
+offset_right = 387.0
+offset_bottom = 396.0
 columns = 8
 script = ExtResource("1_s5jgg")
 par_moves = 15
@@ -125,11 +127,9 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton22" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
@@ -163,7 +163,6 @@ entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton27" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton28" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
@@ -179,7 +178,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton30" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton31" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
@@ -207,7 +205,6 @@ entity_color = Color(0, 1, 1, 1)
 
 [node name="EntityButton35" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton36" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
@@ -223,7 +220,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton38" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton39" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
@@ -257,11 +253,9 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton44" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton45" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton46" parent="." instance=ExtResource("2_camdc")]
 layout_mode = 2

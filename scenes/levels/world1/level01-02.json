@@ -1,0 +1,26 @@
+{
+	"DevBest": 5,
+	"Entities": [
+		1,
+		0,
+		0,
+		0,
+		3,
+		4,
+		0,
+		6
+	],
+	"EntityIDs": [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	],
+	"GridSize": "Vector2i(4, 2)",
+	"ParMoves": 5,
+	"Tutorial": "[center][b]Balls[/b] [img width=32 height=32 color=#0000FF]res://assets/art/golfball.png[/img] are blocked by miscolored un-filled [b]holes[/b] [img width=32 height=32 color=#FF0000]res://assets/art/goal.png[/img], but not filled ones.[/center]"
+}

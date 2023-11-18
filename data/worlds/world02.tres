@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WorldData" load_steps=20 format=3 uid="uid://6c800jutlkog"]
+[gd_resource type="Resource" script_class="WorldData" load_steps=38 format=3 uid="uid://6c800jutlkog"]
 
 [ext_resource type="PackedScene" uid="uid://cdmay8k6nx2o6" path="res://scenes/levels/world2/level02-01.tscn" id="1_dbks1"]
 [ext_resource type="PackedScene" uid="uid://cs8hs65wkldnj" path="res://scenes/levels/world2/level02-02.tscn" id="2_pwrp8"]
@@ -19,7 +19,26 @@
 [ext_resource type="PackedScene" uid="uid://bxsupuiyk3ve4" path="res://scenes/levels/world2/level02-07a.tscn" id="13_0alcl"]
 [ext_resource type="PackedScene" uid="uid://bgearqkpjcmnh" path="res://scenes/levels/world2/level02-07b.tscn" id="14_2grwu"]
 [ext_resource type="PackedScene" uid="uid://ccl0um36jxuws" path="res://scenes/levels/world2/level02-08b.tscn" id="17_2sw08"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-01.json" id="19_2vn3d"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-02.json" id="20_r3k0c"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-03.json" id="21_33lo6"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-03a.json" id="22_weolb"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-03b.json" id="23_n0k5w"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-03c.json" id="24_7jy67"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-03d.json" id="25_j6x24"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-03e.json" id="26_bev23"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-04.json" id="27_u3nj5"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-05.json" id="28_daii2"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-05a.json" id="29_534tx"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-06.json" id="30_ftdw2"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-07.json" id="31_wd5ux"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-07a.json" id="32_ftugf"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-07b.json" id="33_lwrqs"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-08.json" id="34_kmjau"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-08b.json" id="35_vclyi"]
+[ext_resource type="JSON" path="res://scenes/levels/world2/level02-09.json" id="36_5ol3k"]
 
 [resource]
 script = ExtResource("5_qp1wm")
 level_data = Array[PackedScene]([ExtResource("1_dbks1"), ExtResource("2_pwrp8"), ExtResource("3_q8n7u"), ExtResource("4_x4jm1"), ExtResource("5_slpu7"), ExtResource("6_05eik"), ExtResource("7_1vofu"), ExtResource("8_s8885"), ExtResource("4_134mt"), ExtResource("5_08111"), ExtResource("9_u4x4x"), ExtResource("6_nalrt"), ExtResource("7_twoxg"), ExtResource("13_0alcl"), ExtResource("14_2grwu"), ExtResource("8_hnpwg"), ExtResource("17_2sw08"), ExtResource("9_ah056")])
+level_data_json = Array[JSON]([ExtResource("19_2vn3d"), ExtResource("20_r3k0c"), ExtResource("21_33lo6"), ExtResource("22_weolb"), ExtResource("23_n0k5w"), ExtResource("24_7jy67"), ExtResource("25_j6x24"), ExtResource("26_bev23"), ExtResource("27_u3nj5"), ExtResource("28_daii2"), ExtResource("29_534tx"), ExtResource("30_ftdw2"), ExtResource("31_wd5ux"), ExtResource("32_ftugf"), ExtResource("33_lwrqs"), ExtResource("34_kmjau"), ExtResource("35_vclyi"), ExtResource("36_5ol3k")])

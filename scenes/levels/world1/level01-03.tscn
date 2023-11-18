@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_ig7hc"]
 
 [node name="level01-01" type="GridContainer"]
+offset_right = 370.0
+offset_bottom = 361.0
 columns = 3
 script = ExtResource("1_5khrk")
 par_moves = 7
@@ -11,42 +13,45 @@ dev_best = 7
 
 [node name="EntityButton" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
-entity_text = "g"
+entity_type = 2
+entity_text = "b"
 entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton3" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
-entity_text = "g"
+entity_type = 1
+entity_text = "b"
 entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
+entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
+entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton7" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
-entity_text = "g"
+entity_type = 3
+entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton8" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_ig7hc")]
 layout_mode = 2
+entity_type = 5
 entity_text = "goal"
 entity_color = Color(0, 1, 0, 1)

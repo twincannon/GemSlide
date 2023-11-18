@@ -9,6 +9,8 @@ class_name LevelBase
 
 @onready var icon_scene = preload("res://scenes/level_editor/entity_icon.tscn")
 
+@export var export_level:bool : set = set_export_level
+
 func get_grid_size():
 	if columns > 0:
 		return Vector2i(columns, get_child_count() / columns)
@@ -32,3 +34,24 @@ func set_num_buttons(new_num_buttons):
 			var new_icon = icon_scene.instantiate()
 			add_child(new_icon)
 			new_icon.set_owner(self) # Makes the nodes show up in the scene tree and be editable
+
+func set_export_level(_export):
+	export_level = false
+	# Do export logic here
+	var path = get_tree().edited_scene_root.scene_file_path
+	print("Exported to " + path.trim_suffix(".tscn") + ".json")
+	var file = FileAccess.open(path.trim_suffix(".tscn") + ".json", FileAccess.WRITE)
+	if file == null:
+		printerr(FileAccess.get_open_error())
+		return
+
+	var dict = { "GridSize": var_to_str(get_grid_size()), "Entities": [], "EntityIDs": [], "ParMoves": par_moves, "DevBest": dev_best, "Tutorial": tutorial }
+	var children = get_children()
+	for i in children.size():
+		if children[i] is EntityIconBase:
+			dict["Entities"].append(children[i].entity_type)
+			dict["EntityIDs"].append(children[i].entity_id)
+	
+	var json_string = JSON.stringify(dict, "\t")
+	file.store_string(json_string)
+	file.close()

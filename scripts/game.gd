@@ -38,40 +38,37 @@ var bottom_buttons_tween:Tween
 var input_dir:int = 0
 enum input_dir_mask { UP = 1, DOWN = 2, LEFT = 4, RIGHT = 8 }
 
+var data:Dictionary = { }
+
 func _ready():
 	get_tree().get_root().size_changed.connect(on_viewport_changed.bind())
 	
-	var entities_to_load = []
-	
-	# can i queue_free this after im done with it?
-	if Globals.current_level_scene:
-		Globals.current_level = Globals.current_level_scene.instantiate() as LevelBase
-		print(SaveGame.level_dict[Globals.current_level_scene.resource_path])
-		grid_size = Globals.current_level.get_grid_size()
-		entities_to_load = Globals.current_level.get_entities()
+	if Globals.current_level_data:
+		data = Globals.current_level_data.get_data()
 		%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
+		print(SaveGame.level_dict[Globals.current_level_data.resource_path])
 	elif !Globals.custom_level_data.is_empty() and Globals.is_valid_custom_level(Globals.custom_level_data):
-		# Instantiate a blank stand-in level to hold our custom vars
-		Globals.current_level = blank_level_scene.instantiate() as LevelBase
-		Globals.current_level.par_moves = Globals.custom_level_data["ParMoves"]
-		grid_size = str_to_var(Globals.custom_level_data["GridSize"])
-		for i in range(Globals.custom_level_data["Entities"].size()):
-			var new_icon = entity_icon_scene.instantiate()
-			new_icon.set_entity_type(Globals.custom_level_data["Entities"][i] as Globals.EntityType)
-			new_icon.set_entity_id(Globals.custom_level_data["EntityIDs"][i])
-			entities_to_load.append(new_icon.get_entity())
-		%LevelNumLabel.text = Globals.custom_level_data["LevelName"]
+		data = Globals.custom_level_data
+		%LevelNumLabel.text = data["LevelName"]
 	else:
-		printerr("Entered game scene with no valid level scene or custom level data")
+		printerr("Entered game scene with no valid level data")
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		return
-		
-	%ParLabel.text = "Par: " + str(Globals.current_level.par_moves)
 	
-	if !Globals.did_retry:
-		if Globals.current_level.tutorial.is_empty() == false:
+	grid_size = str_to_var(data["GridSize"])
+	var entities_to_load = []
+	for i in range(data["Entities"].size()):
+		var new_icon = entity_icon_scene.instantiate()
+		new_icon.set_entity_type(data["Entities"][i] as Globals.EntityType)
+		new_icon.set_entity_id(data["EntityIDs"][i])
+		entities_to_load.append(new_icon.get_entity())
+			
+	%ParLabel.text = "Par: " + str(data["ParMoves"])
+	
+	if !Globals.did_retry and data.has("Tutorial"):
+		if data["Tutorial"].is_empty() == false:
 			%TutorialContainer.visible = true
-			%TutorialLabel.text = Globals.current_level.tutorial
+			%TutorialLabel.text = data["Tutorial"]
 			set_game_paused(true)
 	Globals.did_retry = false
 	
@@ -355,29 +352,29 @@ func check_goal():
 		on_game_over(false)
 		
 func save_game():
-	if Globals.current_level_scene:
-		var current_score = SaveGame.get_level_score(Globals.current_level_scene.resource_path)
+	if Globals.current_level_data:
+		var current_score = SaveGame.get_level_score(Globals.current_level_data.resource_path)
 		if current_score > 0 and moves < current_score or current_score == 0:
-			SaveGame.set_level_score(Globals.current_level_scene.resource_path, moves)
-			SaveGame.set_level_moves(Globals.current_level_scene.resource_path, moves_array)
+			SaveGame.set_level_score(Globals.current_level_data.resource_path, moves)
+			SaveGame.set_level_moves(Globals.current_level_data.resource_path, moves_array)
 		var next_level = get_next_level()
 		if next_level:
 			SaveGame.set_level_unlocked(next_level.resource_path)
 		SaveGame.save_game()
 
 func do_par_moves_anim():
-	if Globals.current_level:
-		if moves <= Globals.current_level.par_moves:
+	if data:
+		if moves <= data["ParMoves"]:
 			var par_moves_indicator = par_moves_indicator_scene.instantiate()
-			if moves == Globals.current_level.par_moves:
+			if moves == data["ParMoves"]:
 				par_moves_indicator.result = Globals.ResultType.Par
-			elif moves < Globals.current_level.dev_best:
+			elif data.has("DevBest") and moves < data["DevBest"]:
 				par_moves_indicator.result = Globals.ResultType.BeatDev
-			elif moves <= Globals.current_level.par_moves - 5:
+			elif moves <= data["ParMoves"] - 5:
 				par_moves_indicator.result = Globals.ResultType.SuperEagle
-			elif moves <= Globals.current_level.par_moves - 3:
+			elif moves <= data["ParMoves"] - 3:
 				par_moves_indicator.result = Globals.ResultType.Eagle
-			elif moves <= Globals.current_level.par_moves - 1:
+			elif moves <= data["ParMoves"] - 1:
 				par_moves_indicator.result = Globals.ResultType.Birdie
 			%HUD.add_child(par_moves_indicator)
 			par_moves_indicator.on_indicator_done.connect(on_game_over.bind(true))
@@ -416,8 +413,8 @@ func _on_main_menu_button_pressed():
 
 func get_next_level():
 	var cur_idx = Globals.get_current_level_index()
-	if cur_idx != -1 and Globals.current_world_data.level_data.size() > cur_idx + 1:
-		return Globals.current_world_data.level_data[cur_idx + 1]
+	if cur_idx != -1 and Globals.current_world_data.level_data_json.size() > cur_idx + 1:
+		return Globals.current_world_data.level_data_json[cur_idx + 1]
 
 func _on_continue_button_pressed():
 	set_game_paused(false)

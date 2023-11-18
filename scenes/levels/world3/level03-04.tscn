@@ -19,19 +19,15 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton3" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
@@ -47,7 +43,6 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton8" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton9" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
@@ -63,7 +58,6 @@ entity_color = Color(0.870588, 0.721569, 0.529412, 1)
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton12" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
@@ -73,7 +67,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
@@ -101,7 +94,6 @@ entity_color = Color(0, 0, 0.501961, 1)
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
@@ -111,7 +103,6 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
@@ -127,7 +118,6 @@ entity_color = Color(0.870588, 0.721569, 0.529412, 1)
 
 [node name="EntityButton23" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton24" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
@@ -143,19 +133,15 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton26" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton27" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton28" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton29" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton30" parent="." instance=ExtResource("2_kwveb")]
 layout_mode = 2

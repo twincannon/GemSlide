@@ -32,11 +32,9 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
@@ -64,7 +62,6 @@ entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
@@ -86,7 +83,6 @@ entity_color = Color(0, 0, 0, 1)
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
@@ -96,7 +92,6 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton17" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
@@ -106,7 +101,6 @@ entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
@@ -122,11 +116,9 @@ entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton22" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2
-entity_text = ""
 
 [node name="EntityButton23" parent="." instance=ExtResource("2_3s13n")]
 layout_mode = 2

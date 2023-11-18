@@ -37,7 +37,7 @@ func save_game():
 func _ready():
 	for world in Globals.world_datas:
 		var is_first_level = true
-		for level in world.level_data:
+		for level in world.level_data_json:
 			update_level_in_dict(level.resource_path, is_first_level, 0)
 			is_first_level = false
 	

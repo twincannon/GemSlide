@@ -1,0 +1,26 @@
+{
+	"DevBest": 4,
+	"Entities": [
+		1,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		4
+	],
+	"EntityIDs": [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	],
+	"GridSize": "Vector2i(4, 2)",
+	"ParMoves": 4,
+	"Tutorial": "[center][wave amp=50.0 freq=5.0]Welcome to [i]Putt! Putt! [rainbow]Slide[/rainbow]![/i][/wave]\n\nYou can swipe, use arrow keys or WASD to move balls [img width=32 height=32 color=#FF0000]res://assets/art/golfball.png[/img] around the board.[/center]"
+}

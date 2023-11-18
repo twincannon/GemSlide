@@ -1,4 +1,4 @@
 extends Resource
 class_name WorldData
 
-@export var level_data:Array[PackedScene] = []
+@export var level_data_json:Array[JSON] = []

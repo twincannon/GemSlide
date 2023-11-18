@@ -1,0 +1,40 @@
+{
+	"DevBest": 6,
+	"Entities": [
+		0,
+		0,
+		0,
+		0,
+		8,
+		1,
+		7,
+		10,
+		0,
+		4,
+		0,
+		0,
+		0,
+		0,
+		8
+	],
+	"EntityIDs": [
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	],
+	"GridSize": "Vector2i(5, 3)",
+	"ParMoves": 6,
+	"Tutorial": "[center][b]Sand traps[/b] [img height=20]res://assets/art/sandtrap.png[/img] cause your ball to get stuck, requiring an extra move to free itself from the trap.[/center]"
+}

@@ -16,218 +16,176 @@ num_buttons = 64
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
 
 [node name="@MarginContainer@426626" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426627" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426628" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426629" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426630" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426631" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426632" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
 
 [node name="@MarginContainer@426633" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426634" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 12
 entity_text = "tele"
-entity_id = 0
 
 [node name="@MarginContainer@426635" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426636" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426637" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426638" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426639" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 12
 entity_text = "tele"
-entity_id = 0
 
 [node name="@MarginContainer@426640" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426641" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426642" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426643" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426644" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426645" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426646" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426647" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426648" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426649" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426650" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426651" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426652" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 1
 entity_text = "b"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426653" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 1
 entity_text = "b"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426654" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426655" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426656" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426657" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426658" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426659" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426660" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 1
 entity_text = "b"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426661" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 1
 entity_text = "b"
 entity_color = Color(1, 0, 0, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426662" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426663" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426664" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426665" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
 
 [node name="@MarginContainer@426666" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426667" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
@@ -237,11 +195,9 @@ entity_id = 1
 
 [node name="@MarginContainer@426668" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426669" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426670" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
@@ -254,56 +210,46 @@ layout_mode = 2
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426672" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
 
 [node name="@MarginContainer@426673" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
 
 [node name="@MarginContainer@426674" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
 
 [node name="@MarginContainer@426675" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426676" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426677" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
-entity_id = 0
 
 [node name="@MarginContainer@426678" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
-entity_id = 0
 
 [node name="@MarginContainer@426679" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
 
 [node name="@MarginContainer@426680" parent="." instance=ExtResource("2_8dmdi")]
 layout_mode = 2
 entity_type = 11
 entity_text = "water"
-entity_id = 0
