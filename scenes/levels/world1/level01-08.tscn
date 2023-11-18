@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_tm420"]
 
 [node name="level01-01" type="GridContainer"]
+offset_right = 418.0
+offset_bottom = 409.0
 columns = 7
 script = ExtResource("1_c4r6a")
 par_moves = 27
-dev_best = 22
+dev_best = 21
 
 [node name="EntityButton" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -17,28 +19,18 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton3" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton7" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -60,8 +52,6 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton10" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton11" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -71,8 +61,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton12" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -82,8 +70,6 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -93,8 +79,6 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton17" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -104,23 +88,15 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton18" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton19" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton20" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton21" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton22" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -130,8 +106,6 @@ entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton23" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton24" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -171,8 +145,6 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton30" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton31" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -182,23 +154,15 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton32" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton33" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton34" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton35" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton36" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -214,8 +178,6 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton38" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton39" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -225,8 +187,6 @@ entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton40" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton41" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -236,8 +196,6 @@ entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton42" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton43" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
@@ -247,28 +205,18 @@ entity_color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="EntityButton44" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton45" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton46" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton47" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton48" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2
-entity_type = 0
-entity_text = ""
 
 [node name="EntityButton49" parent="." instance=ExtResource("2_tm420")]
 layout_mode = 2

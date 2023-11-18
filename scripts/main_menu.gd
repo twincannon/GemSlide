@@ -7,6 +7,9 @@ func _ready():
 	update_world()
 
 func update_world():
+	%ReturnToCourseButton.visible = false
+	%CustomLevelsButton.visible = true
+	
 	%WorldLabel.text = "Course " + str(Globals.get_current_world_index() + 1)
 	var world_idx = Globals.get_current_world_index()
 	%WorldButtonLeft.visible = world_idx > 0
@@ -33,6 +36,7 @@ func populate_button_grid():
 				buttons[i].set_button_score(SaveGame.get_level_score(level_path))
 				# This is real gross - instantiating the whole scene for a single var. Bleh
 				# Make a level data resource or something? Actually this isn't as bad as it seems since it's only the level scene and not the game scene. But still
+				# TODO Okay there's a noticable hitch here now so this should be converted over to json or something
 				var level_temp = Globals.current_world_data.level_data[i].instantiate()
 				buttons[i].set_par_score(level_temp.par_moves)
 				level_temp.queue_free()
@@ -85,8 +89,6 @@ func _on_custom_levels_button_pressed():
 
 
 func _on_return_to_course_button_pressed():
-	%ReturnToCourseButton.visible = false
-	%CustomLevelsButton.visible = true
 	update_world()
 
 
