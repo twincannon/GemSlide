@@ -270,6 +270,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -1.5708
 scale = Vector2(0.33, 0.33)
+mouse_filter = 2
 texture = ExtResource("4_x5udq")
 
 [node name="Control2" type="Control" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]

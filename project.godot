@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Putt! Putt! Slide"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/splash_screen.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/image="res://assets/art/ui/twincannon.png"
 boot_splash/fullsize=false
@@ -21,6 +21,7 @@ config/icon="res://assets/art/golfball.png"
 
 Globals="*res://scripts/globals.gd"
 SaveGame="*res://scripts/save_game.gd"
+SoundManager="*res://scripts/sound_manager.gd"
 
 [debug]
 
