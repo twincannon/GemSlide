@@ -14,9 +14,9 @@ func _ready():
 
 func connect_sound(node:Node):
 	if node is Button:
-		node.pressed.connect(play_ui_sound.bind(&"ui_click"))
-		node.mouse_entered.connect(play_ui_sound.bind(&"ui_hover"))
+		node.pressed.connect(play_ui_sound.bind(node, &"ui_click"))
+		node.mouse_entered.connect(play_ui_sound.bind(node, &"ui_hover"))
 
-func play_ui_sound(name:String):
-	if sounds.has(name):
-		sounds[name].play()
+func play_ui_sound(button:Button, soundname:String):
+	if !button.disabled and sounds.has(soundname):
+		sounds[soundname].play()
