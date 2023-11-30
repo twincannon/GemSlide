@@ -10,6 +10,7 @@ func _initialize_entity():
 	var other_teleporter = find_next_teleporter()
 	if other_teleporter:
 		$Arrow.look_at(other_teleporter.global_position)
+	# Code for disabling the teleporter if a button is present?
 
 func _does_block(_other_entity):
 	return false

@@ -131,7 +131,11 @@ func _on_movement_tween_done(dir):
 			is_forcibly_moving = false
 	if !moving:
 		on_movement_done.emit(self)
-			
+
+func _on_activated():
+	# Called when an associated pressure plate is pressed
+	pass
+
 func queue_teleport_to(pos:Vector2i):
 	queued_teleport_pos = pos
 
