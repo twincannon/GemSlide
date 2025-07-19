@@ -111,5 +111,3 @@ func reset_blocked_anchor_position():
 #	death_tween.tween_property(self, "scale", Vector2(0.1,0.1), 0.5)
 #	death_tween.tween_property(self, "rotation", PI, 0.5)
 #	death_tween.chain().tween_callback(queue_free)
-
-

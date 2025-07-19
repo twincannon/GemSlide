@@ -12,4 +12,3 @@ func _ready():
 
 func _does_block(_other_entity):
 	return true
-

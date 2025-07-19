@@ -3,7 +3,7 @@ class_name Game
 
 const tile_scene = preload("res://scenes/tile.tscn")
 const par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.tscn")
-const entity_icon_scene = preload("res://scenes/level_editor/entity_icon.tscn")
+@onready var entity_icon_scene = load("res://scenes/level_editor/entity_icon.tscn")
 const blank_level_scene = preload("res://scenes/levels/blank_level.tscn")
 
 var goal_sound = preload("res://assets/audio/goal.wav")
@@ -59,9 +59,10 @@ func _ready():
 	var entities_to_load = []
 	for i in range(data["Entities"].size()):
 		var new_icon = entity_icon_scene.instantiate()
-		new_icon.set_entity_type(data["Entities"][i] as Globals.EntityType)
-		new_icon.set_entity_id(data["EntityIDs"][i])
-		entities_to_load.append(new_icon.get_entity())
+		if new_icon:
+			new_icon.set_entity_type(data["Entities"][i] as Globals.EntityType)
+			new_icon.set_entity_id(data["EntityIDs"][i])
+			entities_to_load.append(new_icon.get_entity())
 			
 	%ParLabel.text = "Par: " + str(data["ParMoves"])
 	
@@ -109,10 +110,11 @@ func on_viewport_changed():
 	var viewport_size = get_viewport().size
 	
 	# Old method that used to not work but now does?! Except with very large resolutions...
-#	var padding = Vector2(300,600)
-#	var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
-#	var minimum = min(scaled.x, scaled.y)
-#	$GridAnchor.scale = Vector2(minimum, minimum)
+	#var padding = Vector2(300,600)
+	#var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
+	#var minimum = min(scaled.x, scaled.y)
+	#$GridAnchor.scale = Vector2(minimum, minimum)
+	
 	# New hacky method:
 	var new_scale = 3.5 / float(max(grid_size.x, grid_size.y))
 	$GridAnchor.scale = Vector2(new_scale, new_scale) #Hacky... but the above solution no longer works with stretch mode, for some reason?

@@ -170,4 +170,3 @@ func reset_sprite_position():
 	if entity_sprite:
 		entity_sprite.position = Vector2(0,0)
 		entity_sprite.rotation = 0
-

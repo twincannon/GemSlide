@@ -48,4 +48,3 @@ func _does_block(_other_entity):
 		if other_ent_color_comp and $ColorComponent.color == other_ent_color_comp.color:
 			return false
 	return true
-

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3vqhbxfu52nx"]
 
 [ext_resource type="Texture2D" uid="uid://bpw2yoddklsj7" path="res://assets/art/teleporter.png" id="1_85kjp"]
-[ext_resource type="Script" path="res://scripts/entities/teleporter.gd" id="1_ot2ij"]
+[ext_resource type="Script" uid="uid://b3p3ony4l0k26" path="res://scripts/entities/teleporter.gd" id="1_ot2ij"]
 [ext_resource type="AudioStream" uid="uid://b7eoe6fqejlpe" path="res://assets/audio/teleport.wav" id="3_4f74m"]
 [ext_resource type="Texture2D" uid="uid://botpl3umn6jr3" path="res://assets/art/ui/mainmenu_arrow.png" id="4_nr7gf"]
 
