@@ -64,7 +64,7 @@ func _ready():
 			new_icon.set_entity_id(data["EntityIDs"][i])
 			entities_to_load.append(new_icon.get_entity())
 			
-	%ParLabel.text = "Par: " + str(data["ParMoves"])
+	%ParLabel.text = "Par: " + str(int(data["ParMoves"]))
 	
 	if !Globals.did_retry and data.has("Tutorial"):
 		if data["Tutorial"].is_empty() == false:
@@ -109,15 +109,28 @@ func on_viewport_changed():
 	$GridAnchor.position = %GridPos.position
 	var viewport_size = get_viewport().size
 	
-	# Old method that used to not work but now does?! Except with very large resolutions...
-	#var padding = Vector2(300,600)
-	#var scaled = Vector2(viewport_size) / ((tile_size * Vector2(grid_size)) + padding)
-	#var minimum = min(scaled.x, scaled.y)
-	#$GridAnchor.scale = Vector2(minimum, minimum)
+	# Calculate the total grid size in pixels
+	var grid_pixel_size = tile_size * Vector2(grid_size)
 	
-	# New hacky method:
-	var new_scale = 3.5 / float(max(grid_size.x, grid_size.y))
-	$GridAnchor.scale = Vector2(new_scale, new_scale) #Hacky... but the above solution no longer works with stretch mode, for some reason?
+	# padding to ensure the grid doesn't touch the edges or overlap UI
+	var padding = Vector2i(200, 500)
+	
+	# Calculate available space (accounting for UI elements)
+	var available_size = viewport_size - padding
+	
+	# Calculate scale factors for both dimensions
+	var scale_x = available_size.x / grid_pixel_size.x
+	var scale_y = available_size.y / grid_pixel_size.y
+	
+	# Use the smaller scale to ensure the grid fits in both dimensions
+	var final_scale = min(scale_x, scale_y)
+	
+	# Apply a maximum scale to prevent the grid from becoming too large
+	var max_scale = 3.0
+	final_scale = min(final_scale, max_scale)
+	
+	# Apply the scale
+	$GridAnchor.scale = Vector2(final_scale, final_scale)
 	
 	%BackgroundImageRoot.position.x = viewport_size.x/2
 	#%BackgroundImageRoot.position.x = viewport_size.x
