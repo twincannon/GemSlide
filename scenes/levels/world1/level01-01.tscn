@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu5dihe64rs8x"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_irwso"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_irwso"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_kce62"]
 
 [node name="level01-01" type="GridContainer"]

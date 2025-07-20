@@ -332,15 +332,23 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
+[node name="UndoButton" type="Button" parent="Canvas/HUD"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 50.0
+text = "Undo"
+
 [node name="BushRight" type="Sprite2D" parent="."]
-z_index = -10
+z_index = -99
 position = Vector2(442, 845)
 rotation = -0.376991
 scale = Vector2(0.711827, 0.641037)
 texture = ExtResource("5_176mw")
 
 [node name="BushLeft" type="Sprite2D" parent="."]
-z_index = -10
+z_index = -99
 position = Vector2(20, 851)
 rotation = 0.553269
 scale = Vector2(0.711827, 0.641037)
@@ -389,3 +397,4 @@ texture = SubResource("GradientTexture1D_tq156")
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2/ExpandHUDButton" to="." method="_on_expand_hud_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2/HUDMainMenuButton" to="." method="_on_hud_main_menu_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer/HUDRetryButton" to="." method="_on_hud_retry_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/UndoButton" to="." method="_on_undo_button_pressed"]

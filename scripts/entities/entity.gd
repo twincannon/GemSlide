@@ -14,6 +14,7 @@ var queued_teleport_pos:Vector2i = Vector2i(-1,-1)
 
 var entity_sprite:Sprite2D # Sprite for moving, rotating intended to be at 0,0 with 0 rotation by default
 var entity_id := 0
+var entity_type:int #enum EntityType
 
 var moving := false
 
@@ -24,7 +25,7 @@ var stuck := false
 signal on_movement_done
 signal on_entity_pre_move(entity:Entity, dir:Vector2i)
 
-func _initialize_entity():
+func _initialize_entity(game:Game):
 	# Called after all entiites have been added and had their ready() called
 	pass
 
@@ -170,3 +171,7 @@ func reset_sprite_position():
 	if entity_sprite:
 		entity_sprite.position = Vector2(0,0)
 		entity_sprite.rotation = 0
+
+func get_properties() -> Dictionary:
+	var dict = {"moves":moves, "stuck":stuck}
+	return dict

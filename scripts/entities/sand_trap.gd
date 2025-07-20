@@ -27,3 +27,9 @@ func pre_move(entity:Entity, dir:Vector2i):
 		if moves_to_escape <= 0:
 			entity.stuck = false
 			entity.on_entity_pre_move.disconnect(pre_move)
+
+func get_properties() -> Dictionary:
+	var dict = super()
+	dict["moves_to_escape"] = moves_to_escape
+	dict["fill_visible"] = $Fill.visible #Maybe this is unnecessary: if moves_to_escape is 0, the fill is not visible
+	return dict

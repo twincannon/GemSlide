@@ -16,3 +16,8 @@ func _on_entity_finished_entering(_other_entity):
 	for e in Globals.get_game_node().entities:
 		if e.entity_id == entity_id:
 			e._on_activated()
+
+func get_properties() -> Dictionary:
+	var dict = super()
+	dict["pressed"] = pressed
+	return dict

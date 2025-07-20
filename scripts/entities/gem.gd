@@ -17,6 +17,9 @@ func _ready():
 	%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
 	add_to_group("gems")
 
+func _initialize_entity(game:Game):
+	connect("on_goal_animation_finished", game.on_gem_goal_anim_finished.bind())
+	
 #func _process(_delta):
 #	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
@@ -102,6 +105,11 @@ func _does_block(_other_entity):
 func reset_blocked_anchor_position():
 	$BlockedAnchor.position = Vector2(0,0)
 	$BlockedAnchor.rotation = 0
+
+func get_properties() -> Dictionary:
+	var dict = super()
+	dict["gem_in_goal"] = gem_in_goal
+	return dict
 
 #func on_number_squished():
 #	$GemSprite.z_index += 1

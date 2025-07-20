@@ -40,8 +40,13 @@ enum input_dir_mask { UP = 1, DOWN = 2, LEFT = 4, RIGHT = 8 }
 
 var data:Dictionary = { }
 
+var undo_manager:UndoManager
+
 func _ready():
 	get_tree().get_root().size_changed.connect(on_viewport_changed.bind())
+	
+	undo_manager = UndoManager.new()
+	undo_manager.game = self
 	
 	if Globals.current_level_data:
 		data = Globals.current_level_data.get_data()
@@ -61,8 +66,12 @@ func _ready():
 		var new_icon = entity_icon_scene.instantiate()
 		if new_icon:
 			new_icon.set_entity_type(data["Entities"][i] as Globals.EntityType)
-			new_icon.set_entity_id(data["EntityIDs"][i])
-			entities_to_load.append(new_icon.get_entity())
+			new_icon.set_entity_id(data["EntityIDs"][i]) #What is this for?
+			var new_entity = new_icon.get_entity()
+			if new_entity: #check for null as we intend to have null entries
+				new_entity.entity_type = data["Entities"][i] as Globals.EntityType
+				new_entity.entity_id = data["EntityIDs"][i]
+			entities_to_load.append(new_entity) #get instantiated entity
 			
 	%ParLabel.text = "Par: " + str(int(data["ParMoves"]))
 	
@@ -92,18 +101,19 @@ func _ready():
 					var entity = entities_to_load[currentNum]
 					if entity:
 						tile_instance.on_entity_spawned_on_tile()
-						$GridAnchor.add_child(entity)
-						entity.position = tile_instance.position
-						#entity.scale = tilenode.transform.get_scale() # do we want this?
-						entity.set_grid_pos(Vector2i(x,y))
-						entities.append(entity)
-						if entity is Gem:
-							entity.on_goal_animation_finished.connect(on_gem_goal_anim_finished)
+						add_entity_to_grid(entity, Vector2i(x,y))
 			currentNum += 1
 	for e in entities:
-		e._initialize_entity()
+		e._initialize_entity(self)
 	on_viewport_changed()
+	undo_manager.push_game_state()
 
+func add_entity_to_grid(entity:Entity, grid_pos:Vector2i):
+	$GridAnchor.add_child(entity)
+	entity.position = get_position_at_grid_pos(grid_pos)
+	#entity.scale = tilenode.transform.get_scale() # do we want this?
+	entity.set_grid_pos(grid_pos)
+	entities.append(entity)
 
 func on_viewport_changed():
 	$GridAnchor.position = %GridPos.position
@@ -255,6 +265,7 @@ func move_entities(dir:Vector2i):
 		for e in entities:
 			if e.moving:
 				e.on_movement_done.connect(check_for_last_movement)
+		undo_manager.push_game_state()
 
 func check_for_last_movement(entity:Entity):
 	entity.on_movement_done.disconnect(check_for_last_movement)
@@ -466,3 +477,7 @@ func _on_expand_hud_button_pressed():
 		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", -100, 0.5).as_relative()
 	else:
 		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", 100, 0.5).as_relative()
+
+
+func _on_undo_button_pressed() -> void:
+	undo_manager.pop_game_state()
