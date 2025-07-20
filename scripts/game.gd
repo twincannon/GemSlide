@@ -116,16 +116,15 @@ func add_entity_to_grid(entity:Entity, grid_pos:Vector2i):
 
 func on_viewport_changed():
 	$GridAnchor.position = %GridPos.position
-	var viewport_size = get_viewport().size
+	var viewport_size = get_viewport_rect().size #key here is to use get_viewport_rect() as opposed to get_viewport()
 	
 	# Calculate the total grid size in pixels
 	var grid_pixel_size = tile_size * Vector2(grid_size)
 	
 	# padding to ensure the grid doesn't touch the edges or overlap UI
-	var padding = Vector2i(200, 300)
+	var padding = Vector2(100, 200)
 	var available_size = viewport_size - padding
 	
-	# Calculate scale factors for both dimensions
 	var scale_x = available_size.x / grid_pixel_size.x
 	var scale_y = available_size.y / grid_pixel_size.y
 	
@@ -135,7 +134,7 @@ func on_viewport_changed():
 	
 	# Apply the scale
 	$GridAnchor.scale = Vector2(final_scale, final_scale)
-	
+
 	%BackgroundImageRoot.position.x = viewport_size.x/2
 	#%BackgroundImageRoot.position.x = viewport_size.x
 	#%BackgroundImageRoot.position.y = viewport_size.y
