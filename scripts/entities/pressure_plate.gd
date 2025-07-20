@@ -21,3 +21,10 @@ func get_properties() -> Dictionary:
 	var dict = super()
 	dict["pressed"] = pressed
 	return dict
+
+func apply_properties(properties:Dictionary):
+	super(properties)
+	if properties.has("pressed"):
+		pressed = properties["pressed"]
+		if pressed:
+			$Sprite.texture = icon_pressed

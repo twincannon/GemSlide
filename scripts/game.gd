@@ -106,7 +106,6 @@ func _ready():
 	for e in entities:
 		e._initialize_entity(self)
 	on_viewport_changed()
-	undo_manager.push_game_state()
 
 func add_entity_to_grid(entity:Entity, grid_pos:Vector2i):
 	$GridAnchor.add_child(entity)
@@ -161,6 +160,9 @@ func _process(_delta):
 	for e in entities_to_remove:
 		entities.erase(e)
 	entities_to_remove.clear()
+	
+	if !check_goals_and_winnable()[1]:
+		return
 	
 	if !move_cooldown_timer.is_stopped(): return
 	var all_goals_filled = true
@@ -240,6 +242,8 @@ func _input(event):
 func move_entities(dir:Vector2i):
 	move_queue_timer.stop()
 	
+	undo_manager.push_game_state()
+	
 	var did_any_entity_move = false
 	
 	for i in entities:
@@ -265,7 +269,8 @@ func move_entities(dir:Vector2i):
 		for e in entities:
 			if e.moving:
 				e.on_movement_done.connect(check_for_last_movement)
-		undo_manager.push_game_state()
+	else:
+		undo_manager.remove_newest_game_state() #Pop the added gamestate.
 
 func check_for_last_movement(entity:Entity):
 	entity.on_movement_done.disconnect(check_for_last_movement)
@@ -282,6 +287,9 @@ func on_all_movement_finished():
 
 func increment_moves():
 	moves += 1
+	update_moves_text()
+
+func update_moves_text():
 	%MovesLabel.text = "Moves: " + str(moves)
 
 func on_gem_goal_anim_finished():
@@ -342,6 +350,19 @@ func check_goal():
 	if game_state == GameState.END:
 		return # Prevent stuff like water hazards triggering a second check_goal() call after winning
 	
+	var goals_win_state_array = check_goals_and_winnable()
+	var all_goals_filled = goals_win_state_array[0]
+	var can_win = goals_win_state_array[1]
+	
+	if all_goals_filled:
+		game_state = GameState.END
+		#print("all goals filled @ " + Time.get_time_string_from_system())
+		save_game()
+		do_par_moves_anim()
+	elif !can_win:
+		on_game_over(false)
+
+func check_goals_and_winnable():
 	var goal_dict = { "Red":0, "Green":0, "Blue":0 }
 	var gem_dict = { "Red":0, "Green":0, "Blue":0  }
 	var all_goals_filled = true
@@ -368,15 +389,8 @@ func check_goal():
 					gem_dict["Blue"] += 1
 	
 	var can_win = gem_dict["Red"] >= goal_dict["Red"] and gem_dict["Green"] >= goal_dict["Green"] and gem_dict["Blue"] >= goal_dict["Blue"]
+	return [all_goals_filled, can_win]
 
-	if all_goals_filled:
-		game_state = GameState.END
-		#print("all goals filled @ " + Time.get_time_string_from_system())
-		save_game()
-		do_par_moves_anim()
-	elif !can_win:
-		on_game_over(false)
-		
 func save_game():
 	if Globals.current_level_data:
 		var current_score = SaveGame.get_level_score(Globals.current_level_data.resource_path)
@@ -480,4 +494,10 @@ func _on_expand_hud_button_pressed():
 
 
 func _on_undo_button_pressed() -> void:
+	# instead of this it should check gameover
+	# but more importantly we need to pause the instant the gamestate becomes unwinnable
+	set_game_paused(false)
+	game_state = GameState.PLAYING
+	%ResultContainer.visible = false
+	%TutorialContainer.visible = false
 	undo_manager.pop_game_state()

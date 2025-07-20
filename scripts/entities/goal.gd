@@ -53,3 +53,13 @@ func get_properties() -> Dictionary:
 	var dict = super()
 	dict["filled"] = filled
 	return dict
+
+func apply_properties(properties:Dictionary):
+	super(properties)
+	if properties.has("filled"):
+		filled = properties["filled"]
+		if filled:
+			%FlagSprite.visible = false
+			entity_sprite.modulate.r *= 0.5
+			entity_sprite.modulate.g *= 0.5
+			entity_sprite.modulate.b *= 0.5

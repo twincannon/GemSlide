@@ -33,3 +33,20 @@ func get_properties() -> Dictionary:
 	dict["moves_to_escape"] = moves_to_escape
 	dict["fill_visible"] = $Fill.visible #Maybe this is unnecessary: if moves_to_escape is 0, the fill is not visible
 	return dict
+
+func apply_properties(properties:Dictionary):
+	super(properties)
+	if properties.has("moves_to_escape"):
+		moves_to_escape = properties["moves_to_escape"]
+	if properties.has("fill_visible"):
+		$Fill.visible = properties["fill_visible"]
+
+func reconnect_to_stuck_entities():
+	# Find entities that are stuck and should be connected to this sand trap
+	var game = Globals.get_game_node()
+	if game:
+		for entity in game.entities:
+			if entity.stuck and entity.grid_pos == grid_pos:
+				# Reconnect the signal
+				if !entity.on_entity_pre_move.is_connected(pre_move):
+					entity.on_entity_pre_move.connect(pre_move)

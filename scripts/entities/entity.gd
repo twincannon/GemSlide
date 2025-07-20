@@ -175,3 +175,9 @@ func reset_sprite_position():
 func get_properties() -> Dictionary:
 	var dict = {"moves":moves, "stuck":stuck}
 	return dict
+
+func apply_properties(properties:Dictionary):
+	if properties.has("moves"):
+		moves = properties["moves"]
+	if properties.has("stuck"):
+		stuck = properties["stuck"]

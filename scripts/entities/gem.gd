@@ -111,6 +111,18 @@ func get_properties() -> Dictionary:
 	dict["gem_in_goal"] = gem_in_goal
 	return dict
 
+func apply_properties(properties:Dictionary):
+	super(properties)
+	if properties.has("gem_in_goal"):
+		gem_in_goal = properties["gem_in_goal"]
+	if gem_in_goal:
+		gem_goal_anim_done = true
+		entity_sprite.scale *= 0.66
+		entity_sprite.modulate.r *= 0.5
+		entity_sprite.modulate.g *= 0.5
+		entity_sprite.modulate.b *= 0.5
+		entity_sprite.z_index -= 10
+
 #func on_number_squished():
 #	$GemSprite.z_index += 1
 #	death_tween = create_tween().set_parallel(true)
