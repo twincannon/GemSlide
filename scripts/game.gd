@@ -122,9 +122,7 @@ func on_viewport_changed():
 	var grid_pixel_size = tile_size * Vector2(grid_size)
 	
 	# padding to ensure the grid doesn't touch the edges or overlap UI
-	var padding = Vector2i(200, 500)
-	
-	# Calculate available space (accounting for UI elements)
+	var padding = Vector2i(200, 300)
 	var available_size = viewport_size - padding
 	
 	# Calculate scale factors for both dimensions
@@ -259,7 +257,7 @@ func move_entities(dir:Vector2i):
 		
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
-		$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
+		#$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
 		$Audio/MoveAudioPlayer.play()
 		increment_moves()
 		moves_array.append(dir)
