@@ -25,7 +25,7 @@ var stuck := false
 signal on_movement_done
 signal on_entity_pre_move(entity:Entity, dir:Vector2i)
 
-func _initialize_entity(game:Game):
+func _initialize_entity(_game:Game):
 	# Called after all entiites have been added and had their ready() called
 	pass
 

@@ -35,7 +35,7 @@ func populate_button_grid():
 				var level_path = Globals.current_world_data.level_data_json[i].resource_path
 				buttons[i].set_button_score(SaveGame.get_level_score(level_path))
 				var data = Globals.current_world_data.level_data_json[i].get_data()
-				buttons[i].set_par_score(data["ParMoves"])
+				buttons[i].set_par_score(int(data["ParMoves"]))
 				#if OS.has_feature("web") == false:
 				if SaveGame.is_level_unlocked(level_path) == false:
 					buttons[i].disabled = true
@@ -91,16 +91,19 @@ func _on_return_to_course_button_pressed():
 func _on_option_ball_r_pressed():
 	%OptionBallG.set_pressed(false)
 	%OptionBallB.set_pressed(false)
+	%ColorPicker.color = %OptionBallR.modulate
 
 
 func _on_option_ball_g_pressed():
 	%OptionBallR.set_pressed(false)
 	%OptionBallB.set_pressed(false)
+	%ColorPicker.color = %OptionBallG.modulate
 
 
 func _on_option_ball_b_pressed():
 	%OptionBallR.set_pressed(false)
 	%OptionBallG.set_pressed(false)
+	%ColorPicker.color = %OptionBallB.modulate
 
 
 func _on_color_picker_color_changed(color):

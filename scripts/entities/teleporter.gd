@@ -6,7 +6,7 @@ var teleport_vfx_scene = preload("res://scenes/vfx/vfx_teleport.tscn")
 func _ready():
 	moves = false
 
-func _initialize_entity(game:Game):
+func _initialize_entity(_game:Game):
 	var other_teleporter = find_next_teleporter()
 	if other_teleporter:
 		$Arrow.look_at(other_teleporter.global_position)

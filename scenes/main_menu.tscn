@@ -422,6 +422,7 @@ toggle_mode = true
 icon = ExtResource("10_lpjgg")
 
 [node name="ColorPicker" type="ColorPicker" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 edit_alpha = false
 can_add_swatches = false

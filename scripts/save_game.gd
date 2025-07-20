@@ -28,7 +28,7 @@ func set_level_moves(level_name, moves):
 func is_level_unlocked(level_name):
 	return level_dict[level_name]["unlocked"] if level_dict.has(level_name) else true
 
-func get_level_score(level_name):
+func get_level_score(level_name) -> int:
 	return level_dict[level_name]["score"] if level_dict.has(level_name) else 0
 
 func save_game():

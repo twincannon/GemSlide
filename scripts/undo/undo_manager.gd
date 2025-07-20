@@ -5,7 +5,6 @@ var game:Game
 var game_states:Array[UndoGameState]
 
 func push_game_state():
-	print("pushing new gamestate")
 	var new_game_state := UndoGameState.new()
 	new_game_state.moves_count = game.moves
 	new_game_state.moves_array = game.moves_array.duplicate()
@@ -27,7 +26,6 @@ func push_game_state():
 func pop_game_state():
 	if game_states.size() <= 0:
 		return
-	print("Popping gamestate")
 
 	for e in game.entities:
 		e.queue_free()
@@ -63,5 +61,4 @@ func pop_game_state():
 		game.update_moves_text()
 
 func remove_newest_game_state():
-	print("undoing gamestate add")
 	game_states.pop_back()

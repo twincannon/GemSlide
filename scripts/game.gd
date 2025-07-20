@@ -133,10 +133,7 @@ func on_viewport_changed():
 	
 	# Use the smaller scale to ensure the grid fits in both dimensions
 	var final_scale = min(scale_x, scale_y)
-	
-	# Apply a maximum scale to prevent the grid from becoming too large
-	var max_scale = 3.0
-	final_scale = min(final_scale, max_scale)
+	final_scale = clamp(final_scale, 0.2, 3.0)
 	
 	# Apply the scale
 	$GridAnchor.scale = Vector2(final_scale, final_scale)
@@ -494,8 +491,8 @@ func _on_expand_hud_button_pressed():
 
 
 func _on_undo_button_pressed() -> void:
-	# instead of this it should check gameover
-	# but more importantly we need to pause the instant the gamestate becomes unwinnable
+	if check_goals_and_winnable()[0]:
+		return
 	set_game_paused(false)
 	game_state = GameState.PLAYING
 	%ResultContainer.visible = false
