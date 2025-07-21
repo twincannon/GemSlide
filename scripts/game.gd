@@ -256,7 +256,7 @@ func move_entities(dir:Vector2i):
 		
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
-		#$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
+		$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
 		$Audio/MoveAudioPlayer.play()
 		increment_moves()
 		moves_array.append(dir)
