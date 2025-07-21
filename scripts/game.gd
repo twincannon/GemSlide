@@ -243,16 +243,9 @@ func move_entities(dir:Vector2i):
 	for i in entities:
 		i._entity_pre_move(dir)
 	
-	# Iterate forwards or backwards depending on our direction, probably a better way to do this? The reason for this is to prevent wrong-order iteration on our entities
-	# Wait does this even make sense? The order of entities doesn't correlate to their position on the grid
-	#if dir == Vector2i.UP or dir == Vector2i.LEFT:
 	for i in entities:
 		if i.on_try_move(dir) or i._should_increment_moves(dir):
 			did_any_entity_move = true
-	#elif dir == Vector2i.DOWN or dir == Vector2i.RIGHT:
-	#	for i in range(entities.size() - 1, -1, -1):
-	#		if entities[i].on_try_move(dir) or entities[i]._should_increment_moves(dir):
-	#			did_any_entity_move = true
 		
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
@@ -263,6 +256,14 @@ func move_entities(dir:Vector2i):
 		for e in entities:
 			if e.moving:
 				e.on_movement_done.connect(check_for_last_movement)
+		#Experimental skew tween
+		for t in tiles:
+			var tween = create_tween()
+			var skew_strength = 0.025
+			var skew_amount = skew_strength if (dir == Vector2i.UP or dir == Vector2i.RIGHT) else -skew_strength
+			tween.tween_property(t, "skew", skew_amount, 0.08)
+			tween.tween_property(t, "skew", 0.0, 0.08)
+			
 	else:
 		undo_manager.remove_newest_game_state() #Pop the added gamestate.
 
@@ -292,13 +293,6 @@ func on_gem_goal_anim_finished():
 		if gem and gem.gem_in_goal and !gem.is_gem_goal_anim_done():
 			return
 	
-	#var all_goals_filled = true
-	#for e in entities:
-	#	var goal = e as Goal
-	#	if goal and !goal.is_goal_filled():
-	#		all_goals_filled = false
-	#if !all_goals_filled: return
-			
 	check_goal()
 
 func get_entities_at_pos(pos):
@@ -430,12 +424,14 @@ func on_game_over(won):
 	%ResultContainer.visible = true
 	%TutorialContainer.visible = false
 	if won:
+		%LoseLabel.visible = false
 		%WinLabel.visible = true
 		if get_next_level():
 			%ContinueButton.visible = true
 	else:
 		%LoseLabel.visible = true
-		%RetryButton.visible = true
+		%WinLabel.visible = false
+		%ContinueButton.visible = false
 
 func _on_tut_ok_button_pressed():
 	set_game_paused(false)

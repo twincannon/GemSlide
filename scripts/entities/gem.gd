@@ -66,6 +66,7 @@ func _on_movement_tween_done(dir):
 func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
+	$GemShadow.visible = false
 
 func goal_animation_finished():
 	goal_tween.stop() # Ensure our Tween doesn't report as running this frame

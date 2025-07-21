@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw4p6yh1m5eyw"]
+[gd_scene load_steps=6 format=3 uid="uid://bw4p6yh1m5eyw"]
 
-[ext_resource type="Script" path="res://scripts/entities/goal.gd" id="1_x6rxc"]
+[ext_resource type="Script" uid="uid://bip3w81tvwk8c" path="res://scripts/entities/goal.gd" id="1_x6rxc"]
 [ext_resource type="Texture2D" uid="uid://ccbejkpiikuic" path="res://assets/art/goal.png" id="2_0hsrs"]
+[ext_resource type="Texture2D" uid="uid://cr1xlsutokgyt" path="res://assets/art/goal_hole.png" id="2_ak1wi"]
 [ext_resource type="Texture2D" uid="uid://clxnngv3rewhj" path="res://assets/art/goal_flag.png" id="3_cttjw"]
-[ext_resource type="Script" path="res://scripts/components/color_component.gd" id="3_qbm86"]
+[ext_resource type="Script" uid="uid://dbxw0sra31s7w" path="res://scripts/components/color_component.gd" id="3_qbm86"]
 
 [node name="Goal" type="Node2D"]
 script = ExtResource("1_x6rxc")
 
 [node name="GoalSprite" type="Sprite2D" parent="."]
 z_index = 80
-texture = ExtResource("2_0hsrs")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ak1wi")
 
 [node name="FlagRot" type="Node2D" parent="."]
 position = Vector2(0, 20)
@@ -19,7 +21,8 @@ position = Vector2(0, 20)
 unique_name_in_owner = true
 z_index = 100
 y_sort_enabled = true
-position = Vector2(3, -84)
+position = Vector2(3, -79)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_cttjw")
 
 [node name="ColorComponent" type="Node2D" parent="." node_paths=PackedStringArray("node_to_colorize")]
@@ -27,3 +30,7 @@ script = ExtResource("3_qbm86")
 node_to_colorize = NodePath("../GoalSprite")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="GoalSpriteNonModulated" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0hsrs")

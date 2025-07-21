@@ -210,7 +210,6 @@ text = "Main Menu"
 
 [node name="RetryButton" type="Button" parent="Canvas/HUD/ResultARContainer/ResultContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Retry"

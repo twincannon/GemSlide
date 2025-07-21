@@ -38,5 +38,5 @@
 	],
 	"GridSize": "Vector2i(4, 4)",
 	"ParMoves": 9,
-	"Tutorial": ""
+	"Tutorial": "[center][b]Rocks[/b] [img width=32 height=32]res://assets/art/rock.png[/img] are just there to get in your way. They move like balls do, but don't enter goals.[/center]"
 }
