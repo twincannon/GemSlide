@@ -51,7 +51,28 @@ func _ready():
 	if Globals.current_level_data:
 		data = Globals.current_level_data.get_data()
 		%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
-		print(SaveGame.level_dict[Globals.current_level_data.resource_path])
+		
+		# Debug print
+		var dict = SaveGame.level_dict[Globals.current_level_data.resource_path]
+		var str = ""
+		if dict.has("score"):
+			str += "Score: "
+			str += str(int(dict.score))
+		if dict.has("moves"):
+			if str != "":
+				str += ", "
+			str += "Moves: "
+			for m in dict.moves:
+				if m == "(1, 0)":
+					str += "→ "
+				elif m == "(-1, 0)":
+					str += "← "
+				elif m == "(0, 1)":
+					str += "↓ "
+				elif m == "(0, -1)":
+					str += "↑ "
+		print(str)
+		#print(SaveGame.level_dict[Globals.current_level_data.resource_path])
 	elif !Globals.custom_level_data.is_empty() and Globals.is_valid_custom_level(Globals.custom_level_data):
 		data = Globals.custom_level_data
 		%LevelNumLabel.text = data["LevelName"]
@@ -71,7 +92,7 @@ func _ready():
 			if new_entity: #check for null as we intend to have null entries
 				new_entity.entity_type = data["Entities"][i] as Globals.EntityType
 				new_entity.entity_id = data["EntityIDs"][i]
-			entities_to_load.append(new_entity) #get instantiated entity
+			entities_to_load.append(new_entity) #add instantiated entity
 			
 	%ParLabel.text = "Par: " + str(int(data["ParMoves"]))
 	
@@ -263,9 +284,8 @@ func move_entities(dir:Vector2i):
 			var skew_amount = skew_strength if (dir == Vector2i.UP or dir == Vector2i.RIGHT) else -skew_strength
 			tween.tween_property(t, "skew", skew_amount, 0.08)
 			tween.tween_property(t, "skew", 0.0, 0.08)
-			
 	else:
-		undo_manager.remove_newest_game_state() #Pop the added gamestate.
+		undo_manager.remove_newest_game_state() #Nothing moved, so pop the added gamestate.
 
 func check_for_last_movement(entity:Entity):
 	entity.on_movement_done.disconnect(check_for_last_movement)
