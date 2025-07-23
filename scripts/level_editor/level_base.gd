@@ -32,6 +32,7 @@ func set_num_buttons(new_num_buttons):
 			old_children[i].queue_free()
 		for i in range(new_num_buttons):
 			var new_icon = icon_scene.instantiate()
+			new_icon.name = "EntityButton" + str(i)
 			add_child(new_icon)
 			new_icon.set_owner(self) # Makes the nodes show up in the scene tree and be editable
 

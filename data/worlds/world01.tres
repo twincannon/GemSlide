@@ -22,4 +22,5 @@
 
 [resource]
 script = ExtResource("1_lghh4")
+world_name = "Basics"
 level_data_json = Array[JSON]([ExtResource("19_jfg0m"), ExtResource("20_vlog5"), ExtResource("21_ytoga"), ExtResource("22_876ub"), ExtResource("23_lka0p"), ExtResource("24_l2j5e"), ExtResource("25_drqwk"), ExtResource("26_gyfdu"), ExtResource("27_4awiq"), ExtResource("28_pwlky"), ExtResource("29_4rkj0"), ExtResource("30_vehre"), ExtResource("31_c8p5y"), ExtResource("32_0vvj4"), ExtResource("33_xwicv"), ExtResource("34_g7otq"), ExtResource("35_v4rm7"), ExtResource("36_voiv0")])

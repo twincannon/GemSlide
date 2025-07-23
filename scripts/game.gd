@@ -57,7 +57,7 @@ func _ready():
 		if dict.has("score"):
 			str += "Score: "
 			str += str(int(dict.score))
-		if dict.has("moves"):
+		if dict.has("moves") and dict.moves.size() > 0:
 			if str != "":
 				str += ", "
 			str += "Moves: "

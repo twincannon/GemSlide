@@ -10,7 +10,7 @@ func update_world():
 	%ReturnToCourseButton.visible = false
 	%CustomLevelsButton.visible = true
 	
-	%WorldLabel.text = "Course " + str(Globals.get_current_world_index() + 1)
+	%WorldLabel.text = "Course " + str(Globals.get_current_world_index() + 1) + ": " + Globals.current_world_data.world_name
 	var world_idx = Globals.get_current_world_index()
 	%WorldButtonLeft.visible = world_idx > 0
 	%WorldButtonRight.visible = world_idx < Globals.world_datas.size() - 1
