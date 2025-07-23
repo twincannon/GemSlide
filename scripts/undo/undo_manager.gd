@@ -4,6 +4,9 @@ extends Node
 var game:Game
 var game_states:Array[UndoGameState]
 
+func _init(in_game:Game):
+	game = in_game
+
 func push_game_state():
 	var new_game_state := UndoGameState.new()
 	new_game_state.moves_count = game.moves

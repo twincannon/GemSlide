@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://be2l8tq8cuvqu"]
+[gd_scene load_steps=7 format=3 uid="uid://be2l8tq8cuvqu"]
+
+[ext_resource type="Script" uid="uid://dfosxdl403vbm" path="res://scripts/entities/bomb.gd" id="1_5hsef"]
+[ext_resource type="Texture2D" uid="uid://jw3bd5vhb8n" path="res://assets/art/bomb.png" id="1_b0vwv"]
+[ext_resource type="Texture2D" uid="uid://bw8jaiv5svurd" path="res://assets/art/bomb_fuse.png" id="2_5hsef"]
+[ext_resource type="Texture2D" uid="uid://dobutktmedt4a" path="res://assets/art/golfball_shadow.png" id="4_fscv5"]
+[ext_resource type="Texture2D" uid="uid://bjdd812ema07l" path="res://assets/art/vfx/particle_teleport.png" id="4_x01k1"]
+[ext_resource type="PackedScene" uid="uid://cn73bwxkrv5v8" path="res://scenes/components/color_component.tscn" id="5_ei0wy"]
 
 [node name="Bomb" type="Node2D"]
+script = ExtResource("1_5hsef")
+
+[node name="BlockedAnchor" type="Node2D" parent="."]
+
+[node name="BombSprite" type="Sprite2D" parent="BlockedAnchor"]
+unique_name_in_owner = true
+z_index = 100
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_b0vwv")
+
+[node name="BombFuseSprite" type="Sprite2D" parent="BlockedAnchor"]
+unique_name_in_owner = true
+z_index = 101
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_5hsef")
+
+[node name="BombFuseVFX" type="CPUParticles2D" parent="BlockedAnchor/BombFuseSprite"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(106, -106)
+amount = 2
+texture = ExtResource("4_x01k1")
+lifetime = 0.1
+fixed_fps = 30
+local_coords = true
+gravity = Vector2(0, 0)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color = Color(1, 0.933333, 0.27451, 1)
+
+[node name="ShadowSprite" type="Sprite2D" parent="BlockedAnchor"]
+unique_name_in_owner = true
+z_index = 99
+scale = Vector2(0.8, 0.95)
+texture = ExtResource("4_fscv5")
+
+[node name="ColorComponent" parent="." node_paths=PackedStringArray("node_to_colorize") instance=ExtResource("5_ei0wy")]
+node_to_colorize = NodePath("../BlockedAnchor/BombSprite")

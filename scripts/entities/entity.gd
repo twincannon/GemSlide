@@ -7,6 +7,8 @@ var blocked_tween : Tween
 var movement_tween_duration := 0.25
 var movement_tween_queue_time := 0.2
 
+var queue_free_timer_length = 1.0
+
 var grid_pos:Vector2i : set = set_grid_pos # Position on game grid
 @onready var distance_to_move := Globals.get_entity_movement_distance() # I want this to be const
 
@@ -181,3 +183,11 @@ func apply_properties(properties:Dictionary):
 		moves = properties["moves"]
 	if properties.has("stuck"):
 		stuck = properties["stuck"]
+
+func start_free_timer():
+	#if needed, add an "is dead" var here so we know the entity is headed for the dumpster
+	get_tree().create_timer(queue_free_timer_length).timeout.connect(_on_free_timer_done.bind())
+
+func _on_free_timer_done():
+	queue_free()
+	Globals.get_game_node().check_goal()

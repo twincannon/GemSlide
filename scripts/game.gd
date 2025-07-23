@@ -45,8 +45,7 @@ var undo_manager:UndoManager
 func _ready():
 	get_tree().get_root().size_changed.connect(on_viewport_changed.bind())
 	
-	undo_manager = UndoManager.new()
-	undo_manager.game = self
+	undo_manager = UndoManager.new(self)
 	
 	if Globals.current_level_data:
 		data = Globals.current_level_data.get_data()
@@ -127,6 +126,14 @@ func _ready():
 	for e in entities:
 		e._initialize_entity(self)
 	on_viewport_changed()
+		
+	#var solver = PuzzleSolver.new(self)
+	#var solution = solver.solve_level()
+	#if solution.size() > 0:
+		#print("Optimal solution found in ", solution.size(), " moves")
+		#print("Solution: ", solution)
+	#else:
+		#print("Level is unsolvable or too complex")
 
 func add_entity_to_grid(entity:Entity, grid_pos:Vector2i):
 	$GridAnchor.add_child(entity)
@@ -174,6 +181,7 @@ func _process(_delta):
 	# Process our entities queued for removal - do this here instead of during movement so we don't cause bugs with iteration
 	for e in entities_to_remove:
 		entities.erase(e)
+		e.start_free_timer()
 	entities_to_remove.clear()
 	
 	if !check_goals_and_winnable()[1]:
@@ -434,6 +442,9 @@ func do_par_moves_anim():
 func on_goal_filled(_goal):
 	$Audio/GoalAudioPlayer.stream = goal_sound
 	$Audio/GoalAudioPlayer.play()
+	for e in entities:
+		if e is Bomb and e.gem_in_goal == false:
+			e.ignite_fuse()
 
 func on_game_over(won):
 	game_state = GameState.END

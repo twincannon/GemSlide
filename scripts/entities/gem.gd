@@ -9,13 +9,15 @@ signal on_goal_animation_finished
 var goal_tween:Tween
 var goal_tween_duration := 1.0
 
+var gem_rotates = true
+
 #@onready var floating_text_scene = preload("res://scenes/floating_text.tscn")
 
 func _ready():
 	entity_sprite = %GemSprite
 	moves = true
 	%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
-	add_to_group("gems")
+	add_to_group("gems") #is this used?
 
 func _initialize_entity(game:Game):
 	connect("on_goal_animation_finished", game.on_gem_goal_anim_finished.bind())
@@ -43,7 +45,8 @@ func _on_movement(_dir):
 	
 	movement_tween.tween_property(self, "position", offset, tween_dur).as_relative()
 	var rot_dir = 1.5 if (_dir == Vector2i.RIGHT or _dir == Vector2i.DOWN) else -1.5
-	movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
+	if gem_rotates:
+		movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
 	movement_tween.chain().tween_callback(_on_movement_tween_done.bind(_dir))
 	
 	#movement_tween.finished.connect(_on_movement_tween_done.bind(_dir))
@@ -66,7 +69,7 @@ func _on_movement_tween_done(dir):
 func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
-	$GemShadow.visible = false
+	%ShadowSprite.visible = false
 
 func goal_animation_finished():
 	goal_tween.stop() # Ensure our Tween doesn't report as running this frame

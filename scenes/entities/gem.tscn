@@ -9,7 +9,6 @@
 script = ExtResource("1_jy8aq")
 
 [node name="BlockedAnchor" type="Node2D" parent="."]
-scale = Vector2(0.9, 0.9)
 
 [node name="GemSpriteRotAnchor" type="Node2D" parent="BlockedAnchor"]
 unique_name_in_owner = true
@@ -17,8 +16,15 @@ unique_name_in_owner = true
 [node name="GemSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
 unique_name_in_owner = true
 z_index = 100
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_7klkk")
+
+[node name="ShadowSprite" type="Sprite2D" parent="BlockedAnchor"]
+unique_name_in_owner = true
+z_index = 99
+position = Vector2(0, 12.5)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_oxrsg")
 
 [node name="ColorblindHelper" type="Sprite2D" parent="."]
 
@@ -45,9 +51,3 @@ theme_override_font_sizes/font_size = 36
 text = "0,0"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="GemShadow" type="Sprite2D" parent="."]
-z_index = 99
-position = Vector2(0, 12.5)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("4_oxrsg")

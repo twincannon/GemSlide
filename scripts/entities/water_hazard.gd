@@ -1,8 +1,6 @@
 extends Entity
 class_name WaterHazard
 
-@onready var timer := $Timer
-
 var water_vfx_scene = preload("res://scenes/vfx/vfx_water.tscn")
 
 func _ready():
@@ -21,12 +19,3 @@ func _on_entity_entered(_other_entity):
 	
 	var vfx = water_vfx_scene.instantiate()
 	add_child(vfx)
-	
-	for e in Globals.get_game_node().entities:
-		var water = e as WaterHazard
-		if water:
-			water.timer.stop()
-	timer.start()
-
-func _on_timer_timeout():
-	Globals.get_game_node().check_goal()

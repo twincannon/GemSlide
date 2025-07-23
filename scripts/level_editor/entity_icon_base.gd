@@ -11,6 +11,7 @@ var sand_trap_scene = preload("res://scenes/entities/sand_trap.tscn")
 var water_hazard_scene = preload("res://scenes/entities/water_hazard.tscn")
 var teleporter_scene = preload("res://scenes/entities/teleporter.tscn")
 var pressure_plate_scene = preload("res://scenes/entities/pressure_plate.tscn")
+var bomb_scene = preload("res://scenes/entities/bomb.tscn")
 
 var icon_ball = preload("res://assets/art/golfball.png")
 var icon_goal = preload("res://assets/art/goal.png")
@@ -21,6 +22,7 @@ var icon_tree = preload("res://assets/art/tree.png")
 var icon_water = preload("res://assets/art/waterhazard.png")
 var icon_rock = preload("res://assets/art/rock.png")
 var icon_button = preload("res://assets/art/button_up.png")
+var icon_bomb = preload("res://assets/art/bomb.png")
 
 @export var entity_type:Globals.EntityType : set = set_entity_type
 @export var entity_text:String : set = set_entity_text
@@ -112,6 +114,18 @@ func set_entity_type(new_entity_type):
 		Globals.EntityType.Button:
 			entity_text = "btn"
 			entity_icon.texture = icon_button
+		Globals.EntityType.BombRed:
+			entity_text = "bomb"
+			entity_color = Color.RED
+			entity_icon.texture = icon_bomb
+		Globals.EntityType.BombGreen:
+			entity_text = "bomb"
+			entity_color = Color.GREEN
+			entity_icon.texture = icon_bomb
+		Globals.EntityType.BombBlue:
+			entity_text = "bomb"
+			entity_color = Color.BLUE
+			entity_icon.texture = icon_bomb
 		_:
 			entity_text = ""
 			entity_color = Color.WHITE
@@ -147,6 +161,8 @@ func is_teleporter():
 	return entity_text.to_lower() == "tele"
 func is_pressureplate():
 	return entity_text.to_lower() == "btn"
+func is_bomb():
+	return entity_text.to_lower() == "bomb"
 func is_red():
 	return entity_color.r >= 0.8 and entity_color.g < 0.2 and entity_color.b < 0.2
 func is_green():
@@ -174,6 +190,8 @@ func get_entity():
 		entity = teleporter_scene.instantiate() as Teleporter
 	elif is_pressureplate():
 		entity = pressure_plate_scene.instantiate() as PressurePlate
+	elif is_bomb():
+		entity = bomb_scene.instantiate() as Bomb
 	elif entity_text == "#":
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	

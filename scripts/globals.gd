@@ -24,7 +24,9 @@ enum EntityType {
 	WaterHazard,
 	Teleporter,
 	Button,
-	Bomb
+	BombRed,
+	BombGreen,
+	BombBlue
 }
 
 var COLOR_RED := Color.RED
