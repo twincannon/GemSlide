@@ -79,4 +79,9 @@ func is_valid_custom_level(data):
 		and data.has("Entities") \
 		and data.has("EntityIDs") \
 		and data.has("LevelName")
-	
+
+func is_cardinally_adjacent(p1:Vector2i, p2:Vector2i) -> bool:
+	return (p1.x == p2.x and p1.y == p2.y + 1) or \
+		(p1.x == p2.x and p1.y == p2.y - 1) or \
+		(p1.x == p2.x + 1 and p1.y == p2.y) or \
+		(p1.x == p2.x - 1 and p1.y == p2.y)

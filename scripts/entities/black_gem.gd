@@ -1,6 +1,8 @@
 extends Entity
 class_name BlackGem
 
+var destroy_vfx_scene = preload("res://scenes/vfx/vfx_rock_destroyed.tscn")
+
 func _ready():
 	entity_sprite = %GemSprite
 	moves = true
@@ -29,3 +31,9 @@ func _on_movement(_dir):
 	var rot_dir = 1.5 if (_dir == Vector2i.RIGHT or _dir == Vector2i.DOWN) else -1.5
 	movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
 	movement_tween.chain().tween_callback(_on_movement_tween_done.bind(_dir))
+
+func on_rock_destroyed() -> void:
+	var vfx = destroy_vfx_scene.instantiate()
+	add_child(vfx)
+	$BlockedAnchor.visible = false
+	Globals.get_game_node().queue_entity_for_removal(self)

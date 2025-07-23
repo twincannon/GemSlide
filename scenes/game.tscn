@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjotdf84upxhu"]
+[gd_scene load_steps=9 format=3 uid="uid://cjotdf84upxhu"]
 
 [ext_resource type="Script" uid="uid://fmx28qo0weei" path="res://scripts/game.gd" id="1_m1u8a"]
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="2_vs7lu"]
 [ext_resource type="Theme" uid="uid://dgjwngm4c4mk4" path="res://assets/art/ui/themes/mainmenu_side_button_theme.tres" id="3_sic4l"]
 [ext_resource type="Texture2D" uid="uid://botpl3umn6jr3" path="res://assets/art/ui/mainmenu_arrow.png" id="4_x5udq"]
 [ext_resource type="Texture2D" uid="uid://c78bofvhsihpr" path="res://assets/art/bush.png" id="5_176mw"]
+[ext_resource type="AudioStream" uid="uid://cjlnwx3tepovc" path="res://assets/audio/bomb_explode.wav" id="6_p57ef"]
 
 [sub_resource type="Gradient" id="Gradient_1pbea"]
 offsets = PackedFloat32Array(0.270408, 0.5, 0.714286)
@@ -383,6 +384,9 @@ bus = &"SFX"
 [node name="WonAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 attenuation = 1e-05
 bus = &"SFX"
+
+[node name="BombAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_p57ef")
 
 [node name="BackgroundImageRoot" type="Node2D" parent="."]
 unique_name_in_owner = true

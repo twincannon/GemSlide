@@ -446,6 +446,9 @@ func on_goal_filled(_goal):
 		if e is Bomb and e.gem_in_goal == false:
 			e.ignite_fuse()
 
+func on_bomb_explode():
+	$Audio/BombAudioPlayer.play()
+
 func on_game_over(won):
 	game_state = GameState.END
 	if won:
