@@ -53,24 +53,24 @@ func _ready():
 		
 		# Debug print
 		var dict = SaveGame.level_dict[Globals.current_level_data.resource_path]
-		var str = ""
+		var debugstr = ""
 		if dict.has("score"):
-			str += "Score: "
-			str += str(int(dict.score))
+			debugstr += "Score: "
+			debugstr += str(int(dict.score))
 		if dict.has("moves") and dict.moves.size() > 0:
-			if str != "":
-				str += ", "
-			str += "Moves: "
+			if debugstr != "":
+				debugstr += ", "
+			debugstr += "Moves: "
 			for m in dict.moves:
 				if m == "(1, 0)":
-					str += "→ "
+					debugstr += "→ "
 				elif m == "(-1, 0)":
-					str += "← "
+					debugstr += "← "
 				elif m == "(0, 1)":
-					str += "↓ "
+					debugstr += "↓ "
 				elif m == "(0, -1)":
-					str += "↑ "
-		print(str)
+					debugstr += "↑ "
+		print(debugstr)
 		#print(SaveGame.level_dict[Globals.current_level_data.resource_path])
 	elif !Globals.custom_level_data.is_empty() and Globals.is_valid_custom_level(Globals.custom_level_data):
 		data = Globals.custom_level_data
@@ -91,6 +91,7 @@ func _ready():
 			if new_entity: #check for null as we intend to have null entries
 				new_entity.entity_type = data["Entities"][i] as Globals.EntityType
 				new_entity.entity_id = data["EntityIDs"][i]
+				new_entity.name = Globals.EntityType.keys()[data["Entities"][i]]
 			entities_to_load.append(new_entity) #add instantiated entity
 			
 	%ParLabel.text = "Par: " + str(int(data["ParMoves"]))
@@ -262,19 +263,101 @@ func _input(event):
 		input_dir &= ~input_dir_mask.RIGHT
 		
 
+func sort_ents_by_grid_pos(a, b):
+	var pos1 = a.grid_pos.x + a.grid_pos.y * grid_size.y
+	var pos2 = b.grid_pos.x + b.grid_pos.y * grid_size.y
+	if pos1 < pos2:
+		return true
+	return false
+
 func move_entities(dir:Vector2i):
 	move_queue_timer.stop()
 	
 	undo_manager.push_game_state()
 	
+	
+	#alternative solution:
+	#make a copy of entities array, sort by position on grid
+	#loop forwards or backwards based on given dir
+	
+	
+	#x + y * columns = weight?
+	
+	var moving_entities = []
+	for ent in entities:
+		if ent.moves:
+			moving_entities.append(ent)
+		
+	
+	var sorted_ent_array = moving_entities
+	sorted_ent_array.sort_custom(sort_ents_by_grid_pos)
+	#print(sorted_ent_array)
+	
+	if dir == Vector2i.RIGHT or dir == Vector2i.DOWN:
+		sorted_ent_array.reverse()
+	elif dir == Vector2i.LEFT or dir == Vector2i.UP:
+		pass #iterator forwards
+	
+
+
+	for e in sorted_ent_array:
+		e.old_grid_pos = e.grid_pos
+		if e.moves:
+			e.pending_move_dir = dir
+			
+			
+	var force_move_ents = []
+	var checkcount = 0
+	var max_checks = 1000
+
+	# First pass: check which entities need to be moved initially
+	for e in sorted_ent_array:
+		if e.pending_move_dir != Vector2i.ZERO:
+			if !e.can_move_in_dir(e.pending_move_dir):
+				e.pending_move_dir = Vector2i.ZERO
+				continue
+			else:
+				e.grid_pos += e.pending_move_dir
+			
+			for ent in get_entities_at_pos(e.grid_pos):
+				if ent.forces_movement:
+					var is_force_moving = true
+					while is_force_moving:
+						if e.can_move_in_dir(e.pending_move_dir):
+							e.grid_pos += e.pending_move_dir
+							is_force_moving = false
+							for cur_ent in get_entities_at_pos(e.grid_pos):
+								if cur_ent.forces_movement:
+									is_force_moving = true
+						else:
+							is_force_moving = false
+
 	var did_any_entity_move = false
 	
-	for i in entities:
-		i._entity_pre_move(dir)
+	
+	for e in sorted_ent_array:
+		if e.pending_move_dir != Vector2i.ZERO:
+			for start_ent in get_entities_at_pos(e.grid_pos):
+				start_ent._on_entity_exited(e)
+			#e.grid_pos += e.pending_move_dir
+			did_any_entity_move = true
+			#e.position = get_position_at_grid_pos(e.grid_pos)
+			for dest_ent in get_entities_at_pos(e.grid_pos):
+				dest_ent._on_entity_entered(e)
+			#e._on_movement(e.pending_move_dir)
+			e.pending_move_dir = Vector2i.ZERO
+			
+	
+	for e in entities:
+		if e.grid_pos != e.old_grid_pos:
+			e._on_movement(e.grid_pos - e.old_grid_pos)
 	
 	for i in entities:
-		if i.on_try_move(dir) or i._should_increment_moves(dir):
-			did_any_entity_move = true
+		i._entity_pre_move(dir) #should this only happen if the entity is going to move? Also should this check be above the above while loop?
+	
+	#for i in entities:
+	#	if i.on_try_move(dir) or i._should_increment_moves(dir):
+	#		did_any_entity_move = true
 		
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]

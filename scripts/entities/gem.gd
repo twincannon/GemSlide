@@ -22,8 +22,8 @@ func _ready():
 func _initialize_entity(game:Game):
 	connect("on_goal_animation_finished", game.on_gem_goal_anim_finished.bind())
 	
-#func _process(_delta):
-#	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
+func _process(_delta):
+	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
 func _on_movement(_dir):
 	super(_dir)
@@ -42,6 +42,9 @@ func _on_movement(_dir):
 			coming_from_ice = true
 	
 	var tween_dur = movement_tween_duration if !is_forcibly_moving and !coming_from_ice else 0.1
+
+	if grid_pos_prior_to_forced_movement != Vector2i(-1,-1):
+		offset *= Vector2(grid_pos_prior_to_forced_movement)
 	
 	movement_tween.tween_property(self, "position", offset, tween_dur).as_relative()
 	var rot_dir = 1.5 if (_dir == Vector2i.RIGHT or _dir == Vector2i.DOWN) else -1.5

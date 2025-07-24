@@ -8,8 +8,8 @@ func _ready():
 	moves = true
 	%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
 	
-#func _process(_delta):
-#	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
+func _process(_delta):
+	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
 func _does_block(_other_entity):
 	return true

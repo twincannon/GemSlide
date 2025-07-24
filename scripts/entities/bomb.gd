@@ -47,21 +47,6 @@ func explode():
 	for entity in adjacent_entities:
 		var push_direction = entity.grid_pos - grid_pos
 		push_entity_recursively(entity, push_direction)
-
-func push_entity_recursively(entity: Entity, direction: Vector2i):
-	# Check if there are entities blocking the path in the direction we're pushing
-	var target_pos = entity.grid_pos + direction
-	var blocking_entities = Globals.get_game_node().get_entities_blocking_at_pos(target_pos, entity)
-	
-	# First, recursively push any blocking entities
-	for blocking_entity in blocking_entities:
-		if blocking_entity.moves:
-			push_entity_recursively(blocking_entity, direction)
-	
-	# Now try to move the original entity
-	if entity.on_try_move(direction):
-		# The entity moved successfully
-		pass
 		
 #OK current bugs/observations:
 # if a bomb pushes another bomb, they dont explode at the same time like they should
