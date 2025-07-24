@@ -3,6 +3,7 @@ extends Gem
 
 var ignited = false
 var queue_ignite = false
+var moves_until_explosion = -1  # -1 means not counting down, 0 means explode now
 
 func _ready():
 	entity_sprite = %BombSprite
@@ -25,7 +26,14 @@ func _entity_post_all_movement():
 	#	explode()
 	if queue_ignite:
 		ignited = true
-		
+		queue_ignite = false  # Clear the queue so it doesn't ignite again
+		moves_until_explosion = 1  # Start the countdown
+	elif ignited and moves_until_explosion > 0:
+		moves_until_explosion -= 1  # Decrement the countdown
+
+func should_explode_now() -> bool:
+	return ignited and moves_until_explosion == 0
+
 func _does_block(_other_ent):
 	return super(_other_ent) or ignited
 
@@ -33,6 +41,7 @@ func explode() -> Array[Entity]:
 	Globals.get_game_node().on_bomb_explode()
 	Globals.get_game_node().queue_entity_for_removal(self)
 	$BlockedAnchor.visible = false
+	moves_until_explosion = -1  # Clear the flag after exploding
 	
 	# Get all adjacent entities and push them recursively
 	var ents:Array[Entity] = []
@@ -75,6 +84,7 @@ func push_entity_recursively(entity: Entity, direction: Vector2i) -> Array[Entit
 func get_properties() -> Dictionary:
 	var dict = super()
 	dict["ignited"] = ignited
+	dict["moves_until_explosion"] = moves_until_explosion
 	return dict
 
 func apply_properties(properties:Dictionary):
@@ -83,6 +93,8 @@ func apply_properties(properties:Dictionary):
 		ignited = properties["ignited"]
 		if ignited:
 			%BombFuseVFX.visible = true
+	if properties.has("moves_until_explosion"):
+		moves_until_explosion = properties["moves_until_explosion"]
 	if gem_in_goal:
 		%BombFuseSprite.visible = false
 		%BombFuseVFX.visible = false

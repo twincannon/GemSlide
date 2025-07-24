@@ -283,8 +283,15 @@ func sort_ents_by_push_direction(a, b):
 		return dir1_priority < dir2_priority
 
 func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
+	if ents_to_move.size() == 0:
+		return
+	
+	var is_bomb_explosion = dir == Vector2i.ZERO
+	
 	move_queue_timer.stop()
-	undo_manager.push_game_state()
+	
+	if !is_bomb_explosion:
+		undo_manager.push_game_state()
 	
 	for i in ents_to_move:
 		i._entity_pre_move(dir) #should this only happen if the entity is going to move?
@@ -296,7 +303,7 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 	
 	# Get sorted array of entities based on which dir we're moving
 	var sorted_ent_array = moving_entities
-	if dir == Vector2i.ZERO:
+	if is_bomb_explosion:
 		# For bomb explosions, use push direction sorting
 		sorted_ent_array.sort_custom(sort_ents_by_push_direction)
 	else:
@@ -307,7 +314,7 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 
 	for e in sorted_ent_array:
 		e.old_grid_pos = e.grid_pos
-		if e.moves and dir != Vector2i.ZERO:
+		if e.moves and !is_bomb_explosion:
 			e.pending_move_dir = dir
 		# If dir is Vector2i.ZERO, entities should already have their pending_move_dir set
 	
@@ -355,8 +362,9 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
 		$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
 		$Audio/MoveAudioPlayer.play()
-		increment_moves()
-		moves_array.append(dir)
+		if !is_bomb_explosion:
+			increment_moves()
+			moves_array.append(dir)
 		for e in sorted_ent_array:
 			if e.moving:
 				e.on_movement_done.connect(check_for_last_movement)
@@ -367,7 +375,7 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 			var skew_amount = skew_strength if (dir == Vector2i.UP or dir == Vector2i.RIGHT) else -skew_strength
 			tween.tween_property(t, "skew", skew_amount, 0.08)
 			tween.tween_property(t, "skew", 0.0, 0.08)
-	else:
+	elif !is_bomb_explosion:
 		undo_manager.remove_newest_game_state() #Nothing moved, so pop the added gamestate.
 
 func check_for_last_movement(entity:Entity):
@@ -388,7 +396,7 @@ func on_all_movement_finished():
 	
 	# Collect all push directions from all exploding bombs
 	for e in entities:
-		if e is Bomb and e.ignited:
+		if e is Bomb and e.should_explode_now():
 			var exploded_entities = e.explode()
 			for entity in exploded_entities:
 				if !entity_push_directions.has(entity):
