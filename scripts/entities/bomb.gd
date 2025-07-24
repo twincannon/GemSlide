@@ -2,7 +2,7 @@ class_name Bomb
 extends Gem
 
 var ignited = false
-var ignite_next_move = false
+var queue_ignite = false
 
 func _ready():
 	entity_sprite = %BombSprite
@@ -10,7 +10,7 @@ func _ready():
 	gem_rotates = false
 
 func ignite_fuse():
-	ignite_next_move = true
+	queue_ignite = true
 	%BombFuseVFX.visible = true
 
 func on_goal_entered(_goal):
@@ -18,11 +18,11 @@ func on_goal_entered(_goal):
 	%BombFuseSprite.visible = false
 	%BombFuseVFX.visible = false
 
-func _on_movement_tween_done(dir):
-	super(dir)
+func _entity_post_all_movement():
+	super()
 	if ignited and !gem_in_goal:
 		explode()
-	elif ignite_next_move:
+	elif queue_ignite:
 		ignited = true
 
 func explode():
@@ -38,8 +38,6 @@ func explode():
 				continue
 			elif e is BlackGem:
 				e.on_rock_destroyed()
-			elif e.is_forcibly_moving: #Ice slicks
-				continue
 			else:
 				adjacent_entities.append(e)
 	
@@ -47,10 +45,18 @@ func explode():
 	for entity in adjacent_entities:
 		var push_direction = entity.grid_pos - grid_pos
 		push_entity_recursively(entity, push_direction)
-		
-#OK current bugs/observations:
-# if a bomb pushes another bomb, they dont explode at the same time like they should
-# probably need to loop all bombs and then explode all at the same time or something? idk how
-# they explode mid-ice slick
-# yeahhh... we need to say "ok all of these bombs are exploding, apply the forces all at once"
-# refactor ice slicks so they are properly only one move
+
+func get_properties() -> Dictionary:
+	var dict = super()
+	dict["ignited"] = ignited
+	return dict
+
+func apply_properties(properties:Dictionary):
+	super(properties)
+	if properties.has("ignited"):
+		ignited = properties["ignited"]
+		if ignited:
+			%BombFuseVFX.visible = true
+	if gem_in_goal:
+		%BombFuseSprite.visible = false
+		%BombFuseVFX.visible = false

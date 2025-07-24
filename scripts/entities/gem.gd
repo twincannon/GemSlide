@@ -36,16 +36,8 @@ func _on_movement(_dir):
 	#movement_tween.set_trans(Tween.TRANS_ELASTIC)
 	var offset = (Vector2(_dir.x, _dir.y) * distance_to_move)
 	
-	var coming_from_ice = false
-	for e in Globals.get_game_node().get_entities_at_pos(grid_pos + -_dir):
-		if e is IceSlick:
-			coming_from_ice = true
-	
-	var tween_dur = movement_tween_duration if !is_forcibly_moving and !coming_from_ice else 0.1
+	var tween_dur = movement_tween_duration
 
-	if grid_pos_prior_to_forced_movement != Vector2i(-1,-1):
-		offset *= Vector2(grid_pos_prior_to_forced_movement)
-	
 	movement_tween.tween_property(self, "position", offset, tween_dur).as_relative()
 	var rot_dir = 1.5 if (_dir == Vector2i.RIGHT or _dir == Vector2i.DOWN) else -1.5
 	if gem_rotates:

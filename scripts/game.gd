@@ -61,14 +61,14 @@ func _ready():
 			if debugstr != "":
 				debugstr += ", "
 			debugstr += "Moves: "
-			for m in dict.moves:
-				if m == "(1, 0)":
+			for m in dict.moves: #Hackyness: why are we ever retrieving data as vector2i? (Happens when reloading a level after setting a new record in score, for example)
+				if m is Vector2i and m == Vector2i(1,0) or m is String and m == "(1, 0)":
 					debugstr += "→ "
-				elif m == "(-1, 0)":
+				elif m is Vector2i and m == Vector2i(-1,0) or m is String and m == "(-1, 0)":
 					debugstr += "← "
-				elif m == "(0, 1)":
+				elif m is Vector2i and m == Vector2i(0,1) or m is String and m == "(0, 1)":
 					debugstr += "↓ "
-				elif m == "(0, -1)":
+				elif m is Vector2i and m == Vector2i(0,-1) or m is String and m == "(0, -1)":
 					debugstr += "↑ "
 		print(debugstr)
 		#print(SaveGame.level_dict[Globals.current_level_data.resource_path])
@@ -194,9 +194,7 @@ func _process(_delta):
 		var goal = e as Goal
 		if goal and !goal.is_goal_filled():
 			all_goals_filled = false
-		if e.is_forcibly_moving:
-			move_queue_timer.stop()
-			return
+
 	if all_goals_filled: return # Don't allow further input after all goals have been filled (but are awaiting animation for game pause)
 	
 	var dir:Vector2i = Vector2i.ZERO
@@ -238,9 +236,6 @@ func _input(event):
 	if event.is_action("click") and Input.is_action_just_released("click"):
 		releasedPos = event.position
 		input_dir = calculate_gesture()
-		for e in entities:
-			if e.is_forcibly_moving:
-				input_dir = 0 # Hacky
 	
 	if event.is_action_pressed("up"):
 		input_dir |= input_dir_mask.UP
@@ -272,45 +267,28 @@ func sort_ents_by_grid_pos(a, b):
 
 func move_entities(dir:Vector2i):
 	move_queue_timer.stop()
-	
 	undo_manager.push_game_state()
 	
-	
-	#alternative solution:
-	#make a copy of entities array, sort by position on grid
-	#loop forwards or backwards based on given dir
-	
-	
-	#x + y * columns = weight?
+	for i in entities:
+		i._entity_pre_move(dir) #should this only happen if the entity is going to move?
 	
 	var moving_entities = []
 	for ent in entities:
 		if ent.moves:
 			moving_entities.append(ent)
-		
 	
+	# Get sorted array of entities based on which dir we're moving
 	var sorted_ent_array = moving_entities
 	sorted_ent_array.sort_custom(sort_ents_by_grid_pos)
-	#print(sorted_ent_array)
-	
+
 	if dir == Vector2i.RIGHT or dir == Vector2i.DOWN:
 		sorted_ent_array.reverse()
-	elif dir == Vector2i.LEFT or dir == Vector2i.UP:
-		pass #iterator forwards
-	
-
 
 	for e in sorted_ent_array:
 		e.old_grid_pos = e.grid_pos
-		if e.moves:
+		if e.moves: #todo make gems in goals not move etc
 			e.pending_move_dir = dir
-			
-			
-	var force_move_ents = []
-	var checkcount = 0
-	var max_checks = 1000
 
-	# First pass: check which entities need to be moved initially
 	for e in sorted_ent_array:
 		if e.pending_move_dir != Vector2i.ZERO:
 			if !e.can_move_in_dir(e.pending_move_dir):
@@ -346,15 +324,14 @@ func move_entities(dir:Vector2i):
 				dest_ent._on_entity_entered(e)
 			#e._on_movement(e.pending_move_dir)
 			e.pending_move_dir = Vector2i.ZERO
-			
-	
-	for e in entities:
+		else:
+			e._on_movement_blocked(dir)
+		if e._should_increment_moves(dir):
+			did_any_entity_move = true
 		if e.grid_pos != e.old_grid_pos:
 			e._on_movement(e.grid_pos - e.old_grid_pos)
-	
-	for i in entities:
-		i._entity_pre_move(dir) #should this only happen if the entity is going to move? Also should this check be above the above while loop?
-	
+			
+
 	#for i in entities:
 	#	if i.on_try_move(dir) or i._should_increment_moves(dir):
 	#		did_any_entity_move = true

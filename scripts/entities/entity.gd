@@ -25,8 +25,6 @@ var pending_move_dir:Vector2i = Vector2i(0,0)
 
 var moves := false # If this entity moves when input is pressed
 var forces_movement := false # For ice slicks etc.
-var grid_pos_prior_to_forced_movement:Vector2i = Vector2i(-1,-1)
-var is_forcibly_moving := false
 var stuck := false
 
 signal on_movement_done
@@ -63,20 +61,7 @@ func can_move_in_dir(dir:Vector2i, ignore_stuck = false) -> bool:
 	var neighbors = game_node.get_entities_blocking_at_pos(grid_pos + dir, self)
 	if neighbors.size() <= 0: return true
 	elif neighbors.size() >= 1:
-		return false
-		var can_all_neighbors_move = true
-		for i in neighbors:
-			if i.can_move_in_dir(dir, ignore_stuck) == false:
-				can_all_neighbors_move = false
-			# Prevent forced movers from sliding into a neighbour that won’t get out of the way.
-			#if is_forcibly_moving and !i.is_forcibly_moving:
-				#var neighbour_will_vacate:bool = i.pending_move_dir == dir and i.can_move_in_dir(dir, ignore_stuck)
-				#if !neighbour_will_vacate:
-					#can_all_neighbors_move = false
-				## If the neighbour has no planned move, it cannot be assumed to vacate the tile
-				#if i.pending_move_dir == Vector2i.ZERO:
-					#can_all_neighbors_move = false
-		return can_all_neighbors_move
+		return false #neighbors already moved so any existing ones means we can't move
 	return false
 
 
@@ -169,11 +154,6 @@ func _on_movement_tween_done(dir):
 		e._on_entity_finished_exiting(self)
 	for e in Globals.get_game_node().get_entities_at_pos(grid_pos):
 		e._on_entity_finished_entering(self)
-	if is_forcibly_moving:
-		if on_try_move(dir):
-			moving = true
-		else:
-			is_forcibly_moving = false
 	if !moving:
 		on_movement_done.emit(self)
 
@@ -187,7 +167,7 @@ func queue_teleport_to(pos:Vector2i):
 func fake_teleport_to(pos:Vector2i):
 	position = Globals.get_game_node().get_position_at_grid_pos(pos)
 
-func teleport_to(pos:Vector2i):
+func teleport_to(pos:Vector2i): #Teleport to position visually to ensure we're at the right grid pos
 	if movement_tween and movement_tween.is_valid():
 		movement_tween.stop()
 		movement_tween = null
@@ -198,8 +178,6 @@ func is_tween_running():
 	return movement_tween is Tween and movement_tween.is_running()
 
 func is_ready_for_queued_move():
-	if is_forcibly_moving:
-		return false
 	if !movement_tween:
 		return true
 	elif is_tween_running() == false:

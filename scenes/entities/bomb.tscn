@@ -50,6 +50,7 @@ texture = ExtResource("4_fscv5")
 node_to_colorize = NodePath("../BlockedAnchor/BombSprite")
 
 [node name="Control" type="Control" parent="."]
+z_index = 999
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
