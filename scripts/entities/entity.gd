@@ -72,16 +72,7 @@ func on_try_move(dir): # Returns whether or not the move was successful
 		var game_node = Globals.get_game_node()
 		for e in game_node.get_entities_at_pos(grid_pos):
 			e._on_entity_exited(self)
-			if e.forces_movement:
-				var move_map = collect_forced_movement_chain(dir)
-				for entity in move_map.keys():
-					var final_pos = move_map[entity]
-					#entity.move_to_with_tween(final_pos)
-					grid_pos = final_pos
-					return true
-			else:
-				grid_pos += dir
-		#grid_pos += dir
+		grid_pos += dir
 		for e in game_node.get_entities_at_pos(grid_pos):
 			e._on_entity_entered(self)
 		if movement_tween:
@@ -94,27 +85,6 @@ func on_try_move(dir): # Returns whether or not the move was successful
 	elif moves:
 		_on_movement_blocked(dir)
 	return tried_to_move
-
-func try_recursively_move_entities_in_dir(dir):
-	for e in Globals.get_game_node().get_entities_at_pos(grid_pos + dir):
-		if e.moves and e.can_move_in_dir(dir):
-			e.on_try_move(dir)
-			e.try_recursively_move_entities_in_dir(dir)
-	for e in Globals.get_game_node().get_entities_blocking_at_pos(grid_pos + dir, self):
-		e.on_try_move(dir)
-
-func collect_forced_movement_chain(dir: Vector2i, visited = null) -> Dictionary:
-	if visited == null:
-		visited = {}
-	if self in visited:
-		return visited
-	visited[self] = grid_pos
-	var next_pos = grid_pos + dir
-	var game_node = Globals.get_game_node()
-	for e in game_node.get_entities_at_pos(next_pos):
-		if e.forces_movement:
-			e.collect_forced_movement_chain(dir, visited)
-	return visited
 
 func _should_increment_moves(dir):
 	return stuck and moves and can_move_in_dir(dir, true)# Should take into account "can ever un-stuck" somehow. Basically this is hardcoded for sandtraps atm
@@ -211,18 +181,3 @@ func start_free_timer():
 func _on_free_timer_done():
 	queue_free()
 	Globals.get_game_node().check_goal()
-	
-func push_entity_recursively(entity: Entity, direction: Vector2i):
-	# Check if there are entities blocking the path in the direction we're pushing
-	var target_pos = entity.grid_pos + direction
-	var blocking_entities = Globals.get_game_node().get_entities_blocking_at_pos(target_pos, entity)
-	
-	# First, recursively push any blocking entities
-	for blocking_entity in blocking_entities:
-		if blocking_entity.moves:
-			push_entity_recursively(blocking_entity, direction)
-	
-	# Now try to move the original entity
-	if entity.on_try_move(direction):
-		# The entity moved successfully
-		pass

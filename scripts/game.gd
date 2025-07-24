@@ -218,12 +218,12 @@ func _process(_delta):
 					# HACK: 0.01 added to ensure entity on_tween_done() is called... can I solve this with callbacks somehow?
 					queue_duration = max(queue_duration, e.get_remaining_movement_time() + 0.01)
 		if !queued_move and move_queue_timer.is_stopped():
-			move_entities(dir)
+			move_entities(dir, entities)
 			move_cooldown_timer.start()
 		elif move_queue_timer.is_stopped() and queue_duration > 0.0 and Input.is_action_just_released("click"): # Only queue for swipe gestures for now
 			if move_queue_timer.timeout.is_connected(move_entities):
 				move_queue_timer.timeout.disconnect(move_entities)
-			move_queue_timer.timeout.connect(move_entities.bind(dir))
+			move_queue_timer.timeout.connect(move_entities.bind(dir, entities))
 			move_queue_timer.start(queue_duration)
 	
 	if !Input.is_action_pressed("up") and !Input.is_action_pressed("down") and !Input.is_action_pressed("left") and !Input.is_action_pressed("right"):
@@ -265,30 +265,52 @@ func sort_ents_by_grid_pos(a, b):
 		return true
 	return false
 
-func move_entities(dir:Vector2i):
+func sort_ents_by_push_direction(a, b):
+	# For bomb explosions, sort entities based on their push direction
+	# Entities moving in the same direction should be sorted by their position
+	if a.pending_move_dir == b.pending_move_dir:
+		var pos1 = a.grid_pos.x + a.grid_pos.y * grid_size.y
+		var pos2 = b.grid_pos.x + b.grid_pos.y * grid_size.y
+		# For RIGHT and DOWN directions, reverse the order so entities further in that direction move first
+		if a.pending_move_dir == Vector2i.RIGHT or a.pending_move_dir == Vector2i.DOWN:
+			return pos1 > pos2
+		else:
+			return pos1 < pos2
+	else:
+		# Different directions, sort by direction priority (arbitrary but consistent)
+		var dir1_priority = a.pending_move_dir.x + a.pending_move_dir.y * 2
+		var dir2_priority = b.pending_move_dir.x + b.pending_move_dir.y * 2
+		return dir1_priority < dir2_priority
+
+func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 	move_queue_timer.stop()
 	undo_manager.push_game_state()
 	
-	for i in entities:
+	for i in ents_to_move:
 		i._entity_pre_move(dir) #should this only happen if the entity is going to move?
 	
 	var moving_entities = []
-	for ent in entities:
+	for ent in ents_to_move:
 		if ent.moves:
 			moving_entities.append(ent)
 	
 	# Get sorted array of entities based on which dir we're moving
 	var sorted_ent_array = moving_entities
-	sorted_ent_array.sort_custom(sort_ents_by_grid_pos)
-
-	if dir == Vector2i.RIGHT or dir == Vector2i.DOWN:
-		sorted_ent_array.reverse()
+	if dir == Vector2i.ZERO:
+		# For bomb explosions, use push direction sorting
+		sorted_ent_array.sort_custom(sort_ents_by_push_direction)
+	else:
+		# For normal movement, use grid position sorting
+		sorted_ent_array.sort_custom(sort_ents_by_grid_pos)
+		if dir == Vector2i.RIGHT or dir == Vector2i.DOWN:
+			sorted_ent_array.reverse()
 
 	for e in sorted_ent_array:
 		e.old_grid_pos = e.grid_pos
-		if e.moves: #todo make gems in goals not move etc
+		if e.moves and dir != Vector2i.ZERO:
 			e.pending_move_dir = dir
-
+		# If dir is Vector2i.ZERO, entities should already have their pending_move_dir set
+	
 	for e in sorted_ent_array:
 		if e.pending_move_dir != Vector2i.ZERO:
 			if !e.can_move_in_dir(e.pending_move_dir):
@@ -309,20 +331,17 @@ func move_entities(dir:Vector2i):
 									is_force_moving = true
 						else:
 							is_force_moving = false
-
-	var did_any_entity_move = false
 	
+	
+	var did_any_entity_move = false
 	
 	for e in sorted_ent_array:
 		if e.pending_move_dir != Vector2i.ZERO:
-			for start_ent in get_entities_at_pos(e.grid_pos):
+			for start_ent in get_entities_at_pos(e.grid_pos - e.pending_move_dir): #or e.old_grid_pos?
 				start_ent._on_entity_exited(e)
-			#e.grid_pos += e.pending_move_dir
 			did_any_entity_move = true
-			#e.position = get_position_at_grid_pos(e.grid_pos)
 			for dest_ent in get_entities_at_pos(e.grid_pos):
 				dest_ent._on_entity_entered(e)
-			#e._on_movement(e.pending_move_dir)
 			e.pending_move_dir = Vector2i.ZERO
 		else:
 			e._on_movement_blocked(dir)
@@ -330,19 +349,15 @@ func move_entities(dir:Vector2i):
 			did_any_entity_move = true
 		if e.grid_pos != e.old_grid_pos:
 			e._on_movement(e.grid_pos - e.old_grid_pos)
-			
 
-	#for i in entities:
-	#	if i.on_try_move(dir) or i._should_increment_moves(dir):
-	#		did_any_entity_move = true
-		
+	
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
 		$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
 		$Audio/MoveAudioPlayer.play()
 		increment_moves()
 		moves_array.append(dir)
-		for e in entities:
+		for e in sorted_ent_array:
 			if e.moving:
 				e.on_movement_done.connect(check_for_last_movement)
 		#Experimental skew tween
@@ -367,6 +382,38 @@ func check_for_last_movement(entity:Entity):
 func on_all_movement_finished():
 	for i in entities:
 		i._entity_post_all_movement()
+	# do bomb explode logic here?
+	# Check for bomb explosions and handle them simultaneously
+	var entity_push_directions: Dictionary = {} # entity -> array of push directions
+	
+	# Collect all push directions from all exploding bombs
+	for e in entities:
+		if e is Bomb and e.ignited:
+			var exploded_entities = e.explode()
+			for entity in exploded_entities:
+				if !entity_push_directions.has(entity):
+					entity_push_directions[entity] = []
+				entity_push_directions[entity].append(entity.pending_move_dir)
+	
+	# Resolve conflicting forces and set final push directions
+	var ents_to_move: Array[Entity] = []
+	for entity in entity_push_directions:
+		var directions = entity_push_directions[entity]
+		var net_direction = Vector2i.ZERO
+		
+		# Sum all push directions
+		for dir in directions:
+			net_direction += dir
+		
+		# Only move if there's a net force
+		if net_direction != Vector2i.ZERO:
+			entity.pending_move_dir = net_direction
+			ents_to_move.append(entity)
+		else:
+			# Cancel out the movement
+			entity.pending_move_dir = Vector2i.ZERO
+	
+	move_entities(Vector2i.ZERO, ents_to_move)
 
 func increment_moves():
 	moves += 1
