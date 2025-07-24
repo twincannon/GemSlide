@@ -22,8 +22,6 @@ func on_goal_entered(_goal):
 
 func _entity_post_all_movement():
 	super()
-	#if ignited and !gem_in_goal:
-	#	explode()
 	if queue_ignite:
 		ignited = true
 		queue_ignite = false  # Clear the queue so it doesn't ignite again
@@ -32,10 +30,7 @@ func _entity_post_all_movement():
 		moves_until_explosion -= 1  # Decrement the countdown
 
 func should_explode_now() -> bool:
-	return ignited and moves_until_explosion == 0
-
-func _does_block(_other_ent):
-	return super(_other_ent) or ignited
+	return ignited and moves_until_explosion == 0 and !gem_in_goal
 
 func explode() -> Array[Entity]:
 	Globals.get_game_node().on_bomb_explode()
