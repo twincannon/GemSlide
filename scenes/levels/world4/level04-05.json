@@ -89,6 +89,7 @@
 		0
 	],
 	"GridSize": "Vector2i(7, 6)",
+	"LevelName": "Quantum Slide",
 	"ParMoves": 24,
 	"Tutorial": ""
 }

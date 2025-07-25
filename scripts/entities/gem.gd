@@ -1,7 +1,6 @@
 extends Entity
 class_name Gem
 
-
 var gem_in_goal := false
 var gem_goal_anim_done := false
 signal on_goal_animation_finished
@@ -10,8 +9,6 @@ var goal_tween:Tween
 var goal_tween_duration := 1.0
 
 var gem_rotates = true
-
-#@onready var floating_text_scene = preload("res://scenes/floating_text.tscn")
 
 func _ready():
 	entity_sprite = %GemSprite
@@ -22,8 +19,8 @@ func _ready():
 func _initialize_entity(game:Game):
 	connect("on_goal_animation_finished", game.on_gem_goal_anim_finished.bind())
 	
-func _process(_delta):
-	$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
+#func _process(_delta):
+	#$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
 func _on_movement(_dir):
 	super(_dir)
@@ -43,6 +40,13 @@ func _on_movement(_dir):
 	if gem_rotates:
 		movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
 	movement_tween.chain().tween_callback(_on_movement_tween_done.bind(_dir))
+	
+	var bounce_tween = create_tween()
+	bounce_tween.set_trans(Tween.TRANS_SINE)
+	bounce_tween.set_ease(Tween.EASE_OUT)
+	bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", -25, tween_dur * 0.5).as_relative()
+	bounce_tween.set_ease(Tween.EASE_IN)
+	bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", 25, tween_dur * 0.5).as_relative()
 	
 	#movement_tween.finished.connect(_on_movement_tween_done.bind(_dir))
 	#get_tree().create_timer(movement_tween_duration).timeout.connect(_on_movement_tween_done.bind(_dir))
@@ -93,9 +97,9 @@ func _on_movement_blocked(_dir):
 		var rot_dir = 0.5 if (_dir == Vector2i.RIGHT or _dir == Vector2i.DOWN) else -0.5
 		blocked_tween = create_tween().set_parallel(true)
 		blocked_tween.tween_property($BlockedAnchor, "position", Vector2(_dir.x, _dir.y) * distance_to_move * 0.25, tween_dur).as_relative()
-		blocked_tween.tween_property($BlockedAnchor, "rotation", rot_dir, tween_dur).as_relative()
+		blocked_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
 		blocked_tween.chain().tween_property($BlockedAnchor, "position", Vector2(-_dir.x, -_dir.y) * distance_to_move * 0.25, tween_dur).as_relative()
-		blocked_tween.tween_property($BlockedAnchor, "rotation", -rot_dir, tween_dur).as_relative()
+		blocked_tween.tween_property(%GemSpriteRotAnchor, "rotation", -rot_dir, tween_dur).as_relative()
 		blocked_tween.chain().tween_callback(reset_blocked_anchor_position)
 
 func _does_block(_other_entity):

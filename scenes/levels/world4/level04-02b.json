@@ -77,6 +77,7 @@
 		0
 	],
 	"GridSize": "Vector2i(6, 6)",
+	"LevelName": "Jail",
 	"ParMoves": 14,
 	"Tutorial": ""
 }

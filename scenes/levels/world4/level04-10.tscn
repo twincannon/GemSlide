@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://log20hof51e5"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_4m2bc"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_4m2bc"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_vg231"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 446.0
 offset_bottom = 438.0
 columns = 9
 script = ExtResource("1_4m2bc")
+level_name = "Pentagon"
 par_moves = 28
 dev_best = 22
 num_buttons = 81

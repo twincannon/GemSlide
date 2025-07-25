@@ -8,8 +8,8 @@ offset_right = 966.0
 offset_bottom = 537.0
 columns = 6
 script = ExtResource("1_dgxvp")
-level_name = null
-tutorial = "Upon exploding, bombs push back adjacent balls and destroy adjacent rocks."
+level_name = "Demolition Demo"
+tutorial = "Upon exploding, bombs [b]push back[/b] adjacent balls and [b]destroy[/b] adjacent rocks."
 num_buttons = 18
 metadata/_custom_type_script = "uid://b6gipcinvnwbk"
 

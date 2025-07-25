@@ -167,6 +167,7 @@
 		0
 	],
 	"GridSize": "Vector2i(9, 9)",
+	"LevelName": "Pentagon",
 	"ParMoves": 28,
 	"Tutorial": ""
 }

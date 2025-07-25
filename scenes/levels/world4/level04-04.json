@@ -65,6 +65,7 @@
 		0
 	],
 	"GridSize": "Vector2i(6, 5)",
+	"LevelName": "Stones Throw",
 	"ParMoves": 19,
 	"Tutorial": ""
 }

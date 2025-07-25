@@ -5,6 +5,8 @@ var ignited = false
 var queue_ignite = false
 var moves_until_explosion = -1  # -1 means not counting down, 0 means explode now
 
+var explode_vfx_scene = preload("res://scenes/vfx/vfx_bomb_explode.tscn")
+
 func _ready():
 	entity_sprite = %BombSprite
 	moves = true
@@ -33,6 +35,8 @@ func should_explode_now() -> bool:
 	return ignited and moves_until_explosion == 0 and !gem_in_goal
 
 func explode() -> Array[Entity]:
+	add_child(explode_vfx_scene.instantiate() as GPUParticles2D)
+	
 	Globals.get_game_node().on_bomb_explode()
 	Globals.get_game_node().queue_entity_for_removal(self)
 	$BlockedAnchor.visible = false

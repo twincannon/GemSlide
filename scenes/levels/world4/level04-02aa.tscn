@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3hgtch0rv2rv"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_pnwdv"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_pnwdv"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_ll6dn"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 445.0
 offset_bottom = 320.0
 columns = 7
 script = ExtResource("1_pnwdv")
+level_name = "Trifecta"
 par_moves = 12
 dev_best = 9
 

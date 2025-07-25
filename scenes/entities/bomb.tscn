@@ -12,19 +12,22 @@ script = ExtResource("1_5hsef")
 
 [node name="BlockedAnchor" type="Node2D" parent="."]
 
-[node name="BombSprite" type="Sprite2D" parent="BlockedAnchor"]
+[node name="GemSpriteRotAnchor" type="Node2D" parent="BlockedAnchor"]
+unique_name_in_owner = true
+
+[node name="BombSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
 unique_name_in_owner = true
 z_index = 100
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_b0vwv")
 
-[node name="BombFuseSprite" type="Sprite2D" parent="BlockedAnchor"]
+[node name="BombFuseSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
 unique_name_in_owner = true
 z_index = 101
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_5hsef")
 
-[node name="BombFuseVFX" type="CPUParticles2D" parent="BlockedAnchor/BombFuseSprite"]
+[node name="BombFuseVFX" type="CPUParticles2D" parent="BlockedAnchor/GemSpriteRotAnchor/BombFuseSprite"]
 unique_name_in_owner = true
 visible = false
 position = Vector2(106, -106)
@@ -47,9 +50,10 @@ scale = Vector2(0.8, 0.95)
 texture = ExtResource("4_fscv5")
 
 [node name="ColorComponent" parent="." node_paths=PackedStringArray("node_to_colorize") instance=ExtResource("5_ei0wy")]
-node_to_colorize = NodePath("../BlockedAnchor/BombSprite")
+node_to_colorize = NodePath("../BlockedAnchor/GemSpriteRotAnchor/BombSprite")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 z_index = 999
 layout_mode = 3
 anchors_preset = 0

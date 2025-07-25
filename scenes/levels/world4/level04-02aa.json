@@ -75,6 +75,7 @@
 		0
 	],
 	"GridSize": "Vector2i(7, 5)",
+	"LevelName": "Trifecta",
 	"ParMoves": 12,
 	"Tutorial": ""
 }

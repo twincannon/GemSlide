@@ -8,6 +8,7 @@ offset_right = 672.0
 offset_bottom = 435.0
 columns = 5
 script = ExtResource("1_ucu8b")
+level_name = "Bombastic Beginning"
 tutorial = "[center][b]Bombs[/b] [img height=40]res://assets/art/bomb_texticon.png[/img] obey the following rules:[/center]
 [ul]They act like balls and can enter goals[/ul]
 [ul]If any ball enters a goal, all bombs ignite[/ul]

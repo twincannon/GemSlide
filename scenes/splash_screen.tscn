@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://40fbry162c3k"]
+[gd_scene load_steps=28 format=3 uid="uid://40fbry162c3k"]
 
 [ext_resource type="Script" uid="uid://c7aw1nftsgh3m" path="res://scripts/splash_screen.gd" id="1_1d465"]
 [ext_resource type="PackedScene" uid="uid://dqthvj372mas5" path="res://scenes/vfx/vfx_goal.tscn" id="2_vbcv6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://oavoqs2a613w" path="res://scenes/vfx/vfx_teleport.tscn" id="4_5osyx"]
 [ext_resource type="PackedScene" uid="uid://casi57kcua18o" path="res://scenes/vfx/vfx_water.tscn" id="5_dhol4"]
 [ext_resource type="PackedScene" uid="uid://c7ef8pt4mwjjo" path="res://scenes/vfx/vfx_rock_destroyed.tscn" id="6_a2ut7"]
+[ext_resource type="PackedScene" uid="uid://qkto6yxksvto" path="res://scenes/vfx/vfx_bomb_explode.tscn" id="7_5osyx"]
 
 [sub_resource type="Gradient" id="Gradient_1hu6l"]
 offsets = PackedFloat32Array(0.504808, 1)
@@ -155,3 +156,6 @@ process_material = SubResource("ParticleProcessMaterial_w85c8")
 [node name="VFXRockDestroyed" parent="." instance=ExtResource("6_a2ut7")]
 position = Vector2(-1000, -1000)
 process_material = SubResource("ParticleProcessMaterial_lentl")
+
+[node name="VFXBombExplode" parent="." instance=ExtResource("7_5osyx")]
+position = Vector2(-1000, -1000)

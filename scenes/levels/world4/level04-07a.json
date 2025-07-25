@@ -77,6 +77,7 @@
 		0
 	],
 	"GridSize": "Vector2i(6, 6)",
+	"LevelName": "Tight Squeeze 2",
 	"ParMoves": 25,
 	"Tutorial": ""
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6n6pkb53y6xj"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_51vmb"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_51vmb"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_w8rqi"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 6
 script = ExtResource("1_51vmb")
+level_name = "Opposites Attract"
 par_moves = 12
 dev_best = 10
 metadata/_edit_lock_ = true

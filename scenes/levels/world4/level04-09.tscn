@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4ogijuvsrmq"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_jaohj"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_jaohj"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_8dmdi"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 443.0
 offset_bottom = 400.0
 columns = 8
 script = ExtResource("1_jaohj")
+level_name = "Side to Side"
 par_moves = 28
 dev_best = 23
 num_buttons = 64

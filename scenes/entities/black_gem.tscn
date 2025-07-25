@@ -28,6 +28,7 @@ texture = ExtResource("3_j1kfn")
 [node name="ColorblindHelper" type="Sprite2D" parent="."]
 
 [node name="Control" type="Control" parent="."]
+visible = false
 z_index = 999
 layout_mode = 3
 anchors_preset = 0

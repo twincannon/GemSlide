@@ -117,6 +117,7 @@
 		0
 	],
 	"GridSize": "Vector2i(8, 7)",
+	"LevelName": "Side to Side",
 	"ParMoves": 28,
 	"Tutorial": ""
 }
