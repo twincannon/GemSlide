@@ -55,6 +55,7 @@
 		0
 	],
 	"GridSize": "Vector2i(5, 5)",
+	"LevelName": "An Icy Intro",
 	"ParMoves": 5,
 	"Tutorial": "[center]When balls enter an [b]ice slick[/b] [img width=32 height=32]res://assets/art/ice_slick.png[/img], they continue moving in the same direction until either they are no longer on ice or are blocked.[/center]"
 }

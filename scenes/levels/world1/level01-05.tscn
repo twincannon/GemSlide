@@ -8,6 +8,8 @@ offset_right = 385.0
 offset_bottom = 450.0
 columns = 4
 script = ExtResource("1_4b3g5")
+level_name = "Trees"
+tutorial = "[center][b]Trees[/b] [img height=32]res://assets/art/tree.png[/img] stay still and block ball movement. Move around them to get into the goals![/center]"
 par_moves = 13
 dev_best = 12
 

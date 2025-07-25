@@ -37,6 +37,7 @@
 		0
 	],
 	"GridSize": "Vector2i(4, 4)",
+	"LevelName": "Chopped",
 	"ParMoves": 13,
 	"Tutorial": ""
 }

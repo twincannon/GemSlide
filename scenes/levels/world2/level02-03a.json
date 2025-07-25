@@ -61,6 +61,7 @@
 		0
 	],
 	"GridSize": "Vector2i(7, 4)",
+	"LevelName": "Center Slide",
 	"ParMoves": 18,
 	"Tutorial": ""
 }

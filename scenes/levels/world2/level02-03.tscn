@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjwdtuiajjg78"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_026bl"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_026bl"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_v5mbb"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 389.0
 offset_bottom = 366.0
 columns = 7
 script = ExtResource("1_026bl")
+level_name = "Trapped Green"
 par_moves = 13
 dev_best = 10
 

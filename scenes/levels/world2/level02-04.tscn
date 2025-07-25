@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj6jjcxei3muc"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_44x5l"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_44x5l"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_wwi2t"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 441.0
 offset_bottom = 402.0
 columns = 7
 script = ExtResource("1_44x5l")
+level_name = "Inconvenience"
 par_moves = 22
 dev_best = 17
 

@@ -8,6 +8,7 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 7
 script = ExtResource("1_ofuxf")
+level_name = null
 tutorial = "[center][b]Teleporters[/b] [img height=20]res://assets/art/teleporter.png[/img] instantly transport anything that enters them.[/center]"
 par_moves = 4
 dev_best = 4

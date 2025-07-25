@@ -45,6 +45,7 @@
 		0
 	],
 	"GridSize": "Vector2i(4, 5)",
+	"LevelName": "Trees",
 	"ParMoves": 13,
-	"Tutorial": ""
+	"Tutorial": "[center][b]Trees[/b] [img height=32]res://assets/art/tree.png[/img] stay still and block ball movement. Move around them to get into the goals![/center]"
 }

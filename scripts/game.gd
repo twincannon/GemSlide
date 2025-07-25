@@ -49,7 +49,12 @@ func _ready():
 	
 	if Globals.current_level_data:
 		data = Globals.current_level_data.get_data()
-		%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) + "-" + str(Globals.get_current_level_index() + 1)
+		var level_name:String = ""
+		if data.has("LevelName"):
+			level_name = data["LevelName"]
+		%LevelNumLabel.text = "Hole " + str(Globals.get_current_world_index() + 1) \
+			+ "-" + str(Globals.get_current_level_index() + 1) \
+			+ ((": " + level_name) if level_name != "" else "")
 		
 		# Debug print
 		var dict = SaveGame.level_dict[Globals.current_level_data.resource_path]

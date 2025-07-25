@@ -8,6 +8,7 @@ offset_right = 309.0
 offset_bottom = 288.0
 columns = 4
 script = ExtResource("1_fnpi6")
+level_name = "Rocks"
 tutorial = "[center][b]Rocks[/b] [img width=32 height=32]res://assets/art/rock.png[/img] are just there to get in your way. They move like balls do, but don't enter goals.[/center]"
 par_moves = 9
 dev_best = 8

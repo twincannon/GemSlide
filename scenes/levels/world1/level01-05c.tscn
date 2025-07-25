@@ -8,6 +8,7 @@ offset_right = 356.0
 offset_bottom = 289.0
 columns = 5
 script = ExtResource("1_ew2g3")
+level_name = "Cardinal Rocks"
 par_moves = 13
 dev_best = 12
 

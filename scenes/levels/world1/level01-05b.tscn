@@ -8,6 +8,7 @@ offset_right = 355.0
 offset_bottom = 352.0
 columns = 4
 script = ExtResource("1_dh3on")
+level_name = "A Rocky Goal"
 par_moves = 14
 dev_best = 11
 

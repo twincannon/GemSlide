@@ -133,6 +133,7 @@
 		0
 	],
 	"GridSize": "Vector2i(8, 8)",
+	"LevelName": "Diagonal 2",
 	"ParMoves": 25,
 	"Tutorial": ""
 }

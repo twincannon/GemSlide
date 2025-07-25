@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgearqkpjcmnh"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_81f51"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_81f51"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_o534n"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 438.0
 offset_bottom = 540.0
 columns = 6
 script = ExtResource("1_81f51")
+level_name = "Ice Machine"
 par_moves = 19
 dev_best = 14
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdmay8k6nx2o6"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_xlqcu"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_xlqcu"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_ff501"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 340.0
 offset_bottom = 335.0
 columns = 5
 script = ExtResource("1_xlqcu")
+level_name = "An Icy Intro"
 tutorial = "[center]When balls enter an [b]ice slick[/b] [img width=32 height=32]res://assets/art/ice_slick.png[/img], they continue moving in the same direction until either they are no longer on ice or are blocked.[/center]"
 par_moves = 5
 dev_best = 5

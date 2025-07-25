@@ -55,6 +55,7 @@
 		0
 	],
 	"GridSize": "Vector2i(5, 5)",
+	"LevelName": "Waterlogged",
 	"ParMoves": 11,
 	"Tutorial": "[center]Balls sink in [b]water[/b] [img]res://assets/art/ui/waterhazard_icon.png[/img], be careful![/center]"
 }

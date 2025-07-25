@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ukua6vjplp5u"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_w5i3y"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_w5i3y"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_4r12v"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 403.0
 offset_bottom = 339.0
 columns = 5
 script = ExtResource("1_w5i3y")
+level_name = "Chopped 2"
 par_moves = 28
 dev_best = 25
 

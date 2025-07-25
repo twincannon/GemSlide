@@ -101,6 +101,7 @@
 		0
 	],
 	"GridSize": "Vector2i(6, 8)",
+	"LevelName": "Ice Machine",
 	"ParMoves": 19,
 	"Tutorial": ""
 }

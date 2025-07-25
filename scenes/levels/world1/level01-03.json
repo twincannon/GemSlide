@@ -23,6 +23,7 @@
 		0
 	],
 	"GridSize": "Vector2i(3, 3)",
+	"LevelName": "Tricolor",
 	"ParMoves": 7,
 	"Tutorial": ""
 }

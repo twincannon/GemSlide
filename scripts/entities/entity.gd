@@ -65,26 +65,26 @@ func can_move_in_dir(dir:Vector2i, ignore_stuck = false) -> bool:
 	return false
 
 
-func on_try_move(dir): # Returns whether or not the move was successful
-	var tried_to_move := false
-	if can_move_in_dir(dir):
-		#print(str(self) + " -> " + str(dir.x)+","+str(dir.y))
-		var game_node = Globals.get_game_node()
-		for e in game_node.get_entities_at_pos(grid_pos):
-			e._on_entity_exited(self)
-		grid_pos += dir
-		for e in game_node.get_entities_at_pos(grid_pos):
-			e._on_entity_entered(self)
-		if movement_tween:
-			movement_tween.kill()
-			movement_tween = null
-		_on_movement(dir)
-		if !movement_tween: # If our movement call didn't start a tween, just teleport
-			_on_movement_tween_done(dir)
-		tried_to_move = true
-	elif moves:
-		_on_movement_blocked(dir)
-	return tried_to_move
+#func on_try_move(dir): # Returns whether or not the move was successful
+	#var tried_to_move := false
+	#if can_move_in_dir(dir):
+		##print(str(self) + " -> " + str(dir.x)+","+str(dir.y))
+		#var game_node = Globals.get_game_node()
+		#for e in game_node.get_entities_at_pos(grid_pos):
+			#e._on_entity_exited(self)
+		#grid_pos += dir
+		#for e in game_node.get_entities_at_pos(grid_pos):
+			#e._on_entity_entered(self)
+		#if movement_tween:
+			#movement_tween.kill()
+			#movement_tween = null
+		#_on_movement(dir)
+		#if !movement_tween: # If our movement call didn't start a tween, just teleport
+			#_on_movement_tween_done(dir)
+		#tried_to_move = true
+	#elif moves:
+		#_on_movement_blocked(dir)
+	#return tried_to_move
 
 func _should_increment_moves(dir):
 	return stuck and moves and can_move_in_dir(dir, true)# Should take into account "can ever un-stuck" somehow. Basically this is hardcoded for sandtraps atm

@@ -95,6 +95,7 @@
 		0
 	],
 	"GridSize": "Vector2i(9, 5)",
+	"LevelName": "Diagonal",
 	"ParMoves": 20,
 	"Tutorial": ""
 }

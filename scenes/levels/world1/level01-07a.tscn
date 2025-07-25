@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdo7u77bq8ig3"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_cjhai"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_cjhai"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_x6krp"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 322.0
 offset_bottom = 311.0
 columns = 7
 script = ExtResource("1_cjhai")
+level_name = "Ordered Chaos"
 par_moves = 9
 dev_best = 6
 

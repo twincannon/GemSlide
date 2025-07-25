@@ -133,6 +133,7 @@
 		0
 	],
 	"GridSize": "Vector2i(8, 8)",
+	"LevelName": "Red Center",
 	"ParMoves": 24,
 	"Tutorial": ""
 }

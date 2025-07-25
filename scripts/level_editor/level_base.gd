@@ -2,6 +2,7 @@
 extends GridContainer
 class_name LevelBase
 
+@export var level_name:String
 @export_multiline var tutorial:String
 @export var par_moves:int
 @export var dev_best:int
@@ -46,7 +47,7 @@ func set_export_level(_export):
 		printerr(FileAccess.get_open_error())
 		return
 
-	var dict = { "GridSize": var_to_str(get_grid_size()), "Entities": [], "EntityIDs": [], "ParMoves": par_moves, "DevBest": dev_best, "Tutorial": tutorial }
+	var dict = { "GridSize": var_to_str(get_grid_size()), "Entities": [], "EntityIDs": [], "ParMoves": par_moves, "DevBest": dev_best, "Tutorial": tutorial, "LevelName": level_name }
 	var children = get_children()
 	for i in children.size():
 		if children[i] is EntityIconBase:

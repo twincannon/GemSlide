@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgeoqnu3nsroe"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_pl7fq"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_pl7fq"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_myi0i"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 5
 script = ExtResource("1_pl7fq")
+level_name = "Waterlogged"
 tutorial = "[center]Balls sink in [b]water[/b] [img]res://assets/art/ui/waterhazard_icon.png[/img], be careful![/center]"
 par_moves = 11
 dev_best = 11

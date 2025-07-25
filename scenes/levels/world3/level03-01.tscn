@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c14bj11cp52sb"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_blw4y"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_blw4y"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_50qxs"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 429.0
 offset_bottom = 275.0
 columns = 5
 script = ExtResource("1_blw4y")
+level_name = "A Sandy Scenario"
 tutorial = "[center][b]Sand traps[/b] [img height=20]res://assets/art/sandtrap.png[/img] cause your ball to get stuck, requiring an extra move to free itself from the trap.[/center]"
 par_moves = 6
 dev_best = 6

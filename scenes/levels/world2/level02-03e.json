@@ -103,6 +103,7 @@
 		0
 	],
 	"GridSize": "Vector2i(7, 7)",
+	"LevelName": "Icy Symmetry",
 	"ParMoves": 18,
 	"Tutorial": ""
 }
