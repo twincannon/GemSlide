@@ -75,6 +75,7 @@
 		0
 	],
 	"GridSize": "Vector2i(7, 5)",
+	"LevelName": "Sand Landing",
 	"ParMoves": 18,
 	"Tutorial": ""
 }

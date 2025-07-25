@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://48rupgyspcfd"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_duoq0"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_duoq0"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_3703m"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 7
 script = ExtResource("1_duoq0")
+level_name = "X Marks the Water"
 par_moves = 21
 dev_best = 18
 

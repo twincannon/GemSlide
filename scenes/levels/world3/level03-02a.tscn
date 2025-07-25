@@ -8,6 +8,7 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 5
 script = ExtResource("1_43rcx")
+level_name = "Sand Logic"
 par_moves = 13
 dev_best = 10
 metadata/_edit_lock_ = true

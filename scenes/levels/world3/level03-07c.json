@@ -133,6 +133,7 @@
 		0
 	],
 	"GridSize": "Vector2i(8, 8)",
+	"LevelName": "Biomes",
 	"ParMoves": 25,
 	"Tutorial": ""
 }

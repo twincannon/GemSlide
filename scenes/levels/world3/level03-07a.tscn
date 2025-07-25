@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyddgyy6wx7h1"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_fscwf"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_fscwf"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_40sik"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 7
 script = ExtResource("1_fscwf")
+level_name = "Dunking Pond"
 par_moves = 27
 dev_best = 22
 metadata/_edit_lock_ = true

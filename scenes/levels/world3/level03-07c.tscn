@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3u0c2tbipjgm"]
 
-[ext_resource type="Script" path="res://scripts/level_editor/level_base.gd" id="1_jv1pi"]
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_jv1pi"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_sdfmm"]
 
 [node name="level01-01" type="GridContainer"]
@@ -8,6 +8,7 @@ offset_right = 428.0
 offset_bottom = 428.0
 columns = 8
 script = ExtResource("1_jv1pi")
+level_name = "Biomes"
 par_moves = 25
 dev_best = 20
 metadata/_edit_lock_ = true

@@ -298,9 +298,6 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 	if !is_bomb_explosion:
 		undo_manager.push_game_state()
 	
-	for i in ents_to_move:
-		i._entity_pre_move(dir) #should this only happen if the entity is going to move?
-	
 	var moving_entities = []
 	for ent in ents_to_move:
 		if ent.moves:
@@ -344,6 +341,11 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 						else:
 							is_force_moving = false
 	
+	#Seems weird to have this after movement, but we need to have it here for
+	#sand traps to work properly - since they check can_move_in_dir, we need
+	#to have up to date grid_pos's (also sand trap is the only entity that uses this)
+	for i in sorted_ent_array:
+		i._entity_pre_move(dir)
 	
 	var did_any_entity_move = false
 	

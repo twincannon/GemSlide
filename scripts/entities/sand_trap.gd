@@ -13,7 +13,7 @@ func _does_block(_other_entity):
 func _on_entity_entered(_other_entity):
 	_other_entity.stuck = true
 	_other_entity.on_entity_pre_move.connect(pre_move)
-	moves_to_escape = 2
+	moves_to_escape = 1
 	$Audio.play()
 	$Fill.visible = true
 	var vfx = sand_vfx_scene.instantiate()
