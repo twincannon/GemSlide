@@ -51,8 +51,8 @@ func set_export_level(_export):
 	var children = get_children()
 	for i in children.size():
 		if children[i] is EntityIconBase:
-			dict["Entities"].append(children[i].entity_type)
-			dict["EntityIDs"].append(children[i].entity_id)
+			dict["Entities"].append(int(children[i].entity_type))
+			dict["EntityIDs"].append(int(children[i].entity_id))
 	
 	var json_string = JSON.stringify(dict, "\t")
 	file.store_string(json_string)
