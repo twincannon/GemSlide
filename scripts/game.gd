@@ -341,13 +341,15 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 						else:
 							is_force_moving = false
 	
+	var did_any_entity_move = false
+	
 	#Seems weird to have this after movement, but we need to have it here for
 	#sand traps to work properly - since they check can_move_in_dir, we need
 	#to have up to date grid_pos's (also sand trap is the only entity that uses this)
 	for i in sorted_ent_array:
+		if i._should_increment_moves(dir):
+			did_any_entity_move = true
 		i._entity_pre_move(dir)
-	
-	var did_any_entity_move = false
 	
 	for e in sorted_ent_array:
 		if e.pending_move_dir != Vector2i.ZERO:
@@ -359,11 +361,8 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 			e.pending_move_dir = Vector2i.ZERO
 		else:
 			e._on_movement_blocked(dir)
-		if e._should_increment_moves(dir):
-			did_any_entity_move = true
 		if e.grid_pos != e.old_grid_pos:
 			e._on_movement(e.grid_pos - e.old_grid_pos)
-
 	
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
@@ -647,3 +646,6 @@ func _on_undo_button_pressed() -> void:
 	%ResultContainer.visible = false
 	%TutorialContainer.visible = false
 	undo_manager.pop_game_state()
+
+func get_grid_scale() -> Vector2:
+	return $GridAnchor.scale

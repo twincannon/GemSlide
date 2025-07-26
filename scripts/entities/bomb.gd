@@ -35,17 +35,21 @@ func should_explode_now() -> bool:
 	return ignited and moves_until_explosion == 0 and !gem_in_goal
 
 func explode() -> Array[Entity]:
-	add_child(explode_vfx_scene.instantiate() as GPUParticles2D)
+	var game_node = Globals.get_game_node()
 	
-	Globals.get_game_node().on_bomb_explode()
-	Globals.get_game_node().queue_entity_for_removal(self)
+	var vfx = explode_vfx_scene.instantiate() as GPUParticles2D
+	vfx.process_material.set("scale", game_node.get_grid_scale())
+	add_child(vfx)
+	
+	game_node.on_bomb_explode()
+	game_node.queue_entity_for_removal(self)
 	$BlockedAnchor.visible = false
 	moves_until_explosion = -1  # Clear the flag after exploding
 	
 	# Get all adjacent entities and push them recursively
 	var ents:Array[Entity] = []
 	var adjacent_entities = []
-	for e in Globals.get_game_node().entities:
+	for e in game_node.entities:
 		if e != self and Globals.is_cardinally_adjacent(grid_pos, e.grid_pos):
 			if e is Bomb:
 				continue

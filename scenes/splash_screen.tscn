@@ -139,23 +139,43 @@ color_ramp = SubResource("GradientTexture1D_dhol4")
 script = ExtResource("1_1d465")
 
 [node name="VFXGoal" parent="." instance=ExtResource("2_vbcv6")]
-position = Vector2(-1000, -1000)
 process_material = SubResource("ParticleProcessMaterial_w4c0s")
 
 [node name="VFXSand" parent="." instance=ExtResource("3_a2ut7")]
-position = Vector2(-1000, -1000)
+position = Vector2(0, 0)
 process_material = SubResource("ParticleProcessMaterial_vob37")
 
 [node name="VFXTeleport" parent="." instance=ExtResource("4_5osyx")]
-position = Vector2(-1000, -1000)
 
 [node name="VFXWater" parent="." instance=ExtResource("5_dhol4")]
-position = Vector2(-1000, -1000)
+position = Vector2(0, 0)
 process_material = SubResource("ParticleProcessMaterial_w85c8")
 
 [node name="VFXRockDestroyed" parent="." instance=ExtResource("6_a2ut7")]
-position = Vector2(-1000, -1000)
+position = Vector2(0, 0)
 process_material = SubResource("ParticleProcessMaterial_lentl")
 
 [node name="VFXBombExplode" parent="." instance=ExtResource("7_5osyx")]
-position = Vector2(-1000, -1000)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loading..."
