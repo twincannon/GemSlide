@@ -10,6 +10,8 @@ columns = 6
 script = ExtResource("1_dgxvp")
 level_name = "Demolition Demo"
 tutorial = "Upon exploding, bombs [b]push back[/b] adjacent balls and [b]destroy[/b] adjacent rocks."
+par_moves = 8
+dev_best = 8
 num_buttons = 18
 metadata/_custom_type_script = "uid://b6gipcinvnwbk"
 

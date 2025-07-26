@@ -44,8 +44,8 @@ func _on_entity_finished_entering(_other_entity):
 	
 	add_teleport_vfx()
 	other_teleporter.add_teleport_vfx()
-
-	$Audio.play()
+	
+	Globals.get_game_node().on_teleport()
 	
 	# We do a fake teleport here as well as the real one (which is queued) in _entity_post_all_movement so that we can visibly instantly teleport when delayed by ice movement etc.
 	_other_entity.fake_teleport_to(other_teleporter.grid_pos)

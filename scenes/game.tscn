@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjotdf84upxhu"]
+[gd_scene load_steps=11 format=3 uid="uid://cjotdf84upxhu"]
 
 [ext_resource type="Script" uid="uid://fmx28qo0weei" path="res://scripts/game.gd" id="1_m1u8a"]
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="2_vs7lu"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://botpl3umn6jr3" path="res://assets/art/ui/mainmenu_arrow.png" id="4_x5udq"]
 [ext_resource type="Texture2D" uid="uid://c78bofvhsihpr" path="res://assets/art/bush.png" id="5_176mw"]
 [ext_resource type="AudioStream" uid="uid://cjlnwx3tepovc" path="res://assets/audio/bomb_explode.wav" id="6_p57ef"]
+[ext_resource type="AudioStream" uid="uid://b7eoe6fqejlpe" path="res://assets/audio/teleport.wav" id="7_gee14"]
+[ext_resource type="AudioStream" uid="uid://bp6633i07bfq8" path="res://assets/audio/bonk.wav" id="7_u5sy4"]
 
 [sub_resource type="Gradient" id="Gradient_1pbea"]
 offsets = PackedFloat32Array(0.270408, 0.5, 0.714286)
@@ -61,6 +63,10 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "Level 0-0"
 horizontal_alignment = 1
@@ -75,6 +81,10 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
 text = "Par: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -84,6 +94,10 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -92,9 +106,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.101874
+anchor_top = 0.309
 anchor_right = 1.0
-anchor_bottom = 0.310304
+anchor_bottom = 0.601
 ratio = 2.0
 metadata/_edit_use_anchors_ = true
 
@@ -138,6 +152,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="TutOkButton" type="Button" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Okay!"
 
@@ -370,6 +385,10 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
+[node name="TutOkButtonTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 1.5
+
 [node name="Audio" type="Node2D" parent="."]
 process_mode = 3
 
@@ -387,6 +406,12 @@ bus = &"SFX"
 
 [node name="BombAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("6_p57ef")
+
+[node name="TeleportAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_gee14")
+
+[node name="BonkAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_u5sy4")
 
 [node name="BackgroundImageRoot" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -407,3 +432,4 @@ texture = SubResource("GradientTexture1D_tq156")
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2/HUDMainMenuButton" to="." method="_on_hud_main_menu_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer/HUDRetryButton" to="." method="_on_hud_retry_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="timeout" from="TutOkButtonTimer" to="." method="_enable_tutorial_ok_button"]

@@ -1,5 +1,5 @@
 {
-	"DevBest": 0,
+	"DevBest": 8,
 	"Entities": [
 		1,
 		16,
@@ -42,6 +42,6 @@
 	],
 	"GridSize": "Vector2i(6, 3)",
 	"LevelName": "Demolition Demo",
-	"ParMoves": 0,
+	"ParMoves": 8,
 	"Tutorial": "Upon exploding, bombs [b]push back[/b] adjacent balls and [b]destroy[/b] adjacent rocks."
 }

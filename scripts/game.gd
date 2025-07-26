@@ -105,6 +105,9 @@ func _ready():
 		if data["Tutorial"].is_empty() == false:
 			%TutorialContainer.visible = true
 			%TutorialLabel.text = data["Tutorial"]
+			%TutOkButton.visible = false
+			var tutorial_button_enable_timer_dur = 1.0
+			$TutOkButtonTimer.start()
 			set_game_paused(true)
 	Globals.did_retry = false
 	
@@ -140,6 +143,9 @@ func _ready():
 		#print("Solution: ", solution)
 	#else:
 		#print("Level is unsolvable or too complex")
+
+func _enable_tutorial_ok_button():
+	%TutOkButton.visible = true
 
 func add_entity_to_grid(entity:Entity, grid_pos:Vector2i):
 	$GridAnchor.add_child(entity)
@@ -342,6 +348,7 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 							is_force_moving = false
 	
 	var did_any_entity_move = false
+	var any_move_blocked = false
 	
 	#Seems weird to have this after movement, but we need to have it here for
 	#sand traps to work properly - since they check can_move_in_dir, we need
@@ -361,8 +368,12 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 			e.pending_move_dir = Vector2i.ZERO
 		else:
 			e._on_movement_blocked(dir)
+			any_move_blocked = true
 		if e.grid_pos != e.old_grid_pos:
 			e._on_movement(e.grid_pos - e.old_grid_pos)
+	
+	if any_move_blocked and !did_any_entity_move:
+		$Audio/BonkAudioPlayer.play() #play a "bump" sfx
 	
 	if did_any_entity_move:
 		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
@@ -569,6 +580,9 @@ func on_goal_filled(_goal):
 
 func on_bomb_explode():
 	$Audio/BombAudioPlayer.play()
+
+func on_teleport():
+	$Audio/TeleportAudioPlayer.play()
 
 func on_game_over(won):
 	game_state = GameState.END

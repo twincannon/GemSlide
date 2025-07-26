@@ -11,9 +11,9 @@ script = ExtResource("1_irwso")
 level_name = "Basic Movement"
 tutorial = "[center][wave amp=50.0 freq=5.0]Welcome to [i]Putt! Putt! [rainbow]Slide[/rainbow]![/i][/wave]
 
-You can swipe, use arrow keys or WASD to move balls [img width=32 height=32 color=#FF0000]res://assets/art/golfball.png[/img] around the board.[/center]"
-par_moves = 4
-dev_best = 4
+You can swipe, use arrow keys or WASD to move [b]all[/b] balls [img width=32 height=32 color=#FF0000]res://assets/art/golfball.png[/img] around the board.[/center]"
+par_moves = 3
+dev_best = 3
 
 [node name="EntityButton" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
@@ -29,9 +29,15 @@ layout_mode = 2
 
 [node name="EntityButton4" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton5" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
+entity_type = 1
+entity_text = "b"
+entity_color = Color(1, 0, 0, 1)
 
 [node name="EntityButton6" parent="." instance=ExtResource("2_kce62")]
 layout_mode = 2
