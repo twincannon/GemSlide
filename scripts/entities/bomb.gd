@@ -18,13 +18,18 @@ func ignite_fuse():
 
 func on_goal_entered(_goal):
 	super(_goal)
+	if ignited:
+		Globals.get_game_node().on_bomb_defuse()
 	ignited = false
 	%BombFuseSprite.visible = false
 	%BombFuseVFX.visible = false
 
 func _entity_post_all_movement():
 	super()
+	if gem_in_goal:
+		return
 	if queue_ignite:
+		Globals.get_game_node().on_bomb_ignite()
 		ignited = true
 		queue_ignite = false  # Clear the queue so it doesn't ignite again
 		moves_until_explosion = 1  # Start the countdown

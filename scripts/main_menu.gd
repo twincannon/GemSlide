@@ -3,6 +3,7 @@ extends Control
 @onready var level_button_scene = preload("res://scenes/ui/level_button.tscn")
 
 func _ready():
+	SoundManager.stop_game_music()
 	Globals.current_level_data = null
 	update_world()
 

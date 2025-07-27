@@ -47,6 +47,8 @@ func _ready():
 	
 	undo_manager = UndoManager.new(self)
 	
+	SoundManager.start_game_music()
+	
 	if Globals.current_level_data:
 		data = Globals.current_level_data.get_data()
 		var level_name:String = ""
@@ -106,7 +108,6 @@ func _ready():
 			%TutorialContainer.visible = true
 			%TutorialLabel.text = data["Tutorial"]
 			%TutOkButton.visible = false
-			var tutorial_button_enable_timer_dur = 1.0
 			$TutOkButtonTimer.start()
 			set_game_paused(true)
 	Globals.did_retry = false
@@ -579,7 +580,13 @@ func on_goal_filled(_goal):
 			e.ignite_fuse()
 
 func on_bomb_explode():
-	$Audio/BombAudioPlayer.play()
+	$Audio/BombExplodeAudioPlayer.play()
+
+func on_bomb_ignite():
+	$Audio/BombIgniteAudioPlayer.play()
+
+func on_bomb_defuse():
+	$Audio/BombDefuseAudioPlayer.play()
 
 func on_teleport():
 	$Audio/TeleportAudioPlayer.play()
