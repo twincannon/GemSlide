@@ -58,6 +58,7 @@ func is_skin_unlocked(skin_name:String) -> bool:
 func unlock_course(course_num:int, save := true) -> void:
 	var course_str = "Course-" + str(course_num)
 	unlock_dict[UNLOCKS_STR][course_str][IS_UNLOCKED] = true
+	SaveGame.on_world_unlocked(course_num)
 	if save: SaveGame.save_game()
 
 func unlock_skin(skin_name:String, save := true) -> void:

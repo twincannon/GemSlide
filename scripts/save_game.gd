@@ -34,9 +34,13 @@ func get_level_score(level_name) -> int:
 func save_game():
 	save_data(Globals.SAVE_DIR + SAVE_FILE_NAME)
 
+func on_world_unlocked(world_num:int):
+	if Globals.world_datas.size() >= world_num:
+		update_level_in_dict(Globals.world_datas[world_num - 1].level_data_json[0].resource_path, true, 0)
+
 func _ready():
+	var is_first_level = true
 	for world in Globals.world_datas:
-		var is_first_level = true
 		for level in world.level_data_json:
 			update_level_in_dict(level.resource_path, is_first_level, 0)
 			is_first_level = false
