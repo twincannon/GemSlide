@@ -506,6 +506,10 @@ func check_goal():
 	if all_goals_filled:
 		game_state = GameState.END
 		#print("all goals filled @ " + Time.get_time_string_from_system())
+		var unlock_str = UnlockManager.on_level_beat(Globals.get_current_world_index() + 1, Globals.get_current_level_index() + 1)
+		if unlock_str != "":
+			%UnlockContainer.visible = true
+			%UnlockLabel.text = unlock_str
 		save_game()
 		do_par_moves_anim()
 	elif !can_win:

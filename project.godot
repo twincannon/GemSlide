@@ -26,6 +26,7 @@ general/default_playback_type.web=0
 Globals="*res://scripts/globals.gd"
 SaveGame="*res://scripts/save_game.gd"
 SoundManager="*res://scripts/sound_manager.gd"
+UnlockManager="*res://scripts/unlock_manager.gd"
 
 [debug]
 

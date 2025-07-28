@@ -61,7 +61,11 @@ func save_data(path:String):
 		printerr(FileAccess.get_open_error())
 		return
 	
-	var json_string = JSON.stringify(level_dict, "\t")
+	var levels = {"levels":level_dict}
+	
+	var save_dict = [levels, UnlockManager.unlock_dict]
+	
+	var json_string = JSON.stringify(save_dict, "\t")
 	file.store_string(json_string)
 	file.close()
 	
@@ -81,8 +85,12 @@ func load_data(path:String):
 			return
 		
 		# Iterate through our data and set each level's data (don't set the level_dict directly to data!)
-		for level_name in data:
-			level_dict[level_name] = data[level_name]
+		for cur_dict in data:
+			if cur_dict.has("unlocks"):
+				UnlockManager.load_unlocks(cur_dict["unlocks"])
+			if cur_dict.has("levels"):
+				for level_name in cur_dict["levels"]:
+					level_dict[level_name] = cur_dict["levels"][level_name]
 	else:
 		printerr("Cannot open file at %s" % [path])
 
