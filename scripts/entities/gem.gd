@@ -68,13 +68,17 @@ func _on_movement_tween_done(dir):
 		goal_tween.set_trans(Tween.TRANS_ELASTIC)
 		goal_tween.set_ease(Tween.EASE_OUT)
 		goal_tween.tween_property(entity_sprite, "scale", entity_sprite.scale * 0.66, goal_tween_duration)
-		goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
-		goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
-		goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
+		#goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
+		#goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
+		#goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
+		goal_tween.tween_method(set_gem_color_scale, 1.0, 0.5, goal_tween_duration)
 		goal_tween.tween_property(entity_sprite, "z_index", -10, goal_tween_duration).as_relative()
 		goal_tween.chain().tween_callback(goal_animation_finished)
 	super(dir)
-	
+
+func set_gem_color_scale(value:float): #Modulate also works with updated shader
+	entity_sprite.material.set_shader_parameter("color_scale", value)
+
 func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
@@ -135,6 +139,7 @@ func apply_properties(properties:Dictionary):
 		entity_sprite.modulate.g *= 0.5
 		entity_sprite.modulate.b *= 0.5
 		entity_sprite.z_index -= 10
+		%ShadowSprite.visible = false
 
 #func on_number_squished():
 #	$GemSprite.z_index += 1

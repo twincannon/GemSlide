@@ -1,7 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqthvj372mas5"]
+[gd_scene load_steps=8 format=3 uid="uid://dqthvj372mas5"]
 
 [ext_resource type="Material" uid="uid://c3tj2v024bbd1" path="res://assets/art/vfx/vfx_goal_ppm.tres" id="1_1hvov"]
-[ext_resource type="Texture2D" uid="uid://btwwt5tn2bpsa" path="res://assets/art/vfx/particle_star.png" id="1_xx5no"]
+[ext_resource type="Shader" uid="uid://dks2inxbh63" path="res://shaders/hue_shift.gdshader" id="1_i5s51"]
+[ext_resource type="Texture2D" uid="uid://bk541vxj5c7p4" path="res://assets/art/vfx/particle_star_red.png" id="2_i5s51"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lisc0"]
+resource_local_to_scene = true
+shader = ExtResource("1_i5s51")
+shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [sub_resource type="Animation" id="Animation_uop4b"]
 length = 0.001
@@ -50,21 +58,22 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a2pyl"]
 _data = {
-"RESET": SubResource("Animation_uop4b"),
-"default": SubResource("Animation_nv74p")
+&"RESET": SubResource("Animation_uop4b"),
+&"default": SubResource("Animation_nv74p")
 }
 
 [node name="VFXGoal" type="GPUParticles2D"]
 z_index = 100
+material = SubResource("ShaderMaterial_lisc0")
 amount = 20
-process_material = ExtResource("1_1hvov")
-texture = ExtResource("1_xx5no")
+texture = ExtResource("2_i5s51")
 lifetime = 2.0
 explosiveness = 0.9
 fixed_fps = 120
+process_material = ExtResource("1_1hvov")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "default"
 libraries = {
-"": SubResource("AnimationLibrary_a2pyl")
+&"": SubResource("AnimationLibrary_a2pyl")
 }
+autoplay = "default"

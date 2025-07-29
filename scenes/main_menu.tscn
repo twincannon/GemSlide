@@ -22,16 +22,22 @@ shader_parameter/angle = 0.0
 resource_local_to_scene = true
 shader = ExtResource("10_flqon")
 shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgwnu"]
 resource_local_to_scene = true
 shader = ExtResource("10_flqon")
 shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flqon"]
 resource_local_to_scene = true
 shader = ExtResource("10_flqon")
 shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

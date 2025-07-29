@@ -10,6 +10,8 @@
 resource_local_to_scene = true
 shader = ExtResource("2_7pok7")
 shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [node name="Gem" type="Node2D"]
 script = ExtResource("1_jy8aq")

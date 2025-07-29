@@ -12,6 +12,8 @@
 resource_local_to_scene = true
 shader = ExtResource("2_nemyo")
 shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [node name="Bomb" type="Node2D"]
 script = ExtResource("1_5hsef")

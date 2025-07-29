@@ -25,9 +25,7 @@ func _init() -> void:
 
 func load_unlocks(data:Dictionary):
 	for key in data:
-		print(key)
 		var values:Array = data[key]
-		print(values)
 		if values[2]: #Unlocked, so unlock it in our dict (but don't bother saving right now)
 			if is_course(key):
 				unlock_course(int(parse_course_str(key)[1]), false)

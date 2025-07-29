@@ -25,20 +25,22 @@ func on_goal_filled(_filling_gem):
 	#%FlagSprite.visible = false
 	Globals.get_game_node().on_goal_filled(self)
 	var goal_tween = create_tween().set_parallel(true)
-	var dur = 1.0
-	goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, dur)
-	goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, dur)
-	goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, dur)
+	goal_tween.tween_method(set_goal_color_scale, 1.0, 0.5, 1.0)
+	
 	var flag_tween = create_tween().set_parallel(true)
 	flag_tween.tween_property(%FlagSprite, "position:y", -200, 0.5)
 	flag_tween.tween_property(%FlagSprite, "modulate:a", 0, 0.5)
 	
 	var filled_vfx = filled_vfx_scene.instantiate() as GPUParticles2D
 	add_child(filled_vfx)
+	filled_vfx.material.set_shader_parameter("hue_shift", $ColorComponent.hue)
 	#filled_vfx.process_material.color = $ColorComponent.color
 	
 	#await get_tree().create_timer(_filling_gem.goal_tween_duration).timeout
 	#entity_sprite.texture = filled_tex
+
+func set_goal_color_scale(value:float):
+	entity_sprite.material.set_shader_parameter("color_scale", value)
 
 func is_goal_filled():
 	return filled
