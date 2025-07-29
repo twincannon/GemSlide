@@ -112,15 +112,20 @@ func _on_options_button_pressed():
 	%OptionBallRSlider.value = Globals.hue_red
 	%OptionBallGSlider.value = Globals.hue_green
 	%OptionBallBSlider.value = Globals.hue_blue
+	var optionbutton = %SkinOptionButton
 	match SaveGame.selected_skin:
 		"Default":
-			%SkinOptionButton.select(0)
-			for ball in options_balls:
-				ball.texture = ball_default_texture
+			for i in range(optionbutton.item_count):
+				if optionbutton.get_item_text(i) == "Default":
+					optionbutton.select(i)
+					for ball in options_balls:
+						ball.texture = ball_default_texture
 		"Cat":
-			%SkinOptionButton.select(1)
-			for ball in options_balls:
-				ball.texture = ball_cat_texture
+			for i in range(optionbutton.item_count):
+				if optionbutton.get_item_text(i) == "Cat":
+					optionbutton.select(i)
+					for ball in options_balls:
+						ball.texture = ball_cat_texture
 
 func populate_skin_list():
 	%SkinOptionButton.add_item(SaveGame.DEFAULT_SKIN_NAME)
