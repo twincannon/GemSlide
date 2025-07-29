@@ -524,21 +524,21 @@ func check_goals_and_winnable():
 		if goal:
 			if goal.is_goal_filled() == false:
 				all_goals_filled = false
-			match goal.get_node("ColorComponent").color:
-				Globals.COLOR_RED:
+			match goal.get_node("ColorComponent").hue:
+				Globals.hue_red:
 					goal_dict["Red"] += 1
-				Globals.COLOR_GREEN:
+				Globals.hue_green:
 					goal_dict["Green"] += 1
-				Globals.COLOR_BLUE:
+				Globals.hue_blue:
 					goal_dict["Blue"] += 1
 		var gem = e as Gem
 		if gem:
-			match gem.get_node("ColorComponent").color:
-				Globals.COLOR_RED:
+			match gem.get_node("ColorComponent").hue:
+				Globals.hue_red:
 					gem_dict["Red"] += 1
-				Globals.COLOR_GREEN:
+				Globals.hue_green:
 					gem_dict["Green"] += 1
-				Globals.COLOR_BLUE:
+				Globals.hue_blue:
 					gem_dict["Blue"] += 1
 	
 	var can_win = gem_dict["Red"] >= goal_dict["Red"] and gem_dict["Green"] >= goal_dict["Green"] and gem_dict["Blue"] >= goal_dict["Blue"]

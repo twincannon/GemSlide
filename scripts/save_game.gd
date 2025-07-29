@@ -3,8 +3,12 @@ extends Node
 var level_dict = { }
 var config_dict = {
 	"Volume": {"Master": 1.0, "SFX": 1.0, "Music": 1.0},
-	"BallColor": {"R":var_to_str(Color.RED), "G":var_to_str(Color.GREEN), "B":var_to_str(Color.BLUE)}
+	"BallHue": {"R":0.0, "G":0.33, "B":0.66},
+	"Skin": "Default"
 }
+
+const DEFAULT_SKIN_NAME = "Default"
+var selected_skin := DEFAULT_SKIN_NAME : set = set_selected_skin
 
 const SAVE_FILE_NAME = "save.json"
 const CONFIG_FILE_NAME = "config.json"
@@ -90,8 +94,8 @@ func load_data(path:String):
 		
 		# Iterate through our data and set each level's data (don't set the level_dict directly to data!)
 		for cur_dict in data:
-			if cur_dict.has("unlocks"):
-				UnlockManager.load_unlocks(cur_dict["unlocks"])
+			if cur_dict.has(UnlockManager.UNLOCKS_STR):
+				UnlockManager.load_unlocks(cur_dict[UnlockManager.UNLOCKS_STR])
 			if cur_dict.has("levels"):
 				for level_name in cur_dict["levels"]:
 					level_dict[level_name] = cur_dict["levels"][level_name]
@@ -127,9 +131,14 @@ func set_config_volume(bus:String, value:float):
 		config_dict["Volume"][bus] = value
 	save_config()
 
-func set_config_ball_color(ballcolor:String, color:Color):
-	if config_dict["BallColor"].has(ballcolor):
-		config_dict["BallColor"][ballcolor] = var_to_str(color)
+func set_config_ball_hue(ballcolor:String, hue:float):
+	if config_dict["BallHue"].has(ballcolor):
+		config_dict["BallHue"][ballcolor] = hue
+	save_config()
+	
+func set_selected_skin(new_skin:String):
+	selected_skin = new_skin
+	config_dict["Skin"] = new_skin
 	save_config()
 		
 func save_config():
@@ -160,9 +169,13 @@ func load_config():
 		
 		config_dict = data
 		
-		Globals.COLOR_RED = str_to_var(data["BallColor"]["R"])
-		Globals.COLOR_GREEN = str_to_var(data["BallColor"]["G"])
-		Globals.COLOR_BLUE = str_to_var(data["BallColor"]["B"])
+		if data.has("BallHue"):
+			Globals.hue_red = data["BallHue"]["R"]
+			Globals.hue_green = data["BallHue"]["G"]
+			Globals.hue_blue = data["BallHue"]["B"]
+		
+		if data.has("Skin"):
+			SaveGame.selected_skin = data["Skin"]
 		
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(data["Volume"]["Master"]))
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(data["Volume"]["SFX"]))

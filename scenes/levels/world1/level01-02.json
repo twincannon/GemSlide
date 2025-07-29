@@ -23,5 +23,5 @@
 	"GridSize": "Vector2i(4, 2)",
 	"LevelName": "Goaltending",
 	"ParMoves": 5,
-	"Tutorial": "[center][b]Balls[/b] [img width=32 height=32 color=#0000FF]res://assets/art/golfball.png[/img] are blocked by miscolored un-filled [b]holes[/b] [img width=32 height=32 color=#FF0000]res://assets/art/goal.png[/img], but not filled ones.[/center]"
+	"Tutorial": "[center][b]Balls[/b] [img width=32 height=32]res://assets/art/golfball.png[/img] are blocked by miscolored un-filled [b]holes[/b] [img width=32 height=32 color=#FF0000]res://assets/art/goal.png[/img], but not filled ones.[/center]"
 }

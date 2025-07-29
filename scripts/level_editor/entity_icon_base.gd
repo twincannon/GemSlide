@@ -202,10 +202,10 @@ func get_entity():
 			var color_comp := entity.get_node("ColorComponent") as ColorComponent
 			if color_comp:
 				if is_red():
-					color_comp.set_color(Globals.COLOR_RED)
+					color_comp.set_hue(Globals.hue_red)
 				elif is_green():
-					color_comp.set_color(Globals.COLOR_GREEN)
+					color_comp.set_hue(Globals.hue_green)
 				elif is_blue():
-					color_comp.set_color(Globals.COLOR_BLUE)
+					color_comp.set_hue(Globals.hue_blue)
 	
 	return entity

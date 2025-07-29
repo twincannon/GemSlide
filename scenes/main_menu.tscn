@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7jq05fdyacro"]
+[gd_scene load_steps=16 format=3 uid="uid://b7jq05fdyacro"]
 
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="1_2uy37"]
 [ext_resource type="Script" uid="uid://1c8hmfuudna6" path="res://scripts/main_menu.gd" id="1_tknb6"]
@@ -9,14 +9,29 @@
 [ext_resource type="Shader" uid="uid://r8jjc3b4y3pv" path="res://shaders/logo_slide.gdshader" id="5_7vq0m"]
 [ext_resource type="Texture2D" uid="uid://botpl3umn6jr3" path="res://assets/art/ui/mainmenu_arrow.png" id="5_wv3xt"]
 [ext_resource type="Texture2D" uid="uid://p86rljek5lax" path="res://assets/art/background.png" id="6_0dvpg"]
+[ext_resource type="Shader" uid="uid://dks2inxbh63" path="res://shaders/hue_shift.gdshader" id="10_flqon"]
 [ext_resource type="Texture2D" uid="uid://vif5nwbt81su" path="res://assets/art/golfball.png" id="10_lpjgg"]
-[ext_resource type="Theme" uid="uid://dulh4gkc0fjck" path="res://assets/art/ui/themes/option_menu_ball_button_theme.tres" id="10_np484"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4250b"]
 shader = ExtResource("5_7vq0m")
 shader_parameter/strength = 0.5
 shader_parameter/speed = 0.5
 shader_parameter/angle = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7b55j"]
+resource_local_to_scene = true
+shader = ExtResource("10_flqon")
+shader_parameter/hue_shift = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgwnu"]
+resource_local_to_scene = true
+shader = ExtResource("10_flqon")
+shader_parameter/hue_shift = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flqon"]
+resource_local_to_scene = true
+shader = ExtResource("10_flqon")
+shader_parameter/hue_shift = 0.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -305,13 +320,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -186.0
-offset_top = -330.0
-offset_right = 226.0
-offset_bottom = 391.0
+offset_left = -398.0
+offset_top = -275.0
+offset_right = 398.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(398, 275)
 
 [node name="MarginContainer" type="MarginContainer" parent="OptionsContainer"]
 layout_mode = 2
@@ -320,13 +335,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/MarginContainer"]
+[node name="OptionsListBox" type="VBoxContainer" parent="OptionsContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="TitleBox" type="HBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/OptionsListBox/TitleBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
@@ -334,108 +349,160 @@ text = "    Options"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="OptionsCloseButton" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="OptionsCloseButton" type="Button" parent="OptionsContainer/MarginContainer/OptionsListBox/TitleBox"]
 layout_mode = 2
 text = "  X  "
 
-[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer/MarginContainer/OptionsListBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Volume"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Master"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slider" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_40fn1")]
+[node name="Slider" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_40fn1")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus_name = "Master"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Sound"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slider" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_40fn1")]
+[node name="Slider" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_40fn1")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus_name = "SFX"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slider" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_40fn1")]
+[node name="Slider" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_40fn1")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus_name = "Music"
 
-[node name="HSeparator" type="HSeparator" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="OptionsContainer/MarginContainer/OptionsListBox"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label2" type="Label" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="OptionsContainer/MarginContainer/OptionsListBox"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer2/HBoxContainer6"]
+layout_mode = 2
+text = "Skin: "
+
+[node name="SkinOptionButton" type="OptionButton" parent="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer2/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="OptionsContainer/MarginContainer/OptionsListBox"]
 layout_mode = 2
 text = "Ball Colors"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox"]
 layout_mode = 2
 
-[node name="OptionBallR" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("10_np484")
-toggle_mode = true
-icon = ExtResource("10_lpjgg")
 
-[node name="OptionBallG" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+[node name="OptionBallR" type="TextureRect" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7b55j")
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("10_np484")
-toggle_mode = true
-icon = ExtResource("10_lpjgg")
+texture = ExtResource("10_lpjgg")
 
-[node name="OptionBallB" type="Button" parent="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("10_np484")
-toggle_mode = true
-icon = ExtResource("10_lpjgg")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
 
-[node name="ColorPicker" type="ColorPicker" parent="OptionsContainer/MarginContainer/VBoxContainer"]
+[node name="OptionBallRSlider" type="HSlider" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-edit_alpha = false
-picker_shape = 2
-can_add_swatches = false
-sampler_visible = false
-color_modes_visible = false
-hex_visible = false
-presets_visible = false
+max_value = 1.0
+step = 0.01
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5"]
+layout_mode = 2
+
+[node name="OptionBallG" type="TextureRect" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer2"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_lgwnu")
+layout_mode = 2
+texture = ExtResource("10_lpjgg")
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="OptionBallGSlider" type="HSlider" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5"]
+layout_mode = 2
+
+[node name="OptionBallB" type="TextureRect" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer3"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_flqon")
+layout_mode = 2
+texture = ExtResource("10_lpjgg")
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+
+[node name="OptionBallBSlider" type="HSlider" parent="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer3/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Control" type="Control" parent="OptionsContainer/MarginContainer/OptionsListBox"]
+layout_mode = 2
 
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control3/WorldButtonLeft" to="." method="_on_world_button_left_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer/Control4/WorldButtonRight" to="." method="_on_world_button_right_pressed"]
@@ -443,8 +510,8 @@ presets_visible = false
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/CustomLevelsButton" to="." method="_on_custom_levels_button_pressed"]
 [connection signal="pressed" from="AspectRatioContainer/CenterContainer/VBoxContainer/HBoxContainer2/ReturnToCourseButton" to="." method="_on_return_to_course_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionsCloseButton" to="." method="_on_options_close_button_pressed"]
-[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5/OptionBallR" to="." method="_on_option_ball_r_pressed"]
-[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5/OptionBallG" to="." method="_on_option_ball_g_pressed"]
-[connection signal="pressed" from="OptionsContainer/MarginContainer/VBoxContainer/HBoxContainer5/OptionBallB" to="." method="_on_option_ball_b_pressed"]
-[connection signal="color_changed" from="OptionsContainer/MarginContainer/VBoxContainer/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="OptionsContainer/MarginContainer/OptionsListBox/TitleBox/OptionsCloseButton" to="." method="_on_options_close_button_pressed"]
+[connection signal="item_selected" from="OptionsContainer/MarginContainer/OptionsListBox/MarginContainer2/HBoxContainer6/SkinOptionButton" to="." method="_on_skin_option_button_item_selected"]
+[connection signal="value_changed" from="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer/MarginContainer/OptionBallRSlider" to="." method="_on_option_ball_r_slider_value_changed"]
+[connection signal="value_changed" from="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer2/MarginContainer/OptionBallGSlider" to="." method="_on_option_ball_g_slider_value_changed"]
+[connection signal="value_changed" from="OptionsContainer/MarginContainer/OptionsListBox/HBoxContainer5/VBoxContainer3/MarginContainer/OptionBallBSlider" to="." method="_on_option_ball_b_slider_value_changed"]

@@ -1,11 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://be2l8tq8cuvqu"]
+[gd_scene load_steps=9 format=3 uid="uid://be2l8tq8cuvqu"]
 
 [ext_resource type="Script" uid="uid://dfosxdl403vbm" path="res://scripts/entities/bomb.gd" id="1_5hsef"]
 [ext_resource type="Texture2D" uid="uid://jw3bd5vhb8n" path="res://assets/art/bomb.png" id="1_b0vwv"]
 [ext_resource type="Texture2D" uid="uid://bw8jaiv5svurd" path="res://assets/art/bomb_fuse.png" id="2_5hsef"]
+[ext_resource type="Shader" uid="uid://dks2inxbh63" path="res://shaders/hue_shift.gdshader" id="2_nemyo"]
 [ext_resource type="Texture2D" uid="uid://dobutktmedt4a" path="res://assets/art/golfball_shadow.png" id="4_fscv5"]
 [ext_resource type="Texture2D" uid="uid://bjdd812ema07l" path="res://assets/art/vfx/particle_teleport.png" id="4_x01k1"]
 [ext_resource type="PackedScene" uid="uid://cn73bwxkrv5v8" path="res://scenes/components/color_component.tscn" id="5_ei0wy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhv6q"]
+resource_local_to_scene = true
+shader = ExtResource("2_nemyo")
+shader_parameter/hue_shift = 0.0
 
 [node name="Bomb" type="Node2D"]
 script = ExtResource("1_5hsef")
@@ -18,6 +24,7 @@ unique_name_in_owner = true
 [node name="BombSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
 unique_name_in_owner = true
 z_index = 100
+material = SubResource("ShaderMaterial_vhv6q")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_b0vwv")
 
@@ -49,8 +56,8 @@ z_index = 99
 scale = Vector2(0.8, 0.95)
 texture = ExtResource("4_fscv5")
 
-[node name="ColorComponent" parent="." node_paths=PackedStringArray("node_to_colorize") instance=ExtResource("5_ei0wy")]
-node_to_colorize = NodePath("../BlockedAnchor/GemSpriteRotAnchor/BombSprite")
+[node name="ColorComponent" parent="." node_paths=PackedStringArray("nodes_to_colorize") instance=ExtResource("5_ei0wy")]
+nodes_to_colorize = [NodePath("../BlockedAnchor/GemSpriteRotAnchor/BombSprite")]
 
 [node name="Control" type="Control" parent="."]
 visible = false

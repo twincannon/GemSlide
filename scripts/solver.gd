@@ -27,11 +27,11 @@ class GameState:
 			if entity is Gem:
 				var gem = entity as Gem
 				state_data["gem_in_goal"] = gem.gem_in_goal
-				state_data["color"] = gem.get_node("ColorComponent").color
+				state_data["hue"] = gem.get_node("ColorComponent").hue
 			elif entity is Goal:
 				var goal = entity as Goal
 				state_data["filled"] = goal.filled
-				state_data["color"] = goal.get_node("ColorComponent").color
+				state_data["hue"] = goal.get_node("ColorComponent").hue
 			elif entity is SandTrap:
 				var sand = entity as SandTrap
 				state_data["moves_to_escape"] = sand.moves_to_escape
@@ -187,16 +187,16 @@ func is_winnable(state: GameState) -> bool:
 		var entity_state = state.entity_states[entity_id]
 		# Count ALL goals (filled and unfilled)
 		if entity_state.has("filled"):
-			var color = entity_state["color"]
-			if color == Globals.COLOR_RED: goal_dict["Red"] += 1
-			elif color == Globals.COLOR_GREEN: goal_dict["Green"] += 1
-			elif color == Globals.COLOR_BLUE: goal_dict["Blue"] += 1
+			var color = entity_state["hue"]
+			if color == Globals.hue_red: goal_dict["Red"] += 1
+			elif color == Globals.hue_green: goal_dict["Green"] += 1
+			elif color == Globals.hue_blue: goal_dict["Blue"] += 1
 		# Count ALL gems (in goals and not in goals)
 		elif entity_state.has("gem_in_goal"):
-			var color = entity_state["color"]
-			if color == Globals.COLOR_RED: gem_dict["Red"] += 1
-			elif color == Globals.COLOR_GREEN: gem_dict["Green"] += 1
-			elif color == Globals.COLOR_BLUE: gem_dict["Blue"] += 1
+			var color = entity_state["hue"]
+			if color == Globals.hue_red: gem_dict["Red"] += 1
+			elif color == Globals.hue_green: gem_dict["Green"] += 1
+			elif color == Globals.hue_blue: gem_dict["Blue"] += 1
 	
 	return gem_dict["Red"] >= goal_dict["Red"] and \
 		   gem_dict["Green"] >= goal_dict["Green"] and \
@@ -225,16 +225,16 @@ func heuristic(state: GameState) -> int:
 		
 		# Gems that are not in goals
 		if entity_state.has("gem_in_goal") and !entity_state["gem_in_goal"]:
-			gem_positions.append({"pos": pos, "color": entity_state["color"]})
+			gem_positions.append({"pos": pos, "hue": entity_state["hue"]})
 		# Goals that are not filled
 		elif entity_state.has("filled") and !entity_state["filled"]:
-			goal_positions.append({"pos": pos, "color": entity_state["color"]})
+			goal_positions.append({"pos": pos, "hue": entity_state["hue"]})
 	
 	# Calculate minimum distance from gems to matching goals
 	for gem in gem_positions:
 		var min_distance = 999
 		for goal in goal_positions:
-			if gem["color"] == goal["color"]:
+			if gem["hue"] == goal["hue"]:
 				var distance = abs(gem["pos"].x - goal["pos"].x) + abs(gem["pos"].y - goal["pos"].y)
 				min_distance = min(min_distance, distance)
 		h_score += min_distance
@@ -318,7 +318,7 @@ func handle_post_movement_effects(state: GameState):
 				var goal_state = state.entity_states[goal_id]
 				if goal_state.has("filled") and !goal_state["filled"]:
 					if state.entity_positions[goal_id] == gem_pos:
-						if gem_state["color"] == goal_state["color"]:
+						if gem_state["hue"] == goal_state["hue"]:
 							goal_state["filled"] = true
 							gem_state["gem_in_goal"] = true
 	

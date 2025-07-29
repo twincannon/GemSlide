@@ -30,9 +30,9 @@ enum EntityType {
 	BombBlue
 }
 
-var COLOR_RED := Color.RED
-var COLOR_GREEN := Color.GREEN
-var COLOR_BLUE := Color.BLUE
+var hue_red := 0.0 #Red color is default for assets
+var hue_green := 0.33
+var hue_blue := 0.66
 
 var current_world_data : WorldData = load("res://data/worlds/world01.tres")
 

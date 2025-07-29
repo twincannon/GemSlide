@@ -12,7 +12,8 @@ enum UnlockType { COURSE, SKIN }
 
 func _init() -> void:
 	# Init our unlocks
-	unlock_dict = { UNLOCKS_STR: \
+	unlock_dict = \
+		{ UNLOCKS_STR: \
 			{ # See consts about array indices
 				"Course-2":["course","1-6",false], \
 				"Course-3":["course","2-6",false], \
@@ -57,14 +58,28 @@ func is_skin_unlocked(skin_name:String) -> bool:
 
 func unlock_course(course_num:int, save := true) -> void:
 	var course_str = "Course-" + str(course_num)
-	unlock_dict[UNLOCKS_STR][course_str][IS_UNLOCKED] = true
-	SaveGame.on_world_unlocked(course_num)
-	if save: SaveGame.save_game()
+	if unlock_dict[UNLOCKS_STR].has(course_str):
+		unlock_dict[UNLOCKS_STR][course_str][IS_UNLOCKED] = true
+		SaveGame.on_world_unlocked(course_num)
+		if save: SaveGame.save_game()
+	else:
+		printerr("Unable to unlock course: " + course_str)
 
 func unlock_skin(skin_name:String, save := true) -> void:
 	var skin_str = "Skin-" + skin_name
-	unlock_dict[UNLOCKS_STR][skin_str][IS_UNLOCKED] = true
-	if save: SaveGame.save_game()
+	if unlock_dict[UNLOCKS_STR].has(skin_str):
+		unlock_dict[UNLOCKS_STR][skin_str][IS_UNLOCKED] = true
+		if save: SaveGame.save_game()
+	else:
+		printerr("Unable to unlock skin: " + skin_str)
+
+func get_unlocked_skins() -> Array[String]:
+	var unlocked_skins:Array[String] = []
+	var dict = unlock_dict[UNLOCKS_STR]
+	for key in dict:
+		if is_skin(key) and dict[key][IS_UNLOCKED]:
+			unlocked_skins.append(parse_skin_str(key)[1])
+	return unlocked_skins
 
 func on_level_beat(course_num:int, level_num:int) -> String:
 	var level_str = str(course_num) + "-" + str(level_num)

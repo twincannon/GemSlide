@@ -10,12 +10,22 @@ var goal_tween_duration := 1.0
 
 var gem_rotates = true
 
+var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
+
 func _ready():
 	entity_sprite = %GemSprite
 	moves = true
-	%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
-	add_to_group("gems") #is this used?
-
+	
+	match SaveGame.selected_skin:
+		"Default": pass
+		"Cat":
+			entity_sprite.texture = ball_cat_texture
+			gem_rotates = false
+	
+	if gem_rotates:
+		%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
+	add_to_group("gems") #id
+	
 func _initialize_entity(game:Game):
 	connect("on_goal_animation_finished", game.on_gem_goal_anim_finished.bind())
 	

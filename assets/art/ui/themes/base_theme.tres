@@ -3,9 +3,13 @@
 [ext_resource type="FontFile" uid="uid://cx3cecwmtn5d" path="res://assets/art/ui/fonts/RobotoSlab.ttf" id="1_0cgmw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4hc1"]
+content_margin_left = 10.0
+content_margin_right = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70n8i"]
+content_margin_left = 10.0
+content_margin_right = 10.0
 bg_color = Color(0, 0.501961, 0.694118, 1)
 border_width_right = 1
 border_width_bottom = 3
@@ -14,6 +18,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1v8r"]
+content_margin_left = 10.0
+content_margin_right = 10.0
 bg_color = Color(0, 0.65098, 0.894118, 1)
 border_width_right = 1
 border_width_bottom = 6
@@ -25,6 +31,8 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_da3ed"]
+content_margin_left = 10.0
+content_margin_right = 10.0
 bg_color = Color(0, 0.278431, 0.396078, 1)
 border_width_right = 1
 border_width_bottom = 1
@@ -89,6 +97,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_70n8i")
 Button/styles/normal = SubResource("StyleBoxFlat_q1v8r")
 Button/styles/pressed = SubResource("StyleBoxFlat_da3ed")
 Label/fonts/font = ExtResource("1_0cgmw")
+OptionButton/constants/arrow_margin = 12
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ocnau")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_r5oud")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_bhf3o")

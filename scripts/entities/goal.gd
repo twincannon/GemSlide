@@ -7,7 +7,6 @@ var filled_vfx_scene = preload("res://scenes/vfx/vfx_goal.tscn")
 func _ready():
 	moves = false
 	entity_sprite = $GoalSprite
-	%FlagSprite.modulate = entity_sprite.modulate
 	var flag_tween = create_tween()
 	flag_tween.set_ease(Tween.EASE_IN_OUT)
 	flag_tween.set_trans(Tween.TRANS_CUBIC)
@@ -17,7 +16,7 @@ func _ready():
 
 func _on_entity_entered(_other_entity):
 	if !is_goal_filled() and _other_entity is Gem:
-		if $ColorComponent.color == _other_entity.get_node("ColorComponent").color:
+		if $ColorComponent.hue == _other_entity.get_node("ColorComponent").hue:
 			on_goal_filled(_other_entity)
 			_other_entity.on_goal_entered(self)
 
@@ -36,7 +35,7 @@ func on_goal_filled(_filling_gem):
 	
 	var filled_vfx = filled_vfx_scene.instantiate() as GPUParticles2D
 	add_child(filled_vfx)
-	filled_vfx.process_material.color = $ColorComponent.color
+	#filled_vfx.process_material.color = $ColorComponent.color
 	
 	#await get_tree().create_timer(_filling_gem.goal_tween_duration).timeout
 	#entity_sprite.texture = filled_tex
@@ -48,7 +47,7 @@ func _does_block(_other_entity):
 	if filled: return false # Filled goals no longer block other gems
 	if _other_entity and _other_entity is Gem:
 		var other_ent_color_comp = _other_entity.get_node("ColorComponent")
-		if other_ent_color_comp and $ColorComponent.color == other_ent_color_comp.color:
+		if other_ent_color_comp and $ColorComponent.hue == other_ent_color_comp.hue:
 			return false
 	return true
 

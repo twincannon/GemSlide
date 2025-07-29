@@ -2,10 +2,20 @@ extends Control
 
 @onready var level_button_scene = preload("res://scenes/ui/level_button.tscn")
 
+var ball_default_texture = preload("res://assets/art/golfball.png")
+var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
+
+var options_balls:Array[TextureRect] = []
+
 func _ready():
 	SoundManager.stop_game_music()
 	Globals.current_level_data = null
 	update_world()
+	populate_skin_list()
+	
+	options_balls.append(%OptionBallR)
+	options_balls.append(%OptionBallG)
+	options_balls.append(%OptionBallB)
 
 func update_world():
 	%ReturnToCourseButton.visible = false
@@ -88,50 +98,54 @@ func _on_custom_levels_button_pressed():
 func _on_return_to_course_button_pressed():
 	update_world()
 
-
-func _on_option_ball_r_pressed():
-	%OptionBallG.set_pressed(false)
-	%OptionBallB.set_pressed(false)
-	%ColorPicker.color = %OptionBallR.modulate
-
-
-func _on_option_ball_g_pressed():
-	%OptionBallR.set_pressed(false)
-	%OptionBallB.set_pressed(false)
-	%ColorPicker.color = %OptionBallG.modulate
-
-
-func _on_option_ball_b_pressed():
-	%OptionBallR.set_pressed(false)
-	%OptionBallG.set_pressed(false)
-	%ColorPicker.color = %OptionBallB.modulate
-
-
-func _on_color_picker_color_changed(color):
-	var button_to_change = null
-	if %OptionBallR.is_pressed():
-		button_to_change = %OptionBallR
-		Globals.COLOR_RED = color
-		SaveGame.set_config_ball_color("R", color)
-	elif %OptionBallG.is_pressed():
-		button_to_change = %OptionBallG
-		Globals.COLOR_GREEN = color
-		SaveGame.set_config_ball_color("G", color)
-	elif %OptionBallB.is_pressed():
-		button_to_change = %OptionBallB
-		Globals.COLOR_BLUE = color
-		SaveGame.set_config_ball_color("B", color)
-	
-	if button_to_change:
-		button_to_change.modulate = color
-
-
 func _on_options_close_button_pressed():
 	%OptionsContainer.visible = false
-
+	SaveGame.set_config_ball_hue("R", Globals.hue_red)
+	SaveGame.set_config_ball_hue("G", Globals.hue_green)
+	SaveGame.set_config_ball_hue("B", Globals.hue_blue)
 
 func _on_options_button_pressed():
 	%OptionsContainer.visible = true
-	%OptionBallR.modulate = Globals.COLOR_RED
-	%OptionBallG.modulate = Globals.COLOR_GREEN
-	%OptionBallB.modulate = Globals.COLOR_BLUE
+	%OptionBallR.material.set_shader_parameter("hue_shift", Globals.hue_red)
+	%OptionBallG.material.set_shader_parameter("hue_shift", Globals.hue_green)
+	%OptionBallB.material.set_shader_parameter("hue_shift", Globals.hue_blue)
+	%OptionBallRSlider.value = Globals.hue_red
+	%OptionBallGSlider.value = Globals.hue_green
+	%OptionBallBSlider.value = Globals.hue_blue
+	match SaveGame.selected_skin:
+		"Default":
+			%SkinOptionButton.select(0)
+			for ball in options_balls:
+				ball.texture = ball_default_texture
+		"Cat":
+			%SkinOptionButton.select(1)
+			for ball in options_balls:
+				ball.texture = ball_cat_texture
+
+func populate_skin_list():
+	%SkinOptionButton.add_item(SaveGame.DEFAULT_SKIN_NAME)
+	for skin in UnlockManager.get_unlocked_skins():
+		%SkinOptionButton.add_item(skin)
+
+func _on_skin_option_button_item_selected(index: int) -> void:
+	var skin_str = %SkinOptionButton.get_item_text(index)
+	SaveGame.selected_skin = skin_str
+	if skin_str == "Default":
+		for ball in options_balls:
+			ball.texture = ball_default_texture
+	elif skin_str == "Cat":
+		for ball in options_balls:
+			ball.texture = ball_cat_texture
+		
+
+func _on_option_ball_r_slider_value_changed(value: float) -> void:
+	%OptionBallR.material.set_shader_parameter("hue_shift", value)
+	Globals.hue_red = value
+
+func _on_option_ball_g_slider_value_changed(value: float) -> void:
+	%OptionBallG.material.set_shader_parameter("hue_shift", value)
+	Globals.hue_green = value
+
+func _on_option_ball_b_slider_value_changed(value: float) -> void:
+	%OptionBallB.material.set_shader_parameter("hue_shift", value)
+	Globals.hue_blue = value
