@@ -130,7 +130,14 @@ func set_entity_type(new_entity_type):
 			entity_text = ""
 			entity_color = Color.WHITE
 			entity_icon.texture = null
-	entity_icon.modulate = entity_color
+	#entity_icon.modulate = entity_color
+	match entity_color:
+		Color.RED:
+			entity_icon.material.set_shader_parameter("hue_shift", 0.0)
+		Color.GREEN:
+			entity_icon.material.set_shader_parameter("hue_shift", 0.33)
+		Color.BLUE:
+			entity_icon.material.set_shader_parameter("hue_shift", 0.66)
 	update_ui()
 		
 func update_ui():
@@ -164,11 +171,11 @@ func is_pressureplate():
 func is_bomb():
 	return entity_text.to_lower() == "bomb"
 func is_red():
-	return entity_color.r >= 0.8 and entity_color.g < 0.2 and entity_color.b < 0.2
+	return entity_color == Color.RED
 func is_green():
-	return entity_color.r < 0.2 and entity_color.g >= 0.8 and entity_color.b < 0.2
+	return entity_color == Color.GREEN
 func is_blue():
-	return entity_color.r < 0.2 and entity_color.g < 0.2 and entity_color.b >= 0.8
+	return entity_color == Color.BLUE
 
 func get_entity():
 	var entity = null

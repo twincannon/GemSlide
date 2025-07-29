@@ -8,7 +8,6 @@ const blank_level_scene = preload("res://scenes/levels/blank_level.tscn")
 
 var goal_sound = preload("res://assets/audio/goal.wav")
 var won_sound = preload("res://assets/audio/clap.wav")
-var move_sounds = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
 @onready var move_queue_timer = $MoveQueueTimer as Timer
 @onready var move_cooldown_timer = $MoveCooldownTimer as Timer
 
@@ -377,9 +376,14 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 		$Audio/BonkAudioPlayer.play() #play a "bump" sfx
 	
 	if did_any_entity_move:
-		$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
-		$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
-		$Audio/MoveAudioPlayer.play()
+		var move_sounds:Array[Resource]
+		for e in sorted_ent_array:
+			if e is Gem:
+				move_sounds.append(e.get_move_sound())
+		if move_sounds.size() > 0:
+			$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
+			$Audio/MoveAudioPlayer.pitch_scale = randf_range(0.9, 1.2)
+			$Audio/MoveAudioPlayer.play()
 		if !is_bomb_explosion:
 			increment_moves()
 			moves_array.append(dir)

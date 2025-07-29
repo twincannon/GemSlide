@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw4yuccbyd47i"]
+[gd_scene load_steps=6 format=3 uid="uid://bw4yuccbyd47i"]
 
 [ext_resource type="Script" uid="uid://k88bgu1mphta" path="res://scripts/level_editor/entity_icon_base.gd" id="1_d7uun"]
 [ext_resource type="Theme" uid="uid://cd8lu1oo7v8qh" path="res://assets/art/ui/themes/level_editor_theme.tres" id="2_iky42"]
+[ext_resource type="Shader" uid="uid://dks2inxbh63" path="res://shaders/hue_shift.gdshader" id="2_lqkas"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gw4j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mv4cx"]
+resource_local_to_scene = true
+shader = ExtResource("2_lqkas")
+shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [node name="EntityButton" type="MarginContainer" node_paths=PackedStringArray("entity_icon", "id_label")]
 custom_minimum_size = Vector2(10, 10)
@@ -25,6 +33,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2gw4j")
 
 [node name="EntityIcon" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_mv4cx")
 layout_mode = 2
 expand_mode = 1
 

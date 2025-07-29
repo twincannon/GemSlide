@@ -32,7 +32,6 @@ func load_unlocks(data:Dictionary):
 			elif is_skin(key):
 				unlock_skin(parse_skin_str(key)[1], false)
 
-# should these check the 0th element of array instead?
 func is_course(input:String) -> bool: return input.begins_with("Course")
 func is_skin(input:String) -> bool: return input.begins_with("Skin")
 

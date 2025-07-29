@@ -10,6 +10,9 @@ var goal_tween_duration := 1.0
 
 var gem_rotates = true
 
+var move_sounds_default = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
+var move_sound_cat = preload("res://assets/audio/move_meow.wav")
+
 var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
 
 func _ready():
@@ -28,7 +31,15 @@ func _ready():
 	
 func _initialize_entity(game:Game):
 	connect("on_goal_animation_finished", game.on_gem_goal_anim_finished.bind())
-	
+
+func get_move_sound() -> Resource:
+	match SaveGame.selected_skin:
+		"Default":
+			return move_sounds_default[randi() % move_sounds_default.size()]
+		"Cat":
+			return move_sound_cat
+	return null
+
 #func _process(_delta):
 	#$Control/LabelGridPos.text = str(grid_pos.x, ",", grid_pos.y)
 
