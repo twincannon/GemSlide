@@ -472,6 +472,7 @@ func on_gem_entered_goal(gem):
 		camera_target_zoom = 2.0
 		camera_target_pos = get_position_at_grid_pos(gem.grid_pos)
 		Engine.time_scale = 0.33
+		gem.do_goal_celebration()
 
 func on_gem_goal_anim_finished():
 	for e in entities:

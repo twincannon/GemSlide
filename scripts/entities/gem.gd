@@ -17,6 +17,8 @@ var move_sound_cat = preload("res://assets/audio/move_meow.wav")
 
 var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
 
+var celebrating := false
+
 func _ready():
 	entity_sprite = %GemSprite
 	moves = true
@@ -83,13 +85,15 @@ func _on_movement_tween_done(dir):
 	if gem_in_goal:
 		#if !goal_tween or goal_tween.is_running() == false: # I've encountered a bug where the goal fills twice
 		goal_tween = create_tween().set_parallel(true)
-		goal_tween.set_trans(Tween.TRANS_ELASTIC)
-		goal_tween.set_ease(Tween.EASE_OUT)
+		if !celebrating:
+			goal_tween.set_trans(Tween.TRANS_ELASTIC)
+			goal_tween.set_ease(Tween.EASE_OUT)
 		goal_tween.tween_property(entity_sprite, "scale", entity_sprite.scale * 0.66, goal_tween_duration)
-		#goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
-		#goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
-		#goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
-		goal_tween.tween_method(set_gem_color_scale, 1.0, 0.5, goal_tween_duration)
+		if !celebrating:
+			#goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
+			#goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
+			#goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
+			goal_tween.tween_method(set_gem_color_scale, 1.0, 0.5, goal_tween_duration)
 		goal_tween.tween_property(entity_sprite, "z_index", -10, goal_tween_duration).as_relative()
 		goal_tween.chain().tween_callback(goal_animation_finished)
 	super(dir)
@@ -141,6 +145,18 @@ func _does_block(_other_entity):
 func reset_blocked_anchor_position():
 	$BlockedAnchor.position = Vector2(0,0)
 	$BlockedAnchor.rotation = 0
+
+func do_goal_celebration():
+	get_tree().create_timer(movement_tween_duration).timeout.connect(do_celebration_anim.bind())
+	celebrating = true
+
+func do_celebration_anim():
+	var bounce_tween = create_tween().set_loops(99999)
+	bounce_tween.set_trans(Tween.TRANS_SINE)
+	bounce_tween.set_ease(Tween.EASE_OUT)
+	bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", -25, 0.25).as_relative()
+	bounce_tween.set_ease(Tween.EASE_IN)
+	bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", 25, 0.25).as_relative()
 
 func get_properties() -> Dictionary:
 	var dict = super()
