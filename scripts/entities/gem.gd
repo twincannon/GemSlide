@@ -104,7 +104,11 @@ func set_gem_color_scale(value:float): #Modulate also works with updated shader
 func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
-	%ShadowSprite.visible = false
+	
+	var shadow_tween = create_tween()
+	shadow_tween.tween_property(%ShadowSprite, "modulate:a", 0.0, 0.33)
+	
+	#%ShadowSprite.visible = false
 	on_gem_entered_goal.emit(self)
 
 func goal_animation_finished():

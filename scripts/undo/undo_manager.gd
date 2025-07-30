@@ -60,6 +60,8 @@ func pop_game_state():
 		for e in game.entities:
 			if e is SandTrap:
 				e.reconnect_to_stuck_entities()
+			if e is Gem: # Reconnect gems as well
+				e.on_gem_entered_goal.connect(Globals.get_game_node().on_gem_entered_goal.bind())
 		
 		game.update_moves_text()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjotdf84upxhu"]
+[gd_scene load_steps=14 format=3 uid="uid://cjotdf84upxhu"]
 
 [ext_resource type="Script" uid="uid://fmx28qo0weei" path="res://scripts/game.gd" id="1_m1u8a"]
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="2_vs7lu"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bp6633i07bfq8" path="res://assets/audio/bonk.wav" id="7_u5sy4"]
 [ext_resource type="AudioStream" uid="uid://cnw3njeeiru75" path="res://assets/audio/bomb_ignite.wav" id="7_vtaks"]
 [ext_resource type="AudioStream" uid="uid://dasn2hv3v2e8v" path="res://assets/audio/bomb_defuse.wav" id="8_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://dknqgccseuxmk" path="res://assets/audio/victory.wav" id="11_kvpfn"]
 
 [sub_resource type="Gradient" id="Gradient_1pbea"]
 offsets = PackedFloat32Array(0.270408, 0.5, 0.714286)
@@ -461,6 +462,9 @@ stream = ExtResource("7_gee14")
 
 [node name="BonkAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("7_u5sy4")
+
+[node name="VictoryAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_kvpfn")
 
 [node name="BackgroundImageRoot" type="Node2D" parent="."]
 unique_name_in_owner = true

@@ -11,7 +11,9 @@ script = ExtResource("1_irwso")
 level_name = "Basic Movement"
 tutorial = "[center][wave amp=50.0 freq=5.0]Welcome to [i]Putt! Putt! [rainbow]Slide[/rainbow]![/i][/wave]
 
-You can swipe, use arrow keys or WASD to move [b]all[/b] balls [img width=32 height=32 color=#FF0000]res://assets/art/golfball.png[/img] around the board.[/center]"
+You can swipe, use arrow keys or WASD to move [b]all[/b] balls [img width=32 height=32 color=#FF0000]res://assets/art/golfball.png[/img] around the board.
+
+Fill all the goals to win![/center]"
 par_moves = 3
 dev_best = 3
 

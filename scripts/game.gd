@@ -471,8 +471,14 @@ func on_gem_entered_goal(gem):
 	if status[0]:
 		camera_target_zoom = 2.0
 		camera_target_pos = get_position_at_grid_pos(gem.grid_pos)
-		Engine.time_scale = 0.33
+		$Audio/VictoryAudioPlayer.play()
+		SoundManager.set_music_ducked(true)
+		Engine.time_scale = 0.1
+		get_tree().create_timer(0.25).timeout.connect(restore_engine_timescale.bind())
 		gem.do_goal_celebration()
+
+func restore_engine_timescale():
+	Engine.time_scale = 1.0
 
 func on_gem_goal_anim_finished():
 	for e in entities:
@@ -623,6 +629,7 @@ func on_teleport():
 	$Audio/TeleportAudioPlayer.play()
 
 func on_game_over(won):
+	SoundManager.set_music_ducked(false)
 	game_state = GameState.END
 	if won:
 		$Audio/WonAudioPlayer.stream = won_sound
