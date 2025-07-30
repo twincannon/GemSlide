@@ -417,6 +417,10 @@ texture = ExtResource("5_176mw")
 [node name="GridAnchor" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Camera2D" type="Camera2D" parent="GridAnchor"]
+unique_name_in_owner = true
+position_smoothing_speed = 10.0
+
 [node name="MoveQueueTimer" type="Timer" parent="."]
 one_shot = true
 

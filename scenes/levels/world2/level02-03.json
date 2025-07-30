@@ -103,7 +103,7 @@
 		0
 	],
 	"GridSize": "Vector2i(7, 7)",
-	"LevelName": "Trapped Green",
+	"LevelName": "Trapped",
 	"ParMoves": 13,
 	"Tutorial": ""
 }

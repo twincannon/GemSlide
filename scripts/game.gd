@@ -41,6 +41,9 @@ var data:Dictionary = { }
 
 var undo_manager:UndoManager
 
+var camera_target_zoom = 1.0
+var camera_target_pos = Vector2.ZERO
+
 func _ready():
 	get_tree().get_root().size_changed.connect(on_viewport_changed.bind())
 	
@@ -68,13 +71,13 @@ func _ready():
 				debugstr += ", "
 			debugstr += "Moves: "
 			for m in dict.moves: #Hackyness: why are we ever retrieving data as vector2i? (Happens when reloading a level after setting a new record in score, for example)
-				if m is Vector2i and m == Vector2i(1,0) or m is String and m == "(1, 0)":
+				if (m is Vector2i and m == Vector2i(1,0)) or (m is String and m == "(1, 0)"):
 					debugstr += "→ "
-				elif m is Vector2i and m == Vector2i(-1,0) or m is String and m == "(-1, 0)":
+				elif (m is Vector2i and m == Vector2i(-1,0)) or (m is String and m == "(-1, 0)"):
 					debugstr += "← "
-				elif m is Vector2i and m == Vector2i(0,1) or m is String and m == "(0, 1)":
+				elif (m is Vector2i and m == Vector2i(0,1)) or (m is String and m == "(0, 1)"):
 					debugstr += "↓ "
-				elif m is Vector2i and m == Vector2i(0,-1) or m is String and m == "(0, -1)":
+				elif (m is Vector2i and m == Vector2i(0,-1)) or (m is String and m == "(0, -1)"):
 					debugstr += "↑ "
 		print(debugstr)
 		#print(SaveGame.level_dict[Globals.current_level_data.resource_path])
@@ -131,6 +134,8 @@ func _ready():
 					if entity:
 						tile_instance.on_entity_spawned_on_tile()
 						add_entity_to_grid(entity, Vector2i(x,y))
+						if entity is Gem:
+							entity.on_gem_entered_goal.connect(on_gem_entered_goal.bind())
 			currentNum += 1
 	for e in entities:
 		e._initialize_entity(self)
@@ -182,6 +187,7 @@ func on_viewport_changed():
 	$BushRight.position = %BottomRightPos.position + Vector2(-bushoffset,-bushoffset)
 	$BushLeft.position = %BottomLeftPos.position + Vector2(bushoffset,-bushoffset)
 	
+	#%Camera2D.offset = viewport_size/2
 	#%TutorialContainer.add_theme_constant_override("margin_right", 20 if viewport_size.x < 1000 else 300)
 	#%TutorialContainer.add_theme_constant_override("margin_left", 20 if viewport_size.x < 1000 else 300)
 
@@ -195,6 +201,14 @@ func _process(_delta):
 		entities.erase(e)
 		e.start_free_timer()
 	entities_to_remove.clear()
+	
+	#camera_target_zoom = 2.0
+	#camera_target_pos = get_position_at_grid_pos(gem.grid_pos)
+	if camera_target_zoom == 2.0:
+		%Camera2D.zoom = %Camera2D.zoom.lerp(Vector2(camera_target_zoom, camera_target_zoom), _delta * 10)
+		%Camera2D.position = %Camera2D.position.lerp(camera_target_pos, _delta * 10)
+	else:
+		Engine.time_scale = 1.0
 	
 	if !check_goals_and_winnable()[1]:
 		return
@@ -452,6 +466,13 @@ func increment_moves():
 func update_moves_text():
 	%MovesLabel.text = "Moves: " + str(moves)
 
+func on_gem_entered_goal(gem):
+	var status = check_goals_and_winnable()
+	if status[0]:
+		camera_target_zoom = 2.0
+		camera_target_pos = get_position_at_grid_pos(gem.grid_pos)
+		Engine.time_scale = 0.33
+
 func on_gem_goal_anim_finished():
 	for e in entities:
 		var gem = e as Gem
@@ -560,6 +581,7 @@ func save_game():
 		SaveGame.save_game()
 
 func do_par_moves_anim():
+	Engine.time_scale = 1.0
 	if data:
 		if moves <= data["ParMoves"]:
 			var par_moves_indicator = par_moves_indicator_scene.instantiate()
@@ -623,6 +645,7 @@ func _on_tut_ok_button_pressed():
 
 func _on_main_menu_button_pressed():
 	set_game_paused(false)
+	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func get_next_level():

@@ -3,12 +3,14 @@ class_name Gem
 
 var gem_in_goal := false
 var gem_goal_anim_done := false
+signal on_gem_entered_goal
 signal on_goal_animation_finished
 
 var goal_tween:Tween
 var goal_tween_duration := 1.0
 
-var gem_rotates = true
+var gem_rotates := true
+var gem_squishes := false
 
 var move_sounds_default = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
 var move_sound_cat = preload("res://assets/audio/move_meow.wav")
@@ -24,6 +26,7 @@ func _ready():
 		"Cat":
 			entity_sprite.texture = ball_cat_texture
 			gem_rotates = false
+			gem_squishes = true
 	
 	if gem_rotates:
 		%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
@@ -69,6 +72,10 @@ func _on_movement(_dir):
 	bounce_tween.set_ease(Tween.EASE_IN)
 	bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", 25, tween_dur * 0.5).as_relative()
 	
+	if gem_squishes:
+		var squish_tween = create_tween()
+		squish_tween.tween_property(%GemSpriteRotAnchor, "scale:y", -0.15, tween_dur * 0.5).as_relative()
+		squish_tween.tween_property(%GemSpriteRotAnchor, "scale:y", 0.15, tween_dur * 0.5).as_relative()
 	#movement_tween.finished.connect(_on_movement_tween_done.bind(_dir))
 	#get_tree().create_timer(movement_tween_duration).timeout.connect(_on_movement_tween_done.bind(_dir))
 
@@ -94,6 +101,7 @@ func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
 	%ShadowSprite.visible = false
+	on_gem_entered_goal.emit(self)
 
 func goal_animation_finished():
 	goal_tween.stop() # Ensure our Tween doesn't report as running this frame
