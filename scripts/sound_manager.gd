@@ -38,4 +38,4 @@ func stop_game_music():
 		music_node.stop()
 
 func set_music_ducked(is_ducked:bool) -> void:
-	music_node.volume_db = -20.0 if is_ducked else 0
+	music_node.volume_db = -20.0 if is_ducked else 0.0
