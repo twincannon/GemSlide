@@ -126,7 +126,6 @@ func on_goal_entered(_goal):
 		var shadow_tween = create_tween()
 		shadow_tween.tween_property(%ShadowSprite, "modulate:a", 0.0, 0.33)
 	
-	#%ShadowSprite.visible = false
 	on_gem_entered_goal.emit(self)
 
 func goal_animation_finished():
@@ -191,12 +190,12 @@ func apply_properties(properties:Dictionary):
 		gem_in_goal = properties["gem_in_goal"]
 	if gem_in_goal:
 		gem_goal_anim_done = true
-		entity_sprite.scale *= 0.66
-		entity_sprite.modulate.r *= 0.5
-		entity_sprite.modulate.g *= 0.5
-		entity_sprite.modulate.b *= 0.5
+		set_gem_color_scale(0.5)
 		entity_sprite.z_index -= 10
-		%ShadowSprite.visible = false
+		%ShadowSprite.z_index -= 10
+		if gem_sinks_in_goal:
+			entity_sprite.scale *= 0.66
+			%ShadowSprite.visible = false
 
 #func on_number_squished():
 #	$GemSprite.z_index += 1
