@@ -401,6 +401,32 @@ offset_right = 90.0
 offset_bottom = 50.0
 text = "Undo"
 
+[node name="BestMovesContainer" type="PanelContainer" parent="Canvas/HUD"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -52.0
+offset_right = 31.0
+offset_bottom = -10.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BestMovesContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BestMovesLabel" type="Label" parent="Canvas/HUD/BestMovesContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
 [node name="BushRight" type="Sprite2D" parent="."]
 z_index = -99
 position = Vector2(442, 845)

@@ -69,16 +69,27 @@ func _ready():
 		if dict.has("moves") and dict.moves.size() > 0:
 			if debugstr != "":
 				debugstr += ", "
-			debugstr += "Moves: "
+			debugstr += "Best moves: \n"
+			var count := 0
 			for m in dict.moves: #Hackyness: why are we ever retrieving data as vector2i? (Happens when reloading a level after setting a new record in score, for example)
+				count += 1
 				if (m is Vector2i and m == Vector2i(1,0)) or (m is String and m == "(1, 0)"):
-					debugstr += "→ "
+					debugstr += "→"
 				elif (m is Vector2i and m == Vector2i(-1,0)) or (m is String and m == "(-1, 0)"):
-					debugstr += "← "
+					debugstr += "←"
 				elif (m is Vector2i and m == Vector2i(0,1)) or (m is String and m == "(0, 1)"):
-					debugstr += "↓ "
+					debugstr += "↓"
 				elif (m is Vector2i and m == Vector2i(0,-1)) or (m is String and m == "(0, -1)"):
-					debugstr += "↑ "
+					debugstr += "↑"
+				if count % 3 == 0:
+					debugstr += ", "
+				else:
+					debugstr += " "
+				if count % 9 == 0:
+					debugstr += "\n"
+			if debugstr.ends_with(", "):
+				debugstr = debugstr.rstrip(", ")
+			%BestMovesLabel.text = debugstr
 		print(debugstr)
 		#print(SaveGame.level_dict[Globals.current_level_data.resource_path])
 	elif !Globals.custom_level_data.is_empty() and Globals.is_valid_custom_level(Globals.custom_level_data):
@@ -696,7 +707,7 @@ func _on_expand_hud_button_pressed():
 		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", -100, 0.5).as_relative()
 	else:
 		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", 100, 0.5).as_relative()
-
+	%BestMovesContainer.visible = bottom_buttons_visible
 
 func _on_undo_button_pressed() -> void:
 	if check_goals_and_winnable()[0]:
