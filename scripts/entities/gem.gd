@@ -12,6 +12,7 @@ var goal_tween_duration := 1.0
 var gem_rotates := true
 var gem_squishes := false
 var gem_bounces := true
+var gem_sinks_in_goal := true
 
 var move_sounds_default = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
 var move_sound_cat = preload("res://assets/audio/move_meow.wav")
@@ -33,11 +34,13 @@ func _ready():
 			gem_rotates = false
 			gem_squishes = true
 			gem_bounces = true
+			gem_sinks_in_goal = true
 		"Bowling Ball":
 			entity_sprite.texture = ball_bowling_texture
 			gem_rotates = true
 			gem_squishes = false
 			gem_bounces = false
+			gem_sinks_in_goal = false
 	
 	if gem_rotates:
 		%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
@@ -97,16 +100,18 @@ func _on_movement_tween_done(dir):
 	if gem_in_goal:
 		#if !goal_tween or goal_tween.is_running() == false: # I've encountered a bug where the goal fills twice
 		goal_tween = create_tween().set_parallel(true)
-		if !celebrating:
+		if !celebrating and gem_sinks_in_goal:
 			goal_tween.set_trans(Tween.TRANS_ELASTIC)
 			goal_tween.set_ease(Tween.EASE_OUT)
-		goal_tween.tween_property(entity_sprite, "scale", entity_sprite.scale * 0.66, goal_tween_duration)
+		if gem_sinks_in_goal:
+			goal_tween.tween_property(entity_sprite, "scale", entity_sprite.scale * 0.66, goal_tween_duration)
 		if !celebrating:
 			#goal_tween.tween_property(entity_sprite, "modulate:r", entity_sprite.modulate.r * 0.5, goal_tween_duration)
 			#goal_tween.tween_property(entity_sprite, "modulate:g", entity_sprite.modulate.g * 0.5, goal_tween_duration)
 			#goal_tween.tween_property(entity_sprite, "modulate:b", entity_sprite.modulate.b * 0.5, goal_tween_duration)
 			goal_tween.tween_method(set_gem_color_scale, 1.0, 0.5, goal_tween_duration)
 		goal_tween.tween_property(entity_sprite, "z_index", -10, goal_tween_duration).as_relative()
+		goal_tween.tween_property(%ShadowSprite, "z_index", -10, goal_tween_duration).as_relative()
 		goal_tween.chain().tween_callback(goal_animation_finished)
 	super(dir)
 
@@ -117,8 +122,9 @@ func on_goal_entered(_goal):
 	moves = false
 	gem_in_goal = true
 	
-	var shadow_tween = create_tween()
-	shadow_tween.tween_property(%ShadowSprite, "modulate:a", 0.0, 0.33)
+	if gem_sinks_in_goal:
+		var shadow_tween = create_tween()
+		shadow_tween.tween_property(%ShadowSprite, "modulate:a", 0.0, 0.33)
 	
 	#%ShadowSprite.visible = false
 	on_gem_entered_goal.emit(self)

@@ -63,14 +63,13 @@ visible = false
 
 [node name="GoalSpriteBowlingShadow" type="Sprite2D" parent="SkinBowling"]
 z_index = 80
-position = Vector2(0, -9.58)
 scale = Vector2(0.465, 0.6)
 texture = ExtResource("4_8qswn")
 
 [node name="GoalSpriteBowling" type="Sprite2D" parent="SkinBowling"]
 z_index = 100
 material = SubResource("ShaderMaterial_8qswn")
-position = Vector2(0, -60)
+position = Vector2(0, -50)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_imcgv")
 
