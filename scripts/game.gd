@@ -7,6 +7,8 @@ const par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.t
 const blank_level_scene = preload("res://scenes/levels/blank_level.tscn")
 
 var goal_sound = preload("res://assets/audio/goal.wav")
+var goal_sound_bowling = preload("res://assets/audio/goal_bowling.wav")
+
 var won_sound = preload("res://assets/audio/clap.wav")
 @onready var move_queue_timer = $MoveQueueTimer as Timer
 @onready var move_cooldown_timer = $MoveCooldownTimer as Timer
@@ -403,7 +405,7 @@ func move_entities(dir:Vector2i, ents_to_move:Array[Entity]):
 	if did_any_entity_move:
 		var move_sounds:Array[Resource]
 		for e in sorted_ent_array:
-			if e is Gem:
+			if e is Gem: #this is probably pointless: if we have custom goals etc for skins, then we can't have random gem selection
 				move_sounds.append(e.get_move_sound())
 		if move_sounds.size() > 0:
 			$Audio/MoveAudioPlayer.stream = move_sounds[randi() % move_sounds.size()]
@@ -621,11 +623,17 @@ func do_par_moves_anim():
 		on_game_over(true)
 	
 func on_goal_filled(_goal):
-	$Audio/GoalAudioPlayer.stream = goal_sound
+	$Audio/GoalAudioPlayer.stream = get_goal_sound()
 	$Audio/GoalAudioPlayer.play()
 	for e in entities:
 		if e is Bomb and e.gem_in_goal == false:
 			e.ignite_fuse()
+
+func get_goal_sound() -> Resource:
+	if SaveGame.selected_skin == "Bowling Ball":
+		return goal_sound_bowling
+	else:
+		return goal_sound
 
 func on_bomb_explode():
 	$Audio/BombExplodeAudioPlayer.play()

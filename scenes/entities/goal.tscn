@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw4p6yh1m5eyw"]
+[gd_scene load_steps=12 format=3 uid="uid://bw4p6yh1m5eyw"]
 
 [ext_resource type="Script" uid="uid://bip3w81tvwk8c" path="res://scripts/entities/goal.gd" id="1_x6rxc"]
 [ext_resource type="Texture2D" uid="uid://ccbejkpiikuic" path="res://assets/art/goal.png" id="2_0hsrs"]
@@ -6,6 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://cr1xlsutokgyt" path="res://assets/art/goal_hole.png" id="2_ak1wi"]
 [ext_resource type="Texture2D" uid="uid://clxnngv3rewhj" path="res://assets/art/goal_flag.png" id="3_cttjw"]
 [ext_resource type="Script" uid="uid://dbxw0sra31s7w" path="res://scripts/components/color_component.gd" id="3_qbm86"]
+[ext_resource type="Texture2D" uid="uid://dobutktmedt4a" path="res://assets/art/golfball_shadow.png" id="4_8qswn"]
+[ext_resource type="Texture2D" uid="uid://bgtvevhguhadm" path="res://assets/art/goal_bowling_pin.png" id="5_imcgv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sf4w"]
+resource_local_to_scene = true
+shader = ExtResource("2_5sf4w")
+shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cjlt5"]
 resource_local_to_scene = true
@@ -14,7 +23,7 @@ shader_parameter/hue_shift = 0.0
 shader_parameter/color_scale = 1.0
 shader_parameter/alpha_scale = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sf4w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qswn"]
 resource_local_to_scene = true
 shader = ExtResource("2_5sf4w")
 shader_parameter/hue_shift = 0.0
@@ -24,16 +33,12 @@ shader_parameter/alpha_scale = 1.0
 [node name="Goal" type="Node2D"]
 script = ExtResource("1_x6rxc")
 
-[node name="GoalSprite" type="Sprite2D" parent="."]
-z_index = 80
-material = SubResource("ShaderMaterial_cjlt5")
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_ak1wi")
+[node name="SkinDefault" type="Node2D" parent="."]
 
-[node name="FlagRot" type="Node2D" parent="."]
+[node name="FlagRot" type="Node2D" parent="SkinDefault"]
 position = Vector2(0, 20)
 
-[node name="FlagSprite" type="Sprite2D" parent="FlagRot"]
+[node name="FlagSprite" type="Sprite2D" parent="SkinDefault/FlagRot"]
 unique_name_in_owner = true
 z_index = 100
 y_sort_enabled = true
@@ -42,12 +47,35 @@ position = Vector2(3, -79)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_cttjw")
 
-[node name="ColorComponent" type="Node2D" parent="." node_paths=PackedStringArray("nodes_to_colorize")]
-script = ExtResource("3_qbm86")
-nodes_to_colorize = [NodePath("../GoalSprite"), NodePath("../FlagRot/FlagSprite")]
-
-[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-
-[node name="GoalSpriteNonModulated" type="Sprite2D" parent="."]
+[node name="GoalSpriteNonModulated" type="Sprite2D" parent="SkinDefault"]
+z_index = 80
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_0hsrs")
+
+[node name="GoalSprite" type="Sprite2D" parent="SkinDefault"]
+z_index = 80
+material = SubResource("ShaderMaterial_cjlt5")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ak1wi")
+
+[node name="SkinBowling" type="Node2D" parent="."]
+visible = false
+
+[node name="GoalSpriteBowlingShadow" type="Sprite2D" parent="SkinBowling"]
+z_index = 80
+position = Vector2(0, -9.58)
+scale = Vector2(0.465, 0.6)
+texture = ExtResource("4_8qswn")
+
+[node name="GoalSpriteBowling" type="Sprite2D" parent="SkinBowling"]
+z_index = 100
+material = SubResource("ShaderMaterial_8qswn")
+position = Vector2(0, -60)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_imcgv")
+
+[node name="ColorComponent" type="Node2D" parent="." node_paths=PackedStringArray("nodes_to_colorize")]
+script = ExtResource("3_qbm86")
+nodes_to_colorize = [NodePath("../SkinDefault/GoalSprite"), NodePath("../SkinDefault/FlagRot/FlagSprite"), NodePath("../SkinBowling/GoalSpriteBowling")]
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]

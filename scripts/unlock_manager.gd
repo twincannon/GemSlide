@@ -20,6 +20,7 @@ func _init() -> void:
 				"Course-4":["course","3-6",false], \
 				"Course-5":["course","4-6",false], \
 				"Skin-Cat":["skin","1-12",false], \
+				"Skin-Bowling Ball":["skin","2-12",false], \
 			}
 		}
 

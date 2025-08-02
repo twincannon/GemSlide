@@ -11,11 +11,14 @@ var goal_tween_duration := 1.0
 
 var gem_rotates := true
 var gem_squishes := false
+var gem_bounces := true
 
 var move_sounds_default = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
 var move_sound_cat = preload("res://assets/audio/move_meow.wav")
+var move_sound_bowling = preload("res://assets/audio/move_bowling.wav")
 
 var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
+var ball_bowling_texture = preload("res://assets/art/bowlingball.png")
 
 var celebrating := false
 
@@ -29,6 +32,12 @@ func _ready():
 			entity_sprite.texture = ball_cat_texture
 			gem_rotates = false
 			gem_squishes = true
+			gem_bounces = true
+		"Bowling Ball":
+			entity_sprite.texture = ball_bowling_texture
+			gem_rotates = true
+			gem_squishes = false
+			gem_bounces = false
 	
 	if gem_rotates:
 		%GemSpriteRotAnchor.rotation = randf_range(-PI, PI)
@@ -43,6 +52,8 @@ func get_move_sound() -> Resource:
 			return move_sounds_default[randi() % move_sounds_default.size()]
 		"Cat":
 			return move_sound_cat
+		"Bowling Ball":
+			return move_sound_bowling
 	return null
 
 #func _process(_delta):
@@ -67,12 +78,13 @@ func _on_movement(_dir):
 		movement_tween.tween_property(%GemSpriteRotAnchor, "rotation", rot_dir, tween_dur).as_relative()
 	movement_tween.chain().tween_callback(_on_movement_tween_done.bind(_dir))
 	
-	var bounce_tween = create_tween()
-	bounce_tween.set_trans(Tween.TRANS_SINE)
-	bounce_tween.set_ease(Tween.EASE_OUT)
-	bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", -25, tween_dur * 0.5).as_relative()
-	bounce_tween.set_ease(Tween.EASE_IN)
-	bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", 25, tween_dur * 0.5).as_relative()
+	if gem_bounces:
+		var bounce_tween = create_tween()
+		bounce_tween.set_trans(Tween.TRANS_SINE)
+		bounce_tween.set_ease(Tween.EASE_OUT)
+		bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", -25, tween_dur * 0.5).as_relative()
+		bounce_tween.set_ease(Tween.EASE_IN)
+		bounce_tween.tween_property(%GemSpriteRotAnchor, "position:y", 25, tween_dur * 0.5).as_relative()
 	
 	if gem_squishes:
 		var squish_tween = create_tween()

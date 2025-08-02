@@ -2,8 +2,10 @@ extends Control
 
 @onready var level_button_scene = preload("res://scenes/ui/level_button.tscn")
 
+#Gross that these are duplicated here and in gem.gd
 var ball_default_texture = preload("res://assets/art/golfball.png")
 var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
+var ball_bowling_texture = preload("res://assets/art/bowlingball.png")
 
 var options_balls:Array[TextureRect] = []
 
@@ -126,6 +128,12 @@ func _on_options_button_pressed():
 					optionbutton.select(i)
 					for ball in options_balls:
 						ball.texture = ball_cat_texture
+		"Bowling Ball":
+			for i in range(optionbutton.item_count):
+				if optionbutton.get_item_text(i) == "Bowling Ball":
+					optionbutton.select(i)
+					for ball in options_balls:
+						ball.texture = ball_bowling_texture
 
 func populate_skin_list():
 	%SkinOptionButton.add_item(SaveGame.DEFAULT_SKIN_NAME)
@@ -141,6 +149,9 @@ func _on_skin_option_button_item_selected(index: int) -> void:
 	elif skin_str == "Cat":
 		for ball in options_balls:
 			ball.texture = ball_cat_texture
+	elif skin_str == "Bowling Ball":
+		for ball in options_balls:
+			ball.texture = ball_bowling_texture
 		
 
 func _on_option_ball_r_slider_value_changed(value: float) -> void:
