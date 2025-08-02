@@ -87,7 +87,7 @@ func _ready():
 					debugstr += ", "
 				else:
 					debugstr += " "
-				if count % 9 == 0:
+				if count > 9 and count % 9 == 0:
 					debugstr += "\n"
 			if debugstr.ends_with(", "):
 				debugstr = debugstr.rstrip(", ")
@@ -154,11 +154,19 @@ func _ready():
 		e._initialize_entity(self)
 	on_viewport_changed()
 		
+	# Uncomment the following lines to enable automatic solving
 	#var solver = PuzzleSolver.new(self)
-	#var solution = solver.solve_level()
+	#var solution = solver.solve()
 	#if solution.size() > 0:
 		#print("Optimal solution found in ", solution.size(), " moves")
-		#print("Solution: ", solution)
+		#for i in range(solution.size()):
+		#	var dir = solution[i]
+		#	var dir_name = ""
+		#	if dir == Vector2i.UP: dir_name = "UP"
+		#	elif dir == Vector2i.DOWN: dir_name = "DOWN"
+		#	elif dir == Vector2i.LEFT: dir_name = "LEFT"
+		#	elif dir == Vector2i.RIGHT: dir_name = "RIGHT"
+		#	print("Move ", i + 1, ": ", dir_name)
 	#else:
 		#print("Level is unsolvable or too complex")
 
@@ -701,6 +709,19 @@ func _on_hud_retry_button_pressed():
 func _on_hud_main_menu_button_pressed():
 	set_game_paused(false)
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_hud_solver_button_pressed():
+	# Create solver and find solution
+	var solver = PuzzleSolver.new(self)
+	var solution = solver.solve()
+	
+	if solution.size() > 0:
+		# Show solution in UI (you could add a popup or overlay here)
+		# For now, just show a simple message
+		%LevelNumLabel.text = "Solution: " + str(solution.size()) + " moves found!"
+	else:
+		print("No solution found!")
+		%LevelNumLabel.text = "No solution found!"
 
 
 func _on_expand_hud_button_pressed():
