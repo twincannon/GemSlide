@@ -7,8 +7,7 @@ var config_dict = {
 	"Skin": "Default"
 }
 
-const DEFAULT_SKIN_NAME = "Default"
-var selected_skin := DEFAULT_SKIN_NAME : set = set_selected_skin
+var selected_skin := SkinManager.SkinType.DEFAULT : set = set_selected_skin
 
 const SAVE_FILE_NAME = "save.json"
 const CONFIG_FILE_NAME = "config.json"
@@ -136,9 +135,9 @@ func set_config_ball_hue(ballcolor:String, hue:float):
 		config_dict["BallHue"][ballcolor] = hue
 	save_config()
 	
-func set_selected_skin(new_skin:String):
+func set_selected_skin(new_skin:SkinManager.SkinType):
 	selected_skin = new_skin
-	config_dict["Skin"] = new_skin
+	config_dict["Skin"] = SkinManager.get_skin_string(new_skin)
 	save_config()
 		
 func save_config():
@@ -175,7 +174,7 @@ func load_config():
 			Globals.hue_blue = data["BallHue"]["B"]
 		
 		if data.has("Skin"):
-			SaveGame.selected_skin = data["Skin"]
+			SaveGame.selected_skin = SkinManager.get_skin_type_from_string(data["Skin"])
 		
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(data["Volume"]["Master"]))
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(data["Volume"]["SFX"]))

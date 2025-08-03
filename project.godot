@@ -27,6 +27,7 @@ Globals="*res://scripts/globals.gd"
 SaveGame="*res://scripts/save_game.gd"
 SoundManager="*res://scripts/sound_manager.gd"
 UnlockManager="*res://scripts/unlock_manager.gd"
+SkinManager="*res://scripts/skin_manager.gd"
 
 [debug]
 

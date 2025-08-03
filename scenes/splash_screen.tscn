@@ -1,12 +1,20 @@
-[gd_scene load_steps=28 format=3 uid="uid://40fbry162c3k"]
+[gd_scene load_steps=30 format=3 uid="uid://40fbry162c3k"]
 
 [ext_resource type="Script" uid="uid://c7aw1nftsgh3m" path="res://scripts/splash_screen.gd" id="1_1d465"]
 [ext_resource type="PackedScene" uid="uid://dqthvj372mas5" path="res://scenes/vfx/vfx_goal.tscn" id="2_vbcv6"]
 [ext_resource type="PackedScene" uid="uid://dfi8kwmjccu8m" path="res://scenes/vfx/vfx_sand.tscn" id="3_a2ut7"]
+[ext_resource type="Shader" uid="uid://dks2inxbh63" path="res://shaders/hue_shift.gdshader" id="3_dhol4"]
 [ext_resource type="PackedScene" uid="uid://oavoqs2a613w" path="res://scenes/vfx/vfx_teleport.tscn" id="4_5osyx"]
 [ext_resource type="PackedScene" uid="uid://casi57kcua18o" path="res://scenes/vfx/vfx_water.tscn" id="5_dhol4"]
 [ext_resource type="PackedScene" uid="uid://c7ef8pt4mwjjo" path="res://scenes/vfx/vfx_rock_destroyed.tscn" id="6_a2ut7"]
 [ext_resource type="PackedScene" uid="uid://qkto6yxksvto" path="res://scenes/vfx/vfx_bomb_explode.tscn" id="7_5osyx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhol4"]
+resource_local_to_scene = true
+shader = ExtResource("3_dhol4")
+shader_parameter/hue_shift = 0.0
+shader_parameter/color_scale = 1.0
+shader_parameter/alpha_scale = 1.0
 
 [sub_resource type="Gradient" id="Gradient_1hu6l"]
 offsets = PackedFloat32Array(0.504808, 1)
@@ -139,6 +147,7 @@ color_ramp = SubResource("GradientTexture1D_dhol4")
 script = ExtResource("1_1d465")
 
 [node name="VFXGoal" parent="." instance=ExtResource("2_vbcv6")]
+material = SubResource("ShaderMaterial_dhol4")
 process_material = SubResource("ParticleProcessMaterial_w4c0s")
 
 [node name="VFXSand" parent="." instance=ExtResource("3_a2ut7")]

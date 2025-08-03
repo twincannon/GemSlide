@@ -116,40 +116,40 @@ func _on_options_button_pressed():
 	%OptionBallBSlider.value = Globals.hue_blue
 	var optionbutton = %SkinOptionButton
 	match SaveGame.selected_skin:
-		"Default":
+		SkinManager.SkinType.DEFAULT:
 			for i in range(optionbutton.item_count):
-				if optionbutton.get_item_text(i) == "Default":
+				if optionbutton.get_item_text(i) == SkinManager.get_skin_string(SkinManager.SkinType.DEFAULT):
 					optionbutton.select(i)
 					for ball in options_balls:
 						ball.texture = ball_default_texture
-		"Cat":
+		SkinManager.SkinType.CAT:
 			for i in range(optionbutton.item_count):
-				if optionbutton.get_item_text(i) == "Cat":
+				if optionbutton.get_item_text(i) == SkinManager.get_skin_string(SkinManager.SkinType.CAT):
 					optionbutton.select(i)
 					for ball in options_balls:
 						ball.texture = ball_cat_texture
-		"Bowling Ball":
+		SkinManager.SkinType.BOWLINGBALL:
 			for i in range(optionbutton.item_count):
-				if optionbutton.get_item_text(i) == "Bowling Ball":
+				if optionbutton.get_item_text(i) == SkinManager.get_skin_string(SkinManager.SkinType.BOWLINGBALL):
 					optionbutton.select(i)
 					for ball in options_balls:
 						ball.texture = ball_bowling_texture
 
 func populate_skin_list():
-	%SkinOptionButton.add_item(SaveGame.DEFAULT_SKIN_NAME)
+	%SkinOptionButton.add_item(SkinManager.get_skin_string(SkinManager.SkinType.DEFAULT))
 	for skin in UnlockManager.get_unlocked_skins():
 		%SkinOptionButton.add_item(skin)
 
 func _on_skin_option_button_item_selected(index: int) -> void:
-	var skin_str = %SkinOptionButton.get_item_text(index)
-	SaveGame.selected_skin = skin_str
-	if skin_str == "Default":
+	var skin_type = SkinManager.get_skin_type_from_string(%SkinOptionButton.get_item_text(index))
+	SaveGame.selected_skin = skin_type
+	if skin_type == SkinManager.SkinType.DEFAULT:
 		for ball in options_balls:
 			ball.texture = ball_default_texture
-	elif skin_str == "Cat":
+	elif skin_type == SkinManager.SkinType.CAT:
 		for ball in options_balls:
 			ball.texture = ball_cat_texture
-	elif skin_str == "Bowling Ball":
+	elif skin_type == SkinManager.SkinType.BOWLINGBALL:
 		for ball in options_balls:
 			ball.texture = ball_bowling_texture
 		

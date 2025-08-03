@@ -638,7 +638,7 @@ func on_goal_filled(_goal):
 			e.ignite_fuse()
 
 func get_goal_sound() -> Resource:
-	if SaveGame.selected_skin == "Bowling Ball":
+	if SaveGame.selected_skin == SkinManager.SkinType.BOWLINGBALL:
 		return goal_sound_bowling
 	else:
 		return goal_sound

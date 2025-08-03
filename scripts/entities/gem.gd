@@ -28,14 +28,14 @@ func _ready():
 	moves = true
 	
 	match SaveGame.selected_skin:
-		"Default": pass
-		"Cat":
+		SkinManager.SkinType.DEFAULT: pass
+		SkinManager.SkinType.CAT:
 			entity_sprite.texture = ball_cat_texture
 			gem_rotates = false
 			gem_squishes = true
 			gem_bounces = true
 			gem_sinks_in_goal = true
-		"Bowling Ball":
+		SkinManager.SkinType.BOWLINGBALL:
 			entity_sprite.texture = ball_bowling_texture
 			gem_rotates = true
 			gem_squishes = false
@@ -51,11 +51,11 @@ func _initialize_entity(game:Game):
 
 func get_move_sound() -> Resource:
 	match SaveGame.selected_skin:
-		"Default":
+		SkinManager.SkinType.DEFAULT:
 			return move_sounds_default[randi() % move_sounds_default.size()]
-		"Cat":
+		SkinManager.SkinType.CAT:
 			return move_sound_cat
-		"Bowling Ball":
+		SkinManager.SkinType.BOWLINGBALL:
 			return move_sound_bowling
 	return null
 

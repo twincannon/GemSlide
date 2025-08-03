@@ -6,7 +6,7 @@ var filled_vfx_scene = preload("res://scenes/vfx/vfx_goal.tscn")
 
 func _ready():
 	moves = false
-	if SaveGame.selected_skin == "Bowling Ball":
+	if SaveGame.selected_skin == SkinManager.SkinType.BOWLINGBALL:
 		$SkinBowling.visible = true
 		$SkinDefault.visible = false
 		entity_sprite = $SkinBowling/GoalSpriteBowling

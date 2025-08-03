@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://cd8lu1oo7v8qh" path="res://assets/art/ui/themes/level_editor_theme.tres" id="2_iky42"]
 [ext_resource type="Shader" uid="uid://dks2inxbh63" path="res://shaders/hue_shift.gdshader" id="2_lqkas"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gw4j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqkas"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mv4cx"]
 resource_local_to_scene = true
@@ -29,7 +29,7 @@ id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2gw4j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lqkas")
 
 [node name="EntityIcon" type="TextureRect" parent="PanelContainer"]
 unique_name_in_owner = true
