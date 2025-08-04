@@ -673,6 +673,7 @@ func on_game_over(won):
 		%LoseLabel.visible = true
 		%WinLabel.visible = false
 		%ContinueButton.visible = false
+		%UndoResultButton.visible = true
 
 func _on_tut_ok_button_pressed():
 	set_game_paused(false)
@@ -736,7 +737,8 @@ func _on_expand_hud_button_pressed():
 		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", -100, 0.5).as_relative()
 	else:
 		bottom_buttons_tween.tween_property(%BottomButtonsContainer, "position:y", 100, 0.5).as_relative()
-	%BestMovesContainer.visible = bottom_buttons_visible
+	var best_moves_has_text = %BestMovesLabel.text != ""
+	%BestMovesContainer.visible = bottom_buttons_visible and best_moves_has_text
 
 func _on_undo_button_pressed() -> void:
 	if check_goals_and_winnable()[0]:
@@ -746,6 +748,7 @@ func _on_undo_button_pressed() -> void:
 	%ResultContainer.visible = false
 	%TutorialContainer.visible = false
 	undo_manager.pop_game_state()
+	%UndoResultButton.visible = false
 
 func get_grid_scale() -> Vector2:
 	return $GridAnchor.scale

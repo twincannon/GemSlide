@@ -14,12 +14,12 @@ var gem_squishes := false
 var gem_bounces := true
 var gem_sinks_in_goal := true
 
-var move_sounds_default = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
-var move_sound_cat = preload("res://assets/audio/move_meow.wav")
-var move_sound_bowling = preload("res://assets/audio/move_bowling.wav")
+static var move_sounds_default = [preload("res://assets/audio/putt1.wav"), preload("res://assets/audio/putt3.wav")] # Removed preload("res://assets/audio/putt2.wav"), for now due to extra bass in it
+static var move_sound_cat = preload("res://assets/audio/move_meow.wav")
+static var move_sound_bowling = preload("res://assets/audio/move_bowling.wav")
 
-var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
-var ball_bowling_texture = preload("res://assets/art/bowlingball.png")
+static var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
+static var ball_bowling_texture = preload("res://assets/art/bowlingball.png")
 
 var celebrating := false
 
