@@ -743,12 +743,14 @@ func _on_expand_hud_button_pressed():
 func _on_undo_button_pressed() -> void:
 	if check_goals_and_winnable()[0]:
 		return
-	set_game_paused(false)
-	game_state = GameState.PLAYING
-	%ResultContainer.visible = false
-	%TutorialContainer.visible = false
-	undo_manager.pop_game_state()
-	%UndoResultButton.visible = false
+	if undo_manager.pop_game_state():
+		set_game_paused(false)
+		game_state = GameState.PLAYING
+		%ResultContainer.visible = false
+		%TutorialContainer.visible = false
+		%UndoResultButton.visible = false
+		$PixelCanvas.do_pixelation()
+		$Audio/UndoAudioPlayer.play()
 
 func get_grid_scale() -> Vector2:
 	return $GridAnchor.scale

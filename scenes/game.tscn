@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjotdf84upxhu"]
+[gd_scene load_steps=19 format=3 uid="uid://cjotdf84upxhu"]
 
 [ext_resource type="Script" uid="uid://fmx28qo0weei" path="res://scripts/game.gd" id="1_m1u8a"]
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="2_vs7lu"]
@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://cnw3njeeiru75" path="res://assets/audio/bomb_ignite.wav" id="7_vtaks"]
 [ext_resource type="AudioStream" uid="uid://dasn2hv3v2e8v" path="res://assets/audio/bomb_defuse.wav" id="8_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://dknqgccseuxmk" path="res://assets/audio/victory.wav" id="11_kvpfn"]
+[ext_resource type="Shader" uid="uid://bcth6ycsgkjx1" path="res://shaders/pixelate.gdshader" id="12_dinhu"]
+[ext_resource type="Script" uid="uid://cfoq1cyr27m2m" path="res://scripts/undo/pixelate.gd" id="12_kvuet"]
+[ext_resource type="AudioStream" uid="uid://bggvadpoujg12" path="res://assets/audio/undo.wav" id="12_trtic"]
 
 [sub_resource type="Gradient" id="Gradient_1pbea"]
 offsets = PackedFloat32Array(0.270408, 0.5, 0.714286)
@@ -26,6 +29,10 @@ glow_bloom = 0.02
 glow_blend_mode = 1
 adjustment_brightness = 7.3
 adjustment_contrast = 5.55
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvuet"]
+shader = ExtResource("12_dinhu")
+shader_parameter/pixel_size = 1.0
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -507,6 +514,9 @@ stream = ExtResource("7_u5sy4")
 [node name="VictoryAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("11_kvpfn")
 
+[node name="UndoAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("12_trtic")
+
 [node name="BackgroundImageRoot" type="Node2D" parent="."]
 unique_name_in_owner = true
 z_index = -999
@@ -520,6 +530,20 @@ texture = SubResource("GradientTexture1D_tq156")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kvpfn")
+
+[node name="PixelCanvas" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("12_kvuet")
+
+[node name="ColorRect" type="ColorRect" parent="PixelCanvas"]
+material = SubResource("ShaderMaterial_kvuet")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/TutOkButton" to="." method="_on_tut_ok_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
