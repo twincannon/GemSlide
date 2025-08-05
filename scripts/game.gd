@@ -669,6 +669,8 @@ func on_game_over(won):
 		%WinLabel.visible = true
 		if get_next_level():
 			%ContinueButton.visible = true
+		elif Globals.custom_level_data.is_empty(): # Don't want to show this for custom levels
+			%WinLabel.text = "Congratulations, you finished the course!\nCheck out more levels at the main menu!"
 	else:
 		%LoseLabel.visible = true
 		%WinLabel.visible = false
@@ -688,6 +690,7 @@ func get_next_level():
 	var cur_idx = Globals.get_current_level_index()
 	if cur_idx != -1 and Globals.current_world_data.level_data_json.size() > cur_idx + 1:
 		return Globals.current_world_data.level_data_json[cur_idx + 1]
+	return null
 
 func _on_continue_button_pressed():
 	set_game_paused(false)

@@ -25,5 +25,13 @@ void vertex() {
 }
 
 void fragment() {
-	COLOR = modulate * shift_hue(texture(TEXTURE, UV), hue_shift);
+	//COLOR = modulate * shift_hue(texture(TEXTURE, UV), hue_shift);
+	
+	// Check if red is dominant
+	vec4 tex_color = texture(TEXTURE, UV);
+	if (tex_color.r > tex_color.g && tex_color.r > tex_color.b) {
+		COLOR = modulate * shift_hue(tex_color, hue_shift);
+	} else {
+		COLOR = modulate * tex_color;
+	}
 }

@@ -2,7 +2,7 @@ extends Control
 
 @onready var level_button_scene = preload("res://scenes/ui/level_button.tscn")
 
-#Gross that these are duplicated here and in gem.gd
+#Gross that these are duplicated here and in gem.gd - consider moving to SkinManager
 var ball_default_texture = preload("res://assets/art/golfball.png")
 var ball_cat_texture = preload("res://assets/art/golfball_cat.png")
 var ball_bowling_texture = preload("res://assets/art/bowlingball.png")
@@ -12,6 +12,7 @@ var options_balls:Array[TextureRect] = []
 func _ready():
 	SoundManager.stop_game_music()
 	Globals.current_level_data = null
+	Globals.set_custom_level_data({})
 	update_world()
 	populate_skin_list()
 	
