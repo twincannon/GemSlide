@@ -49,21 +49,21 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a2pyl"]
 _data = {
-"RESET": SubResource("Animation_uop4b"),
-"default": SubResource("Animation_nv74p")
+&"RESET": SubResource("Animation_uop4b"),
+&"default": SubResource("Animation_nv74p")
 }
 
 [node name="VFXWater" type="GPUParticles2D"]
 z_index = 500
 position = Vector2(0, 36)
 amount = 50
-process_material = ExtResource("1_33lp2")
 texture = ExtResource("1_s7lep")
 explosiveness = 0.9
 fixed_fps = 120
+process_material = ExtResource("1_33lp2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "default"
 libraries = {
-"": SubResource("AnimationLibrary_a2pyl")
+&"": SubResource("AnimationLibrary_a2pyl")
 }
+autoplay = "default"

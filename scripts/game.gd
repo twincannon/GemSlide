@@ -6,6 +6,8 @@ const par_moves_indicator_scene = preload("res://scenes/ui/par_moves_indicator.t
 @onready var entity_icon_scene = load("res://scenes/level_editor/entity_icon.tscn")
 const blank_level_scene = preload("res://scenes/levels/blank_level.tscn")
 
+const VFX_FIREWORK = preload("res://scenes/vfx/vfx_firework.tscn")
+
 var goal_sound = preload("res://assets/audio/goal.wav")
 var goal_sound_bowling = preload("res://assets/audio/goal_bowling.wav")
 
@@ -49,8 +51,7 @@ var camera_target_pos = Vector2.ZERO
 func _ready():
 	get_tree().get_root().size_changed.connect(on_viewport_changed.bind())
 	
-	undo_manager = UndoManager.new(self)
-	
+	undo_manager = UndoManager.new(self)	
 	SoundManager.start_game_music()
 	
 	if Globals.current_level_data:
@@ -87,8 +88,10 @@ func _ready():
 					debugstr += ", "
 				else:
 					debugstr += " "
-				if count > 9 and count % 9 == 0:
+				if count % 9 == 0:
 					debugstr += "\n"
+			if debugstr.ends_with("\n"):
+				debugstr = debugstr.rstrip("\n")
 			if debugstr.ends_with(", "):
 				debugstr = debugstr.rstrip(", ")
 			%BestMovesLabel.text = debugstr
@@ -223,13 +226,11 @@ func _process(_delta):
 		e.start_free_timer()
 	entities_to_remove.clear()
 	
-	#camera_target_zoom = 2.0
-	#camera_target_pos = get_position_at_grid_pos(gem.grid_pos)
-	if camera_target_zoom == 2.0:
-		%Camera2D.zoom = %Camera2D.zoom.lerp(Vector2(camera_target_zoom, camera_target_zoom), _delta * 10)
-		%Camera2D.position = %Camera2D.position.lerp(camera_target_pos, _delta * 10)
-	else:
-		Engine.time_scale = 1.0
+	#if camera_target_zoom == 2.0:
+	%Camera2D.zoom = %Camera2D.zoom.lerp(Vector2(camera_target_zoom, camera_target_zoom), _delta * 10)
+	%Camera2D.position = %Camera2D.position.lerp(camera_target_pos, _delta * 10)
+	#else:
+	#	Engine.time_scale = 1.0
 	
 	if !check_goals_and_winnable()[1]:
 		return
@@ -615,6 +616,7 @@ func do_par_moves_anim():
 			var par_moves_indicator = par_moves_indicator_scene.instantiate()
 			if moves == data["ParMoves"]:
 				par_moves_indicator.result = Globals.ResultType.Par
+				#do_fireworks(1)
 			elif data.has("DevBest") and moves < data["DevBest"]:
 				par_moves_indicator.result = Globals.ResultType.BeatDev
 			elif moves <= data["ParMoves"] - 5:
@@ -633,9 +635,10 @@ func do_par_moves_anim():
 func on_goal_filled(_goal):
 	$Audio/GoalAudioPlayer.stream = get_goal_sound()
 	$Audio/GoalAudioPlayer.play()
+	#Handle bomb ignite logic
 	for e in entities:
-		if e is Bomb and e.gem_in_goal == false:
-			e.ignite_fuse()
+		if e is Bomb and ((e.gem_in_goal == false and _goal.matches_color(e)) or e.moves_until_explosion >= 0):
+			e.ignite_fuse() #Ignite for first time, or re-ignite so it doesn't explode
 
 func get_goal_sound() -> Resource:
 	if SaveGame.selected_skin == SkinManager.SkinType.BOWLINGBALL:
@@ -757,3 +760,20 @@ func _on_undo_button_pressed() -> void:
 
 func get_grid_scale() -> Vector2:
 	return $GridAnchor.scale
+
+func do_fireworks(num:int) -> void:
+	camera_target_zoom = 1.0
+	camera_target_pos = Vector2.ZERO
+	$WorldEnvironment.environment.glow_blend_mode = Environment.GlowBlendMode.GLOW_BLEND_MODE_ADDITIVE
+	$Fader.modulate = Color(1,1,1,0)
+	$Fader.visible = true
+	var tween = create_tween()
+	tween.tween_property($Fader, "modulate:a", 0.75, 0.5)
+	for i in range(num):
+		var new_firework = VFX_FIREWORK.instantiate()
+		var spacing = 25.0  # Distance between objects
+		var offset = (num - 1) * spacing / 2.0
+		var x_position = (i * spacing) - offset
+	
+		new_firework.position.x = x_position
+		$FireworkRoot.add_child(new_firework)

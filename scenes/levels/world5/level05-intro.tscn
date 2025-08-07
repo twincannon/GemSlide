@@ -11,7 +11,7 @@ script = ExtResource("1_ucu8b")
 level_name = "Bombastic Beginning"
 tutorial = "[center][b]Bombs[/b] [img height=40]res://assets/art/bomb_texticon.png[/img] obey the following rules:[/center]
 [ul]They act like balls and can enter goals[/ul]
-[ul]If any ball enters a goal, all bombs ignite[/ul]
+[ul]If any ball enters a goal, all same colored bombs ignite[/ul]
 [ul]If any move is made that doesn't result in a goal being filled, all ignited bombs explode[/ul]"
 par_moves = 5
 dev_best = 5
@@ -19,9 +19,9 @@ metadata/_custom_type_script = "uid://b6gipcinvnwbk"
 
 [node name="EntityButton" parent="." instance=ExtResource("2_jeymk")]
 layout_mode = 2
-entity_type = 14
+entity_type = 15
 entity_text = "bomb"
-entity_color = Color(1, 0, 0, 1)
+entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton2" parent="." instance=ExtResource("2_jeymk")]
 layout_mode = 2
@@ -64,12 +64,14 @@ layout_mode = 2
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_jeymk")]
 layout_mode = 2
+entity_type = 8
+entity_text = "#"
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_jeymk")]
 layout_mode = 2
-entity_type = 4
+entity_type = 5
 entity_text = "goal"
-entity_color = Color(1, 0, 0, 1)
+entity_color = Color(0, 1, 0, 1)
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_jeymk")]
 layout_mode = 2

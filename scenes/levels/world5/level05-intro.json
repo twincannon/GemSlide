@@ -1,7 +1,7 @@
 {
 	"DevBest": 5,
 	"Entities": [
-		14,
+		15,
 		0,
 		0,
 		0,
@@ -13,8 +13,8 @@
 		5,
 		0,
 		0,
-		0,
-		4,
+		8,
+		5,
 		0
 	],
 	"EntityIDs": [
@@ -37,5 +37,5 @@
 	"GridSize": "Vector2i(5, 3)",
 	"LevelName": "Bombastic Beginning",
 	"ParMoves": 5,
-	"Tutorial": "[center][b]Bombs[/b] [img height=40]res://assets/art/bomb_texticon.png[/img] obey the following rules:[/center]\n[ul]They act like balls and can enter goals[/ul]\n[ul]If any ball enters a goal, all bombs ignite[/ul]\n[ul]If any move is made that doesn't result in a goal being filled, all ignited bombs explode[/ul]"
+	"Tutorial": "[center][b]Bombs[/b] [img height=40]res://assets/art/bomb_texticon.png[/img] obey the following rules:[/center]\n[ul]They act like balls and can enter goals[/ul]\n[ul]If any ball enters a goal, all same colored bombs ignite[/ul]\n[ul]If any move is made that doesn't result in a goal being filled, all ignited bombs explode[/ul]"
 }

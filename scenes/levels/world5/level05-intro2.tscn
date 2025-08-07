@@ -81,18 +81,18 @@ entity_text = "#"
 
 [node name="EntityButton13" parent="." instance=ExtResource("2_m48ht")]
 layout_mode = 2
-entity_type = 2
+entity_type = 3
 entity_text = "b"
-entity_color = Color(0, 1, 0, 1)
+entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton14" parent="." instance=ExtResource("2_m48ht")]
 layout_mode = 2
 
 [node name="EntityButton15" parent="." instance=ExtResource("2_m48ht")]
 layout_mode = 2
-entity_type = 5
+entity_type = 6
 entity_text = "goal"
-entity_color = Color(0, 1, 0, 1)
+entity_color = Color(0, 0, 1, 1)
 
 [node name="EntityButton16" parent="." instance=ExtResource("2_m48ht")]
 layout_mode = 2

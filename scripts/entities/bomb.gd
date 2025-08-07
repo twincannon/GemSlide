@@ -55,10 +55,12 @@ func explode() -> Array[Entity]:
 	var ents:Array[Entity] = []
 	var adjacent_entities = []
 	for e in game_node.entities:
+		if !e.moves:
+			continue
 		if e != self and Globals.is_cardinally_adjacent(grid_pos, e.grid_pos):
-			if e is Bomb:
-				continue
-			elif e is BlackGem:
+			#if e is Bomb:
+			#	continue #is this still true now that bombs are per-color?
+			if e is BlackGem:
 				e.on_rock_destroyed()
 			else:
 				adjacent_entities.append(e)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwap42611rof4"]
+
+[ext_resource type="Script" uid="uid://ntw3gcsmnch6" path="res://scripts/vfx/vfx_firework.gd" id="1_aye4v"]
+[ext_resource type="Texture2D" uid="uid://bgtvevhguhadm" path="res://assets/art/goal_bowling_pin.png" id="2_0id7w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iih42"]
+
+[node name="VfxFirework" type="RigidBody2D"]
+modulate = Color(100, 1, 1, 1)
+script = ExtResource("1_aye4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iih42")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_0id7w")

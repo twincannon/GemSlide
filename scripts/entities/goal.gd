@@ -21,9 +21,15 @@ func _ready():
 
 func _on_entity_entered(_other_entity):
 	if !is_goal_filled() and _other_entity is Gem:
-		if $ColorComponent.hue == _other_entity.get_node("ColorComponent").hue:
+		if matches_color(_other_entity):
 			on_goal_filled(_other_entity)
 			_other_entity.on_goal_entered(self)
+
+func matches_color(other_entity:Entity) -> bool:
+	var other_cc = other_entity.get_node("ColorComponent")
+	if other_cc:
+		return $ColorComponent.hue == other_cc.hue
+	return false
 
 func on_goal_filled(_filling_gem):
 	filled = true
