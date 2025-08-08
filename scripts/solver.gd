@@ -95,31 +95,32 @@ class GameState:
 			entity_states[entity_id] = state_data
 	
 	func get_hash() -> String:
-		var hash_parts = []
+		# Stable, move-count-independent hash of the logical state.
+		var hash_parts: Array[String] = []
 		hash_parts.append(str(grid_size))
-		hash_parts.append(str(moves))
-		
 		# Sort entity IDs for consistent hashing
-		var sorted_ids = entity_positions.keys()
+		var sorted_ids: Array = entity_positions.keys()
 		sorted_ids.sort()
-		
 		for entity_id in sorted_ids:
+			# Position
 			hash_parts.append(entity_id + ":" + str(entity_positions[entity_id]))
-			var state = entity_states[entity_id]
-			for key in state.keys():
+			# Sort state keys for stable ordering
+			var state: Dictionary = entity_states[entity_id]
+			var state_keys: Array = state.keys()
+			state_keys.sort()
+			for key in state_keys:
 				hash_parts.append(key + ":" + str(state[key]))
-		
 		var hash_string = "|".join(hash_parts)
 		return str(hash_string.hash())
 	
 	func is_goal_state() -> bool:
 		var all_goals_filled = true
 		
-		var goals_checked = 0
+		var _goals_checked = 0
 		for entity_id in entity_states.keys():
 			var state = entity_states[entity_id]
 			if state.has("type") and state["type"] == "goal":
-				goals_checked += 1
+				_goals_checked += 1
 				if !state["filled"]:
 					all_goals_filled = false
 		
@@ -174,8 +175,8 @@ func solve_level() -> Array[Vector2i]:
 	visited_states.clear()
 	
 	# Safety limits
-	var max_states = 500  # Increased limit for complex puzzles
-	var max_moves = 200     # Increased move limit
+	var max_states = 500
+	var max_moves = 200
 	var states_explored = 0
 	
 	# Solution tracking (not needed for optimal A*)
@@ -197,44 +198,13 @@ func solve_level() -> Array[Vector2i]:
 			print("With admissible heuristic, this should be optimal!")
 			return solution
 		
-		# Debug: Print progress every 100 states
-		if states_explored % 100 == 0:
-			print("Explored ", states_explored, " states, current f_score: ", f_scores[current_hash], " (g=", g_scores[current_hash], ", h=", f_scores[current_hash] - g_scores[current_hash], ")")
-			# Show current state layout
-			print("  Current state layout:")
-			for y in range(current_state.grid_size.y):
-				var row = ""
-				for x in range(current_state.grid_size.x):
-					var pos = Vector2i(x, y)
-					var entity_found = false
-					for entity_id in current_state.entity_positions.keys():
-						if current_state.entity_positions[entity_id] == pos:
-							var entity_state = current_state.entity_states[entity_id]
-							if entity_state.has("type"):
-								if entity_state["type"] == "gem":
-									row += "G"
-								elif entity_state["type"] == "goal":
-									row += "O"
-								elif entity_state["type"] == "tile_blocker":
-									row += "X"
-								elif entity_state["type"] == "black_gem":
-									row += "B"
-								elif entity_state["type"] == "bomb":
-									row += "M"
-								else:
-									row += "?"
-									print("    Unknown entity type at ", pos, ": ", entity_state["type"])
-							entity_found = true
-							break
-					if !entity_found:
-						row += "."
-				print("    ", row)
+		# (Debug output trimmed for performance)
 		
 		# Check move limit
 		if current_state.moves >= max_moves:
 			continue
 		
-		# Try all possible moves (prioritize directions that are more likely to lead to goals)
+		# Try all possible moves
 		var directions = [Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT, Vector2i.UP]
 		for direction in directions:
 			var new_state = simulate_move(current_state, direction)
@@ -271,67 +241,11 @@ func create_game_state() -> GameState:
 		print("ERROR: Game entities is null!")
 		return null
 	
-	print("Creating game state with ", game.entities.size(), " entities")
-	
-	# Debug: Print entity details
-	for entity in game.entities:
-		print("Entity: type=", entity.entity_type, " (", Globals.EntityType.keys()[entity.entity_type], ") pos=", entity.grid_pos, " moves=", entity.moves)
-		if entity is Gem:
-			var gem_hue = 0.0
-			match entity.entity_type:
-				Globals.EntityType.BallRed: gem_hue = Globals.hue_red
-				Globals.EntityType.BallGreen: gem_hue = Globals.hue_green
-				Globals.EntityType.BallBlue: gem_hue = Globals.hue_blue
-			print("  - Gem: in_goal=", entity.gem_in_goal, " hue=", gem_hue)
-		elif entity is Goal:
-			var goal_hue = 0.0
-			match entity.entity_type:
-				Globals.EntityType.GoalRed: goal_hue = Globals.hue_red
-				Globals.EntityType.GoalGreen: goal_hue = Globals.hue_green
-				Globals.EntityType.GoalBlue: goal_hue = Globals.hue_blue
-			print("  - Goal: filled=", entity.filled, " hue=", goal_hue)
-	
-	# Debug: Print expected vs actual entity types
-	print("Expected entities from level data:")
-	#print(typeof(Globals.current_level_data))
-	var level_data = Globals.current_level_data.get_data()
-	if level_data and level_data.has("Entities"):
-		for i in range(level_data["Entities"].size()):
-			var entity_type = level_data["Entities"][i]
-			if entity_type != 0:  # Skip empty positions
-				print("  Position ", i, ": ", Globals.EntityType.keys()[entity_type])
+	# (Debug logging removed for performance)
 	
 	var initial_state = GameState.new(game.grid_size, game.entities, game.moves)
 	
-	# Debug: Show initial state layout
-	print("Initial state layout:")
-	for y in range(initial_state.grid_size.y):
-		var row = ""
-		for x in range(initial_state.grid_size.x):
-			var pos = Vector2i(x, y)
-			var entity_found = false
-			for entity_id in initial_state.entity_positions.keys():
-				if initial_state.entity_positions[entity_id] == pos:
-					var entity_state = initial_state.entity_states[entity_id]
-					if entity_state.has("type"):
-						if entity_state["type"] == "gem":
-							row += "G"
-						elif entity_state["type"] == "goal":
-							row += "O"
-						elif entity_state["type"] == "tile_blocker":
-							row += "X"
-						elif entity_state["type"] == "black_gem":
-							row += "B"
-						elif entity_state["type"] == "bomb":
-							row += "M"
-						else:
-							row += "?"
-							print("  Unknown entity type at ", pos, ": ", entity_state["type"])
-					entity_found = true
-					break
-			if !entity_found:
-				row += "."
-		print("  ", row)
+	# (Initial layout debug removed)
 	
 	return initial_state
 
@@ -363,69 +277,27 @@ func is_winnable(state: GameState) -> bool:
 
 # Enhanced heuristic function
 func heuristic(state: GameState) -> int:
+	# Admissible heuristic: sum of Manhattan distances from each unfixed gem/bomb
+	# to the nearest matching-color unfilled goal.
 	var h_score = 0
-	
-	# Count unfilled goals
-	var unfilled_goals = 0
-	for entity_id in state.entity_states.keys():
-		var entity_state = state.entity_states[entity_id]
-		if entity_state.has("type") and entity_state["type"] == "goal" and !entity_state["filled"]:
-			unfilled_goals += 1
-	
-	# Don't add penalty for unfilled goals - just use distance heuristic
-	
-	# Add distance-based heuristic with better weighting
-	var gem_positions = []
-	var goal_positions = []
-	
+	var gem_positions: Array = []
+	var goal_positions: Array = []
 	for entity_id in state.entity_positions.keys():
-		var entity_state = state.entity_states[entity_id]
-		var pos = state.entity_positions[entity_id]
-		
-		# Gems that are not in goals
-		if entity_state.has("type") and (entity_state["type"] == "gem" or entity_state["type"] == "bomb") and !entity_state["gem_in_goal"]:
-			gem_positions.append({"pos": pos, "hue": entity_state["hue"]})
-		# Goals that are not filled
-		elif entity_state.has("type") and entity_state["type"] == "goal" and !entity_state["filled"]:
-			goal_positions.append({"pos": pos, "hue": entity_state["hue"]})
-	
-	# Calculate minimum distance from gems to matching goals
+		var entity_state: Dictionary = state.entity_states[entity_id]
+		var pos: Vector2i = state.entity_positions[entity_id]
+		if entity_state.has("type") and (entity_state["type"] == "gem" or entity_state["type"] == "bomb") and !entity_state.get("gem_in_goal", false):
+			gem_positions.append({"pos": pos, "hue": entity_state.get("hue", 0.0)})
+		elif entity_state.has("type") and entity_state["type"] == "goal" and !entity_state.get("filled", false):
+			goal_positions.append({"pos": pos, "hue": entity_state.get("hue", 0.0)})
 	for gem in gem_positions:
-		var min_distance = 999
-		var found_matching_goal = false
+		var min_distance = 1000000
 		for goal in goal_positions:
 			if gem["hue"] == goal["hue"]:
 				var distance = abs(gem["pos"].x - goal["pos"].x) + abs(gem["pos"].y - goal["pos"].y)
-				min_distance = min(min_distance, distance)
-				found_matching_goal = true
-		# Only add distance if there's a matching goal, otherwise the gem is already in a goal
-		if found_matching_goal:
-			h_score += min_distance * 1  # Lower weight to ensure admissibility
-	
-
-	
-	# Add penalty for stuck entities
-	var stuck_entities = 0
-	for entity_id in state.entity_states.keys():
-		var entity_state = state.entity_states[entity_id]
-		if entity_state.has("stuck") and entity_state["stuck"]:
-			stuck_entities += 1
-	
-	h_score += stuck_entities * 5
-	
-	# Add penalty for ignited bombs
-	var ignited_bombs = 0
-	for entity_id in state.entity_states.keys():
-		var entity_state = state.entity_states[entity_id]
-		if entity_state.has("type") and entity_state["type"] == "bomb" and entity_state["ignited"]:
-			ignited_bombs += 1
-	
-	h_score += ignited_bombs * 15
-	
-	# Debug: Print heuristic breakdown for first few states
-	if state.moves < 3:
-		print("  Heuristic for state with ", state.moves, " moves: ", h_score, " (unfilled_goals=", unfilled_goals, ", distance=", h_score - stuck_entities * 5 - ignited_bombs * 15, ")")
-	
+				if distance < min_distance:
+					min_distance = distance
+		if min_distance < 1000000:
+			h_score += min_distance
 	return h_score
 
 # Enhanced move simulation
@@ -438,6 +310,16 @@ func simulate_move(state: GameState, direction: Vector2i) -> GameState:
 	for entity_id in state.entity_positions.keys():
 		new_state.entity_positions[entity_id] = state.entity_positions[entity_id]
 		new_state.entity_states[entity_id] = state.entity_states[entity_id].duplicate()
+	
+	# Attempt to release entities stuck in sand if they could move this turn
+	for entity_id in new_state.entity_positions.keys():
+		var e_state: Dictionary = new_state.entity_states[entity_id]
+		if e_state.get("stuck", false) and e_state.get("moves", false):
+			var cur_pos: Vector2i = new_state.entity_positions[entity_id]
+			var next_pos: Vector2i = cur_pos + direction
+			if can_move_to_position(next_pos, new_state, entity_id):
+				# One attempted move frees from sand for next move
+				e_state["stuck"] = false
 	
 	# Get all movable entities
 	var movable_entities = []
@@ -463,7 +345,7 @@ func simulate_move(state: GameState, direction: Vector2i) -> GameState:
 	# Apply movement
 	var moved_entities = []
 	for entity_id in movable_entities:
-		var entity_state = new_state.entity_states[entity_id]
+		var _entity_state = new_state.entity_states[entity_id]
 		var current_pos = new_state.entity_positions[entity_id]
 		var target_pos = current_pos + direction
 		
@@ -581,8 +463,11 @@ func handle_post_movement_effects(state: GameState):
 							gem_state["gem_in_goal"] = true
 							# Mark the gem as stuck so it can't move away from the goal
 							gem_state["stuck"] = true
+							# Remove both gem and goal to shrink state space
 							entities_to_remove.append(gem_id)
-							entities_to_remove.append(goal_id) # May as well remove the goal too
+							entities_to_remove.append(goal_id)
+							# Ignite bombs of matching color (mirrors game logic)
+							ignite_bombs_of_hue(state, goal_state.get("hue", 0.0))
 							# Break out of the inner loop since this gem can only fill one goal
 							break
 	
@@ -610,28 +495,27 @@ func handle_post_movement_effects(state: GameState):
 					if other_state.has("type") and (other_state["type"] == "gem" or other_state["type"] == "bomb"):
 						other_state["stuck"] = true
 	
-	# Handle teleporters
+	# Handle teleporters (mirror game's pairing rules)
+	var teleporter_ids: Array = []
 	for entity_id in state.entity_positions.keys():
-		var entity_state = state.entity_states[entity_id]
-		var pos = state.entity_positions[entity_id]
-		
-		if entity_state.has("type") and entity_state["type"] == "teleporter":
-			var teleporter_id = entity_state["teleporter_id"]
-			
-			# Find destination teleporter
-			for other_id in state.entity_positions.keys():
-				var other_state = state.entity_states[other_id]
-				if other_state.has("type") and other_state["type"] == "teleporter" and other_state["teleporter_id"] == teleporter_id:
-					if other_id != entity_id: # Different teleporter
-						var dest_pos = state.entity_positions[other_id]
-						
-						# Teleport any gems at this position
-						for gem_id in state.entity_positions.keys():
-							if state.entity_positions[gem_id] == pos:
-								var gem_state = state.entity_states[gem_id]
-								if gem_state.has("type") and (gem_state["type"] == "gem" or gem_state["type"] == "bomb"):
-									state.entity_positions[gem_id] = dest_pos
-						break
+		if state.entity_states[entity_id].get("type", "") == "teleporter":
+			teleporter_ids.append(entity_id)
+	for tele_id in teleporter_ids:
+		# Iterate per source teleporter and move any gems/bombs standing on it
+		var src_pos: Vector2i = state.entity_positions[tele_id]
+		var dest_id: String = find_destination_teleporter_id(state, tele_id)
+		if dest_id == "":
+			continue
+		var dest_pos: Vector2i = state.entity_positions[dest_id]
+		# Teleport any gems/bombs at this teleporter's position
+		var moving_ids: Array = []
+		for eid in state.entity_positions.keys():
+			if state.entity_positions[eid] == src_pos:
+				var e_state = state.entity_states[eid]
+				if e_state.has("type") and (e_state["type"] == "gem" or e_state["type"] == "bomb"):
+					moving_ids.append(eid)
+		for mid in moving_ids:
+			state.entity_positions[mid] = dest_pos
 	
 	# Handle pressure plates
 	for entity_id in state.entity_positions.keys():
@@ -658,37 +542,93 @@ func handle_post_movement_effects(state: GameState):
 						pass
 	
 	# Handle bomb countdown and explosions
+	var bombs_ready_to_explode: Array = []
 	for entity_id in state.entity_positions.keys():
-		var entity_state = state.entity_states[entity_id]
-		if entity_state.has("type") and entity_state["type"] == "bomb" and entity_state["ignited"] and !entity_state["gem_in_goal"]:
-			# Decrement countdown
-			if entity_state["moves_until_explosion"] > 0:
-				entity_state["moves_until_explosion"] -= 1
-			
-			# Explode if countdown reaches 0
-			if entity_state["moves_until_explosion"] == 0:
-				# Simulate bomb explosion
-				var bomb_pos = state.entity_positions[entity_id]
-				entities_to_remove.append(entity_id)
-				
-				# Push adjacent entities
-				for other_id in state.entity_positions.keys():
-					if other_id != entity_id:
-						var other_pos = state.entity_positions[other_id]
-						if is_adjacent(bomb_pos, other_pos):
-							var other_state = state.entity_states[other_id]
-							if other_state.has("type") and other_state["type"] == "black_gem":
-								entities_to_remove.append(other_id)
-							elif other_state.has("type") and (other_state["type"] == "gem" or other_state["type"] == "bomb"):
-								var push_dir = other_pos - bomb_pos
-								var new_pos = other_pos + push_dir
-								if can_move_to_position(new_pos, state, other_id):
-									state.entity_positions[other_id] = new_pos
+		var b_state = state.entity_states[entity_id]
+		if b_state.get("type", "") == "bomb" and b_state.get("ignited", false) and !b_state.get("gem_in_goal", false):
+			if b_state.get("moves_until_explosion", -1) > 0:
+				b_state["moves_until_explosion"] -= 1
+			if b_state.get("moves_until_explosion", -1) == 0:
+				bombs_ready_to_explode.append(entity_id)
+	# Resolve explosions simultaneously
+	if bombs_ready_to_explode.size() > 0:
+		# Remove exploded bombs
+		for bid in bombs_ready_to_explode:
+			entities_to_remove.append(bid)
+		# Accumulate pushes and destructions
+		var net_push: Dictionary = {} # entity_id -> Vector2i
+		for bid in bombs_ready_to_explode:
+			var bomb_pos: Vector2i = state.entity_positions[bid]
+			for other_id in state.entity_positions.keys():
+				if other_id == bid:
+					continue
+				var other_pos: Vector2i = state.entity_positions[other_id]
+				if is_adjacent(bomb_pos, other_pos):
+					var o_state = state.entity_states[other_id]
+					if o_state.get("type", "") == "black_gem":
+						entities_to_remove.append(other_id)
+					elif o_state.has("moves") and o_state["moves"] and o_state.get("type", "") != "bomb":
+						var dir: Vector2i = other_pos - bomb_pos
+						if !net_push.has(other_id):
+							net_push[other_id] = Vector2i.ZERO
+						net_push[other_id] += dir
+		# Apply net pushes one tile in the direction of the net vector (cardinal)
+		for eid in net_push.keys():
+			var push_vec: Vector2i = net_push[eid]
+			# Reduce to cardinal direction
+			var final_dir: Vector2i = Vector2i(int(clamp(push_vec.x, -1, 1)), int(clamp(push_vec.y, -1, 1)))
+			if final_dir != Vector2i.ZERO:
+				var new_pos = state.entity_positions[eid] + final_dir
+				if can_move_to_position(new_pos, state, eid):
+					state.entity_positions[eid] = new_pos
 	
 	# Remove destroyed entities
 	for entity_id in entities_to_remove:
 		state.entity_positions.erase(entity_id)
 		state.entity_states.erase(entity_id)
+
+
+# Ignite bombs of a given hue (called when a goal of that hue is filled)
+func ignite_bombs_of_hue(state: GameState, hue: float) -> void:
+	for entity_id in state.entity_states.keys():
+		var st: Dictionary = state.entity_states[entity_id]
+		if st.get("type", "") == "bomb" and !st.get("gem_in_goal", false):
+			if st.get("hue", -999.0) == hue or st.get("moves_until_explosion", -1) >= 0:
+				st["ignited"] = true
+				st["moves_until_explosion"] = 1
+
+
+# Teleporter destination per game's rules
+func find_destination_teleporter_id(state: GameState, src_entity_id: String) -> String:
+	var src_state: Dictionary = state.entity_states[src_entity_id]
+	var src_tid: int = int(src_state.get("teleporter_id", -999999))
+	# 1) Same id
+	for eid in state.entity_states.keys():
+		if eid == src_entity_id:
+			continue
+		var st: Dictionary = state.entity_states[eid]
+		if st.get("type", "") == "teleporter" and int(st.get("teleporter_id", -999999)) == src_tid:
+			return eid
+	# 2) id + 1
+	for eid in state.entity_states.keys():
+		if eid == src_entity_id:
+			continue
+		var st2: Dictionary = state.entity_states[eid]
+		if st2.get("type", "") == "teleporter" and int(st2.get("teleporter_id", -999999)) == src_tid + 1:
+			return eid
+	# 3) lowest id
+	var lowest_id: int = 2_147_483_647
+	var lowest_eid: String = ""
+	for eid in state.entity_states.keys():
+		if eid == src_entity_id:
+			continue
+		var st3: Dictionary = state.entity_states[eid]
+		if st3.get("type", "") == "teleporter":
+			var tid = int(st3.get("teleporter_id", 2_147_483_647))
+			if tid < lowest_id:
+				lowest_id = tid
+				lowest_eid = eid
+	return lowest_eid
 
 # Helper function to check if two positions are adjacent
 func is_adjacent(pos1: Vector2i, pos2: Vector2i) -> bool:
