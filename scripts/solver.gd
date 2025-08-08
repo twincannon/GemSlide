@@ -175,7 +175,7 @@ func solve_level() -> Array[Vector2i]:
 	visited_states.clear()
 	
 	# Safety limits
-	var max_states = 500
+	var max_states = 1000
 	var max_moves = 200
 	var states_explored = 0
 	
@@ -204,9 +204,11 @@ func solve_level() -> Array[Vector2i]:
 		if current_state.moves >= max_moves:
 			continue
 		
-		# Try all possible moves
+		# Try all possible moves (prune immediate backtracks)
 		var directions = [Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT, Vector2i.UP]
 		for direction in directions:
+			if current_state.last_move != Vector2i.ZERO and direction == -current_state.last_move:
+				continue
 			var new_state = simulate_move(current_state, direction)
 			if new_state:
 				var new_hash = new_state.get_hash()
@@ -311,15 +313,16 @@ func simulate_move(state: GameState, direction: Vector2i) -> GameState:
 		new_state.entity_positions[entity_id] = state.entity_positions[entity_id]
 		new_state.entity_states[entity_id] = state.entity_states[entity_id].duplicate()
 	
-	# Attempt to release entities stuck in sand if they could move this turn
+	# Track entities that will free themselves from sand after this move
+	var will_unstuck: Array[String] = []
 	for entity_id in new_state.entity_positions.keys():
 		var e_state: Dictionary = new_state.entity_states[entity_id]
 		if e_state.get("stuck", false) and e_state.get("moves", false):
 			var cur_pos: Vector2i = new_state.entity_positions[entity_id]
 			var next_pos: Vector2i = cur_pos + direction
 			if can_move_to_position(next_pos, new_state, entity_id):
-				# One attempted move frees from sand for next move
-				e_state["stuck"] = false
+				# Free on next turn, not this one
+				will_unstuck.append(entity_id)
 	
 	# Get all movable entities
 	var movable_entities = []
@@ -386,6 +389,11 @@ func simulate_move(state: GameState, direction: Vector2i) -> GameState:
 	
 	# Handle post-movement effects
 	handle_post_movement_effects(new_state)
+
+	# Apply sand trap release after movement resolution, matching game timing
+	for eid in will_unstuck:
+		if new_state.entity_states.has(eid):
+			new_state.entity_states[eid]["stuck"] = false
 	
 	return new_state
 
@@ -471,7 +479,7 @@ func handle_post_movement_effects(state: GameState):
 							# Break out of the inner loop since this gem can only fill one goal
 							break
 	
-	# Handle water hazards
+	# Handle water hazards (remove gems, bombs, and black gems)
 	for entity_id in state.entity_positions.keys():
 		var entity_state = state.entity_states[entity_id]
 		var pos = state.entity_positions[entity_id]
@@ -480,7 +488,7 @@ func handle_post_movement_effects(state: GameState):
 			for other_id in state.entity_positions.keys():
 				if state.entity_positions[other_id] == pos:
 					var other_state = state.entity_states[other_id]
-					if other_state.has("type") and (other_state["type"] == "gem" or other_state["type"] == "bomb"):
+					if other_state.has("type") and (other_state["type"] == "gem" or other_state["type"] == "bomb" or other_state["type"] == "black_gem"):
 						entities_to_remove.append(other_id)
 	
 	# Handle sand traps
@@ -492,7 +500,7 @@ func handle_post_movement_effects(state: GameState):
 			for other_id in state.entity_positions.keys():
 				if state.entity_positions[other_id] == pos:
 					var other_state = state.entity_states[other_id]
-					if other_state.has("type") and (other_state["type"] == "gem" or other_state["type"] == "bomb"):
+					if other_state.has("type") and (other_state["type"] == "gem" or other_state["type"] == "bomb" or other_state["type"] == "black_gem"):
 						other_state["stuck"] = true
 	
 	# Handle teleporters (mirror game's pairing rules)
@@ -516,6 +524,7 @@ func handle_post_movement_effects(state: GameState):
 					moving_ids.append(eid)
 		for mid in moving_ids:
 			state.entity_positions[mid] = dest_pos
+			# Note: game visually teleports immediately and finalizes after movement; logically position is updated here
 	
 	# Handle pressure plates
 	for entity_id in state.entity_positions.keys():

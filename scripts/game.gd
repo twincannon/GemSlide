@@ -162,14 +162,6 @@ func _ready():
 	#var solution = solver.solve()
 	#if solution.size() > 0:
 		#print("Optimal solution found in ", solution.size(), " moves")
-		#for i in range(solution.size()):
-		#	var dir = solution[i]
-		#	var dir_name = ""
-		#	if dir == Vector2i.UP: dir_name = "UP"
-		#	elif dir == Vector2i.DOWN: dir_name = "DOWN"
-		#	elif dir == Vector2i.LEFT: dir_name = "LEFT"
-		#	elif dir == Vector2i.RIGHT: dir_name = "RIGHT"
-		#	print("Move ", i + 1, ": ", dir_name)
 	#else:
 		#print("Level is unsolvable or too complex")
 
