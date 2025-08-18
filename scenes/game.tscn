@@ -485,37 +485,34 @@ wait_time = 1.5
 [node name="Audio" type="Node2D" parent="."]
 process_mode = 3
 
-[node name="MoveAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
-attenuation = 1e-05
+[node name="MoveAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 bus = &"SFX"
 
-[node name="GoalAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
-attenuation = 1e-05
+[node name="GoalAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 bus = &"SFX"
 
-[node name="WonAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
-attenuation = 1e-05
+[node name="WonAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 bus = &"SFX"
 
-[node name="BombExplodeAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="BombExplodeAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_p57ef")
 
-[node name="BombIgniteAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="BombIgniteAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_vtaks")
 
-[node name="BombDefuseAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="BombDefuseAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_kvpfn")
 
-[node name="TeleportAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="TeleportAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_gee14")
 
-[node name="BonkAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="BonkAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_u5sy4")
 
-[node name="VictoryAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="VictoryAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("11_kvpfn")
 
-[node name="UndoAudioPlayer" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="UndoAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_trtic")
 
 [node name="BackgroundImageRoot" type="Node2D" parent="."]

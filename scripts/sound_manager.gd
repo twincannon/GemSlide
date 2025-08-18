@@ -1,6 +1,6 @@
 extends Node
 
-var music_node:AudioStreamPlayer2D
+var music_node:AudioStreamPlayer
 
 var sounds = {
 	&"ui_click" : AudioStreamPlayer.new(),
@@ -25,7 +25,7 @@ func play_ui_sound(button:Button, soundname:String):
 
 func start_game_music():
 	if !music_node:
-		music_node = AudioStreamPlayer2D.new()
+		music_node = AudioStreamPlayer.new()
 		music_node.stream = preload("res://assets/audio/music/cool_contemplation.mp3")
 		music_node.process_mode = Node.PROCESS_MODE_ALWAYS
 		music_node.bus = "Music"
