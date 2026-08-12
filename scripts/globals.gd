@@ -27,7 +27,8 @@ enum EntityType {
 	Button,
 	BombRed,
 	BombGreen,
-	BombBlue
+	BombBlue,
+	Boulder
 }
 
 var hue_red := 0.0 #Red color is default for assets

@@ -694,29 +694,28 @@ func _on_continue_button_pressed():
 		Globals.change_level(next_level)
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
 
-
 func _on_retry_button_pressed():
 	set_game_paused(false)
+	restore_engine_timescale()
 	Globals.did_retry = true
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_hud_retry_button_pressed():
 	set_game_paused(false)
+	restore_engine_timescale()
 	Globals.did_retry = true
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_hud_main_menu_button_pressed():
 	set_game_paused(false)
+	restore_engine_timescale()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_hud_solver_button_pressed():
-	# Create solver and find solution
 	var solver = PuzzleSolver.new(self)
 	var solution = solver.solve()
 	
 	if solution.size() > 0:
-		# Show solution in UI (you could add a popup or overlay here)
-		# For now, just show a simple message
 		%LevelNumLabel.text = "Solution: " + str(solution.size()) + " moves found!"
 	else:
 		print("No solution found!")

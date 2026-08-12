@@ -12,6 +12,7 @@ var water_hazard_scene = preload("res://scenes/entities/water_hazard.tscn")
 var teleporter_scene = preload("res://scenes/entities/teleporter.tscn")
 var pressure_plate_scene = preload("res://scenes/entities/pressure_plate.tscn")
 var bomb_scene = preload("res://scenes/entities/bomb.tscn")
+var boulder_scene = preload("res://scenes/entities/boulder.tscn")
 
 var icon_ball = preload("res://assets/art/golfball.png")
 var icon_goal = preload("res://assets/art/goal.png")
@@ -23,6 +24,7 @@ var icon_water = preload("res://assets/art/waterhazard.png")
 var icon_rock = preload("res://assets/art/rock.png")
 var icon_button = preload("res://assets/art/button_up.png")
 var icon_bomb = preload("res://assets/art/bomb.png")
+var icon_boulder = preload("res://assets/art/boulder.png")
 
 @export var entity_type:Globals.EntityType : set = set_entity_type
 @export var entity_text:String : set = set_entity_text
@@ -126,6 +128,9 @@ func set_entity_type(new_entity_type):
 			entity_text = "bomb"
 			entity_color = Color.BLUE
 			entity_icon.texture = icon_bomb
+		Globals.EntityType.Boulder:
+			entity_text = "boulder"
+			entity_icon.texture = icon_boulder
 		_:
 			entity_text = ""
 			entity_color = Color.WHITE
@@ -170,6 +175,8 @@ func is_pressureplate():
 	return entity_text.to_lower() == "btn"
 func is_bomb():
 	return entity_text.to_lower() == "bomb"
+func is_boulder():
+	return entity_text.to_lower() == "boulder"
 func is_red():
 	return entity_color == Color.RED
 func is_green():
@@ -199,6 +206,8 @@ func get_entity():
 		entity = pressure_plate_scene.instantiate() as PressurePlate
 	elif is_bomb():
 		entity = bomb_scene.instantiate() as Bomb
+	elif is_boulder():
+		entity = boulder_scene.instantiate() as Boulder
 	elif entity_text == "#":
 		entity = tile_blocker_scene.instantiate() as TileBlocker
 	

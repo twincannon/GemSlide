@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjotdf84upxhu"]
+[gd_scene format=3 uid="uid://cjotdf84upxhu"]
 
 [ext_resource type="Script" uid="uid://fmx28qo0weei" path="res://scripts/game.gd" id="1_m1u8a"]
 [ext_resource type="Theme" uid="uid://jq1fudyx08mp" path="res://assets/art/ui/themes/base_theme.tres" id="2_vs7lu"]
@@ -27,7 +27,6 @@ gradient = SubResource("Gradient_1pbea")
 background_mode = 3
 glow_enabled = true
 glow_bloom = 0.02
-glow_blend_mode = 1
 adjustment_brightness = 7.3
 adjustment_contrast = 5.55
 
@@ -35,13 +34,13 @@ adjustment_contrast = 5.55
 shader = ExtResource("12_dinhu")
 shader_parameter/pixel_size = 1.0
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=112561203]
 y_sort_enabled = true
 script = ExtResource("1_m1u8a")
 
-[node name="Canvas" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="." unique_id=452328631]
 
-[node name="HUD" type="Control" parent="Canvas"]
+[node name="HUD" type="Control" parent="Canvas" unique_id=1653193507]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 3
@@ -52,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_vs7lu")
 
-[node name="GridPos" type="Control" parent="Canvas/HUD"]
+[node name="GridPos" type="Control" parent="Canvas/HUD" unique_id=546723839]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -63,7 +62,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopContainer" type="MarginContainer" parent="Canvas/HUD"]
+[node name="TopContainer" type="MarginContainer" parent="Canvas/HUD" unique_id=1671478482]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -74,53 +73,53 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/TopContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/TopContainer" unique_id=16269351]
 layout_mode = 2
 
-[node name="LevelNumLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer"]
+[node name="LevelNumLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer" unique_id=877824086]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.735357, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "Level 0-0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/HUD/TopContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas/HUD/TopContainer/VBoxContainer" unique_id=1004878941]
 layout_mode = 2
 alignment = 1
 
-[node name="ParLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer/HBoxContainer"]
+[node name="ParLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer/HBoxContainer" unique_id=1460666906]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.81263477, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
 text = "Par: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MovesLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer/HBoxContainer"]
+[node name="MovesLabel" type="Label" parent="Canvas/HUD/TopContainer/VBoxContainer/HBoxContainer" unique_id=1008674582]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.7372549, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TutorialContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
+[node name="TutorialContainer" type="AspectRatioContainer" parent="Canvas/HUD" unique_id=349512212]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -131,7 +130,7 @@ anchor_bottom = 0.601
 ratio = 2.0
 metadata/_edit_use_anchors_ = true
 
-[node name="TutorialMarginContainer" type="MarginContainer" parent="Canvas/HUD/TutorialContainer"]
+[node name="TutorialMarginContainer" type="MarginContainer" parent="Canvas/HUD/TutorialContainer" unique_id=214262983]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
@@ -140,20 +139,20 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer" unique_id=2074474546]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer" unique_id=1004996096]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer" unique_id=1838171401]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="TutorialLabel" type="RichTextLabel" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="TutorialLabel" type="RichTextLabel" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1137388729]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
@@ -161,7 +160,7 @@ text = "[center]Tutorial text [b]goes here[/b][/center]"
 fit_content = true
 autowrap_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer" unique_id=1530037204]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
@@ -170,12 +169,12 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="TutOkButton" type="Button" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer/MarginContainer2"]
+[node name="TutOkButton" type="Button" parent="Canvas/HUD/TutorialContainer/TutorialMarginContainer/PanelContainer/VBoxContainer/MarginContainer2" unique_id=606614982]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Okay!"
 
-[node name="ResultContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
+[node name="ResultContainer" type="AspectRatioContainer" parent="Canvas/HUD" unique_id=1395218577]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -189,27 +188,27 @@ grow_horizontal = 2
 grow_vertical = 2
 ratio = 3.0
 
-[node name="ResultMarginContainer" type="MarginContainer" parent="Canvas/HUD/ResultContainer"]
+[node name="ResultMarginContainer" type="MarginContainer" parent="Canvas/HUD/ResultContainer" unique_id=1242281890]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer" unique_id=1604999805]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer" unique_id=721737863]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer" unique_id=923981476]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="WinLabel" type="Label" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="WinLabel" type="Label" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1192962184]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -217,7 +216,7 @@ text = "All holes filled!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LoseLabel" type="Label" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="LoseLabel" type="Label" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=1094984613]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -225,7 +224,7 @@ text = "Oh no! Not enough balls left. Retry?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer" unique_id=545661228]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
@@ -233,37 +232,37 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="ResultButtonsContainer" type="HBoxContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2"]
+[node name="ResultButtonsContainer" type="HBoxContainer" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2" unique_id=1245482913]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="MainMenuButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
+[node name="MainMenuButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer" unique_id=1587961549]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Main Menu"
 
-[node name="RetryButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
+[node name="RetryButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer" unique_id=337480501]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Retry"
 
-[node name="ContinueButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
+[node name="ContinueButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer" unique_id=251028452]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Continue"
 
-[node name="UndoResultButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer"]
+[node name="UndoResultButton" type="Button" parent="Canvas/HUD/ResultContainer/ResultMarginContainer/PanelContainer/VBoxContainer/MarginContainer2/ResultButtonsContainer" unique_id=804022200]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Undo"
 
-[node name="BottomButtonsContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
+[node name="BottomButtonsContainer" type="AspectRatioContainer" parent="Canvas/HUD" unique_id=332317155]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
@@ -276,33 +275,33 @@ grow_horizontal = 2
 grow_vertical = 0
 ratio = 3.0
 
-[node name="BottomButtonsMarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer"]
+[node name="BottomButtonsMarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer" unique_id=1822130220]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer" unique_id=738948345]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer" unique_id=1658441883]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Control" type="Control" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Control" type="Control" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2" unique_id=390386865]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ExpandHUDButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ExpandHUDButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2" unique_id=1169032077]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 theme = ExtResource("3_sic4l")
 
-[node name="ExpandHUDButtonTex" type="TextureRect" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2/ExpandHUDButton"]
+[node name="ExpandHUDButtonTex" type="TextureRect" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/HBoxContainer2/ExpandHUDButton" unique_id=1883968475]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -320,18 +319,18 @@ scale = Vector2(0.33, 0.33)
 mouse_filter = 2
 texture = ExtResource("4_x5udq")
 
-[node name="Control2" type="Control" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
+[node name="Control2" type="Control" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer" unique_id=324062161]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="BottomButtons" type="HBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
+[node name="BottomButtons" type="HBoxContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer" unique_id=703539901]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons"]
+[node name="MarginContainer2" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons" unique_id=608024358]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
@@ -339,12 +338,12 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HUDMainMenuButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2"]
+[node name="HUDMainMenuButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2" unique_id=202371765]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Main Menu"
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons" unique_id=1555362248]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
@@ -352,15 +351,15 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HUDRetryButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer"]
+[node name="HUDRetryButton" type="Button" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer" unique_id=1046959565]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Retry"
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer" unique_id=970601974]
 layout_mode = 2
 
-[node name="UnlockContainer" type="AspectRatioContainer" parent="Canvas/HUD"]
+[node name="UnlockContainer" type="AspectRatioContainer" parent="Canvas/HUD" unique_id=974110077]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -373,22 +372,22 @@ offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/UnlockContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/UnlockContainer" unique_id=694560214]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/UnlockContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Canvas/HUD/UnlockContainer/MarginContainer" unique_id=1765749995]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/UnlockContainer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/UnlockContainer/MarginContainer/PanelContainer" unique_id=1104262742]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="UnlockLabel" type="Label" parent="Canvas/HUD/UnlockContainer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="UnlockLabel" type="Label" parent="Canvas/HUD/UnlockContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1347883353]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -397,7 +396,7 @@ theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BottomLeftPos" type="Control" parent="Canvas/HUD"]
+[node name="BottomLeftPos" type="Control" parent="Canvas/HUD" unique_id=430452457]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
@@ -405,7 +404,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="BottomRightPos" type="Control" parent="Canvas/HUD"]
+[node name="BottomRightPos" type="Control" parent="Canvas/HUD" unique_id=99129113]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
@@ -416,7 +415,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="UndoButton" type="Button" parent="Canvas/HUD"]
+[node name="UndoButton" type="Button" parent="Canvas/HUD" unique_id=129480912]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
@@ -424,7 +423,7 @@ offset_right = 90.0
 offset_bottom = 50.0
 text = "Undo"
 
-[node name="BestMovesContainer" type="PanelContainer" parent="Canvas/HUD"]
+[node name="BestMovesContainer" type="PanelContainer" parent="Canvas/HUD" unique_id=1463780913]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -437,7 +436,7 @@ offset_right = 31.0
 offset_bottom = -10.0
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BestMovesContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/HUD/BestMovesContainer" unique_id=1520873216]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_left = 10
@@ -445,96 +444,96 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="BestMovesLabel" type="Label" parent="Canvas/HUD/BestMovesContainer/MarginContainer"]
+[node name="BestMovesLabel" type="Label" parent="Canvas/HUD/BestMovesContainer/MarginContainer" unique_id=1798792345]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
-[node name="BushRight" type="Sprite2D" parent="."]
+[node name="BushRight" type="Sprite2D" parent="." unique_id=529245344]
 z_index = -99
 position = Vector2(442, 845)
 rotation = -0.376991
 scale = Vector2(0.711827, 0.641037)
 texture = ExtResource("5_176mw")
 
-[node name="BushLeft" type="Sprite2D" parent="."]
+[node name="BushLeft" type="Sprite2D" parent="." unique_id=195220535]
 z_index = -99
 position = Vector2(20, 851)
 rotation = 0.553269
 scale = Vector2(0.711827, 0.641037)
 texture = ExtResource("5_176mw")
 
-[node name="GridAnchor" type="Node2D" parent="."]
+[node name="GridAnchor" type="Node2D" parent="." unique_id=402316828]
 y_sort_enabled = true
 
-[node name="Camera2D" type="Camera2D" parent="GridAnchor"]
+[node name="Camera2D" type="Camera2D" parent="GridAnchor" unique_id=1836324943]
 unique_name_in_owner = true
 position_smoothing_speed = 10.0
 
-[node name="MoveQueueTimer" type="Timer" parent="."]
+[node name="MoveQueueTimer" type="Timer" parent="." unique_id=1761708701]
 one_shot = true
 
-[node name="MoveCooldownTimer" type="Timer" parent="."]
+[node name="MoveCooldownTimer" type="Timer" parent="." unique_id=39577038]
 wait_time = 0.25
 one_shot = true
 
-[node name="TutOkButtonTimer" type="Timer" parent="."]
+[node name="TutOkButtonTimer" type="Timer" parent="." unique_id=874704611]
 process_mode = 3
 wait_time = 1.5
 
-[node name="Audio" type="Node2D" parent="."]
+[node name="Audio" type="Node2D" parent="." unique_id=2142298082]
 process_mode = 3
 
-[node name="MoveAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="MoveAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=213920061]
 bus = &"SFX"
 
-[node name="GoalAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="GoalAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1652012267]
 bus = &"SFX"
 
-[node name="WonAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="WonAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=550623321]
 bus = &"SFX"
 
-[node name="BombExplodeAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="BombExplodeAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=568834397]
 stream = ExtResource("6_p57ef")
 
-[node name="BombIgniteAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="BombIgniteAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1096319033]
 stream = ExtResource("7_vtaks")
 
-[node name="BombDefuseAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="BombDefuseAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=371943244]
 stream = ExtResource("8_kvpfn")
 
-[node name="TeleportAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="TeleportAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1696417822]
 stream = ExtResource("7_gee14")
 
-[node name="BonkAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="BonkAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=425872822]
 stream = ExtResource("7_u5sy4")
 
-[node name="VictoryAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="VictoryAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=454254432]
 stream = ExtResource("11_kvpfn")
 
-[node name="UndoAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="UndoAudioPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=158971785]
 stream = ExtResource("12_trtic")
 
-[node name="BackgroundImageRoot" type="Node2D" parent="."]
+[node name="BackgroundImageRoot" type="Node2D" parent="." unique_id=1697768802]
 unique_name_in_owner = true
 z_index = -999
 position = Vector2(640, 760)
 
-[node name="Background" type="Sprite2D" parent="BackgroundImageRoot"]
+[node name="Background" type="Sprite2D" parent="BackgroundImageRoot" unique_id=349844669]
 position = Vector2(10.5948, -395.405)
 rotation = -1.5708
 scale = Vector2(5.93312, 4059.19)
 texture = SubResource("GradientTexture1D_tq156")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=316386197]
 environment = SubResource("Environment_kvpfn")
 
-[node name="PixelCanvas" type="CanvasLayer" parent="."]
+[node name="PixelCanvas" type="CanvasLayer" parent="." unique_id=2111033847]
 process_mode = 3
 visible = false
 script = ExtResource("12_kvuet")
 
-[node name="ColorRect" type="ColorRect" parent="PixelCanvas"]
+[node name="ColorRect" type="ColorRect" parent="PixelCanvas" unique_id=1467370733]
 material = SubResource("ShaderMaterial_kvuet")
 anchors_preset = 15
 anchor_right = 1.0
@@ -543,7 +542,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Fader" type="Sprite2D" parent="."]
+[node name="Fader" type="Sprite2D" parent="." unique_id=1604688474]
 visible = false
 modulate = Color(1, 1, 1, 0.713)
 z_index = 4000
@@ -551,7 +550,7 @@ position = Vector2(640, 400)
 scale = Vector2(30, 20)
 texture = ExtResource("15_ir15t")
 
-[node name="FireworkRoot" type="Node2D" parent="."]
+[node name="FireworkRoot" type="Node2D" parent="." unique_id=905962370]
 top_level = true
 z_index = 4096
 position = Vector2(640, 700)

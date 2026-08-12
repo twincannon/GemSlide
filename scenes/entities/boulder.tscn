@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dpb3uoyqbgrbe"]
+
+[ext_resource type="Script" uid="uid://bb8ka6fm3006a" path="res://scripts/entities/boulder.gd" id="1_wrmvx"]
+[ext_resource type="Texture2D" uid="uid://b3q448kn1b3mc" path="res://assets/art/boulder.png" id="3_wrmvx"]
+
+[node name="Tile" type="Node2D" unique_id=249033040]
+script = ExtResource("1_wrmvx")
+
+[node name="TileSprite" type="Sprite2D" parent="." unique_id=1472969874]
+z_index = 100
+position = Vector2(0, -64)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_wrmvx")

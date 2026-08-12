@@ -1,270 +1,270 @@
-[gd_scene load_steps=3 format=3 uid="uid://d32pypg2huh36"]
+[gd_scene format=3 uid="uid://d32pypg2huh36"]
 
 [ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_7rr8n"]
 [ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_kro6k"]
 
-[node name="Level05-combo" type="GridContainer"]
+[node name="Level05-combo" type="GridContainer" unique_id=437187875]
 offset_right = 571.0
 offset_bottom = 682.0
 columns = 7
 script = ExtResource("1_7rr8n")
 level_name = "Excavate"
-par_moves = 25
-dev_best = 21
+par_moves = 32
+dev_best = 28
 num_buttons = 64
 metadata/_custom_type_script = "uid://b6gipcinvnwbk"
 
-[node name="EntityButton0" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton0" parent="." unique_id=1180533608 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton1" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton1" parent="." unique_id=942347250 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton2" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton2" parent="." unique_id=1751741438 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton3" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton3" parent="." unique_id=455471454 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 5
 entity_text = "goal"
 entity_color = Color(0, 1, 0, 1)
 
-[node name="EntityButton4" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton4" parent="." unique_id=274269404 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton5" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton5" parent="." unique_id=459269205 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton6" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton6" parent="." unique_id=1693792628 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton7" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton7" parent="." unique_id=1623812104 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton8" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton8" parent="." unique_id=386432800 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton9" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-entity_type = 8
-entity_text = "#"
-
-[node name="EntityButton10" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-entity_type = 7
-entity_text = "b"
-
-[node name="EntityButton11" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton9" parent="." unique_id=1963153268 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton12" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton10" parent="." unique_id=1723559159 instance=ExtResource("2_kro6k")]
 layout_mode = 2
+entity_type = 17
+entity_text = "boulder"
 
-[node name="EntityButton13" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-
-[node name="EntityButton14" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-
-[node name="EntityButton15" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-
-[node name="EntityButton16" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton11" parent="." unique_id=152070570 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton17" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-entity_type = 7
-entity_text = "b"
-
-[node name="EntityButton18" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-entity_type = 8
-entity_text = "#"
-
-[node name="EntityButton19" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton12" parent="." unique_id=990000591 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton20" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton13" parent="." unique_id=2072173036 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton21" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton14" parent="." unique_id=96243695 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+
+[node name="EntityButton15" parent="." unique_id=757822420 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+
+[node name="EntityButton16" parent="." unique_id=1874588442 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton22" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton17" parent="." unique_id=487183316 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+entity_type = 17
+entity_text = "boulder"
+
+[node name="EntityButton18" parent="." unique_id=505274564 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton23" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton19" parent="." unique_id=1011871946 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+
+[node name="EntityButton20" parent="." unique_id=2092083672 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+
+[node name="EntityButton21" parent="." unique_id=416527624 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton24" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-entity_type = 7
-entity_text = "b"
-
-[node name="EntityButton25" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton22" parent="." unique_id=548746586 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton26" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton23" parent="." unique_id=225324153 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton27" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton24" parent="." unique_id=69027574 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+entity_type = 17
+entity_text = "boulder"
+
+[node name="EntityButton25" parent="." unique_id=1520534049 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton28" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton26" parent="." unique_id=2123245890 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+entity_type = 8
+entity_text = "#"
+
+[node name="EntityButton27" parent="." unique_id=2138636876 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+entity_type = 8
+entity_text = "#"
+
+[node name="EntityButton28" parent="." unique_id=1497907080 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton29" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton29" parent="." unique_id=1278366230 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton30" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton30" parent="." unique_id=1143297566 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 6
 entity_text = "goal"
 entity_color = Color(0, 0, 1, 1)
 
-[node name="EntityButton31" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton31" parent="." unique_id=2056052046 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 4
 entity_text = "goal"
 entity_color = Color(1, 0, 0, 1)
 
-[node name="EntityButton32" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton32" parent="." unique_id=1266977323 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 5
 entity_text = "goal"
 entity_color = Color(0, 1, 0, 1)
 
-[node name="EntityButton33" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton33" parent="." unique_id=1457686179 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton34" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton34" parent="." unique_id=1513640114 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton35" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton35" parent="." unique_id=877343037 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton36" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton36" parent="." unique_id=1698050499 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton37" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton37" parent="." unique_id=1095707840 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton38" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton38" parent="." unique_id=126517408 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton39" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton39" parent="." unique_id=600372570 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton40" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton40" parent="." unique_id=1793382236 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton41" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton41" parent="." unique_id=481342550 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton42" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton42" parent="." unique_id=1658440717 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton43" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton43" parent="." unique_id=1376834932 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton44" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-entity_type = 8
-entity_text = "#"
-
-[node name="EntityButton45" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-
-[node name="EntityButton46" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton44" parent="." unique_id=847308219 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 8
 entity_text = "#"
 
-[node name="EntityButton47" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton45" parent="." unique_id=6707561 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton48" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton46" parent="." unique_id=244591990 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+entity_type = 8
+entity_text = "#"
+
+[node name="EntityButton47" parent="." unique_id=991690836 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton49" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton48" parent="." unique_id=1803709493 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton50" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton49" parent="." unique_id=1281628235 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+
+[node name="EntityButton50" parent="." unique_id=2004217198 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 3
 entity_text = "b"
 entity_color = Color(0, 0, 1, 1)
 
-[node name="EntityButton51" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton51" parent="." unique_id=361324887 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton52" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton52" parent="." unique_id=1297443665 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 1
 entity_text = "b"
 entity_color = Color(1, 0, 0, 1)
 
-[node name="EntityButton53" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton53" parent="." unique_id=1787762660 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton54" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-entity_type = 2
-entity_text = "b"
-entity_color = Color(0, 1, 0, 1)
-
-[node name="EntityButton55" parent="." instance=ExtResource("2_kro6k")]
-layout_mode = 2
-
-[node name="EntityButton56" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton54" parent="." unique_id=84268553 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 2
 entity_text = "b"
 entity_color = Color(0, 1, 0, 1)
 
-[node name="EntityButton57" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton55" parent="." unique_id=241113101 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton58" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton56" parent="." unique_id=840157072 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+entity_type = 2
+entity_text = "b"
+entity_color = Color(0, 1, 0, 1)
+
+[node name="EntityButton57" parent="." unique_id=2054193983 instance=ExtResource("2_kro6k")]
+layout_mode = 2
+
+[node name="EntityButton58" parent="." unique_id=510890569 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 16
 entity_text = "bomb"
 entity_color = Color(0, 0, 1, 1)
 
-[node name="EntityButton59" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton59" parent="." unique_id=1331977225 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton60" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton60" parent="." unique_id=1410913077 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 14
 entity_text = "bomb"
 entity_color = Color(1, 0, 0, 1)
 
-[node name="EntityButton61" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton61" parent="." unique_id=656998247 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 
-[node name="EntityButton62" parent="." instance=ExtResource("2_kro6k")]
+[node name="EntityButton62" parent="." unique_id=61200807 instance=ExtResource("2_kro6k")]
 layout_mode = 2
 entity_type = 15
 entity_text = "bomb"
