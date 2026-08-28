@@ -716,11 +716,10 @@ func _on_hud_solver_button_pressed():
 	var solution = solver.solve()
 	
 	if solution.size() > 0:
-		%LevelNumLabel.text = "Solution: " + str(solution.size()) + " moves found!"
+		%LevelNumLabel.text = "Solution: " + str(solution.size()) + " moves found"
 	else:
 		print("No solution found!")
-		%LevelNumLabel.text = "No solution found!"
-
+		%LevelNumLabel.text = "No solution found"
 
 func _on_expand_hud_button_pressed():
 	if bottom_buttons_tween and bottom_buttons_tween.is_running():

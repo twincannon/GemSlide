@@ -423,6 +423,14 @@ offset_right = 90.0
 offset_bottom = 50.0
 text = "Undo"
 
+[node name="SolveButton" type="Button" parent="Canvas/HUD" unique_id=1795934579]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 64.0
+offset_right = 90.0
+offset_bottom = 104.0
+text = "Solve"
+
 [node name="BestMovesContainer" type="PanelContainer" parent="Canvas/HUD" unique_id=1463780913]
 unique_name_in_owner = true
 visible = false
@@ -564,4 +572,5 @@ position = Vector2(640, 700)
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer2/HUDMainMenuButton" to="." method="_on_hud_main_menu_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/BottomButtonsContainer/BottomButtonsMarginContainer/VBoxContainer/BottomButtons/MarginContainer/HUDRetryButton" to="." method="_on_hud_retry_button_pressed"]
 [connection signal="pressed" from="Canvas/HUD/UndoButton" to="." method="_on_undo_button_pressed"]
+[connection signal="pressed" from="Canvas/HUD/SolveButton" to="." method="_on_hud_solver_button_pressed"]
 [connection signal="timeout" from="TutOkButtonTimer" to="." method="_enable_tutorial_ok_button"]
