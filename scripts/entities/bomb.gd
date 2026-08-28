@@ -21,7 +21,11 @@ func on_goal_entered(_goal):
 	if ignited:
 		Globals.get_game_node().on_bomb_defuse()
 	ignited = false
-	%BombFuseSprite.visible = false
+	#%BombFuseSprite.visible = false
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(%BombFuseSprite, "position:x", 35, 0.75).as_relative()
+	tween.tween_property(%BombFuseSprite, "position:y", -35, 0.75).as_relative()
+	tween.tween_property(%BombFuseSprite, "modulate:a", 0.0, 0.75)
 	%BombFuseVFX.visible = false
 
 func _entity_post_all_movement():

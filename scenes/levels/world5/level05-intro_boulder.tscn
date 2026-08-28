@@ -1,0 +1,543 @@
+[gd_scene format=3 uid="uid://pk8tn3p8vkri"]
+
+[ext_resource type="Script" uid="uid://b6gipcinvnwbk" path="res://scripts/level_editor/level_base.gd" id="1_o4bl1"]
+[ext_resource type="PackedScene" uid="uid://bw4yuccbyd47i" path="res://scenes/level_editor/entity_icon.tscn" id="2_5dws6"]
+[ext_resource type="Script" uid="uid://k88bgu1mphta" path="res://scripts/level_editor/entity_icon_base.gd" id="3_5dws6"]
+
+[node name="Level05-intro2" type="GridContainer" unique_id=2136354427]
+offset_right = 741.0
+offset_bottom = 700.0
+columns = 6
+script = ExtResource("1_o4bl1")
+level_name = "Boulders"
+tutorial = "[b]Boulders[/b] are like rocks that don't move - bombs can destroy them too."
+par_moves = 12
+dev_best = 10
+num_buttons = 36
+metadata/_custom_type_script = "uid://b6gipcinvnwbk"
+
+[node name="EntityButton0" type="MarginContainer" parent="." unique_id=1673204196 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton1" type="MarginContainer" parent="." unique_id=1498067509 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton2" type="MarginContainer" parent="." unique_id=179756023 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 15
+entity_text = "bomb"
+entity_color = Color(0, 1, 0, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton3" type="MarginContainer" parent="." unique_id=1297328683 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton4" type="MarginContainer" parent="." unique_id=1804510608 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton5" type="MarginContainer" parent="." unique_id=1027324167 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton6" type="MarginContainer" parent="." unique_id=1022265760 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton7" type="MarginContainer" parent="." unique_id=675082663 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton8" type="MarginContainer" parent="." unique_id=1148595521 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton9" type="MarginContainer" parent="." unique_id=777989771 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton10" type="MarginContainer" parent="." unique_id=1090677330 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton11" type="MarginContainer" parent="." unique_id=1749128235 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 6
+entity_text = "goal"
+entity_color = Color(0, 0, 1, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton12" type="MarginContainer" parent="." unique_id=607716398 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton13" type="MarginContainer" parent="." unique_id=1413656765 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 2
+entity_text = "b"
+entity_color = Color(0, 1, 0, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton14" type="MarginContainer" parent="." unique_id=1807913851 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton15" type="MarginContainer" parent="." unique_id=1883883923 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton16" type="MarginContainer" parent="." unique_id=1342627522 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 17
+entity_text = "boulder"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton17" type="MarginContainer" parent="." unique_id=2027782334 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton18" type="MarginContainer" parent="." unique_id=1799390869 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton19" type="MarginContainer" parent="." unique_id=1519011021 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 17
+entity_text = "boulder"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton20" type="MarginContainer" parent="." unique_id=601953720 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton21" type="MarginContainer" parent="." unique_id=182882619 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton22" type="MarginContainer" parent="." unique_id=1941752345 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 3
+entity_text = "b"
+entity_color = Color(0, 0, 1, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton23" type="MarginContainer" parent="." unique_id=1390701886 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton24" type="MarginContainer" parent="." unique_id=1133608152 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton25" type="MarginContainer" parent="." unique_id=1948920163 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton26" type="MarginContainer" parent="." unique_id=2013876624 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton27" type="MarginContainer" parent="." unique_id=1459685559 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 5
+entity_text = "goal"
+entity_color = Color(0, 1, 0, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton28" type="MarginContainer" parent="." unique_id=2058177055 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton29" type="MarginContainer" parent="." unique_id=876606291 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton30" type="MarginContainer" parent="." unique_id=564712456 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 14
+entity_text = "bomb"
+entity_color = Color(1, 0, 0, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton31" type="MarginContainer" parent="." unique_id=609577366 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 1
+entity_text = "b"
+entity_color = Color(1, 0, 0, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton32" type="MarginContainer" parent="." unique_id=1560189351 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 4
+entity_text = "goal"
+entity_color = Color(1, 0, 0, 1)
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton33" type="MarginContainer" parent="." unique_id=1862011128 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_type = 8
+entity_text = "#"
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton34" type="MarginContainer" parent="." unique_id=2060079189 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")
+
+[node name="EntityButton35" type="MarginContainer" parent="." unique_id=1080724603 node_paths=PackedStringArray("entity_icon", "id_label") instance=ExtResource("2_5dws6")]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+script = ExtResource("3_5dws6")
+entity_icon = NodePath("PanelContainer/EntityIcon")
+id_label = NodePath("PanelContainer/Button/VBoxContainer/IDLabel")

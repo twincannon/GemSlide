@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="WorldData" load_steps=6 format=3 uid="uid://cxc6r2o2kjlln"]
+[gd_resource type="Resource" script_class="WorldData" format=3 uid="uid://cxc6r2o2kjlln"]
 
 [ext_resource type="Script" uid="uid://cyixeajdgt8u8" path="res://scripts/level_editor/world_data.gd" id="1_a08e3"]
 [ext_resource type="JSON" path="res://scenes/levels/world5/level05-intro.json" id="1_bflfj"]
 [ext_resource type="JSON" path="res://scenes/levels/world5/level05-intro2.json" id="2_5w6li"]
-[ext_resource type="JSON" path="res://scenes/levels/world5/level05-combo.json" id="3_qxshl"]
+[ext_resource type="JSON" path="res://scenes/levels/world5/level05-intro_boulder.json" id="3_uupkx"]
 [ext_resource type="JSON" path="res://scenes/levels/world5/level05-excavate.json" id="4_uupkx"]
 
 [resource]
 script = ExtResource("1_a08e3")
 world_name = "Bombs"
-level_data_json = Array[JSON]([ExtResource("1_bflfj"), ExtResource("2_5w6li"), ExtResource("3_qxshl"), ExtResource("4_uupkx")])
+level_data_json = Array[JSON]([ExtResource("1_bflfj"), ExtResource("2_5w6li"), ExtResource("3_uupkx"), ExtResource("4_uupkx")])
 metadata/_custom_type_script = "uid://cyixeajdgt8u8"

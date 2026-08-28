@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://be2l8tq8cuvqu"]
+[gd_scene format=3 uid="uid://be2l8tq8cuvqu"]
 
 [ext_resource type="Script" uid="uid://dfosxdl403vbm" path="res://scripts/entities/bomb.gd" id="1_5hsef"]
 [ext_resource type="Texture2D" uid="uid://jw3bd5vhb8n" path="res://assets/art/bomb.png" id="1_b0vwv"]
@@ -15,28 +15,28 @@ shader_parameter/hue_shift = 0.0
 shader_parameter/color_scale = 1.0
 shader_parameter/alpha_scale = 1.0
 
-[node name="Bomb" type="Node2D"]
+[node name="Bomb" type="Node2D" unique_id=34187541]
 script = ExtResource("1_5hsef")
 
-[node name="BlockedAnchor" type="Node2D" parent="."]
+[node name="BlockedAnchor" type="Node2D" parent="." unique_id=824001925]
 
-[node name="GemSpriteRotAnchor" type="Node2D" parent="BlockedAnchor"]
+[node name="GemSpriteRotAnchor" type="Node2D" parent="BlockedAnchor" unique_id=293861030]
 unique_name_in_owner = true
 
-[node name="BombSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
+[node name="BombSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor" unique_id=1809002370]
 unique_name_in_owner = true
 z_index = 100
 material = SubResource("ShaderMaterial_vhv6q")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_b0vwv")
 
-[node name="BombFuseSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor"]
+[node name="BombFuseSprite" type="Sprite2D" parent="BlockedAnchor/GemSpriteRotAnchor" unique_id=1779906679]
 unique_name_in_owner = true
 z_index = 101
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_5hsef")
 
-[node name="BombFuseVFX" type="CPUParticles2D" parent="BlockedAnchor/GemSpriteRotAnchor/BombFuseSprite"]
+[node name="BombFuseVFX" type="CPUParticles2D" parent="BlockedAnchor/GemSpriteRotAnchor/BombFuseSprite" unique_id=612817815]
 unique_name_in_owner = true
 visible = false
 position = Vector2(106, -106)
@@ -52,16 +52,16 @@ scale_amount_min = 0.5
 scale_amount_max = 0.5
 color = Color(1, 0.933333, 0.27451, 1)
 
-[node name="ShadowSprite" type="Sprite2D" parent="BlockedAnchor"]
+[node name="ShadowSprite" type="Sprite2D" parent="BlockedAnchor" unique_id=814963259]
 unique_name_in_owner = true
 z_index = 99
 scale = Vector2(0.8, 0.95)
 texture = ExtResource("4_fscv5")
 
-[node name="ColorComponent" parent="." node_paths=PackedStringArray("nodes_to_colorize") instance=ExtResource("5_ei0wy")]
+[node name="ColorComponent" parent="." unique_id=937316378 node_paths=PackedStringArray("nodes_to_colorize") instance=ExtResource("5_ei0wy")]
 nodes_to_colorize = [NodePath("../BlockedAnchor/GemSpriteRotAnchor/BombSprite")]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1965330344]
 visible = false
 z_index = 999
 layout_mode = 3
@@ -69,7 +69,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="LabelGridPos" type="Label" parent="Control"]
+[node name="LabelGridPos" type="Label" parent="Control" unique_id=124531896]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

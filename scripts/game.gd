@@ -602,7 +602,7 @@ func save_game():
 		SaveGame.save_game()
 
 func do_par_moves_anim():
-	Engine.time_scale = 1.0
+	restore_engine_timescale()
 	if data:
 		if moves <= data["ParMoves"]:
 			var par_moves_indicator = par_moves_indicator_scene.instantiate()
@@ -678,7 +678,7 @@ func _on_tut_ok_button_pressed():
 
 func _on_main_menu_button_pressed():
 	set_game_paused(false)
-	Engine.time_scale = 1.0
+	restore_engine_timescale()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func get_next_level():
